@@ -1,29 +1,60 @@
 ﻿using UnityEngine;
-using System.Collections;
+using UnityEngine.EventSystems; // 1
 
 public class JB_DragUIObject : MonoBehaviour
+    , IPointerClickHandler // 2
+    , IDragHandler
+    , IPointerEnterHandler
+    , IPointerExitHandler
+// ... And many more available!
 {
-    public Canvas parentCanvas;
+    SpriteRenderer sprite;
+    Color target = Color.red;
 
-    public void Start()
+    private RectTransform rect;
+
+    void Awake()
     {
-        Vector2 pos;
-
-        RectTransformUtility.ScreenPointToLocalPointInRectangle(
-            parentCanvas.transform as RectTransform, Input.mousePosition,
-            parentCanvas.worldCamera,
-            out pos);
+        rect = GetComponent<RectTransform>();
+        sprite = GetComponent<SpriteRenderer>();
     }
 
-    public void Update()
+    void Update()
     {
-        Vector2 movePos;
+        if (sprite)
+            sprite.color = Vector4.MoveTowards(sprite.color, target, Time.deltaTime * 10);
+    }
 
-        RectTransformUtility.ScreenPointToLocalPointInRectangle(
-            parentCanvas.transform as RectTransform,
-            Input.mousePosition, parentCanvas.worldCamera,
-            out movePos);
+    public void OnPointerClick(PointerEventData eventData) // 3
+    {
+        print("I was clicked");
+        target = Color.blue;
+    }
 
-        transform.position = parentCanvas.transform.TransformPoint(movePos);
+    
+
+    public void OnDrag(PointerEventData eventData)
+    {
+        if(eventData.dragging)
+        print("I'm being dragged!");
+        target = Color.magenta;
+        //rect.localPosition = Camera.main.ScreenToViewportPoint(Input.mousePosition);
+
+
+
+        //Vector3 mousePos = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0);
+
+        rect.transform.position = Camera.main.WorldToViewportPoint(Input.mousePosition);
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        
+        target = Color.green;
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        target = Color.red;
     }
 }
