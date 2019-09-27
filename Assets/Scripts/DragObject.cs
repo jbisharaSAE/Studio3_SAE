@@ -13,6 +13,8 @@ public class DragObject : MonoBehaviour
 
         // Store offset = gameobject world pos - mouse world pos
         mOffset = gameObject.transform.position - GetMouseAsWorldPoint();
+
+        Debug.Log("clicked");
     }
 
     private Vector3 GetMouseAsWorldPoint()
