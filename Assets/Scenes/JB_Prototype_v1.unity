@@ -172,6 +172,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 0
+  tilePosition: {x: 0, y: 0, z: 0}
+  rect: {fileID: 0}
+  myCanvas: {fileID: 1066938985}
 --- !u!65 &10467733
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -183,7 +186,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 30, y: 30, z: 1}
+  m_Size: {x: 70, y: 70, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &10467734
 MonoBehaviour:
@@ -205,7 +208,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fb3c32b9a96b3454888821e828bc53c0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -275,6 +278,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 0
+  tilePosition: {x: 0, y: 0, z: 0}
+  rect: {fileID: 0}
+  myCanvas: {fileID: 1066938985}
 --- !u!65 &18379608
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -286,7 +292,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 30, y: 30, z: 1}
+  m_Size: {x: 70, y: 70, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &18379609
 MonoBehaviour:
@@ -308,7 +314,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fb3c32b9a96b3454888821e828bc53c0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -378,6 +384,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 0
+  tilePosition: {x: 0, y: 0, z: 0}
+  rect: {fileID: 0}
+  myCanvas: {fileID: 1066938985}
 --- !u!65 &34025629
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -389,7 +398,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 30, y: 30, z: 1}
+  m_Size: {x: 70, y: 70, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &34025630
 MonoBehaviour:
@@ -411,7 +420,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fb3c32b9a96b3454888821e828bc53c0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -481,6 +490,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 0
+  tilePosition: {x: 0, y: 0, z: 0}
+  rect: {fileID: 0}
+  myCanvas: {fileID: 1066938985}
 --- !u!65 &53899900
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -492,7 +504,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 30, y: 30, z: 1}
+  m_Size: {x: 70, y: 70, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &53899901
 MonoBehaviour:
@@ -514,7 +526,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fb3c32b9a96b3454888821e828bc53c0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -584,6 +596,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 0
+  tilePosition: {x: 0, y: 0, z: 0}
+  rect: {fileID: 0}
+  myCanvas: {fileID: 1066938985}
 --- !u!65 &72900577
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -595,7 +610,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 30, y: 30, z: 1}
+  m_Size: {x: 70, y: 70, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &72900578
 MonoBehaviour:
@@ -617,7 +632,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fb3c32b9a96b3454888821e828bc53c0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -687,6 +702,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 0
+  tilePosition: {x: 0, y: 0, z: 0}
+  rect: {fileID: 0}
+  myCanvas: {fileID: 1066938985}
 --- !u!65 &74752911
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -698,7 +716,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 30, y: 30, z: 1}
+  m_Size: {x: 70, y: 70, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &74752912
 MonoBehaviour:
@@ -720,7 +738,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fb3c32b9a96b3454888821e828bc53c0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -790,6 +808,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 0
+  tilePosition: {x: 0, y: 0, z: 0}
+  rect: {fileID: 0}
+  myCanvas: {fileID: 1066938985}
 --- !u!65 &75921324
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -801,7 +822,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 30, y: 30, z: 1}
+  m_Size: {x: 70, y: 70, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &75921325
 MonoBehaviour:
@@ -823,7 +844,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fb3c32b9a96b3454888821e828bc53c0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -893,6 +914,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 0
+  tilePosition: {x: 0, y: 0, z: 0}
+  rect: {fileID: 0}
+  myCanvas: {fileID: 1066938985}
 --- !u!65 &104627552
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -904,7 +928,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 30, y: 30, z: 1}
+  m_Size: {x: 70, y: 70, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &104627553
 MonoBehaviour:
@@ -926,7 +950,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fb3c32b9a96b3454888821e828bc53c0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -996,6 +1020,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 0
+  tilePosition: {x: 0, y: 0, z: 0}
+  rect: {fileID: 0}
+  myCanvas: {fileID: 1066938985}
 --- !u!65 &106492526
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1007,7 +1034,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 30, y: 30, z: 1}
+  m_Size: {x: 70, y: 70, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &106492527
 MonoBehaviour:
@@ -1029,7 +1056,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fb3c32b9a96b3454888821e828bc53c0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1099,6 +1126,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 0
+  tilePosition: {x: 0, y: 0, z: 0}
+  rect: {fileID: 0}
+  myCanvas: {fileID: 1066938985}
 --- !u!65 &111210865
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1110,7 +1140,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 30, y: 30, z: 1}
+  m_Size: {x: 70, y: 70, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &111210866
 MonoBehaviour:
@@ -1132,7 +1162,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fb3c32b9a96b3454888821e828bc53c0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1150,6 +1180,113 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 111210862}
   m_CullTransparentMesh: 0
+--- !u!1 &114779031
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 114779032}
+  - component: {fileID: 114779034}
+  - component: {fileID: 114779033}
+  - component: {fileID: 114779035}
+  m_Layer: 0
+  m_Name: New Sprite (3)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &114779032
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 114779031}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.734, y: -0.734, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 10}
+  m_Children: []
+  m_Father: {fileID: 270928167}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &114779033
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 114779031}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Size: {x: 0.7, y: 0.7, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!212 &114779034
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 114779031}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 1
+  m_Sprite: {fileID: 21300000, guid: 74bbdacfaf75e1a40962ac74e4eda409, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 3.88, y: 3.82}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!114 &114779035
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 114779031}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94ffac6157ef60e4fbb210275faf0099, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &116100667
 GameObject:
   m_ObjectHideFlags: 0
@@ -1202,6 +1339,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 0
+  tilePosition: {x: 0, y: 0, z: 0}
+  rect: {fileID: 0}
+  myCanvas: {fileID: 1066938985}
 --- !u!65 &116100670
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1213,7 +1353,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 30, y: 30, z: 1}
+  m_Size: {x: 70, y: 70, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &116100671
 MonoBehaviour:
@@ -1235,7 +1375,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fb3c32b9a96b3454888821e828bc53c0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1305,6 +1445,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 0
+  tilePosition: {x: 0, y: 0, z: 0}
+  rect: {fileID: 0}
+  myCanvas: {fileID: 1066938985}
 --- !u!65 &134231459
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1316,7 +1459,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 30, y: 30, z: 1}
+  m_Size: {x: 70, y: 70, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &134231460
 MonoBehaviour:
@@ -1338,7 +1481,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fb3c32b9a96b3454888821e828bc53c0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1408,6 +1551,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 0
+  tilePosition: {x: 0, y: 0, z: 0}
+  rect: {fileID: 0}
+  myCanvas: {fileID: 1066938985}
 --- !u!65 &165274844
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1419,7 +1565,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 30, y: 30, z: 1}
+  m_Size: {x: 70, y: 70, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &165274845
 MonoBehaviour:
@@ -1441,7 +1587,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fb3c32b9a96b3454888821e828bc53c0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1511,6 +1657,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 0
+  tilePosition: {x: 0, y: 0, z: 0}
+  rect: {fileID: 0}
+  myCanvas: {fileID: 1066938985}
 --- !u!65 &169040482
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1522,7 +1671,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 30, y: 30, z: 1}
+  m_Size: {x: 70, y: 70, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &169040483
 MonoBehaviour:
@@ -1544,7 +1693,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fb3c32b9a96b3454888821e828bc53c0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1680,6 +1829,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 0
+  tilePosition: {x: 0, y: 0, z: 0}
+  rect: {fileID: 0}
+  myCanvas: {fileID: 1066938985}
 --- !u!65 &175555606
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1691,7 +1843,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 30, y: 30, z: 1}
+  m_Size: {x: 70, y: 70, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &175555607
 MonoBehaviour:
@@ -1713,7 +1865,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fb3c32b9a96b3454888821e828bc53c0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1783,6 +1935,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 0
+  tilePosition: {x: 0, y: 0, z: 0}
+  rect: {fileID: 0}
+  myCanvas: {fileID: 1066938985}
 --- !u!65 &186976618
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1794,7 +1949,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 30, y: 30, z: 1}
+  m_Size: {x: 70, y: 70, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &186976619
 MonoBehaviour:
@@ -1816,7 +1971,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fb3c32b9a96b3454888821e828bc53c0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1886,6 +2041,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 0
+  tilePosition: {x: 0, y: 0, z: 0}
+  rect: {fileID: 0}
+  myCanvas: {fileID: 1066938985}
 --- !u!65 &217438881
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1897,7 +2055,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 30, y: 30, z: 1}
+  m_Size: {x: 70, y: 70, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &217438882
 MonoBehaviour:
@@ -1919,7 +2077,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fb3c32b9a96b3454888821e828bc53c0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1937,6 +2095,113 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 217438878}
   m_CullTransparentMesh: 0
+--- !u!1 &248242273
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 248242274}
+  - component: {fileID: 248242276}
+  - component: {fileID: 248242275}
+  - component: {fileID: 248242277}
+  m_Layer: 0
+  m_Name: New Sprite (8)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &248242274
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 248242273}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.734, y: -2.202, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 10}
+  m_Children: []
+  m_Father: {fileID: 270928167}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &248242275
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 248242273}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Size: {x: 0.7, y: 0.7, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!212 &248242276
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 248242273}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 1
+  m_Sprite: {fileID: 21300000, guid: 74bbdacfaf75e1a40962ac74e4eda409, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 3.88, y: 3.82}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!114 &248242277
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 248242273}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94ffac6157ef60e4fbb210275faf0099, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &249878375
 GameObject:
   m_ObjectHideFlags: 0
@@ -1989,6 +2254,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 0
+  tilePosition: {x: 0, y: 0, z: 0}
+  rect: {fileID: 0}
+  myCanvas: {fileID: 1066938985}
 --- !u!65 &249878378
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2000,7 +2268,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 30, y: 30, z: 1}
+  m_Size: {x: 70, y: 70, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &249878379
 MonoBehaviour:
@@ -2022,7 +2290,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fb3c32b9a96b3454888821e828bc53c0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2092,6 +2360,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 0
+  tilePosition: {x: 0, y: 0, z: 0}
+  rect: {fileID: 0}
+  myCanvas: {fileID: 1066938985}
 --- !u!65 &264362268
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2103,7 +2374,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 30, y: 30, z: 1}
+  m_Size: {x: 70, y: 70, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &264362269
 MonoBehaviour:
@@ -2125,7 +2396,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fb3c32b9a96b3454888821e828bc53c0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2195,6 +2466,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 0
+  tilePosition: {x: 0, y: 0, z: 0}
+  rect: {fileID: 0}
+  myCanvas: {fileID: 1066938985}
 --- !u!65 &265486520
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2206,7 +2480,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 30, y: 30, z: 1}
+  m_Size: {x: 70, y: 70, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &265486521
 MonoBehaviour:
@@ -2228,7 +2502,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fb3c32b9a96b3454888821e828bc53c0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2246,6 +2520,152 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 265486517}
   m_CullTransparentMesh: 0
+--- !u!1 &270928165
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 270928167}
+  - component: {fileID: 270928166}
+  - component: {fileID: 270928169}
+  - component: {fileID: 270928168}
+  - component: {fileID: 270928171}
+  - component: {fileID: 270928170}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &270928166
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 270928165}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: feae456287381914f999e2e69e2d19ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &270928167
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 270928165}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 12.9, y: 23.7, z: 89.33}
+  m_LocalScale: {x: 12, y: 12, z: 1}
+  m_Children:
+  - {fileID: 580569933}
+  - {fileID: 1147685267}
+  - {fileID: 1305440688}
+  - {fileID: 114779032}
+  - {fileID: 1336535712}
+  - {fileID: 1469081070}
+  - {fileID: 1842868946}
+  - {fileID: 282110934}
+  - {fileID: 248242274}
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &270928168
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 270928165}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!212 &270928169
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 270928165}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: 74bbdacfaf75e1a40962ac74e4eda409, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 0.7, y: 0.7}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!65 &270928170
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 270928165}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.7, y: 0.7, z: 3}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &270928171
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 270928165}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94ffac6157ef60e4fbb210275faf0099, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &271814545
 GameObject:
   m_ObjectHideFlags: 0
@@ -2298,6 +2718,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 0
+  tilePosition: {x: 0, y: 0, z: 0}
+  rect: {fileID: 0}
+  myCanvas: {fileID: 1066938985}
 --- !u!65 &271814548
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2309,7 +2732,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 30, y: 30, z: 1}
+  m_Size: {x: 70, y: 70, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &271814549
 MonoBehaviour:
@@ -2331,7 +2754,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fb3c32b9a96b3454888821e828bc53c0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2349,6 +2772,113 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 271814545}
   m_CullTransparentMesh: 0
+--- !u!1 &282110933
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 282110934}
+  - component: {fileID: 282110936}
+  - component: {fileID: 282110935}
+  - component: {fileID: 282110937}
+  m_Layer: 0
+  m_Name: New Sprite (7)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &282110934
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 282110933}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.734, y: -2.202, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 10}
+  m_Children: []
+  m_Father: {fileID: 270928167}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &282110935
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 282110933}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Size: {x: 0.7, y: 0.7, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!212 &282110936
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 282110933}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 1
+  m_Sprite: {fileID: 21300000, guid: 74bbdacfaf75e1a40962ac74e4eda409, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 3.88, y: 3.82}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!114 &282110937
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 282110933}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94ffac6157ef60e4fbb210275faf0099, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &301065446
 GameObject:
   m_ObjectHideFlags: 0
@@ -2401,6 +2931,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 0
+  tilePosition: {x: 0, y: 0, z: 0}
+  rect: {fileID: 0}
+  myCanvas: {fileID: 1066938985}
 --- !u!65 &301065449
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2412,7 +2945,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 30, y: 30, z: 1}
+  m_Size: {x: 70, y: 70, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &301065450
 MonoBehaviour:
@@ -2434,7 +2967,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fb3c32b9a96b3454888821e828bc53c0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2504,6 +3037,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 0
+  tilePosition: {x: 0, y: 0, z: 0}
+  rect: {fileID: 0}
+  myCanvas: {fileID: 1066938985}
 --- !u!65 &311989572
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2515,7 +3051,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 30, y: 30, z: 1}
+  m_Size: {x: 70, y: 70, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &311989573
 MonoBehaviour:
@@ -2537,7 +3073,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fb3c32b9a96b3454888821e828bc53c0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2607,6 +3143,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 0
+  tilePosition: {x: 0, y: 0, z: 0}
+  rect: {fileID: 0}
+  myCanvas: {fileID: 1066938985}
 --- !u!65 &313966022
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2618,7 +3157,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 30, y: 30, z: 1}
+  m_Size: {x: 70, y: 70, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &313966023
 MonoBehaviour:
@@ -2640,7 +3179,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fb3c32b9a96b3454888821e828bc53c0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2710,6 +3249,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 0
+  tilePosition: {x: 0, y: 0, z: 0}
+  rect: {fileID: 0}
+  myCanvas: {fileID: 1066938985}
 --- !u!65 &327607289
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2721,7 +3263,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 30, y: 30, z: 1}
+  m_Size: {x: 70, y: 70, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &327607290
 MonoBehaviour:
@@ -2743,7 +3285,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fb3c32b9a96b3454888821e828bc53c0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2813,6 +3355,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 0
+  tilePosition: {x: 0, y: 0, z: 0}
+  rect: {fileID: 0}
+  myCanvas: {fileID: 1066938985}
 --- !u!65 &329381789
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2824,7 +3369,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 30, y: 30, z: 1}
+  m_Size: {x: 70, y: 70, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &329381790
 MonoBehaviour:
@@ -2846,7 +3391,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fb3c32b9a96b3454888821e828bc53c0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2916,6 +3461,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 0
+  tilePosition: {x: 0, y: 0, z: 0}
+  rect: {fileID: 0}
+  myCanvas: {fileID: 1066938985}
 --- !u!65 &350650818
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2927,7 +3475,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 30, y: 30, z: 1}
+  m_Size: {x: 70, y: 70, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &350650819
 MonoBehaviour:
@@ -2949,7 +3497,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fb3c32b9a96b3454888821e828bc53c0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3019,6 +3567,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 0
+  tilePosition: {x: 0, y: 0, z: 0}
+  rect: {fileID: 0}
+  myCanvas: {fileID: 1066938985}
 --- !u!65 &352037284
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3030,7 +3581,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 30, y: 30, z: 1}
+  m_Size: {x: 70, y: 70, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &352037285
 MonoBehaviour:
@@ -3052,7 +3603,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fb3c32b9a96b3454888821e828bc53c0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3122,6 +3673,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 0
+  tilePosition: {x: 0, y: 0, z: 0}
+  rect: {fileID: 0}
+  myCanvas: {fileID: 1066938985}
 --- !u!65 &364552408
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3133,7 +3687,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 30, y: 30, z: 1}
+  m_Size: {x: 70, y: 70, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &364552409
 MonoBehaviour:
@@ -3155,7 +3709,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fb3c32b9a96b3454888821e828bc53c0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3225,6 +3779,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 0
+  tilePosition: {x: 0, y: 0, z: 0}
+  rect: {fileID: 0}
+  myCanvas: {fileID: 1066938985}
 --- !u!65 &391474946
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3236,7 +3793,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 30, y: 30, z: 1}
+  m_Size: {x: 70, y: 70, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &391474947
 MonoBehaviour:
@@ -3258,7 +3815,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fb3c32b9a96b3454888821e828bc53c0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3328,6 +3885,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 0
+  tilePosition: {x: 0, y: 0, z: 0}
+  rect: {fileID: 0}
+  myCanvas: {fileID: 1066938985}
 --- !u!65 &429722787
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3339,7 +3899,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 30, y: 30, z: 1}
+  m_Size: {x: 70, y: 70, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &429722788
 MonoBehaviour:
@@ -3361,7 +3921,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fb3c32b9a96b3454888821e828bc53c0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3431,6 +3991,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 0
+  tilePosition: {x: 0, y: 0, z: 0}
+  rect: {fileID: 0}
+  myCanvas: {fileID: 1066938985}
 --- !u!65 &435150206
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3442,7 +4005,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 30, y: 30, z: 1}
+  m_Size: {x: 70, y: 70, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &435150207
 MonoBehaviour:
@@ -3464,7 +4027,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fb3c32b9a96b3454888821e828bc53c0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3534,6 +4097,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 0
+  tilePosition: {x: 0, y: 0, z: 0}
+  rect: {fileID: 0}
+  myCanvas: {fileID: 1066938985}
 --- !u!65 &473201459
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3545,7 +4111,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 30, y: 30, z: 1}
+  m_Size: {x: 70, y: 70, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &473201460
 MonoBehaviour:
@@ -3567,7 +4133,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fb3c32b9a96b3454888821e828bc53c0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3637,6 +4203,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 0
+  tilePosition: {x: 0, y: 0, z: 0}
+  rect: {fileID: 0}
+  myCanvas: {fileID: 1066938985}
 --- !u!65 &480729897
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3648,7 +4217,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 30, y: 30, z: 1}
+  m_Size: {x: 70, y: 70, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &480729898
 MonoBehaviour:
@@ -3670,7 +4239,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fb3c32b9a96b3454888821e828bc53c0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3740,6 +4309,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 0
+  tilePosition: {x: 0, y: 0, z: 0}
+  rect: {fileID: 0}
+  myCanvas: {fileID: 1066938985}
 --- !u!65 &489188677
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3751,7 +4323,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 30, y: 30, z: 1}
+  m_Size: {x: 70, y: 70, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &489188678
 MonoBehaviour:
@@ -3773,7 +4345,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fb3c32b9a96b3454888821e828bc53c0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3843,6 +4415,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 0
+  tilePosition: {x: 0, y: 0, z: 0}
+  rect: {fileID: 0}
+  myCanvas: {fileID: 1066938985}
 --- !u!65 &491934927
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3854,7 +4429,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 30, y: 30, z: 1}
+  m_Size: {x: 70, y: 70, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &491934928
 MonoBehaviour:
@@ -3876,7 +4451,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fb3c32b9a96b3454888821e828bc53c0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3894,144 +4469,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 491934924}
   m_CullTransparentMesh: 0
---- !u!1 &497510426
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 497510427}
-  - component: {fileID: 497510430}
-  - component: {fileID: 497510429}
-  - component: {fileID: 497510428}
-  - component: {fileID: 497510431}
-  m_Layer: 5
-  m_Name: Image (1)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &497510427
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 497510426}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -3.22}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1066938989}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -289.4, y: 25.63}
-  m_SizeDelta: {x: 63.24, y: 51.26}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &497510428
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 497510426}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 457f841fabc71d24cafdc20946ede871, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &497510429
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 497510426}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 70ae88ee4c1a745d0819de61ec68af19, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &497510430
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 497510426}
-  m_CullTransparentMesh: 0
---- !u!212 &497510431
-SpriteRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 497510426}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 70ae88ee4c1a745d0819de61ec68af19, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
-  m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 19.2, y: 12.8}
-  m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
 --- !u!1 &524987766
 GameObject:
   m_ObjectHideFlags: 0
@@ -4084,6 +4521,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 0
+  tilePosition: {x: 0, y: 0, z: 0}
+  rect: {fileID: 0}
+  myCanvas: {fileID: 1066938985}
 --- !u!65 &524987769
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4095,7 +4535,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 30, y: 30, z: 1}
+  m_Size: {x: 70, y: 70, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &524987770
 MonoBehaviour:
@@ -4117,7 +4557,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fb3c32b9a96b3454888821e828bc53c0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4187,6 +4627,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 0
+  tilePosition: {x: 0, y: 0, z: 0}
+  rect: {fileID: 0}
+  myCanvas: {fileID: 1066938985}
 --- !u!65 &552252422
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4198,7 +4641,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 30, y: 30, z: 1}
+  m_Size: {x: 70, y: 70, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &552252423
 MonoBehaviour:
@@ -4220,7 +4663,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fb3c32b9a96b3454888821e828bc53c0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4290,6 +4733,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 0
+  tilePosition: {x: 0, y: 0, z: 0}
+  rect: {fileID: 0}
+  myCanvas: {fileID: 1066938985}
 --- !u!65 &566622324
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4301,7 +4747,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 30, y: 30, z: 1}
+  m_Size: {x: 70, y: 70, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &566622325
 MonoBehaviour:
@@ -4323,7 +4769,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fb3c32b9a96b3454888821e828bc53c0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4393,6 +4839,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 0
+  tilePosition: {x: 0, y: 0, z: 0}
+  rect: {fileID: 0}
+  myCanvas: {fileID: 1066938985}
 --- !u!65 &570306035
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4404,7 +4853,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 30, y: 30, z: 1}
+  m_Size: {x: 70, y: 70, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &570306036
 MonoBehaviour:
@@ -4426,7 +4875,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fb3c32b9a96b3454888821e828bc53c0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4496,6 +4945,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 0
+  tilePosition: {x: 0, y: 0, z: 0}
+  rect: {fileID: 0}
+  myCanvas: {fileID: 1066938985}
 --- !u!65 &573879042
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4507,7 +4959,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 30, y: 30, z: 1}
+  m_Size: {x: 70, y: 70, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &573879043
 MonoBehaviour:
@@ -4529,7 +4981,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fb3c32b9a96b3454888821e828bc53c0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4599,6 +5051,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 0
+  tilePosition: {x: 0, y: 0, z: 0}
+  rect: {fileID: 0}
+  myCanvas: {fileID: 1066938985}
 --- !u!65 &576713882
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4610,7 +5065,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 30, y: 30, z: 1}
+  m_Size: {x: 70, y: 70, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &576713883
 MonoBehaviour:
@@ -4632,7 +5087,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fb3c32b9a96b3454888821e828bc53c0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4650,6 +5105,113 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 576713879}
   m_CullTransparentMesh: 0
+--- !u!1 &580569932
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 580569933}
+  - component: {fileID: 580569935}
+  - component: {fileID: 580569934}
+  - component: {fileID: 580569936}
+  m_Layer: 0
+  m_Name: New Sprite
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &580569933
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 580569932}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 10}
+  m_Children: []
+  m_Father: {fileID: 270928167}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &580569934
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 580569932}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Size: {x: 0.7, y: 0.7, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!212 &580569935
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 580569932}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 1
+  m_Sprite: {fileID: 21300000, guid: 74bbdacfaf75e1a40962ac74e4eda409, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 3.88, y: 3.82}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!114 &580569936
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 580569932}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94ffac6157ef60e4fbb210275faf0099, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &591338833
 GameObject:
   m_ObjectHideFlags: 0
@@ -4702,6 +5264,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 0
+  tilePosition: {x: 0, y: 0, z: 0}
+  rect: {fileID: 0}
+  myCanvas: {fileID: 1066938985}
 --- !u!65 &591338836
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4713,7 +5278,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 30, y: 30, z: 1}
+  m_Size: {x: 70, y: 70, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &591338837
 MonoBehaviour:
@@ -4735,7 +5300,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fb3c32b9a96b3454888821e828bc53c0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4805,6 +5370,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 0
+  tilePosition: {x: 0, y: 0, z: 0}
+  rect: {fileID: 0}
+  myCanvas: {fileID: 1066938985}
 --- !u!65 &617013765
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4816,7 +5384,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 30, y: 30, z: 1}
+  m_Size: {x: 70, y: 70, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &617013766
 MonoBehaviour:
@@ -4838,7 +5406,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fb3c32b9a96b3454888821e828bc53c0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4908,6 +5476,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 0
+  tilePosition: {x: 0, y: 0, z: 0}
+  rect: {fileID: 0}
+  myCanvas: {fileID: 1066938985}
 --- !u!65 &643092481
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4919,7 +5490,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 30, y: 30, z: 1}
+  m_Size: {x: 70, y: 70, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &643092482
 MonoBehaviour:
@@ -4941,7 +5512,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fb3c32b9a96b3454888821e828bc53c0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5011,6 +5582,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 0
+  tilePosition: {x: 0, y: 0, z: 0}
+  rect: {fileID: 0}
+  myCanvas: {fileID: 1066938985}
 --- !u!65 &645293666
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5022,7 +5596,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 30, y: 30, z: 1}
+  m_Size: {x: 70, y: 70, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &645293667
 MonoBehaviour:
@@ -5044,7 +5618,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fb3c32b9a96b3454888821e828bc53c0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5114,6 +5688,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 0
+  tilePosition: {x: 0, y: 0, z: 0}
+  rect: {fileID: 0}
+  myCanvas: {fileID: 1066938985}
 --- !u!65 &671460249
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5125,7 +5702,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 30, y: 30, z: 1}
+  m_Size: {x: 70, y: 70, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &671460250
 MonoBehaviour:
@@ -5147,7 +5724,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fb3c32b9a96b3454888821e828bc53c0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5217,6 +5794,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 0
+  tilePosition: {x: 0, y: 0, z: 0}
+  rect: {fileID: 0}
+  myCanvas: {fileID: 1066938985}
 --- !u!65 &680081511
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5228,7 +5808,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 30, y: 30, z: 1}
+  m_Size: {x: 70, y: 70, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &680081512
 MonoBehaviour:
@@ -5250,7 +5830,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fb3c32b9a96b3454888821e828bc53c0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5320,6 +5900,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 0
+  tilePosition: {x: 0, y: 0, z: 0}
+  rect: {fileID: 0}
+  myCanvas: {fileID: 1066938985}
 --- !u!65 &692596719
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5331,7 +5914,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 30, y: 30, z: 1}
+  m_Size: {x: 70, y: 70, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &692596720
 MonoBehaviour:
@@ -5353,7 +5936,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fb3c32b9a96b3454888821e828bc53c0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5423,6 +6006,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 0
+  tilePosition: {x: 0, y: 0, z: 0}
+  rect: {fileID: 0}
+  myCanvas: {fileID: 1066938985}
 --- !u!65 &701333319
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5434,7 +6020,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 30, y: 30, z: 1}
+  m_Size: {x: 70, y: 70, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &701333320
 MonoBehaviour:
@@ -5456,7 +6042,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fb3c32b9a96b3454888821e828bc53c0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5526,6 +6112,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 0
+  tilePosition: {x: 0, y: 0, z: 0}
+  rect: {fileID: 0}
+  myCanvas: {fileID: 1066938985}
 --- !u!65 &701656485
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5537,7 +6126,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 30, y: 30, z: 1}
+  m_Size: {x: 70, y: 70, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &701656486
 MonoBehaviour:
@@ -5559,7 +6148,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fb3c32b9a96b3454888821e828bc53c0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5629,6 +6218,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 0
+  tilePosition: {x: 0, y: 0, z: 0}
+  rect: {fileID: 0}
+  myCanvas: {fileID: 1066938985}
 --- !u!65 &703251240
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5640,7 +6232,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 30, y: 30, z: 1}
+  m_Size: {x: 70, y: 70, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &703251241
 MonoBehaviour:
@@ -5662,7 +6254,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fb3c32b9a96b3454888821e828bc53c0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5732,6 +6324,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 0
+  tilePosition: {x: 0, y: 0, z: 0}
+  rect: {fileID: 0}
+  myCanvas: {fileID: 1066938985}
 --- !u!65 &715436096
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5743,7 +6338,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 30, y: 30, z: 1}
+  m_Size: {x: 70, y: 70, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &715436097
 MonoBehaviour:
@@ -5765,7 +6360,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fb3c32b9a96b3454888821e828bc53c0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5835,6 +6430,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 0
+  tilePosition: {x: 0, y: 0, z: 0}
+  rect: {fileID: 0}
+  myCanvas: {fileID: 1066938985}
 --- !u!65 &717074696
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5846,7 +6444,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 30, y: 30, z: 1}
+  m_Size: {x: 70, y: 70, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &717074697
 MonoBehaviour:
@@ -5868,7 +6466,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fb3c32b9a96b3454888821e828bc53c0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5938,6 +6536,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 0
+  tilePosition: {x: 0, y: 0, z: 0}
+  rect: {fileID: 0}
+  myCanvas: {fileID: 1066938985}
 --- !u!65 &742292254
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5949,7 +6550,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 30, y: 30, z: 1}
+  m_Size: {x: 70, y: 70, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &742292255
 MonoBehaviour:
@@ -5971,7 +6572,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fb3c32b9a96b3454888821e828bc53c0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -6041,6 +6642,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 0
+  tilePosition: {x: 0, y: 0, z: 0}
+  rect: {fileID: 0}
+  myCanvas: {fileID: 1066938985}
 --- !u!65 &744858722
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6052,7 +6656,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 30, y: 30, z: 1}
+  m_Size: {x: 70, y: 70, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &744858723
 MonoBehaviour:
@@ -6074,7 +6678,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fb3c32b9a96b3454888821e828bc53c0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -6144,6 +6748,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 0
+  tilePosition: {x: 0, y: 0, z: 0}
+  rect: {fileID: 0}
+  myCanvas: {fileID: 1066938985}
 --- !u!65 &813629792
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6155,7 +6762,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 30, y: 30, z: 1}
+  m_Size: {x: 70, y: 70, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &813629793
 MonoBehaviour:
@@ -6177,7 +6784,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fb3c32b9a96b3454888821e828bc53c0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -6247,6 +6854,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 0
+  tilePosition: {x: 0, y: 0, z: 0}
+  rect: {fileID: 0}
+  myCanvas: {fileID: 1066938985}
 --- !u!65 &830943996
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6258,7 +6868,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 30, y: 30, z: 1}
+  m_Size: {x: 70, y: 70, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &830943997
 MonoBehaviour:
@@ -6280,7 +6890,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fb3c32b9a96b3454888821e828bc53c0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -6350,6 +6960,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 0
+  tilePosition: {x: 0, y: 0, z: 0}
+  rect: {fileID: 0}
+  myCanvas: {fileID: 1066938985}
 --- !u!65 &860026563
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6361,7 +6974,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 30, y: 30, z: 1}
+  m_Size: {x: 70, y: 70, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &860026564
 MonoBehaviour:
@@ -6383,7 +6996,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fb3c32b9a96b3454888821e828bc53c0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -6453,6 +7066,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 0
+  tilePosition: {x: 0, y: 0, z: 0}
+  rect: {fileID: 0}
+  myCanvas: {fileID: 1066938985}
 --- !u!65 &867026751
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6464,7 +7080,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 30, y: 30, z: 1}
+  m_Size: {x: 70, y: 70, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &867026752
 MonoBehaviour:
@@ -6486,7 +7102,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fb3c32b9a96b3454888821e828bc53c0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -6682,8 +7298,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 14.1, y: 0.0000076294}
-  m_SizeDelta: {x: 560.48, y: 254.1}
+  m_AnchoredPosition: {x: 450.45, y: 0.00000095367}
+  m_SizeDelta: {x: 900.9, y: 874.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &871895466
 MonoBehaviour:
@@ -6705,8 +7321,8 @@ MonoBehaviour:
   m_ChildAlignment: 0
   m_StartCorner: 0
   m_StartAxis: 0
-  m_CellSize: {x: 30, y: 30}
-  m_Spacing: {x: 1, y: 1}
+  m_CellSize: {x: 70, y: 70}
+  m_Spacing: {x: 2, y: 2}
   m_Constraint: 0
   m_ConstraintCount: 2
 --- !u!114 &871895467
@@ -6721,7 +7337,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97565bc21800a434eb539e6daeb5f7bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tileScript: []
+  tile: {fileID: 0}
 --- !u!1 &874403862
 GameObject:
   m_ObjectHideFlags: 0
@@ -6774,6 +7390,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 0
+  tilePosition: {x: 0, y: 0, z: 0}
+  rect: {fileID: 0}
+  myCanvas: {fileID: 1066938985}
 --- !u!65 &874403865
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6785,7 +7404,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 30, y: 30, z: 1}
+  m_Size: {x: 70, y: 70, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &874403866
 MonoBehaviour:
@@ -6807,7 +7426,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fb3c32b9a96b3454888821e828bc53c0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -6825,6 +7444,130 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 874403862}
   m_CullTransparentMesh: 0
+--- !u!1 &880691605
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 880691609}
+  - component: {fileID: 880691606}
+  - component: {fileID: 880691612}
+  - component: {fileID: 880691611}
+  - component: {fileID: 880691607}
+  m_Layer: 0
+  m_Name: Ship1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!65 &880691606
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 880691605}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.5, y: 2.5, z: 2.5}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!212 &880691607
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 880691605}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 1
+  m_Sprite: {fileID: 21300000, guid: 835ce6d159fff4a47b9709bb5e492a0c, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 8.12, y: 6.76}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!4 &880691609
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 880691605}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -26.19, y: -30.95, z: 89.33}
+  m_LocalScale: {x: 5, y: 5, z: 5}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &880691611
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 880691605}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: feae456287381914f999e2e69e2d19ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!54 &880691612
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 880691605}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &885625480
 GameObject:
   m_ObjectHideFlags: 0
@@ -6877,6 +7620,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 0
+  tilePosition: {x: 0, y: 0, z: 0}
+  rect: {fileID: 0}
+  myCanvas: {fileID: 1066938985}
 --- !u!65 &885625483
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6888,7 +7634,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 30, y: 30, z: 1}
+  m_Size: {x: 70, y: 70, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &885625484
 MonoBehaviour:
@@ -6910,7 +7656,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fb3c32b9a96b3454888821e828bc53c0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -6980,6 +7726,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 0
+  tilePosition: {x: 0, y: 0, z: 0}
+  rect: {fileID: 0}
+  myCanvas: {fileID: 1066938985}
 --- !u!65 &887367133
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6991,7 +7740,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 30, y: 30, z: 1}
+  m_Size: {x: 70, y: 70, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &887367134
 MonoBehaviour:
@@ -7013,7 +7762,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fb3c32b9a96b3454888821e828bc53c0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -7083,6 +7832,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 0
+  tilePosition: {x: 0, y: 0, z: 0}
+  rect: {fileID: 0}
+  myCanvas: {fileID: 1066938985}
 --- !u!65 &901264194
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7094,7 +7846,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 30, y: 30, z: 1}
+  m_Size: {x: 70, y: 70, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &901264195
 MonoBehaviour:
@@ -7116,7 +7868,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fb3c32b9a96b3454888821e828bc53c0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -7186,6 +7938,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 0
+  tilePosition: {x: 0, y: 0, z: 0}
+  rect: {fileID: 0}
+  myCanvas: {fileID: 1066938985}
 --- !u!65 &910220812
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7197,7 +7952,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 30, y: 30, z: 1}
+  m_Size: {x: 70, y: 70, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &910220813
 MonoBehaviour:
@@ -7219,7 +7974,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fb3c32b9a96b3454888821e828bc53c0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -7289,6 +8044,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 0
+  tilePosition: {x: 0, y: 0, z: 0}
+  rect: {fileID: 0}
+  myCanvas: {fileID: 1066938985}
 --- !u!65 &955949822
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7300,7 +8058,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 30, y: 30, z: 1}
+  m_Size: {x: 70, y: 70, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &955949823
 MonoBehaviour:
@@ -7322,7 +8080,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fb3c32b9a96b3454888821e828bc53c0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -7392,6 +8150,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 0
+  tilePosition: {x: 0, y: 0, z: 0}
+  rect: {fileID: 0}
+  myCanvas: {fileID: 1066938985}
 --- !u!65 &958408457
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7403,7 +8164,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 30, y: 30, z: 1}
+  m_Size: {x: 70, y: 70, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &958408458
 MonoBehaviour:
@@ -7425,7 +8186,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fb3c32b9a96b3454888821e828bc53c0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -7495,6 +8256,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 0
+  tilePosition: {x: 0, y: 0, z: 0}
+  rect: {fileID: 0}
+  myCanvas: {fileID: 1066938985}
 --- !u!65 &969726410
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7506,7 +8270,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 30, y: 30, z: 1}
+  m_Size: {x: 70, y: 70, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &969726411
 MonoBehaviour:
@@ -7528,7 +8292,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fb3c32b9a96b3454888821e828bc53c0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -7641,6 +8405,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 0
+  tilePosition: {x: 0, y: 0, z: 0}
+  rect: {fileID: 0}
+  myCanvas: {fileID: 1066938985}
 --- !u!65 &986595850
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7652,7 +8419,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 30, y: 30, z: 1}
+  m_Size: {x: 70, y: 70, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &986595851
 MonoBehaviour:
@@ -7674,7 +8441,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fb3c32b9a96b3454888821e828bc53c0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -7744,6 +8511,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 0
+  tilePosition: {x: 0, y: 0, z: 0}
+  rect: {fileID: 0}
+  myCanvas: {fileID: 1066938985}
 --- !u!65 &998904931
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7755,7 +8525,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 30, y: 30, z: 1}
+  m_Size: {x: 70, y: 70, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &998904932
 MonoBehaviour:
@@ -7777,7 +8547,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fb3c32b9a96b3454888821e828bc53c0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -7847,6 +8617,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 0
+  tilePosition: {x: 0, y: 0, z: 0}
+  rect: {fileID: 0}
+  myCanvas: {fileID: 1066938985}
 --- !u!65 &1003418459
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7858,7 +8631,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 30, y: 30, z: 1}
+  m_Size: {x: 70, y: 70, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1003418460
 MonoBehaviour:
@@ -7880,7 +8653,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fb3c32b9a96b3454888821e828bc53c0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -8033,6 +8806,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 0
+  tilePosition: {x: 0, y: 0, z: 0}
+  rect: {fileID: 0}
+  myCanvas: {fileID: 1066938985}
 --- !u!65 &1041059156
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8044,7 +8820,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 30, y: 30, z: 1}
+  m_Size: {x: 70, y: 70, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1041059157
 MonoBehaviour:
@@ -8066,7 +8842,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fb3c32b9a96b3454888821e828bc53c0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -8136,6 +8912,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 0
+  tilePosition: {x: 0, y: 0, z: 0}
+  rect: {fileID: 0}
+  myCanvas: {fileID: 1066938985}
 --- !u!65 &1048215171
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8147,7 +8926,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 30, y: 30, z: 1}
+  m_Size: {x: 70, y: 70, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1048215172
 MonoBehaviour:
@@ -8169,7 +8948,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fb3c32b9a96b3454888821e828bc53c0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -8330,6 +9109,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 0
+  tilePosition: {x: 0, y: 0, z: 0}
+  rect: {fileID: 0}
+  myCanvas: {fileID: 1066938985}
 --- !u!65 &1061988842
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8341,7 +9123,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 30, y: 30, z: 1}
+  m_Size: {x: 70, y: 70, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1061988843
 MonoBehaviour:
@@ -8363,7 +9145,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fb3c32b9a96b3454888821e828bc53c0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -8407,7 +9189,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1066938985}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
   m_Name: 
@@ -8429,10 +9211,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 1024, y: 768}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -8448,7 +9230,7 @@ Canvas:
   m_GameObject: {fileID: 1066938985}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_Camera: {fileID: 1015111029}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
@@ -8473,7 +9255,6 @@ RectTransform:
   m_Children:
   - {fileID: 1814131127}
   - {fileID: 871895465}
-  - {fileID: 497510427}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -8482,206 +9263,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!1 &1069689731
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1069689739}
-  - component: {fileID: 1069689734}
-  - component: {fileID: 1069689733}
-  - component: {fileID: 1069689732}
-  - component: {fileID: 1069689736}
-  - component: {fileID: 1069689738}
-  - component: {fileID: 1069689735}
-  - component: {fileID: 1069689737}
-  m_Layer: 0
-  m_Name: TestSubject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!114 &1069689732
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1069689731}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 94ffac6157ef60e4fbb210275faf0099, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!61 &1069689733
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1069689731}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 19.2, y: 12.8}
-    newSize: {x: 19.2, y: 12.8}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 2, y: 2}
-  m_EdgeRadius: 0
---- !u!212 &1069689734
-SpriteRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1069689731}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 70ae88ee4c1a745d0819de61ec68af19, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
-  m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 19.2, y: 12.8}
-  m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
---- !u!114 &1069689735
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1069689731}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 457f841fabc71d24cafdc20946ede871, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!50 &1069689736
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1069689731}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
---- !u!114 &1069689737
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1069689731}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_IgnoreReversedGraphics: 1
-  m_BlockingObjects: 0
-  m_BlockingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
---- !u!223 &1069689738
-Canvas:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1069689731}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_RenderMode: 2
-  m_Camera: {fileID: 1015111029}
-  m_PlaneDistance: 100
-  m_PixelPerfect: 0
-  m_ReceivesEvents: 1
-  m_OverrideSorting: 0
-  m_OverridePixelPerfect: 0
-  m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 0
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
-  m_TargetDisplay: 0
---- !u!224 &1069689739
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1069689731}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 60}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -57.8, y: 10.4}
-  m_SizeDelta: {x: 19.2, y: 12.8}
-  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1080735951
 GameObject:
   m_ObjectHideFlags: 0
@@ -8734,6 +9315,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 0
+  tilePosition: {x: 0, y: 0, z: 0}
+  rect: {fileID: 0}
+  myCanvas: {fileID: 1066938985}
 --- !u!65 &1080735954
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8745,7 +9329,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 30, y: 30, z: 1}
+  m_Size: {x: 70, y: 70, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1080735955
 MonoBehaviour:
@@ -8767,7 +9351,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fb3c32b9a96b3454888821e828bc53c0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -8837,6 +9421,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 0
+  tilePosition: {x: 0, y: 0, z: 0}
+  rect: {fileID: 0}
+  myCanvas: {fileID: 1066938985}
 --- !u!65 &1085681211
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8848,7 +9435,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 30, y: 30, z: 1}
+  m_Size: {x: 70, y: 70, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1085681212
 MonoBehaviour:
@@ -8870,7 +9457,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fb3c32b9a96b3454888821e828bc53c0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -8940,6 +9527,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 0
+  tilePosition: {x: 0, y: 0, z: 0}
+  rect: {fileID: 0}
+  myCanvas: {fileID: 1066938985}
 --- !u!65 &1097687397
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8951,7 +9541,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 30, y: 30, z: 1}
+  m_Size: {x: 70, y: 70, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1097687398
 MonoBehaviour:
@@ -8973,7 +9563,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fb3c32b9a96b3454888821e828bc53c0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -9043,6 +9633,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 0
+  tilePosition: {x: 0, y: 0, z: 0}
+  rect: {fileID: 0}
+  myCanvas: {fileID: 1066938985}
 --- !u!65 &1106600137
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9054,7 +9647,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 30, y: 30, z: 1}
+  m_Size: {x: 70, y: 70, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1106600138
 MonoBehaviour:
@@ -9076,7 +9669,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fb3c32b9a96b3454888821e828bc53c0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -9146,6 +9739,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 0
+  tilePosition: {x: 0, y: 0, z: 0}
+  rect: {fileID: 0}
+  myCanvas: {fileID: 1066938985}
 --- !u!65 &1129296200
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9157,7 +9753,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 30, y: 30, z: 1}
+  m_Size: {x: 70, y: 70, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1129296201
 MonoBehaviour:
@@ -9179,7 +9775,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fb3c32b9a96b3454888821e828bc53c0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -9249,6 +9845,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 0
+  tilePosition: {x: 0, y: 0, z: 0}
+  rect: {fileID: 0}
+  myCanvas: {fileID: 1066938985}
 --- !u!65 &1133209410
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9260,7 +9859,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 30, y: 30, z: 1}
+  m_Size: {x: 70, y: 70, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1133209411
 MonoBehaviour:
@@ -9282,7 +9881,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fb3c32b9a96b3454888821e828bc53c0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -9300,6 +9899,113 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1133209407}
   m_CullTransparentMesh: 0
+--- !u!1 &1147685266
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1147685267}
+  - component: {fileID: 1147685269}
+  - component: {fileID: 1147685268}
+  - component: {fileID: 1147685270}
+  m_Layer: 0
+  m_Name: New Sprite (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1147685267
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1147685266}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.734, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 10}
+  m_Children: []
+  m_Father: {fileID: 270928167}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1147685268
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1147685266}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Size: {x: 0.7, y: 0.7, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!212 &1147685269
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1147685266}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 1
+  m_Sprite: {fileID: 21300000, guid: 74bbdacfaf75e1a40962ac74e4eda409, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 3.88, y: 3.82}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!114 &1147685270
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1147685266}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94ffac6157ef60e4fbb210275faf0099, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1178740848
 GameObject:
   m_ObjectHideFlags: 0
@@ -9352,6 +10058,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 0
+  tilePosition: {x: 0, y: 0, z: 0}
+  rect: {fileID: 0}
+  myCanvas: {fileID: 1066938985}
 --- !u!65 &1178740851
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9363,7 +10072,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 30, y: 30, z: 1}
+  m_Size: {x: 70, y: 70, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1178740852
 MonoBehaviour:
@@ -9385,7 +10094,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fb3c32b9a96b3454888821e828bc53c0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -9455,6 +10164,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 0
+  tilePosition: {x: 0, y: 0, z: 0}
+  rect: {fileID: 0}
+  myCanvas: {fileID: 1066938985}
 --- !u!65 &1187710841
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9466,7 +10178,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 30, y: 30, z: 1}
+  m_Size: {x: 70, y: 70, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1187710842
 MonoBehaviour:
@@ -9488,7 +10200,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fb3c32b9a96b3454888821e828bc53c0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -9558,6 +10270,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 0
+  tilePosition: {x: 0, y: 0, z: 0}
+  rect: {fileID: 0}
+  myCanvas: {fileID: 1066938985}
 --- !u!65 &1208031794
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9569,7 +10284,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 30, y: 30, z: 1}
+  m_Size: {x: 70, y: 70, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1208031795
 MonoBehaviour:
@@ -9591,7 +10306,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fb3c32b9a96b3454888821e828bc53c0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -9661,6 +10376,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 0
+  tilePosition: {x: 0, y: 0, z: 0}
+  rect: {fileID: 0}
+  myCanvas: {fileID: 1066938985}
 --- !u!65 &1214885849
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9672,7 +10390,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 30, y: 30, z: 1}
+  m_Size: {x: 70, y: 70, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1214885850
 MonoBehaviour:
@@ -9694,7 +10412,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fb3c32b9a96b3454888821e828bc53c0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -9764,6 +10482,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 0
+  tilePosition: {x: 0, y: 0, z: 0}
+  rect: {fileID: 0}
+  myCanvas: {fileID: 1066938985}
 --- !u!65 &1221190165
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9775,7 +10496,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 30, y: 30, z: 1}
+  m_Size: {x: 70, y: 70, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1221190166
 MonoBehaviour:
@@ -9797,7 +10518,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fb3c32b9a96b3454888821e828bc53c0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -9867,6 +10588,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 0
+  tilePosition: {x: 0, y: 0, z: 0}
+  rect: {fileID: 0}
+  myCanvas: {fileID: 1066938985}
 --- !u!65 &1239950827
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9878,7 +10602,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 30, y: 30, z: 1}
+  m_Size: {x: 70, y: 70, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1239950828
 MonoBehaviour:
@@ -9900,7 +10624,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fb3c32b9a96b3454888821e828bc53c0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -9970,6 +10694,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 0
+  tilePosition: {x: 0, y: 0, z: 0}
+  rect: {fileID: 0}
+  myCanvas: {fileID: 1066938985}
 --- !u!65 &1245002474
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9981,7 +10708,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 30, y: 30, z: 1}
+  m_Size: {x: 70, y: 70, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1245002475
 MonoBehaviour:
@@ -10003,7 +10730,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fb3c32b9a96b3454888821e828bc53c0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -10073,6 +10800,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 0
+  tilePosition: {x: 0, y: 0, z: 0}
+  rect: {fileID: 0}
+  myCanvas: {fileID: 1066938985}
 --- !u!65 &1267285940
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10084,7 +10814,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 30, y: 30, z: 1}
+  m_Size: {x: 70, y: 70, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1267285941
 MonoBehaviour:
@@ -10106,7 +10836,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fb3c32b9a96b3454888821e828bc53c0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -10176,6 +10906,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 0
+  tilePosition: {x: 0, y: 0, z: 0}
+  rect: {fileID: 0}
+  myCanvas: {fileID: 1066938985}
 --- !u!65 &1270712981
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10187,7 +10920,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 30, y: 30, z: 1}
+  m_Size: {x: 70, y: 70, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1270712982
 MonoBehaviour:
@@ -10209,7 +10942,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fb3c32b9a96b3454888821e828bc53c0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -10279,6 +11012,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 0
+  tilePosition: {x: 0, y: 0, z: 0}
+  rect: {fileID: 0}
+  myCanvas: {fileID: 1066938985}
 --- !u!65 &1291037696
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10290,7 +11026,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 30, y: 30, z: 1}
+  m_Size: {x: 70, y: 70, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1291037697
 MonoBehaviour:
@@ -10312,7 +11048,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fb3c32b9a96b3454888821e828bc53c0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -10382,6 +11118,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 0
+  tilePosition: {x: 0, y: 0, z: 0}
+  rect: {fileID: 0}
+  myCanvas: {fileID: 1066938985}
 --- !u!65 &1304513595
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10393,7 +11132,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 30, y: 30, z: 1}
+  m_Size: {x: 70, y: 70, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1304513596
 MonoBehaviour:
@@ -10415,7 +11154,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fb3c32b9a96b3454888821e828bc53c0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -10433,6 +11172,113 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1304513592}
   m_CullTransparentMesh: 0
+--- !u!1 &1305440687
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1305440688}
+  - component: {fileID: 1305440690}
+  - component: {fileID: 1305440689}
+  - component: {fileID: 1305440691}
+  m_Layer: 0
+  m_Name: New Sprite (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1305440688
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1305440687}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.734, y: -0.734, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 10}
+  m_Children: []
+  m_Father: {fileID: 270928167}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1305440689
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1305440687}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Size: {x: 0.7, y: 0.7, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!212 &1305440690
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1305440687}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 1
+  m_Sprite: {fileID: 21300000, guid: 74bbdacfaf75e1a40962ac74e4eda409, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 3.88, y: 3.82}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!114 &1305440691
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1305440687}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94ffac6157ef60e4fbb210275faf0099, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1306064175
 GameObject:
   m_ObjectHideFlags: 0
@@ -10485,6 +11331,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 0
+  tilePosition: {x: 0, y: 0, z: 0}
+  rect: {fileID: 0}
+  myCanvas: {fileID: 1066938985}
 --- !u!65 &1306064178
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10496,7 +11345,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 30, y: 30, z: 1}
+  m_Size: {x: 70, y: 70, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1306064179
 MonoBehaviour:
@@ -10518,7 +11367,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fb3c32b9a96b3454888821e828bc53c0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -10595,7 +11444,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fb3c32b9a96b3454888821e828bc53c0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -10626,6 +11475,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 0
+  tilePosition: {x: 0, y: 0, z: 0}
+  rect: {fileID: 0}
+  myCanvas: {fileID: 1066938985}
 --- !u!65 &1329790739
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10637,8 +11489,115 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 30, y: 30, z: 1}
+  m_Size: {x: 70, y: 70, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &1336535711
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1336535712}
+  - component: {fileID: 1336535714}
+  - component: {fileID: 1336535713}
+  - component: {fileID: 1336535715}
+  m_Layer: 0
+  m_Name: New Sprite (4)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1336535712
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1336535711}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -1.468, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 10}
+  m_Children: []
+  m_Father: {fileID: 270928167}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1336535713
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1336535711}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Size: {x: 0.7, y: 0.7, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!212 &1336535714
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1336535711}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 1
+  m_Sprite: {fileID: 21300000, guid: 74bbdacfaf75e1a40962ac74e4eda409, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 3.88, y: 3.82}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!114 &1336535715
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1336535711}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94ffac6157ef60e4fbb210275faf0099, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1342321662
 GameObject:
   m_ObjectHideFlags: 0
@@ -10691,6 +11650,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 0
+  tilePosition: {x: 0, y: 0, z: 0}
+  rect: {fileID: 0}
+  myCanvas: {fileID: 1066938985}
 --- !u!65 &1342321665
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10702,7 +11664,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 30, y: 30, z: 1}
+  m_Size: {x: 70, y: 70, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1342321666
 MonoBehaviour:
@@ -10724,7 +11686,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fb3c32b9a96b3454888821e828bc53c0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -10794,6 +11756,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 0
+  tilePosition: {x: 0, y: 0, z: 0}
+  rect: {fileID: 0}
+  myCanvas: {fileID: 1066938985}
 --- !u!65 &1381042628
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10805,7 +11770,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 30, y: 30, z: 1}
+  m_Size: {x: 70, y: 70, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1381042629
 MonoBehaviour:
@@ -10827,7 +11792,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fb3c32b9a96b3454888821e828bc53c0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -10897,6 +11862,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 0
+  tilePosition: {x: 0, y: 0, z: 0}
+  rect: {fileID: 0}
+  myCanvas: {fileID: 1066938985}
 --- !u!65 &1405297007
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10908,7 +11876,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 30, y: 30, z: 1}
+  m_Size: {x: 70, y: 70, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1405297008
 MonoBehaviour:
@@ -10930,7 +11898,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fb3c32b9a96b3454888821e828bc53c0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -11000,6 +11968,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 0
+  tilePosition: {x: 0, y: 0, z: 0}
+  rect: {fileID: 0}
+  myCanvas: {fileID: 1066938985}
 --- !u!65 &1441923458
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11011,7 +11982,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 30, y: 30, z: 1}
+  m_Size: {x: 70, y: 70, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1441923459
 MonoBehaviour:
@@ -11033,7 +12004,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fb3c32b9a96b3454888821e828bc53c0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -11103,6 +12074,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 0
+  tilePosition: {x: 0, y: 0, z: 0}
+  rect: {fileID: 0}
+  myCanvas: {fileID: 1066938985}
 --- !u!65 &1451552922
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11114,7 +12088,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 30, y: 30, z: 1}
+  m_Size: {x: 70, y: 70, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1451552923
 MonoBehaviour:
@@ -11136,7 +12110,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fb3c32b9a96b3454888821e828bc53c0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -11206,6 +12180,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 0
+  tilePosition: {x: 0, y: 0, z: 0}
+  rect: {fileID: 0}
+  myCanvas: {fileID: 1066938985}
 --- !u!65 &1465389362
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11217,7 +12194,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 30, y: 30, z: 1}
+  m_Size: {x: 70, y: 70, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1465389363
 MonoBehaviour:
@@ -11239,7 +12216,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fb3c32b9a96b3454888821e828bc53c0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -11309,6 +12286,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 0
+  tilePosition: {x: 0, y: 0, z: 0}
+  rect: {fileID: 0}
+  myCanvas: {fileID: 1066938985}
 --- !u!65 &1466125657
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11320,7 +12300,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 30, y: 30, z: 1}
+  m_Size: {x: 70, y: 70, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1466125658
 MonoBehaviour:
@@ -11342,7 +12322,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fb3c32b9a96b3454888821e828bc53c0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -11360,6 +12340,113 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1466125654}
   m_CullTransparentMesh: 0
+--- !u!1 &1469081069
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1469081070}
+  - component: {fileID: 1469081072}
+  - component: {fileID: 1469081071}
+  - component: {fileID: 1469081073}
+  m_Layer: 0
+  m_Name: New Sprite (5)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1469081070
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1469081069}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.734, y: -1.468, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 10}
+  m_Children: []
+  m_Father: {fileID: 270928167}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1469081071
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1469081069}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Size: {x: 0.7, y: 0.7, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!212 &1469081072
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1469081069}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 1
+  m_Sprite: {fileID: 21300000, guid: 74bbdacfaf75e1a40962ac74e4eda409, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 3.88, y: 3.82}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!114 &1469081073
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1469081069}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94ffac6157ef60e4fbb210275faf0099, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1478242902
 GameObject:
   m_ObjectHideFlags: 0
@@ -11412,6 +12499,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 0
+  tilePosition: {x: 0, y: 0, z: 0}
+  rect: {fileID: 0}
+  myCanvas: {fileID: 1066938985}
 --- !u!65 &1478242905
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11423,7 +12513,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 30, y: 30, z: 1}
+  m_Size: {x: 70, y: 70, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1478242906
 MonoBehaviour:
@@ -11445,7 +12535,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fb3c32b9a96b3454888821e828bc53c0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -11515,6 +12605,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 0
+  tilePosition: {x: 0, y: 0, z: 0}
+  rect: {fileID: 0}
+  myCanvas: {fileID: 1066938985}
 --- !u!65 &1481117794
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11526,7 +12619,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 30, y: 30, z: 1}
+  m_Size: {x: 70, y: 70, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1481117795
 MonoBehaviour:
@@ -11548,7 +12641,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fb3c32b9a96b3454888821e828bc53c0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -11618,6 +12711,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 0
+  tilePosition: {x: 0, y: 0, z: 0}
+  rect: {fileID: 0}
+  myCanvas: {fileID: 1066938985}
 --- !u!65 &1488486182
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11629,7 +12725,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 30, y: 30, z: 1}
+  m_Size: {x: 70, y: 70, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1488486183
 MonoBehaviour:
@@ -11651,7 +12747,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fb3c32b9a96b3454888821e828bc53c0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -11721,6 +12817,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 0
+  tilePosition: {x: 0, y: 0, z: 0}
+  rect: {fileID: 0}
+  myCanvas: {fileID: 1066938985}
 --- !u!65 &1540292734
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11732,7 +12831,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 30, y: 30, z: 1}
+  m_Size: {x: 70, y: 70, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1540292735
 MonoBehaviour:
@@ -11754,7 +12853,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fb3c32b9a96b3454888821e828bc53c0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -11824,6 +12923,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 0
+  tilePosition: {x: 0, y: 0, z: 0}
+  rect: {fileID: 0}
+  myCanvas: {fileID: 1066938985}
 --- !u!65 &1550904828
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11835,7 +12937,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 30, y: 30, z: 1}
+  m_Size: {x: 70, y: 70, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1550904829
 MonoBehaviour:
@@ -11857,7 +12959,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fb3c32b9a96b3454888821e828bc53c0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -11927,6 +13029,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 0
+  tilePosition: {x: 0, y: 0, z: 0}
+  rect: {fileID: 0}
+  myCanvas: {fileID: 1066938985}
 --- !u!65 &1572459092
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11938,7 +13043,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 30, y: 30, z: 1}
+  m_Size: {x: 70, y: 70, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1572459093
 MonoBehaviour:
@@ -11960,7 +13065,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fb3c32b9a96b3454888821e828bc53c0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -12030,6 +13135,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 0
+  tilePosition: {x: 0, y: 0, z: 0}
+  rect: {fileID: 0}
+  myCanvas: {fileID: 1066938985}
 --- !u!65 &1572997049
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12041,7 +13149,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 30, y: 30, z: 1}
+  m_Size: {x: 70, y: 70, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1572997050
 MonoBehaviour:
@@ -12063,7 +13171,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fb3c32b9a96b3454888821e828bc53c0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -12133,6 +13241,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 0
+  tilePosition: {x: 0, y: 0, z: 0}
+  rect: {fileID: 0}
+  myCanvas: {fileID: 1066938985}
 --- !u!65 &1574459692
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12144,7 +13255,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 30, y: 30, z: 1}
+  m_Size: {x: 70, y: 70, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1574459693
 MonoBehaviour:
@@ -12166,7 +13277,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fb3c32b9a96b3454888821e828bc53c0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -12236,6 +13347,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 0
+  tilePosition: {x: 0, y: 0, z: 0}
+  rect: {fileID: 0}
+  myCanvas: {fileID: 1066938985}
 --- !u!65 &1586850265
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12247,7 +13361,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 30, y: 30, z: 1}
+  m_Size: {x: 70, y: 70, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1586850266
 MonoBehaviour:
@@ -12269,7 +13383,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fb3c32b9a96b3454888821e828bc53c0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -12339,6 +13453,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 0
+  tilePosition: {x: 0, y: 0, z: 0}
+  rect: {fileID: 0}
+  myCanvas: {fileID: 1066938985}
 --- !u!65 &1589762162
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12350,7 +13467,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 30, y: 30, z: 1}
+  m_Size: {x: 70, y: 70, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1589762163
 MonoBehaviour:
@@ -12372,7 +13489,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fb3c32b9a96b3454888821e828bc53c0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -12442,6 +13559,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 0
+  tilePosition: {x: 0, y: 0, z: 0}
+  rect: {fileID: 0}
+  myCanvas: {fileID: 1066938985}
 --- !u!65 &1591170413
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12453,7 +13573,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 30, y: 30, z: 1}
+  m_Size: {x: 70, y: 70, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1591170414
 MonoBehaviour:
@@ -12475,7 +13595,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fb3c32b9a96b3454888821e828bc53c0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -12545,6 +13665,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 0
+  tilePosition: {x: 0, y: 0, z: 0}
+  rect: {fileID: 0}
+  myCanvas: {fileID: 1066938985}
 --- !u!65 &1603426353
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12556,7 +13679,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 30, y: 30, z: 1}
+  m_Size: {x: 70, y: 70, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1603426354
 MonoBehaviour:
@@ -12578,7 +13701,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fb3c32b9a96b3454888821e828bc53c0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -12648,6 +13771,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 0
+  tilePosition: {x: 0, y: 0, z: 0}
+  rect: {fileID: 0}
+  myCanvas: {fileID: 1066938985}
 --- !u!65 &1619586833
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12659,7 +13785,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 30, y: 30, z: 1}
+  m_Size: {x: 70, y: 70, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1619586834
 MonoBehaviour:
@@ -12681,7 +13807,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fb3c32b9a96b3454888821e828bc53c0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -12751,6 +13877,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 0
+  tilePosition: {x: 0, y: 0, z: 0}
+  rect: {fileID: 0}
+  myCanvas: {fileID: 1066938985}
 --- !u!65 &1620041758
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12762,7 +13891,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 30, y: 30, z: 1}
+  m_Size: {x: 70, y: 70, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1620041759
 MonoBehaviour:
@@ -12784,7 +13913,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fb3c32b9a96b3454888821e828bc53c0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -12854,6 +13983,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 0
+  tilePosition: {x: 0, y: 0, z: 0}
+  rect: {fileID: 0}
+  myCanvas: {fileID: 1066938985}
 --- !u!65 &1635368596
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12865,7 +13997,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 30, y: 30, z: 1}
+  m_Size: {x: 70, y: 70, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1635368597
 MonoBehaviour:
@@ -12887,7 +14019,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fb3c32b9a96b3454888821e828bc53c0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -12957,6 +14089,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 0
+  tilePosition: {x: 0, y: 0, z: 0}
+  rect: {fileID: 0}
+  myCanvas: {fileID: 1066938985}
 --- !u!65 &1652411404
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12968,7 +14103,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 30, y: 30, z: 1}
+  m_Size: {x: 70, y: 70, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1652411405
 MonoBehaviour:
@@ -12990,7 +14125,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fb3c32b9a96b3454888821e828bc53c0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -13060,6 +14195,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 0
+  tilePosition: {x: 0, y: 0, z: 0}
+  rect: {fileID: 0}
+  myCanvas: {fileID: 1066938985}
 --- !u!65 &1662888077
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -13071,7 +14209,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 30, y: 30, z: 1}
+  m_Size: {x: 70, y: 70, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1662888078
 MonoBehaviour:
@@ -13093,7 +14231,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fb3c32b9a96b3454888821e828bc53c0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -13163,6 +14301,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 0
+  tilePosition: {x: 0, y: 0, z: 0}
+  rect: {fileID: 0}
+  myCanvas: {fileID: 1066938985}
 --- !u!65 &1698681262
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -13174,7 +14315,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 30, y: 30, z: 1}
+  m_Size: {x: 70, y: 70, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1698681263
 MonoBehaviour:
@@ -13196,7 +14337,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fb3c32b9a96b3454888821e828bc53c0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -13266,6 +14407,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 0
+  tilePosition: {x: 0, y: 0, z: 0}
+  rect: {fileID: 0}
+  myCanvas: {fileID: 1066938985}
 --- !u!65 &1729376311
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -13277,7 +14421,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 30, y: 30, z: 1}
+  m_Size: {x: 70, y: 70, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1729376312
 MonoBehaviour:
@@ -13299,7 +14443,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fb3c32b9a96b3454888821e828bc53c0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -13369,6 +14513,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 0
+  tilePosition: {x: 0, y: 0, z: 0}
+  rect: {fileID: 0}
+  myCanvas: {fileID: 1066938985}
 --- !u!65 &1778289046
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -13380,7 +14527,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 30, y: 30, z: 1}
+  m_Size: {x: 70, y: 70, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1778289047
 MonoBehaviour:
@@ -13402,7 +14549,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fb3c32b9a96b3454888821e828bc53c0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -13604,6 +14751,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 0
+  tilePosition: {x: 0, y: 0, z: 0}
+  rect: {fileID: 0}
+  myCanvas: {fileID: 1066938985}
 --- !u!65 &1810379828
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -13615,7 +14765,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 30, y: 30, z: 1}
+  m_Size: {x: 70, y: 70, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1810379829
 MonoBehaviour:
@@ -13637,7 +14787,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fb3c32b9a96b3454888821e828bc53c0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -13690,7 +14840,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1532, y: 773}
+  m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1814131128
 MonoBehaviour:
@@ -13782,6 +14932,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 0
+  tilePosition: {x: 0, y: 0, z: 0}
+  rect: {fileID: 0}
+  myCanvas: {fileID: 1066938985}
 --- !u!65 &1821296393
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -13793,7 +14946,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 30, y: 30, z: 1}
+  m_Size: {x: 70, y: 70, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1821296394
 MonoBehaviour:
@@ -13815,7 +14968,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fb3c32b9a96b3454888821e828bc53c0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -13833,6 +14986,113 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1821296390}
   m_CullTransparentMesh: 0
+--- !u!1 &1842868945
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1842868946}
+  - component: {fileID: 1842868948}
+  - component: {fileID: 1842868947}
+  - component: {fileID: 1842868949}
+  m_Layer: 0
+  m_Name: New Sprite (6)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1842868946
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1842868945}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.734, y: -1.468, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 10}
+  m_Children: []
+  m_Father: {fileID: 270928167}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1842868947
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1842868945}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Size: {x: 0.7, y: 0.7, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!212 &1842868948
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1842868945}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 1
+  m_Sprite: {fileID: 21300000, guid: 74bbdacfaf75e1a40962ac74e4eda409, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 3.88, y: 3.82}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!114 &1842868949
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1842868945}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94ffac6157ef60e4fbb210275faf0099, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1843412871
 GameObject:
   m_ObjectHideFlags: 0
@@ -13885,6 +15145,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 0
+  tilePosition: {x: 0, y: 0, z: 0}
+  rect: {fileID: 0}
+  myCanvas: {fileID: 1066938985}
 --- !u!65 &1843412874
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -13896,7 +15159,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 30, y: 30, z: 1}
+  m_Size: {x: 70, y: 70, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1843412875
 MonoBehaviour:
@@ -13918,7 +15181,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fb3c32b9a96b3454888821e828bc53c0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -13988,6 +15251,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 0
+  tilePosition: {x: 0, y: 0, z: 0}
+  rect: {fileID: 0}
+  myCanvas: {fileID: 1066938985}
 --- !u!65 &1846616724
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -13999,7 +15265,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 30, y: 30, z: 1}
+  m_Size: {x: 70, y: 70, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1846616725
 MonoBehaviour:
@@ -14021,7 +15287,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fb3c32b9a96b3454888821e828bc53c0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -14091,6 +15357,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 0
+  tilePosition: {x: 0, y: 0, z: 0}
+  rect: {fileID: 0}
+  myCanvas: {fileID: 1066938985}
 --- !u!65 &1857468828
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -14102,7 +15371,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 30, y: 30, z: 1}
+  m_Size: {x: 70, y: 70, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1857468829
 MonoBehaviour:
@@ -14124,7 +15393,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fb3c32b9a96b3454888821e828bc53c0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -14194,6 +15463,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 0
+  tilePosition: {x: 0, y: 0, z: 0}
+  rect: {fileID: 0}
+  myCanvas: {fileID: 1066938985}
 --- !u!65 &1862968897
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -14205,7 +15477,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 30, y: 30, z: 1}
+  m_Size: {x: 70, y: 70, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1862968898
 MonoBehaviour:
@@ -14227,7 +15499,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fb3c32b9a96b3454888821e828bc53c0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -14297,6 +15569,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 0
+  tilePosition: {x: 0, y: 0, z: 0}
+  rect: {fileID: 0}
+  myCanvas: {fileID: 1066938985}
 --- !u!65 &1875815117
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -14308,7 +15583,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 30, y: 30, z: 1}
+  m_Size: {x: 70, y: 70, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1875815118
 MonoBehaviour:
@@ -14330,7 +15605,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fb3c32b9a96b3454888821e828bc53c0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -14400,6 +15675,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 0
+  tilePosition: {x: 0, y: 0, z: 0}
+  rect: {fileID: 0}
+  myCanvas: {fileID: 1066938985}
 --- !u!65 &1891530996
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -14411,7 +15689,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 30, y: 30, z: 1}
+  m_Size: {x: 70, y: 70, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1891530997
 MonoBehaviour:
@@ -14433,7 +15711,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fb3c32b9a96b3454888821e828bc53c0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -14503,6 +15781,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 0
+  tilePosition: {x: 0, y: 0, z: 0}
+  rect: {fileID: 0}
+  myCanvas: {fileID: 1066938985}
 --- !u!65 &1892107137
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -14514,7 +15795,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 30, y: 30, z: 1}
+  m_Size: {x: 70, y: 70, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1892107138
 MonoBehaviour:
@@ -14536,7 +15817,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fb3c32b9a96b3454888821e828bc53c0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -14606,6 +15887,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 0
+  tilePosition: {x: 0, y: 0, z: 0}
+  rect: {fileID: 0}
+  myCanvas: {fileID: 1066938985}
 --- !u!65 &1909273015
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -14617,7 +15901,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 30, y: 30, z: 1}
+  m_Size: {x: 70, y: 70, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1909273016
 MonoBehaviour:
@@ -14639,7 +15923,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fb3c32b9a96b3454888821e828bc53c0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -14709,6 +15993,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 0
+  tilePosition: {x: 0, y: 0, z: 0}
+  rect: {fileID: 0}
+  myCanvas: {fileID: 1066938985}
 --- !u!65 &1909764261
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -14720,7 +16007,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 30, y: 30, z: 1}
+  m_Size: {x: 70, y: 70, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1909764262
 MonoBehaviour:
@@ -14742,7 +16029,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fb3c32b9a96b3454888821e828bc53c0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -14812,6 +16099,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 0
+  tilePosition: {x: 0, y: 0, z: 0}
+  rect: {fileID: 0}
+  myCanvas: {fileID: 1066938985}
 --- !u!65 &1911990916
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -14823,7 +16113,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 30, y: 30, z: 1}
+  m_Size: {x: 70, y: 70, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1911990917
 MonoBehaviour:
@@ -14845,7 +16135,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fb3c32b9a96b3454888821e828bc53c0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -14915,6 +16205,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 0
+  tilePosition: {x: 0, y: 0, z: 0}
+  rect: {fileID: 0}
+  myCanvas: {fileID: 1066938985}
 --- !u!65 &1924987365
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -14926,7 +16219,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 30, y: 30, z: 1}
+  m_Size: {x: 70, y: 70, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1924987366
 MonoBehaviour:
@@ -14948,7 +16241,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fb3c32b9a96b3454888821e828bc53c0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -15018,6 +16311,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 0
+  tilePosition: {x: 0, y: 0, z: 0}
+  rect: {fileID: 0}
+  myCanvas: {fileID: 1066938985}
 --- !u!65 &1926529110
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -15029,7 +16325,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 30, y: 30, z: 1}
+  m_Size: {x: 70, y: 70, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1926529111
 MonoBehaviour:
@@ -15051,7 +16347,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fb3c32b9a96b3454888821e828bc53c0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -15121,6 +16417,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 0
+  tilePosition: {x: 0, y: 0, z: 0}
+  rect: {fileID: 0}
+  myCanvas: {fileID: 1066938985}
 --- !u!65 &1939672579
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -15132,7 +16431,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 30, y: 30, z: 1}
+  m_Size: {x: 70, y: 70, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1939672580
 MonoBehaviour:
@@ -15154,7 +16453,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fb3c32b9a96b3454888821e828bc53c0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -15224,6 +16523,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 0
+  tilePosition: {x: 0, y: 0, z: 0}
+  rect: {fileID: 0}
+  myCanvas: {fileID: 1066938985}
 --- !u!65 &1988218418
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -15235,7 +16537,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 30, y: 30, z: 1}
+  m_Size: {x: 70, y: 70, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1988218419
 MonoBehaviour:
@@ -15257,7 +16559,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fb3c32b9a96b3454888821e828bc53c0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -15327,6 +16629,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 0
+  tilePosition: {x: 0, y: 0, z: 0}
+  rect: {fileID: 0}
+  myCanvas: {fileID: 1066938985}
 --- !u!65 &2038959226
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -15338,7 +16643,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 30, y: 30, z: 1}
+  m_Size: {x: 70, y: 70, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &2038959227
 MonoBehaviour:
@@ -15360,7 +16665,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fb3c32b9a96b3454888821e828bc53c0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -15430,6 +16735,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 0
+  tilePosition: {x: 0, y: 0, z: 0}
+  rect: {fileID: 0}
+  myCanvas: {fileID: 1066938985}
 --- !u!65 &2050435996
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -15441,7 +16749,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 30, y: 30, z: 1}
+  m_Size: {x: 70, y: 70, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &2050435997
 MonoBehaviour:
@@ -15463,7 +16771,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fb3c32b9a96b3454888821e828bc53c0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -15533,6 +16841,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 0
+  tilePosition: {x: 0, y: 0, z: 0}
+  rect: {fileID: 0}
+  myCanvas: {fileID: 1066938985}
 --- !u!65 &2052446635
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -15544,7 +16855,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 30, y: 30, z: 1}
+  m_Size: {x: 70, y: 70, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &2052446636
 MonoBehaviour:
@@ -15566,7 +16877,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fb3c32b9a96b3454888821e828bc53c0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -15636,6 +16947,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 0
+  tilePosition: {x: 0, y: 0, z: 0}
+  rect: {fileID: 0}
+  myCanvas: {fileID: 1066938985}
 --- !u!65 &2093697153
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -15647,7 +16961,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 30, y: 30, z: 1}
+  m_Size: {x: 70, y: 70, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &2093697154
 MonoBehaviour:
@@ -15669,7 +16983,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fb3c32b9a96b3454888821e828bc53c0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -15739,6 +17053,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 0
+  tilePosition: {x: 0, y: 0, z: 0}
+  rect: {fileID: 0}
+  myCanvas: {fileID: 1066938985}
 --- !u!65 &2097157734
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -15750,7 +17067,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 30, y: 30, z: 1}
+  m_Size: {x: 70, y: 70, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &2097157735
 MonoBehaviour:
@@ -15772,7 +17089,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fb3c32b9a96b3454888821e828bc53c0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -15842,6 +17159,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 0
+  tilePosition: {x: 0, y: 0, z: 0}
+  rect: {fileID: 0}
+  myCanvas: {fileID: 1066938985}
 --- !u!65 &2127235476
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -15853,7 +17173,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 30, y: 30, z: 1}
+  m_Size: {x: 70, y: 70, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &2127235477
 MonoBehaviour:
@@ -15875,7 +17195,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fb3c32b9a96b3454888821e828bc53c0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -15945,6 +17265,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 0
+  tilePosition: {x: 0, y: 0, z: 0}
+  rect: {fileID: 0}
+  myCanvas: {fileID: 1066938985}
 --- !u!65 &2127989932
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -15956,7 +17279,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 30, y: 30, z: 1}
+  m_Size: {x: 70, y: 70, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &2127989933
 MonoBehaviour:
@@ -15978,7 +17301,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fb3c32b9a96b3454888821e828bc53c0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -16048,6 +17371,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 0
+  tilePosition: {x: 0, y: 0, z: 0}
+  rect: {fileID: 0}
+  myCanvas: {fileID: 1066938985}
 --- !u!65 &2129481250
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -16059,7 +17385,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 30, y: 30, z: 1}
+  m_Size: {x: 70, y: 70, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &2129481251
 MonoBehaviour:
@@ -16081,7 +17407,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fb3c32b9a96b3454888821e828bc53c0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
