@@ -45,6 +45,10 @@ public class DragObject : NetworkBehaviour
             // Convert it to world points
             return Camera.main.ScreenToWorldPoint(mousePoint);
         }
+        else
+        {
+            return Vector3.zero;
+        }
         
     }
 
