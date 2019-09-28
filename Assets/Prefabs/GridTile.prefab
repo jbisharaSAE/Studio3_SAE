@@ -109,5 +109,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
-  rect: {fileID: 0}
-  myCanvas: {fileID: 0}
+  isTileFree: 1

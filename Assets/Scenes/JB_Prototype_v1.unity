@@ -173,8 +173,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
-  rect: {fileID: 0}
-  myCanvas: {fileID: 1066938985}
+  isTileFree: 1
 --- !u!65 &10467733
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -279,8 +278,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
-  rect: {fileID: 0}
-  myCanvas: {fileID: 1066938985}
+  isTileFree: 1
 --- !u!65 &18379608
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -385,8 +383,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
-  rect: {fileID: 0}
-  myCanvas: {fileID: 1066938985}
+  isTileFree: 1
 --- !u!65 &34025629
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -491,8 +488,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
-  rect: {fileID: 0}
-  myCanvas: {fileID: 1066938985}
+  isTileFree: 1
 --- !u!65 &53899900
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -597,8 +593,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
-  rect: {fileID: 0}
-  myCanvas: {fileID: 1066938985}
+  isTileFree: 1
 --- !u!65 &72900577
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -703,8 +698,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
-  rect: {fileID: 0}
-  myCanvas: {fileID: 1066938985}
+  isTileFree: 1
 --- !u!65 &74752911
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -809,8 +803,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
-  rect: {fileID: 0}
-  myCanvas: {fileID: 1066938985}
+  isTileFree: 1
 --- !u!65 &75921324
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -915,8 +908,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
-  rect: {fileID: 0}
-  myCanvas: {fileID: 1066938985}
+  isTileFree: 1
 --- !u!65 &104627552
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1021,8 +1013,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
-  rect: {fileID: 0}
-  myCanvas: {fileID: 1066938985}
+  isTileFree: 1
 --- !u!65 &106492526
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1127,8 +1118,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
-  rect: {fileID: 0}
-  myCanvas: {fileID: 1066938985}
+  isTileFree: 1
 --- !u!65 &111210865
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1207,7 +1197,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 114779031}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.734, y: -0.734, z: 0}
+  m_LocalPosition: {x: 0.75, y: -0.75, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 10}
   m_Children: []
   m_Father: {fileID: 270928167}
@@ -1287,6 +1277,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94ffac6157ef60e4fbb210275faf0099, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isTileOpen: 0
 --- !u!1 &116100667
 GameObject:
   m_ObjectHideFlags: 0
@@ -1340,8 +1331,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
-  rect: {fileID: 0}
-  myCanvas: {fileID: 1066938985}
+  isTileFree: 1
 --- !u!65 &116100670
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1446,8 +1436,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
-  rect: {fileID: 0}
-  myCanvas: {fileID: 1066938985}
+  isTileFree: 1
 --- !u!65 &134231459
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1552,8 +1541,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
-  rect: {fileID: 0}
-  myCanvas: {fileID: 1066938985}
+  isTileFree: 1
 --- !u!65 &165274844
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1658,8 +1646,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
-  rect: {fileID: 0}
-  myCanvas: {fileID: 1066938985}
+  isTileFree: 1
 --- !u!65 &169040482
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1830,8 +1817,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
-  rect: {fileID: 0}
-  myCanvas: {fileID: 1066938985}
+  isTileFree: 1
 --- !u!65 &175555606
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1936,8 +1922,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
-  rect: {fileID: 0}
-  myCanvas: {fileID: 1066938985}
+  isTileFree: 1
 --- !u!65 &186976618
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2042,8 +2027,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
-  rect: {fileID: 0}
-  myCanvas: {fileID: 1066938985}
+  isTileFree: 1
 --- !u!65 &217438881
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2122,7 +2106,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 248242273}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.734, y: -2.202, z: 0}
+  m_LocalPosition: {x: 0.75, y: -2.25, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 10}
   m_Children: []
   m_Father: {fileID: 270928167}
@@ -2202,6 +2186,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94ffac6157ef60e4fbb210275faf0099, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isTileOpen: 0
 --- !u!1 &249878375
 GameObject:
   m_ObjectHideFlags: 0
@@ -2255,8 +2240,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
-  rect: {fileID: 0}
-  myCanvas: {fileID: 1066938985}
+  isTileFree: 1
 --- !u!65 &249878378
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2361,8 +2345,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
-  rect: {fileID: 0}
-  myCanvas: {fileID: 1066938985}
+  isTileFree: 1
 --- !u!65 &264362268
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2467,8 +2450,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
-  rect: {fileID: 0}
-  myCanvas: {fileID: 1066938985}
+  isTileFree: 1
 --- !u!65 &265486520
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2533,6 +2515,7 @@ GameObject:
   - component: {fileID: 270928169}
   - component: {fileID: 270928168}
   - component: {fileID: 270928170}
+  - component: {fileID: 270928171}
   m_Layer: 8
   m_Name: Ship2
   m_TagString: Untagged
@@ -2560,7 +2543,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 270928165}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6, y: 6.3, z: 86.69}
+  m_LocalPosition: {x: -77.6, y: 1.9, z: 87}
   m_LocalScale: {x: 12, y: 12, z: 1}
   m_Children:
   - {fileID: 580569933}
@@ -2629,7 +2612,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 74bbdacfaf75e1a40962ac74e4eda409, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 835ce6d159fff4a47b9709bb5e492a0c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -2653,6 +2636,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.7, y: 0.7, z: 3}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &270928171
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 270928165}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85b8834b82b7d5441a5a682fd23a321a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &271814545
 GameObject:
   m_ObjectHideFlags: 0
@@ -2706,8 +2701,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
-  rect: {fileID: 0}
-  myCanvas: {fileID: 1066938985}
+  isTileFree: 1
 --- !u!65 &271814548
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2786,7 +2780,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 282110933}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.734, y: -2.202, z: 0}
+  m_LocalPosition: {x: -0.75, y: -2.25, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 10}
   m_Children: []
   m_Father: {fileID: 270928167}
@@ -2866,6 +2860,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94ffac6157ef60e4fbb210275faf0099, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isTileOpen: 0
 --- !u!1 &301065446
 GameObject:
   m_ObjectHideFlags: 0
@@ -2919,8 +2914,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
-  rect: {fileID: 0}
-  myCanvas: {fileID: 1066938985}
+  isTileFree: 1
 --- !u!65 &301065449
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3025,8 +3019,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
-  rect: {fileID: 0}
-  myCanvas: {fileID: 1066938985}
+  isTileFree: 1
 --- !u!65 &311989572
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3131,8 +3124,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
-  rect: {fileID: 0}
-  myCanvas: {fileID: 1066938985}
+  isTileFree: 1
 --- !u!65 &313966022
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3237,8 +3229,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
-  rect: {fileID: 0}
-  myCanvas: {fileID: 1066938985}
+  isTileFree: 1
 --- !u!65 &327607289
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3343,8 +3334,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
-  rect: {fileID: 0}
-  myCanvas: {fileID: 1066938985}
+  isTileFree: 1
 --- !u!65 &329381789
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3449,8 +3439,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
-  rect: {fileID: 0}
-  myCanvas: {fileID: 1066938985}
+  isTileFree: 1
 --- !u!65 &350650818
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3555,8 +3544,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
-  rect: {fileID: 0}
-  myCanvas: {fileID: 1066938985}
+  isTileFree: 1
 --- !u!65 &352037284
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3661,8 +3649,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
-  rect: {fileID: 0}
-  myCanvas: {fileID: 1066938985}
+  isTileFree: 1
 --- !u!65 &364552408
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3767,8 +3754,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
-  rect: {fileID: 0}
-  myCanvas: {fileID: 1066938985}
+  isTileFree: 1
 --- !u!65 &391474946
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3873,8 +3859,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
-  rect: {fileID: 0}
-  myCanvas: {fileID: 1066938985}
+  isTileFree: 1
 --- !u!65 &429722787
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3979,8 +3964,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
-  rect: {fileID: 0}
-  myCanvas: {fileID: 1066938985}
+  isTileFree: 1
 --- !u!65 &435150206
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4085,8 +4069,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
-  rect: {fileID: 0}
-  myCanvas: {fileID: 1066938985}
+  isTileFree: 1
 --- !u!65 &473201459
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4191,8 +4174,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
-  rect: {fileID: 0}
-  myCanvas: {fileID: 1066938985}
+  isTileFree: 1
 --- !u!65 &480729897
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4297,8 +4279,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
-  rect: {fileID: 0}
-  myCanvas: {fileID: 1066938985}
+  isTileFree: 1
 --- !u!65 &489188677
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4403,8 +4384,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
-  rect: {fileID: 0}
-  myCanvas: {fileID: 1066938985}
+  isTileFree: 1
 --- !u!65 &491934927
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4509,8 +4489,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
-  rect: {fileID: 0}
-  myCanvas: {fileID: 1066938985}
+  isTileFree: 1
 --- !u!65 &524987769
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4615,8 +4594,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
-  rect: {fileID: 0}
-  myCanvas: {fileID: 1066938985}
+  isTileFree: 1
 --- !u!65 &552252422
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4721,8 +4699,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
-  rect: {fileID: 0}
-  myCanvas: {fileID: 1066938985}
+  isTileFree: 1
 --- !u!65 &566622324
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4827,8 +4804,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
-  rect: {fileID: 0}
-  myCanvas: {fileID: 1066938985}
+  isTileFree: 1
 --- !u!65 &570306035
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4933,8 +4909,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
-  rect: {fileID: 0}
-  myCanvas: {fileID: 1066938985}
+  isTileFree: 1
 --- !u!65 &573879042
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5039,8 +5014,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
-  rect: {fileID: 0}
-  myCanvas: {fileID: 1066938985}
+  isTileFree: 1
 --- !u!65 &576713882
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5199,6 +5173,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94ffac6157ef60e4fbb210275faf0099, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isTileOpen: 0
 --- !u!1 &591338833
 GameObject:
   m_ObjectHideFlags: 0
@@ -5252,8 +5227,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
-  rect: {fileID: 0}
-  myCanvas: {fileID: 1066938985}
+  isTileFree: 1
 --- !u!65 &591338836
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5358,8 +5332,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
-  rect: {fileID: 0}
-  myCanvas: {fileID: 1066938985}
+  isTileFree: 1
 --- !u!65 &617013765
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5464,8 +5437,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
-  rect: {fileID: 0}
-  myCanvas: {fileID: 1066938985}
+  isTileFree: 1
 --- !u!65 &643092481
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5570,8 +5542,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
-  rect: {fileID: 0}
-  myCanvas: {fileID: 1066938985}
+  isTileFree: 1
 --- !u!65 &645293666
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5676,8 +5647,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
-  rect: {fileID: 0}
-  myCanvas: {fileID: 1066938985}
+  isTileFree: 1
 --- !u!65 &671460249
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5782,8 +5752,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
-  rect: {fileID: 0}
-  myCanvas: {fileID: 1066938985}
+  isTileFree: 1
 --- !u!65 &680081511
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5888,8 +5857,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
-  rect: {fileID: 0}
-  myCanvas: {fileID: 1066938985}
+  isTileFree: 1
 --- !u!65 &692596719
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5994,8 +5962,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
-  rect: {fileID: 0}
-  myCanvas: {fileID: 1066938985}
+  isTileFree: 1
 --- !u!65 &701333319
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6100,8 +6067,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
-  rect: {fileID: 0}
-  myCanvas: {fileID: 1066938985}
+  isTileFree: 1
 --- !u!65 &701656485
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6206,8 +6172,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
-  rect: {fileID: 0}
-  myCanvas: {fileID: 1066938985}
+  isTileFree: 1
 --- !u!65 &703251240
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6312,8 +6277,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
-  rect: {fileID: 0}
-  myCanvas: {fileID: 1066938985}
+  isTileFree: 1
 --- !u!65 &715436096
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6418,8 +6382,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
-  rect: {fileID: 0}
-  myCanvas: {fileID: 1066938985}
+  isTileFree: 1
 --- !u!65 &717074696
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6524,8 +6487,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
-  rect: {fileID: 0}
-  myCanvas: {fileID: 1066938985}
+  isTileFree: 1
 --- !u!65 &742292254
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6630,8 +6592,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
-  rect: {fileID: 0}
-  myCanvas: {fileID: 1066938985}
+  isTileFree: 1
 --- !u!65 &744858722
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6736,8 +6697,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
-  rect: {fileID: 0}
-  myCanvas: {fileID: 1066938985}
+  isTileFree: 1
 --- !u!65 &813629792
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6842,8 +6802,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
-  rect: {fileID: 0}
-  myCanvas: {fileID: 1066938985}
+  isTileFree: 1
 --- !u!65 &830943996
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6948,8 +6907,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
-  rect: {fileID: 0}
-  myCanvas: {fileID: 1066938985}
+  isTileFree: 1
 --- !u!65 &860026563
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7054,8 +7012,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
-  rect: {fileID: 0}
-  myCanvas: {fileID: 1066938985}
+  isTileFree: 1
 --- !u!65 &867026751
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7381,8 +7338,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
-  rect: {fileID: 0}
-  myCanvas: {fileID: 1066938985}
+  isTileFree: 1
 --- !u!65 &874403865
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7611,8 +7567,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
-  rect: {fileID: 0}
-  myCanvas: {fileID: 1066938985}
+  isTileFree: 1
 --- !u!65 &885625483
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7717,8 +7672,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
-  rect: {fileID: 0}
-  myCanvas: {fileID: 1066938985}
+  isTileFree: 1
 --- !u!65 &887367133
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7823,8 +7777,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
-  rect: {fileID: 0}
-  myCanvas: {fileID: 1066938985}
+  isTileFree: 1
 --- !u!65 &901264194
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7929,8 +7882,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
-  rect: {fileID: 0}
-  myCanvas: {fileID: 1066938985}
+  isTileFree: 1
 --- !u!65 &910220812
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8035,8 +7987,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
-  rect: {fileID: 0}
-  myCanvas: {fileID: 1066938985}
+  isTileFree: 1
 --- !u!65 &955949822
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8141,8 +8092,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
-  rect: {fileID: 0}
-  myCanvas: {fileID: 1066938985}
+  isTileFree: 1
 --- !u!65 &958408457
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8247,8 +8197,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
-  rect: {fileID: 0}
-  myCanvas: {fileID: 1066938985}
+  isTileFree: 1
 --- !u!65 &969726410
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8396,8 +8345,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
-  rect: {fileID: 0}
-  myCanvas: {fileID: 1066938985}
+  isTileFree: 1
 --- !u!65 &986595850
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8502,8 +8450,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
-  rect: {fileID: 0}
-  myCanvas: {fileID: 1066938985}
+  isTileFree: 1
 --- !u!65 &998904931
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8608,8 +8555,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
-  rect: {fileID: 0}
-  myCanvas: {fileID: 1066938985}
+  isTileFree: 1
 --- !u!65 &1003418459
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8713,8 +8659,8 @@ Camera:
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
-  orthographic: 0
-  orthographic size: 5
+  orthographic: 1
+  orthographic size: 100
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -8797,8 +8743,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
-  rect: {fileID: 0}
-  myCanvas: {fileID: 1066938985}
+  isTileFree: 1
 --- !u!65 &1041059156
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8903,8 +8848,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
-  rect: {fileID: 0}
-  myCanvas: {fileID: 1066938985}
+  isTileFree: 1
 --- !u!65 &1048215171
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9100,8 +9044,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
-  rect: {fileID: 0}
-  myCanvas: {fileID: 1066938985}
+  isTileFree: 1
 --- !u!65 &1061988842
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9306,8 +9249,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
-  rect: {fileID: 0}
-  myCanvas: {fileID: 1066938985}
+  isTileFree: 1
 --- !u!65 &1080735954
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9412,8 +9354,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
-  rect: {fileID: 0}
-  myCanvas: {fileID: 1066938985}
+  isTileFree: 1
 --- !u!65 &1085681211
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9518,8 +9459,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
-  rect: {fileID: 0}
-  myCanvas: {fileID: 1066938985}
+  isTileFree: 1
 --- !u!65 &1097687397
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9624,8 +9564,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
-  rect: {fileID: 0}
-  myCanvas: {fileID: 1066938985}
+  isTileFree: 1
 --- !u!65 &1106600137
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9730,8 +9669,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
-  rect: {fileID: 0}
-  myCanvas: {fileID: 1066938985}
+  isTileFree: 1
 --- !u!65 &1129296200
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9836,8 +9774,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
-  rect: {fileID: 0}
-  myCanvas: {fileID: 1066938985}
+  isTileFree: 1
 --- !u!65 &1133209410
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9916,7 +9853,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1147685266}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.734, z: 0}
+  m_LocalPosition: {x: 0, y: -0.75, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 10}
   m_Children: []
   m_Father: {fileID: 270928167}
@@ -9996,6 +9933,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94ffac6157ef60e4fbb210275faf0099, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isTileOpen: 0
 --- !u!1 &1178740848
 GameObject:
   m_ObjectHideFlags: 0
@@ -10049,8 +9987,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
-  rect: {fileID: 0}
-  myCanvas: {fileID: 1066938985}
+  isTileFree: 1
 --- !u!65 &1178740851
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10155,8 +10092,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
-  rect: {fileID: 0}
-  myCanvas: {fileID: 1066938985}
+  isTileFree: 1
 --- !u!65 &1187710841
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10261,8 +10197,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
-  rect: {fileID: 0}
-  myCanvas: {fileID: 1066938985}
+  isTileFree: 1
 --- !u!65 &1208031794
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10367,8 +10302,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
-  rect: {fileID: 0}
-  myCanvas: {fileID: 1066938985}
+  isTileFree: 1
 --- !u!65 &1214885849
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10473,8 +10407,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
-  rect: {fileID: 0}
-  myCanvas: {fileID: 1066938985}
+  isTileFree: 1
 --- !u!65 &1221190165
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10579,8 +10512,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
-  rect: {fileID: 0}
-  myCanvas: {fileID: 1066938985}
+  isTileFree: 1
 --- !u!65 &1239950827
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10685,8 +10617,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
-  rect: {fileID: 0}
-  myCanvas: {fileID: 1066938985}
+  isTileFree: 1
 --- !u!65 &1245002474
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10791,8 +10722,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
-  rect: {fileID: 0}
-  myCanvas: {fileID: 1066938985}
+  isTileFree: 1
 --- !u!65 &1267285940
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10897,8 +10827,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
-  rect: {fileID: 0}
-  myCanvas: {fileID: 1066938985}
+  isTileFree: 1
 --- !u!65 &1270712981
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11050,8 +10979,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
-  rect: {fileID: 0}
-  myCanvas: {fileID: 1066938985}
+  isTileFree: 1
 --- !u!65 &1291037696
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11156,8 +11084,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
-  rect: {fileID: 0}
-  myCanvas: {fileID: 1066938985}
+  isTileFree: 1
 --- !u!65 &1304513595
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11236,7 +11163,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1305440687}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.734, y: -0.734, z: 0}
+  m_LocalPosition: {x: -0.75, y: -0.75, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 10}
   m_Children: []
   m_Father: {fileID: 270928167}
@@ -11316,6 +11243,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94ffac6157ef60e4fbb210275faf0099, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isTileOpen: 0
 --- !u!1 &1306064175
 GameObject:
   m_ObjectHideFlags: 0
@@ -11369,8 +11297,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
-  rect: {fileID: 0}
-  myCanvas: {fileID: 1066938985}
+  isTileFree: 1
 --- !u!65 &1306064178
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11513,8 +11440,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
-  rect: {fileID: 0}
-  myCanvas: {fileID: 1066938985}
+  isTileFree: 1
 --- !u!65 &1329790739
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11555,7 +11481,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1336535711}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.468, z: 0}
+  m_LocalPosition: {x: 0, y: -1.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 10}
   m_Children: []
   m_Father: {fileID: 270928167}
@@ -11635,6 +11561,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94ffac6157ef60e4fbb210275faf0099, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isTileOpen: 0
 --- !u!1 &1342321662
 GameObject:
   m_ObjectHideFlags: 0
@@ -11688,8 +11615,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
-  rect: {fileID: 0}
-  myCanvas: {fileID: 1066938985}
+  isTileFree: 1
 --- !u!65 &1342321665
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11794,8 +11720,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
-  rect: {fileID: 0}
-  myCanvas: {fileID: 1066938985}
+  isTileFree: 1
 --- !u!65 &1381042628
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11900,8 +11825,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
-  rect: {fileID: 0}
-  myCanvas: {fileID: 1066938985}
+  isTileFree: 1
 --- !u!65 &1405297007
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12006,8 +11930,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
-  rect: {fileID: 0}
-  myCanvas: {fileID: 1066938985}
+  isTileFree: 1
 --- !u!65 &1441923458
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12112,8 +12035,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
-  rect: {fileID: 0}
-  myCanvas: {fileID: 1066938985}
+  isTileFree: 1
 --- !u!65 &1451552922
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12218,8 +12140,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
-  rect: {fileID: 0}
-  myCanvas: {fileID: 1066938985}
+  isTileFree: 1
 --- !u!65 &1465389362
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12324,8 +12245,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
-  rect: {fileID: 0}
-  myCanvas: {fileID: 1066938985}
+  isTileFree: 1
 --- !u!65 &1466125657
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12404,7 +12324,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1469081069}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.734, y: -1.468, z: 0}
+  m_LocalPosition: {x: -0.75, y: -1.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 10}
   m_Children: []
   m_Father: {fileID: 270928167}
@@ -12484,6 +12404,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94ffac6157ef60e4fbb210275faf0099, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isTileOpen: 0
 --- !u!1 &1478242902
 GameObject:
   m_ObjectHideFlags: 0
@@ -12537,8 +12458,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
-  rect: {fileID: 0}
-  myCanvas: {fileID: 1066938985}
+  isTileFree: 1
 --- !u!65 &1478242905
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12643,8 +12563,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
-  rect: {fileID: 0}
-  myCanvas: {fileID: 1066938985}
+  isTileFree: 1
 --- !u!65 &1481117794
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12749,8 +12668,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
-  rect: {fileID: 0}
-  myCanvas: {fileID: 1066938985}
+  isTileFree: 1
 --- !u!65 &1488486182
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12855,8 +12773,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
-  rect: {fileID: 0}
-  myCanvas: {fileID: 1066938985}
+  isTileFree: 1
 --- !u!65 &1540292734
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12961,8 +12878,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
-  rect: {fileID: 0}
-  myCanvas: {fileID: 1066938985}
+  isTileFree: 1
 --- !u!65 &1550904828
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -13067,8 +12983,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
-  rect: {fileID: 0}
-  myCanvas: {fileID: 1066938985}
+  isTileFree: 1
 --- !u!65 &1572459092
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -13173,8 +13088,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
-  rect: {fileID: 0}
-  myCanvas: {fileID: 1066938985}
+  isTileFree: 1
 --- !u!65 &1572997049
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -13279,8 +13193,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
-  rect: {fileID: 0}
-  myCanvas: {fileID: 1066938985}
+  isTileFree: 1
 --- !u!65 &1574459692
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -13385,8 +13298,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
-  rect: {fileID: 0}
-  myCanvas: {fileID: 1066938985}
+  isTileFree: 1
 --- !u!65 &1586850265
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -13491,8 +13403,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
-  rect: {fileID: 0}
-  myCanvas: {fileID: 1066938985}
+  isTileFree: 1
 --- !u!65 &1589762162
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -13597,8 +13508,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
-  rect: {fileID: 0}
-  myCanvas: {fileID: 1066938985}
+  isTileFree: 1
 --- !u!65 &1591170413
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -13703,8 +13613,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
-  rect: {fileID: 0}
-  myCanvas: {fileID: 1066938985}
+  isTileFree: 1
 --- !u!65 &1603426353
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -13809,8 +13718,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
-  rect: {fileID: 0}
-  myCanvas: {fileID: 1066938985}
+  isTileFree: 1
 --- !u!65 &1619586833
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -13915,8 +13823,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
-  rect: {fileID: 0}
-  myCanvas: {fileID: 1066938985}
+  isTileFree: 1
 --- !u!65 &1620041758
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -14021,8 +13928,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
-  rect: {fileID: 0}
-  myCanvas: {fileID: 1066938985}
+  isTileFree: 1
 --- !u!65 &1635368596
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -14127,8 +14033,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
-  rect: {fileID: 0}
-  myCanvas: {fileID: 1066938985}
+  isTileFree: 1
 --- !u!65 &1652411404
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -14233,8 +14138,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
-  rect: {fileID: 0}
-  myCanvas: {fileID: 1066938985}
+  isTileFree: 1
 --- !u!65 &1662888077
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -14339,8 +14243,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
-  rect: {fileID: 0}
-  myCanvas: {fileID: 1066938985}
+  isTileFree: 1
 --- !u!65 &1698681262
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -14445,8 +14348,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
-  rect: {fileID: 0}
-  myCanvas: {fileID: 1066938985}
+  isTileFree: 1
 --- !u!65 &1729376311
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -14551,8 +14453,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
-  rect: {fileID: 0}
-  myCanvas: {fileID: 1066938985}
+  isTileFree: 1
 --- !u!65 &1778289046
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -14789,8 +14690,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
-  rect: {fileID: 0}
-  myCanvas: {fileID: 1066938985}
+  isTileFree: 1
 --- !u!65 &1810379828
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -14970,8 +14870,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
-  rect: {fileID: 0}
-  myCanvas: {fileID: 1066938985}
+  isTileFree: 1
 --- !u!65 &1821296393
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -15050,7 +14949,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1842868945}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.734, y: -1.468, z: 0}
+  m_LocalPosition: {x: 0.75, y: -1.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 10}
   m_Children: []
   m_Father: {fileID: 270928167}
@@ -15130,6 +15029,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94ffac6157ef60e4fbb210275faf0099, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isTileOpen: 0
 --- !u!1 &1843412871
 GameObject:
   m_ObjectHideFlags: 0
@@ -15183,8 +15083,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
-  rect: {fileID: 0}
-  myCanvas: {fileID: 1066938985}
+  isTileFree: 1
 --- !u!65 &1843412874
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -15289,8 +15188,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
-  rect: {fileID: 0}
-  myCanvas: {fileID: 1066938985}
+  isTileFree: 1
 --- !u!65 &1846616724
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -15395,8 +15293,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
-  rect: {fileID: 0}
-  myCanvas: {fileID: 1066938985}
+  isTileFree: 1
 --- !u!65 &1857468828
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -15501,8 +15398,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
-  rect: {fileID: 0}
-  myCanvas: {fileID: 1066938985}
+  isTileFree: 1
 --- !u!65 &1862968897
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -15607,8 +15503,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
-  rect: {fileID: 0}
-  myCanvas: {fileID: 1066938985}
+  isTileFree: 1
 --- !u!65 &1875815117
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -15713,8 +15608,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
-  rect: {fileID: 0}
-  myCanvas: {fileID: 1066938985}
+  isTileFree: 1
 --- !u!65 &1891530996
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -15819,8 +15713,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
-  rect: {fileID: 0}
-  myCanvas: {fileID: 1066938985}
+  isTileFree: 1
 --- !u!65 &1892107137
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -15925,8 +15818,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
-  rect: {fileID: 0}
-  myCanvas: {fileID: 1066938985}
+  isTileFree: 1
 --- !u!65 &1909273015
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -16031,8 +15923,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
-  rect: {fileID: 0}
-  myCanvas: {fileID: 1066938985}
+  isTileFree: 1
 --- !u!65 &1909764261
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -16137,8 +16028,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
-  rect: {fileID: 0}
-  myCanvas: {fileID: 1066938985}
+  isTileFree: 1
 --- !u!65 &1911990916
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -16243,8 +16133,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
-  rect: {fileID: 0}
-  myCanvas: {fileID: 1066938985}
+  isTileFree: 1
 --- !u!65 &1924987365
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -16349,8 +16238,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
-  rect: {fileID: 0}
-  myCanvas: {fileID: 1066938985}
+  isTileFree: 1
 --- !u!65 &1926529110
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -16455,8 +16343,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
-  rect: {fileID: 0}
-  myCanvas: {fileID: 1066938985}
+  isTileFree: 1
 --- !u!65 &1939672579
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -16561,8 +16448,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
-  rect: {fileID: 0}
-  myCanvas: {fileID: 1066938985}
+  isTileFree: 1
 --- !u!65 &1988218418
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -16667,8 +16553,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
-  rect: {fileID: 0}
-  myCanvas: {fileID: 1066938985}
+  isTileFree: 1
 --- !u!65 &2038959226
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -16773,8 +16658,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
-  rect: {fileID: 0}
-  myCanvas: {fileID: 1066938985}
+  isTileFree: 1
 --- !u!65 &2050435996
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -16879,8 +16763,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
-  rect: {fileID: 0}
-  myCanvas: {fileID: 1066938985}
+  isTileFree: 1
 --- !u!65 &2052446635
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -16985,8 +16868,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
-  rect: {fileID: 0}
-  myCanvas: {fileID: 1066938985}
+  isTileFree: 1
 --- !u!65 &2093697153
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -17091,8 +16973,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
-  rect: {fileID: 0}
-  myCanvas: {fileID: 1066938985}
+  isTileFree: 1
 --- !u!65 &2097157734
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -17197,8 +17078,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
-  rect: {fileID: 0}
-  myCanvas: {fileID: 1066938985}
+  isTileFree: 1
 --- !u!65 &2127235476
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -17303,8 +17183,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
-  rect: {fileID: 0}
-  myCanvas: {fileID: 1066938985}
+  isTileFree: 1
 --- !u!65 &2127989932
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -17409,8 +17288,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
-  rect: {fileID: 0}
-  myCanvas: {fileID: 1066938985}
+  isTileFree: 1
 --- !u!65 &2129481250
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class JB_TestSubject : MonoBehaviour
+public class JB_SquareSprites : MonoBehaviour
 {
+    public bool isTileOpen;
+
     private void Update()
     {
         RaycastHit hit;
@@ -12,8 +14,9 @@ public class JB_TestSubject : MonoBehaviour
         {
             if(hit.collider.gameObject.tag == "Tile")
             {
-                Debug.Log(hit.collider.gameObject.GetComponent<JB_Tile>().number);
+                isTileOpen = hit.collider.gameObject.GetComponent<JB_Tile>().isTileFree;
             }
+            
         }
             
     }

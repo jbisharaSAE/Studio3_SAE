@@ -6,6 +6,13 @@ public class DragObject : MonoBehaviour
 {
     private Vector3 mOffset;
     private float mZCoord;
+    private JB_SnappingShip snapShipScript;
+    private bool isDragging;
+
+    private void Start()
+    {
+        snapShipScript = GetComponent<JB_SnappingShip>();
+    }
 
     void OnMouseDown()
     {
@@ -31,8 +38,21 @@ public class DragObject : MonoBehaviour
 
     void OnMouseDrag()
     {
+        isDragging = true;
         transform.position = GetMouseAsWorldPoint() + mOffset;
+        
     }
 
-    
+    private void OnMouseUp()
+    {
+        snapShipScript.SendMessage("ShipPlacement");
+        Debug.Log("testing OnMouseUp");
+    }
+
+    private void OnMouseExit()
+    {
+        // call method to snap ship to the grid, script should be attached to this game object
+        //snapShipScript.SendMessage("ShipPlacement");
+        //Debug.Log("testing OnMouseExit");
+    }
 }
