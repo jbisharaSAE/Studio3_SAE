@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3918158683220688923}
   - component: {fileID: 1725305595678949541}
-  - component: {fileID: 489274683406170945}
+  - component: {fileID: 2478146290777614085}
   m_Layer: 0
   m_Name: EGO SpawnPoint
   m_TagString: Untagged
@@ -65,7 +65,7 @@ MonoBehaviour:
     i15: 0
   m_ServerOnly: 0
   m_LocalPlayerAuthority: 0
---- !u!114 &489274683406170945
+--- !u!114 &2478146290777614085
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -74,16 +74,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 3918158683220688918}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 13d6c522af31447398568cc65334232b, type: 3}
+  m_Script: {fileID: 11500000, guid: 921ceb7939c624969a567b4c88e17315, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_TransformSyncMode: 1
-  m_SendInterval: 0.1
-  m_SyncRotationAxis: 7
-  m_RotationSyncCompression: 0
-  m_SyncSpin: 0
-  m_MovementTheshold: 0.001
-  m_VelocityThreshold: 0.0001
-  m_SnapThreshold: 5
-  m_InterpolateRotation: 1
-  m_InterpolateMovement: 1

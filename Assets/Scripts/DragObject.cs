@@ -1,58 +1,72 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
-public class DragObject : MonoBehaviour
+public class DragObject : NetworkBehaviour
 {
-    private Vector3 mOffset;
-    private float mZCoord;
+    private Vector3 offset;
+    private float zCoord;
     private JB_SnappingShip snapShipScript;
     private bool isDragging;
 
     private void Start()
     {
+
         snapShipScript = GetComponent<JB_SnappingShip>();
     }
 
     void OnMouseDown()
     {
-        mZCoord = Camera.main.WorldToScreenPoint(gameObject.transform.position).z;
+        if (this.isLocalPlayer)
+        {
+            zCoord = Camera.main.WorldToScreenPoint(gameObject.transform.position).z;
 
-        // Store offset = gameobject world pos - mouse world pos
-        mOffset = gameObject.transform.position - GetMouseAsWorldPoint();
+            // Store offset = gameobject world pos - mouse world pos
+            offset = gameObject.transform.position - GetMouseAsWorldPoint();
 
-        Debug.Log("clicked");
+            // change ship reference to rotate
+            JB_RotateConfirm.shipObj = gameObject;
+            
+        }
+        
     }
 
     private Vector3 GetMouseAsWorldPoint()
     {
-        // Pixel coordinates of mouse (x,y)
-        Vector3 mousePoint = Input.mousePosition;
+        if (this.isLocalPlayer)
+        {
+            // Pixel coordinates of mouse (x,y)
+            Vector3 mousePoint = Input.mousePosition;
 
-        // z coordinate of game object on screen
-        mousePoint.z = mZCoord;
+            // z coordinate of game object on screen
+            mousePoint.z = zCoord;
 
-        // Convert it to world points
-        return Camera.main.ScreenToWorldPoint(mousePoint);
+            // Convert it to world points
+            return Camera.main.ScreenToWorldPoint(mousePoint);
+        }
+        
     }
 
     void OnMouseDrag()
     {
-        isDragging = true;
-        transform.position = GetMouseAsWorldPoint() + mOffset;
+        if (this.isLocalPlayer)
+        {
+            transform.position = GetMouseAsWorldPoint() + offset;
+        }
+        
         
     }
 
     private void OnMouseUp()
     {
-        snapShipScript.SendMessage("ShipPlacement");
-        Debug.Log("testing OnMouseUp");
+        if (this.isLocalPlayer)
+        {
+            // when mouse (or touch) is lifted from ship, snap the ship to the grid position closest to it
+            snapShipScript.SendMessage("ShipPlacement");
+        }
+        
     }
 
-    private void OnMouseExit()
-    {
-        // call method to snap ship to the grid, script should be attached to this game object
-        //snapShipScript.SendMessage("ShipPlacement");
-        //Debug.Log("testing OnMouseExit");
-    }
+  
 }
