@@ -23,6 +23,9 @@ public class JB_SnappingShip : MonoBehaviour
 
         // ensuring the z value stays the same when positioning ship
         staticZ = transform.position.z;
+
+        // find all the scripts attached to each square
+        squares = GetComponentsInChildren<JB_SquareSprites>();
     }
 
     public void ShipPlacement()
@@ -45,12 +48,15 @@ public class JB_SnappingShip : MonoBehaviour
         }
 
         // checks if all booleans in the array are true
-        allTrue = isTileOpen.All(x => x);
+        
 
         // if true we can place the ship there
-        if (allTrue)
+        if (ValidPosition())
         {
             lastPosition = transform.position = new Vector3(snapPosition.x, snapPosition.y, staticZ);
+
+            // to ensure player does not place a ship on top of another ship;
+            LockShipPosition();
             
         }
 
@@ -63,6 +69,13 @@ public class JB_SnappingShip : MonoBehaviour
 
     }
 
+    public bool ValidPosition()
+    {
+        allTrue = isTileOpen.All(x => x);
+
+        return allTrue;
+    }
+
     private void Update()
     {
         RaycastHit hit;
@@ -73,6 +86,7 @@ public class JB_SnappingShip : MonoBehaviour
             {
                 // this snaps the position of the ship being dragged to a tile on the grid
                 snapPosition = hit.collider.gameObject.transform.position;
+                Debug.Log(hit.collider.gameObject.GetComponent<JB_Tile>().number);
                 
             }
         }
@@ -83,8 +97,28 @@ public class JB_SnappingShip : MonoBehaviour
 
         foreach (JB_SquareSprites square in squares)
         {
-            // changes boolean on tile to indicate that is now taken by a ship
-            square.tileRef.isTileFree = false;
+            if(square.tileRef != null)
+            {
+                // changes boolean on tile to indicate that is now taken by a ship
+                square.tileRef.isTileFree = false;
+            }
+            
+        }
+    }
+
+    public void MovingShip()
+    {
+        // method is called when player clicks on a ship, this is so when they place it on grid, they can move it again if they change their mind
+
+        foreach (JB_SquareSprites square in squares)
+        {
+            // makes sure reference to tile is not empty, this is here to avoid errors when ship first begins to be dragged by player
+            if(square.tileRef != null)
+            {
+                // changes boolean on tile to indicate that is now free
+                square.tileRef.isTileFree = true;
+            }
+                
         }
     }
 

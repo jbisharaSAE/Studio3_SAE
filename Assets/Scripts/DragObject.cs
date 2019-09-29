@@ -1,24 +1,24 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Networking;
+//using UnityEngine.Networking;
 
-public class DragObject : NetworkBehaviour
+public class DragObject : MonoBehaviour
 {
     private Vector3 offset;
     private float zCoord;
     private JB_SnappingShip snapShipScript;
-    private bool isDragging;
+    public bool canDrag = true;
 
     private void Start()
     {
-
+        
         snapShipScript = GetComponent<JB_SnappingShip>();
     }
 
     void OnMouseDown()
     {
-        if (this.isLocalPlayer)
+        if (canDrag)
         {
             zCoord = Camera.main.WorldToScreenPoint(gameObject.transform.position).z;
 
@@ -27,14 +27,17 @@ public class DragObject : NetworkBehaviour
 
             // change ship reference to rotate
             JB_RotateConfirm.shipObj = gameObject;
-            
+
+            // frees up tiles that were taken up by ship's last position
+            snapShipScript.SendMessage("MovingShip");
+            Debug.Log("Clicked");
         }
         
     }
 
     private Vector3 GetMouseAsWorldPoint()
     {
-        if (this.isLocalPlayer)
+        if (canDrag)
         {
             // Pixel coordinates of mouse (x,y)
             Vector3 mousePoint = Input.mousePosition;
@@ -45,26 +48,28 @@ public class DragObject : NetworkBehaviour
             // Convert it to world points
             return Camera.main.ScreenToWorldPoint(mousePoint);
         }
+
         else
         {
             return Vector3.zero;
         }
         
+
     }
 
     void OnMouseDrag()
     {
-        if (this.isLocalPlayer)
+        if (canDrag)
         {
             transform.position = GetMouseAsWorldPoint() + offset;
         }
         
-        
+
     }
 
     private void OnMouseUp()
     {
-        if (this.isLocalPlayer)
+        if (canDrag)
         {
             // when mouse (or touch) is lifted from ship, snap the ship to the grid position closest to it
             snapShipScript.SendMessage("ShipPlacement");
