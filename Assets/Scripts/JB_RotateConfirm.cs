@@ -12,6 +12,7 @@ public class JB_RotateConfirm : MonoBehaviour
         {
             shipObj.transform.Rotate(0f, 0f, 90f);
         }
+
         
 
     }
