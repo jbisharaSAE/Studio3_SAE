@@ -86,7 +86,7 @@ public class JB_SnappingShip : MonoBehaviour
             {
                 // this snaps the position of the ship being dragged to a tile on the grid
                 snapPosition = hit.collider.gameObject.transform.position;
-                Debug.Log(hit.collider.gameObject.GetComponent<JB_Tile>().number);
+                
                 
             }
         }
