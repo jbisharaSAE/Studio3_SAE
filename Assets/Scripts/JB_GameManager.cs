@@ -70,17 +70,17 @@ public class JB_GameManager : NetworkBehaviour
     {
         for (int i = 0; i < playerPrefabs.Length; ++i)
         {
-            for(int j = 0; j < playerPrefabs[i].GetComponent<JB_LocalPlayer>().ships.Length; ++j)
+            for(int j = 0; j < playerPrefabs[i].GetComponent<JB_LocalPlayer>().shipPrefabs.Length; ++j)
             {
                 // disabling ship objects on each player
-                playerPrefabs[i].GetComponent<JB_LocalPlayer>().ships[j].SetActive(false);
+                playerPrefabs[i].GetComponent<JB_LocalPlayer>().shipPrefabs[j].SetActive(false);
             }
         }
 
         // swapping grid layout for players
-        tempGridLayout = playerPrefabs[0].GetComponent<JB_LocalPlayer>().gridLayout;
-        playerPrefabs[0].GetComponent<JB_LocalPlayer>().gridLayout = playerPrefabs[1].GetComponent<JB_LocalPlayer>().gridLayout;
-        playerPrefabs[1].GetComponent<JB_LocalPlayer>().gridLayout = tempGridLayout;
+        tempGridLayout = playerPrefabs[0].GetComponent<JB_LocalPlayer>().gridLayoutPrefab;
+        playerPrefabs[0].GetComponent<JB_LocalPlayer>().gridLayoutPrefab = playerPrefabs[1].GetComponent<JB_LocalPlayer>().gridLayoutPrefab;
+        playerPrefabs[1].GetComponent<JB_LocalPlayer>().gridLayoutPrefab = tempGridLayout;
 
         // disable positioning buttons
         rotateConfirmButtons.SetActive(false);

@@ -13,6 +13,7 @@ public class DragObject : MonoBehaviour
     private void Start()
     {
         
+        
         snapShipScript = GetComponent<JB_SnappingShip>();
     }
 

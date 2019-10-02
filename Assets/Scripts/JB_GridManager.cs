@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
-public class JB_GridManager : MonoBehaviour
+public class JB_GridManager : NetworkBehaviour
 {
 
     public GameObject tile;
@@ -22,6 +23,20 @@ public class JB_GridManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //if (!hasAuthority)
+        //{
+        //    Debug.Log("Does not have authority");
+        //    Debug.Log(GetComponent<NetworkIdentity>().hasAuthority);
+        //    // leave this script alone if it does not belong to the client
+        //    return;
+        //}
+        //else
+        //{
+        //    Debug.Log("Does have authority");
+        //}
+
+        //CmdSpawnGridTiles();
+
 
         for (int x = 0; x < 12; ++x)
         {
@@ -43,5 +58,30 @@ public class JB_GridManager : MonoBehaviour
             }
         }
 
+
     }
+
+    //[Command]
+    //void CmdSpawnGridTiles()
+    //{
+    //    for (int x = 0; x < 12; ++x)
+    //    {
+    //        length += 9f;
+
+    //        width = 9f; // resetting value to it's original number
+
+    //        for (int y = 0; y < 12; ++y)
+    //        {
+    //            // spawn grid cell and initialising variables
+    //            Vector3 spawnPoint = new Vector3(transform.position.x + length, transform.position.y + width, 89f);
+    //            GameObject newTile = Instantiate(tile, spawnPoint, Quaternion.identity);
+    //            newTile.transform.parent = gameObject.transform;
+    //            newTile.GetComponent<JB_Tile>().tilePosition = newTile.transform.position;
+    //            newTile.GetComponent<JB_Tile>().number = index;
+
+    //            ++index;
+    //            width += 9f;
+    //        }
+    //    }
+    //}
 }
