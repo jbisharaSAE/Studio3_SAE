@@ -9,8 +9,9 @@ public class JB_GameManager : NetworkBehaviour
     public static GameObject[] playerPrefabs;
        
     [SyncVar]
-    private int readyCheckNumber;
+    public int readyCheckNumber;
 
+    // currently unused
     public GameObject[] ships;
 
     [SerializeField]
@@ -21,12 +22,38 @@ public class JB_GameManager : NetworkBehaviour
 
     private GameObject tempGridLayout;
 
+    private bool isOriginal = false;
 
-   
+    public static GameObject shipObj;
+    public GameObject errorAlertTextObj;
+    public int placementIndex = 0;
+
+    void Start()
+    {
+
+        GameObject[] all = GameObject.FindGameObjectsWithTag(this.tag);
+        
+        // to avoid duplicates of this game object when created, so only one exists in scene at all times
+        if (all.Length > 1)
+        {
+            if (!isOriginal)
+            {
+                Destroy(gameObject);
+            }
+        }
+
+        isOriginal = true;
+
+        GameObject rotConfirm = GameObject.Find("EGO RotateConfirmScript");
+        //rotConfirm.GetComponent<JB_RotateConfirm>().FindGameManagerObj();
+        //JB_RotateConfirm.gameManagerScript = gameObject.GetComponent<JB_GameManager>();
+
+    }
+
     // Update is called once per frame
     void Update()
     {
-        if(readyCheckNumber == 2)
+        if(readyCheckNumber == 1)
         {
             // start game
             StartGame();
@@ -35,7 +62,8 @@ public class JB_GameManager : NetworkBehaviour
         }
     }
 
-    public void CheckPlayerReady(int index)
+    [Command]
+    public void CmdCheckPlayerReady(int index)
     {
         Debug.Log("test when checkplayerready called");
         // if all of players ships are in valid position
@@ -43,18 +71,25 @@ public class JB_GameManager : NetworkBehaviour
         {
             Debug.Log("Testing if statement");
             // increment number, and game starts when variable reaches 2
-            CmdIncrementReadyNumber();
+
+            //CmdIncrementReadyNumber();
+
+            ++readyCheckNumber;
+
+            RpcIncrementReadyNumber(readyCheckNumber);
+
             Debug.Log("ready check number is: " + readyCheckNumber);
         }
     }
 
-    [Command]
-    void CmdIncrementReadyNumber()
-    {
-        ++readyCheckNumber;
-        RpcIncrementReadyNumber(readyCheckNumber);
-    }
+    //[Command]
+    //void CmdIncrementReadyNumber()
+    //{
+    //    ++readyCheckNumber;
+    //    RpcIncrementReadyNumber(readyCheckNumber);
+    //}
 
+    [ClientRpc]
     void RpcIncrementReadyNumber(int n)
     {
         readyCheckNumber = n;
@@ -78,9 +113,9 @@ public class JB_GameManager : NetworkBehaviour
         }
 
         // swapping grid layout for players
-        tempGridLayout = playerPrefabs[0].GetComponent<JB_LocalPlayer>().gridLayoutPrefab;
-        playerPrefabs[0].GetComponent<JB_LocalPlayer>().gridLayoutPrefab = playerPrefabs[1].GetComponent<JB_LocalPlayer>().gridLayoutPrefab;
-        playerPrefabs[1].GetComponent<JB_LocalPlayer>().gridLayoutPrefab = tempGridLayout;
+        //tempGridLayout = playerPrefabs[0].GetComponent<JB_LocalPlayer>().gridLayoutPrefab;
+        //playerPrefabs[0].GetComponent<JB_LocalPlayer>().gridLayoutPrefab = playerPrefabs[1].GetComponent<JB_LocalPlayer>().gridLayoutPrefab;
+        //playerPrefabs[1].GetComponent<JB_LocalPlayer>().gridLayoutPrefab = tempGridLayout;
 
         // disable positioning buttons
         rotateConfirmButtons.SetActive(false);
@@ -93,5 +128,61 @@ public class JB_GameManager : NetworkBehaviour
     public void AbilityOne(GameObject obj)
     {
         obj.SetActive(true);
+    }
+
+    public void RotateShip()
+    {
+        // if shipObj is not empty, rotate 90 degrees
+        if (shipObj != null)
+        {
+            shipObj.transform.Rotate(0f, 0f, 90f);
+        }
+
+
+    }
+
+    public void FindGameManagerObj()
+    {
+        // find the game manager gameobject in scene
+        //gameManagerScript = GameObject.FindGameObjectWithTag("GameManager").GetComponent<JB_GameManager>();
+    }
+
+    public void ConfirmPosition()
+    {
+        if (shipObj != null)
+        {
+            shipObj.SendMessage("LockShipPosition");
+
+            if (shipObj.GetComponent<JB_SnappingShip>().ValidPosition()) // double checks that ship is valid position on the grid 
+            {
+                // if true we can lock the ship's position
+                shipObj.GetComponent<DragObject>().canDrag = false;
+
+                // index counter unique to each player to determine when game starts
+                ++placementIndex;
+
+                // checks if player has all ships in position and is ready to play
+                CmdCheckPlayerReady(placementIndex);
+
+                Debug.Log("Confirm Position Method, placement index: " + placementIndex);
+
+            }
+            else
+            {
+                // if not, the ship can still be moved by player
+                shipObj.GetComponent<DragObject>().canDrag = true;
+                StartCoroutine(SendErrorAlert());
+            }
+        }
+
+
+    }
+
+    IEnumerator SendErrorAlert()
+    {
+        // alerting player that their ship placement is invalid
+        errorAlertTextObj.SetActive(true);
+        yield return new WaitForSeconds(4f);
+        errorAlertTextObj.SetActive(false);
     }
 }

@@ -27,7 +27,7 @@ public class DragObject : MonoBehaviour
             offset = gameObject.transform.position - GetMouseAsWorldPoint();
 
             // change ship reference to rotate
-            JB_RotateConfirm.shipObj = gameObject;
+            JB_GameManager.shipObj = gameObject;
 
             // frees up tiles that were taken up by ship's last position
             snapShipScript.SendMessage("MovingShip");

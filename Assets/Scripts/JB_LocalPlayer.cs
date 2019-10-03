@@ -11,7 +11,10 @@ public class JB_LocalPlayer : NetworkBehaviour
     public GameObject[] shipPrefabs;
     public static GameObject[] ships;
     public GameObject gridLayoutPrefab;
-    GameObject gridLayout;
+    public GameObject gameManagerPrefab;
+
+    private GameObject gridLayout;
+    private GameObject gameManager;
     
 
     //public int playerPrefabIndex = 0;
@@ -23,14 +26,14 @@ public class JB_LocalPlayer : NetworkBehaviour
     //public int shipConfirmIndex = 1;
 
     [SyncVar]
-    public bool playerReady;
+    public bool playerReady; // currently unused
     
     // Start is called before the first frame update
     void Start()
     {
         ships = new GameObject[shipPrefabs.Length];
 
-        //JB_GameManager.FindPlayerObjects();
+        JB_GameManager.FindPlayerObjects();
         
         //if local player, enable ship, otherwise turn them off
         if (!this.isLocalPlayer)
@@ -41,6 +44,7 @@ public class JB_LocalPlayer : NetworkBehaviour
 
         }
 
+        // spawn ship prefabs in game
         for(int i = 0; i < shipPrefabs.Length; ++i)
         {
             ships[i] = Instantiate(shipPrefabs[i]);
@@ -56,6 +60,10 @@ public class JB_LocalPlayer : NetworkBehaviour
     void CmdSetPlayerID(int netID)
     {
         playerID = netID;
+
+        //gameManager = Instantiate(gameManagerPrefab);
+
+        //NetworkServer.Spawn(gridManager);
 
         //gridLayout = Instantiate(gridLayoutPrefab);
 

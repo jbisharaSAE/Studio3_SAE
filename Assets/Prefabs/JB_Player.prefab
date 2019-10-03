@@ -31,7 +31,7 @@ Transform:
   m_LocalPosition: {x: -60.900238, y: -23.71886, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 0.25}
   m_Children:
-  - {fileID: 5093172204546821332}
+  - {fileID: 5093172204546821334}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -107,7 +107,9 @@ MonoBehaviour:
   - {fileID: 771212208799578348, guid: 6529aebd065d19f428d309e0e428dcb1, type: 3}
   - {fileID: 1429587017747326144, guid: e22e782f9035a0242a38c78611ae35a3, type: 3}
   - {fileID: 852500995083479784, guid: 51adc8d002c7d2b42a5dac06b704cb78, type: 3}
-  gridLayoutPrefab: {fileID: 5093172204546821362}
+  gridLayoutPrefab: {fileID: 5093172204546821363}
+  gridManagerPrefab: {fileID: 128148204942571291, guid: b547d0a11f72c804198b52875420d449,
+    type: 3}
   playerID: 0
   playerReady: 0
 --- !u!114 &4024908049535179641
@@ -280,13 +282,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e6b40b8411f638642abfb09354964bb0, type: 3}
---- !u!1 &5093172204546821362 stripped
+--- !u!1 &5093172204546821363 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5897048975570967307, guid: e6b40b8411f638642abfb09354964bb0,
     type: 3}
   m_PrefabInstance: {fileID: 5093172204546821288}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &5093172204546821332 stripped
+--- !u!4 &5093172204546821334 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5897048975570967306, guid: e6b40b8411f638642abfb09354964bb0,
     type: 3}
