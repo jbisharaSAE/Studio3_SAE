@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 1151279249136466736}
   - component: {fileID: 1151279249136466737}
   - component: {fileID: -7574471268905186301}
-  - component: {fileID: 4024908049535179641}
   m_Layer: 0
   m_Name: JB_Player
   m_TagString: Player
@@ -31,7 +30,7 @@ Transform:
   m_LocalPosition: {x: -60.900238, y: -23.71886, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 0.25}
   m_Children:
-  - {fileID: 5093172204546821334}
+  - {fileID: 5093172204546821335}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -110,24 +109,11 @@ MonoBehaviour:
   gridLayoutPrefab: {fileID: 5093172204546821363}
   gameManagerPrefab: {fileID: 128148204942571291, guid: b547d0a11f72c804198b52875420d449,
     type: 3}
+  playerNameTextBoxPrefab: {fileID: 7256613128006092989, guid: cfe8a3be32ab5e849ad9c248dbb0cb17,
+    type: 3}
+  playerName: 
   playerID: 0
   playerReady: 0
---- !u!114 &4024908049535179641
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1151279249136466733}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 34cbc4338826545c59fcd11978e87f06, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  visRange: 0
-  visUpdateInterval: 1
-  checkMethod: 0
-  forceHidden: 1
 --- !u!1001 &5093172204546821288
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -288,7 +274,7 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 5093172204546821288}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &5093172204546821334 stripped
+--- !u!4 &5093172204546821335 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5897048975570967306, guid: e6b40b8411f638642abfb09354964bb0,
     type: 3}

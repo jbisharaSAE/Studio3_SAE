@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.Networking;
 using System;
 using System.Linq;
+using TMPro;
+using UnityEngine.UI;
 
 public class JB_LocalPlayer : NetworkBehaviour
 {
@@ -15,9 +17,10 @@ public class JB_LocalPlayer : NetworkBehaviour
 
     private GameObject gridLayout;
     private GameObject gameManager;
-    
 
     //public int playerPrefabIndex = 0;
+    [SyncVar]
+    public string playerName;
 
     [SyncVar]
     public int playerID;
@@ -31,29 +34,53 @@ public class JB_LocalPlayer : NetworkBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //ships = new GameObject[shipPrefabs.Length];
+       
+        ships = new GameObject[shipPrefabs.Length];
 
         JB_GameManager.FindPlayerObjects();
-        
+
         //if local player, enable ship, otherwise turn them off
         if (!this.isLocalPlayer)
         {
-            
+
             // exit if this is not local player
             return;
 
         }
 
-        // spawn ship prefabs in game
-        //for(int i = 0; i < shipPrefabs.Length; ++i)
-        //{
-        //    ships[i] = Instantiate(shipPrefabs[i]);
-        //}
+        //spawn ship prefabs in game
+        for (int i = 0; i < shipPrefabs.Length; ++i)
+        {
+            ships[i] = Instantiate(shipPrefabs[i]);
+        }
 
         gridLayoutPrefab.SetActive(true);
+
+
         // converts the network ID given to player prefabs that spawn when a client joins the server into an integer
         // used to identify player's connection object from each other
         CmdSetPlayerID(Convert.ToInt32(GetComponent<NetworkIdentity>().netId.Value));
+        
+    }
+
+    public override void OnStartServer()
+    {
+       
+    }
+
+
+    [Command]
+    public void CmdIncrementReadyNumber()
+    {
+        foreach (KeyValuePair<NetworkInstanceId, NetworkIdentity> pair in NetworkServer.objects)
+        {
+            if (pair.Value.gameObject.tag == "GameManager")
+            {
+
+                pair.Value.gameObject.GetComponent<JB_GameManager>().readyCheckNumber++;
+            }
+
+        }
     }
 
     [Command]
@@ -61,9 +88,11 @@ public class JB_LocalPlayer : NetworkBehaviour
     {
         playerID = netID;
 
+
         gameManager = Instantiate(gameManagerPrefab);
 
-        NetworkServer.Spawn(gameManager);
+        NetworkServer.SpawnWithClientAuthority(gameManager, connectionToClient);
+
 
         //gridLayout = Instantiate(gridLayoutPrefab);
 

@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.UI;
-
+using TMPro;
 
 public class JB_GameManager : NetworkBehaviour
 {
     public static GameObject[] playerPrefabs;
-       
+
     [SyncVar]
     public int readyCheckNumber;
 
@@ -40,20 +40,22 @@ public class JB_GameManager : NetworkBehaviour
     void Start()
     {
 
-        
+        errorAlertTextObj = GameObject.Find("Text(TMP) ErrorShipPositionAlert");
+        rotateConfirmButtons = GameObject.Find("EGO ButtonHolderPositionStage");
+        abilityButtons = GameObject.Find("EGO ButtonHolderAbilities");
 
+    
 
         GameObject[] all = GameObject.FindGameObjectsWithTag(this.tag);
-        
+
         // to avoid duplicates of this game object when created, so only one exists in scene at all times
         if (all.Length > 1)
         {
             if (!isOriginal)
             {
-                OnNetworkDestroy();
+                Destroy(this.gameObject);
 
-                
-                
+
             }
         }
 
@@ -65,34 +67,35 @@ public class JB_GameManager : NetworkBehaviour
 
     }
 
-    
 
-    public override void OnNetworkDestroy()
-    {
-        Destroy(gameObject);
-    }
 
     private void OnEnable()
     {
+
         rotateButton.onClick.AddListener(delegate () { RotateShip(); });
         confirmButton.onClick.AddListener(delegate () { ConfirmPosition(); });
+
+
     }
 
     private void OnDisable()
     {
+
         rotateButton.onClick.RemoveListener(delegate () { RotateShip(); });
         confirmButton.onClick.RemoveListener(delegate () { ConfirmPosition(); });
+
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(readyCheckNumber == 2)
+        if (readyCheckNumber == 2)
         {
             // start game
             StartGame();
 
-            
+
         }
     }
 
@@ -101,27 +104,36 @@ public class JB_GameManager : NetworkBehaviour
     {
         Debug.Log("test when checkplayerready called");
         // if all of players ships are in valid position
-        if(index == 4)
+        if (index >= 4)
         {
-            Debug.Log("Testing if statement");
+            if (gameObject.GetComponent<NetworkIdentity>().observers.Contains(playerPrefabs[0].GetComponent<NetworkConnection>())) 
+            {
+                playerPrefabs[0].GetComponent<JB_LocalPlayer>().CmdIncrementReadyNumber();
+            }
+            else if (gameObject.GetComponent<NetworkIdentity>().observers.Contains(playerPrefabs[1].GetComponent<NetworkConnection>()))
+            {
+                playerPrefabs[1].GetComponent<JB_LocalPlayer>().CmdIncrementReadyNumber();
+            }
+
+
             // increment number, and game starts when variable reaches 2
 
-            //CmdIncrementReadyNumber();
+                //CmdIncrementReadyNumber();
 
-            ++readyCheckNumber;
+                //++readyCheckNumber;
 
-            RpcIncrementReadyNumber(readyCheckNumber);
+                //RpcIncrementReadyNumber(readyCheckNumber);
 
             Debug.Log("ready check number is: " + readyCheckNumber);
         }
     }
 
-    //[Command]
-    //void CmdIncrementReadyNumber()
-    //{
-    //    ++readyCheckNumber;
-    //    RpcIncrementReadyNumber(readyCheckNumber);
-    //}
+    [Command]
+    void CmdIncrementReadyNumber()
+    {
+        ++readyCheckNumber;
+        RpcIncrementReadyNumber(readyCheckNumber);
+    }
 
     [ClientRpc]
     void RpcIncrementReadyNumber(int n)
@@ -132,14 +144,14 @@ public class JB_GameManager : NetworkBehaviour
     public static void FindPlayerObjects()
     {
         playerPrefabs = GameObject.FindGameObjectsWithTag("Player");
-        
+
     }
 
     private void StartGame()
     {
         for (int i = 0; i < playerPrefabs.Length; ++i)
         {
-            for(int j = 0; j < playerPrefabs[i].GetComponent<JB_LocalPlayer>().shipPrefabs.Length; ++j)
+            for (int j = 0; j < playerPrefabs[i].GetComponent<JB_LocalPlayer>().shipPrefabs.Length; ++j)
             {
                 // disabling ship objects on each player
                 playerPrefabs[i].GetComponent<JB_LocalPlayer>().shipPrefabs[j].SetActive(false);
@@ -155,7 +167,7 @@ public class JB_GameManager : NetworkBehaviour
         rotateConfirmButtons.SetActive(false);
 
         // enable ability buttons
-        abilityButtons.SetActive(true);
+        abilityButtons.GetComponentInChildren<GameObject>().SetActive(true);
 
     }
 
@@ -216,8 +228,8 @@ public class JB_GameManager : NetworkBehaviour
     IEnumerator SendErrorAlert()
     {
         // alerting player that their ship placement is invalid
-        errorAlertTextObj.SetActive(true);
+        errorAlertTextObj.GetComponent<TextMeshProUGUI>().enabled = true;
         yield return new WaitForSeconds(4f);
-        errorAlertTextObj.SetActive(false);
+        errorAlertTextObj.GetComponent<TextMeshProUGUI>().enabled = false;
     }
 }

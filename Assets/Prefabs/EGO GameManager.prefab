@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 128148204942571289}
   m_Layer: 0
   m_Name: EGO GameManager
-  m_TagString: Untagged
+  m_TagString: GameManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -64,7 +64,7 @@ MonoBehaviour:
     i14: 0
     i15: 0
   m_ServerOnly: 0
-  m_LocalPlayerAuthority: 1
+  m_LocalPlayerAuthority: 0
 --- !u!114 &128148204942571289
 MonoBehaviour:
   m_ObjectHideFlags: 0
