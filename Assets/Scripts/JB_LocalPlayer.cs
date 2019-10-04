@@ -31,7 +31,7 @@ public class JB_LocalPlayer : NetworkBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        ships = new GameObject[shipPrefabs.Length];
+        //ships = new GameObject[shipPrefabs.Length];
 
         JB_GameManager.FindPlayerObjects();
         
@@ -45,10 +45,10 @@ public class JB_LocalPlayer : NetworkBehaviour
         }
 
         // spawn ship prefabs in game
-        for(int i = 0; i < shipPrefabs.Length; ++i)
-        {
-            ships[i] = Instantiate(shipPrefabs[i]);
-        }
+        //for(int i = 0; i < shipPrefabs.Length; ++i)
+        //{
+        //    ships[i] = Instantiate(shipPrefabs[i]);
+        //}
 
         gridLayoutPrefab.SetActive(true);
         // converts the network ID given to player prefabs that spawn when a client joins the server into an integer
@@ -61,9 +61,9 @@ public class JB_LocalPlayer : NetworkBehaviour
     {
         playerID = netID;
 
-        //gameManager = Instantiate(gameManagerPrefab);
+        gameManager = Instantiate(gameManagerPrefab);
 
-        //NetworkServer.Spawn(gridManager);
+        NetworkServer.Spawn(gameManager);
 
         //gridLayout = Instantiate(gridLayoutPrefab);
 

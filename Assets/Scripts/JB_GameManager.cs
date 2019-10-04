@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
+using UnityEngine.UI;
 
 
 public class JB_GameManager : NetworkBehaviour
@@ -28,8 +29,19 @@ public class JB_GameManager : NetworkBehaviour
     public GameObject errorAlertTextObj;
     public int placementIndex = 0;
 
+    private Button rotateButton;
+    private Button confirmButton;
+
+    private void Awake()
+    {
+        rotateButton = GameObject.Find("ButtonRotate").GetComponent<Button>();
+        confirmButton = GameObject.Find("ButtonConfirm").GetComponent<Button>();
+    }
     void Start()
     {
+
+        
+
 
         GameObject[] all = GameObject.FindGameObjectsWithTag(this.tag);
         
@@ -38,7 +50,10 @@ public class JB_GameManager : NetworkBehaviour
         {
             if (!isOriginal)
             {
-                Destroy(gameObject);
+                OnNetworkDestroy();
+
+                
+                
             }
         }
 
@@ -50,10 +65,29 @@ public class JB_GameManager : NetworkBehaviour
 
     }
 
+    
+
+    public override void OnNetworkDestroy()
+    {
+        Destroy(gameObject);
+    }
+
+    private void OnEnable()
+    {
+        rotateButton.onClick.AddListener(delegate () { RotateShip(); });
+        confirmButton.onClick.AddListener(delegate () { ConfirmPosition(); });
+    }
+
+    private void OnDisable()
+    {
+        rotateButton.onClick.RemoveListener(delegate () { RotateShip(); });
+        confirmButton.onClick.RemoveListener(delegate () { ConfirmPosition(); });
+    }
+
     // Update is called once per frame
     void Update()
     {
-        if(readyCheckNumber == 1)
+        if(readyCheckNumber == 2)
         {
             // start game
             StartGame();
@@ -136,6 +170,7 @@ public class JB_GameManager : NetworkBehaviour
         if (shipObj != null)
         {
             shipObj.transform.Rotate(0f, 0f, 90f);
+            shipObj.GetComponent<JB_SnappingShip>().ShipPlacement();
         }
 
 

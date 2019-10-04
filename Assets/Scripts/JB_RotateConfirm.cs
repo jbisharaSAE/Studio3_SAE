@@ -22,6 +22,7 @@ public class JB_RotateConfirm : NetworkBehaviour
         if(shipObj != null)
         {
             shipObj.transform.Rotate(0f, 0f, 90f);
+            shipObj.GetComponent<JB_SnappingShip>().ShipPlacement();
         }
 
 

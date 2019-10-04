@@ -47,7 +47,7 @@ public class JB_SnappingShip : MonoBehaviour
             }
         }
 
-        // checks if all booleans in the array are true
+        
         
 
         // if true we can place the ship there
@@ -71,6 +71,7 @@ public class JB_SnappingShip : MonoBehaviour
 
     public bool ValidPosition()
     {
+        // checks if all booleans in the array are true
         allTrue = isTileOpen.All(x => x);
 
         return allTrue;
