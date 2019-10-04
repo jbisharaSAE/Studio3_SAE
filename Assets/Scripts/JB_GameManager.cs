@@ -106,14 +106,6 @@ public class JB_GameManager : NetworkBehaviour
         // if all of players ships are in valid position
         if (index >= 4)
         {
-            if (gameObject.GetComponent<NetworkIdentity>().observers.Contains(playerPrefabs[0].GetComponent<NetworkConnection>())) 
-            {
-                playerPrefabs[0].GetComponent<JB_LocalPlayer>().CmdIncrementReadyNumber();
-            }
-            else if (gameObject.GetComponent<NetworkIdentity>().observers.Contains(playerPrefabs[1].GetComponent<NetworkConnection>()))
-            {
-                playerPrefabs[1].GetComponent<JB_LocalPlayer>().CmdIncrementReadyNumber();
-            }
 
 
             // increment number, and game starts when variable reaches 2
@@ -144,8 +136,11 @@ public class JB_GameManager : NetworkBehaviour
     public static void FindPlayerObjects()
     {
         playerPrefabs = GameObject.FindGameObjectsWithTag("Player");
+      
 
     }
+
+
 
     private void StartGame()
     {
@@ -196,6 +191,8 @@ public class JB_GameManager : NetworkBehaviour
 
     public void ConfirmPosition()
     {
+        CmdSetAuthority();
+
         if (shipObj != null)
         {
             shipObj.SendMessage("LockShipPosition");
@@ -231,5 +228,14 @@ public class JB_GameManager : NetworkBehaviour
         errorAlertTextObj.GetComponent<TextMeshProUGUI>().enabled = true;
         yield return new WaitForSeconds(4f);
         errorAlertTextObj.GetComponent<TextMeshProUGUI>().enabled = false;
+    }
+
+    [Command]
+    void CmdSetAuthority( )
+    {
+        foreach (GameObject player in playerPrefabs)
+        {
+            this.GetComponent<NetworkIdentity>().AssignClientAuthority(player.GetComponent<NetworkIdentity>().connectionToClient);
+        }
     }
 }

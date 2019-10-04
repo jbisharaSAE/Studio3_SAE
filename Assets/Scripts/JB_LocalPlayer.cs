@@ -37,6 +37,7 @@ public class JB_LocalPlayer : NetworkBehaviour
        
         ships = new GameObject[shipPrefabs.Length];
 
+        // call method to find all player prefabs in scene
         JB_GameManager.FindPlayerObjects();
 
         //if local player, enable ship, otherwise turn them off
@@ -88,10 +89,14 @@ public class JB_LocalPlayer : NetworkBehaviour
     {
         playerID = netID;
 
-
         gameManager = Instantiate(gameManagerPrefab);
 
-        NetworkServer.SpawnWithClientAuthority(gameManager, connectionToClient);
+        //gameManager.GetComponent<JB_GameManager>().FindPlayerObjects();
+
+
+        NetworkServer.Spawn(gameManager);
+
+        
 
 
         //gridLayout = Instantiate(gridLayoutPrefab);
