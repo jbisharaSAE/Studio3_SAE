@@ -9,7 +9,7 @@ public class JB_SnappingShip : MonoBehaviour
     // the squares that the ship are made of
     private JB_SquareSprites [] squares;
 
-    private bool[] isTileOpen;
+    public bool[] isTileOpen;
     private bool allTrue;
 
     private Vector3 lastPosition;
@@ -26,6 +26,8 @@ public class JB_SnappingShip : MonoBehaviour
 
         // find all the scripts attached to each square
         squares = GetComponentsInChildren<JB_SquareSprites>();
+
+        isTileOpen = new bool[squares.Length];
     }
 
     public void ShipPlacement()
@@ -47,8 +49,6 @@ public class JB_SnappingShip : MonoBehaviour
             }
         }
 
-        
-        
 
         // if true we can place the ship there
         if (ValidPosition())

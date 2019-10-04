@@ -1,19 +1,39 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-//using UnityEngine.Networking;
+using UnityEngine.Networking;
 
-public class DragObject : MonoBehaviour
+public class DragObject : NetworkBehaviour
 {
     private Vector3 offset;
     private float zCoord;
     private JB_SnappingShip snapShipScript;
     public bool canDrag = true;
 
+    public override void OnStartAuthority()
+    {
+        Debug.Log(GetComponent<NetworkIdentity>().hasAuthority);
+
+        if (GetComponent<NetworkIdentity>().hasAuthority == false)
+        {
+            return;
+
+        }
+
+       
+    }
+
     private void Start()
     {
-        
-        
+        SpriteRenderer[] squareSprites = GetComponentsInChildren<SpriteRenderer>();
+
+        // for some unknown reason, the sprites were being disabled, I am forcing them to enabled
+        foreach (SpriteRenderer square in squareSprites)
+        {
+            square.GetComponent<SpriteRenderer>().enabled = true;
+        }
+
+
         snapShipScript = GetComponent<JB_SnappingShip>();
     }
 
@@ -27,11 +47,12 @@ public class DragObject : MonoBehaviour
             offset = gameObject.transform.position - GetMouseAsWorldPoint();
 
             // change ship reference to rotate
-            JB_GameManager.shipObj = gameObject;
+            JB_LocalPlayer.shipObj = gameObject;
+            
 
             // frees up tiles that were taken up by ship's last position
             snapShipScript.SendMessage("MovingShip");
-            Debug.Log("Clicked");
+            Debug.Log("Clicked, shipObj variable: " + JB_LocalPlayer.shipObj);
         }
         
     }

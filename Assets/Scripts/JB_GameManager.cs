@@ -34,15 +34,15 @@ public class JB_GameManager : NetworkBehaviour
 
     private void Awake()
     {
-        rotateButton = GameObject.Find("ButtonRotate").GetComponent<Button>();
-        confirmButton = GameObject.Find("ButtonConfirm").GetComponent<Button>();
+        //rotateButton = GameObject.Find("ButtonRotate").GetComponent<Button>();
+        //confirmButton = GameObject.Find("ButtonConfirm").GetComponent<Button>();
     }
     void Start()
     {
 
         errorAlertTextObj = GameObject.Find("Text(TMP) ErrorShipPositionAlert");
-        rotateConfirmButtons = GameObject.Find("EGO ButtonHolderPositionStage");
-        abilityButtons = GameObject.Find("EGO ButtonHolderAbilities");
+        //rotateConfirmButtons = GameObject.Find("EGO ButtonHolderPositionStage");
+        //abilityButtons = GameObject.Find("EGO ButtonHolderAbilities");
 
     
 
@@ -61,7 +61,7 @@ public class JB_GameManager : NetworkBehaviour
 
         isOriginal = true;
 
-        GameObject rotConfirm = GameObject.Find("EGO RotateConfirmScript");
+        //GameObject rotConfirm = GameObject.Find("EGO RotateConfirmScript");
         //rotConfirm.GetComponent<JB_RotateConfirm>().FindGameManagerObj();
         //JB_RotateConfirm.gameManagerScript = gameObject.GetComponent<JB_GameManager>();
 
@@ -72,8 +72,8 @@ public class JB_GameManager : NetworkBehaviour
     private void OnEnable()
     {
 
-        rotateButton.onClick.AddListener(delegate () { RotateShip(); });
-        confirmButton.onClick.AddListener(delegate () { ConfirmPosition(); });
+        //rotateButton.onClick.AddListener(delegate () { RotateShip(); });
+        //confirmButton.onClick.AddListener(delegate () { ConfirmPosition(); });
 
 
     }
@@ -81,8 +81,8 @@ public class JB_GameManager : NetworkBehaviour
     private void OnDisable()
     {
 
-        rotateButton.onClick.RemoveListener(delegate () { RotateShip(); });
-        confirmButton.onClick.RemoveListener(delegate () { ConfirmPosition(); });
+       // rotateButton.onClick.RemoveListener(delegate () { RotateShip(); });
+       // confirmButton.onClick.RemoveListener(delegate () { ConfirmPosition(); });
 
 
     }
@@ -191,7 +191,7 @@ public class JB_GameManager : NetworkBehaviour
 
     public void ConfirmPosition()
     {
-        CmdSetAuthority();
+        //CmdSetAuthority();
 
         if (shipObj != null)
         {

@@ -945,7 +945,7 @@ MonoBehaviour:
     i14: 0
     i15: 0
   m_ServerOnly: 0
-  m_LocalPlayerAuthority: 0
+  m_LocalPlayerAuthority: 1
 --- !u!95 &353998515961435907
 Animator:
   serializedVersion: 3
