@@ -108,7 +108,7 @@ MonoBehaviour:
   - {fileID: 1429587017747326144, guid: e22e782f9035a0242a38c78611ae35a3, type: 3}
   - {fileID: 852500995083479784, guid: 51adc8d002c7d2b42a5dac06b704cb78, type: 3}
   gridLayoutPrefab: {fileID: 5093172204546821363}
-  gridManagerPrefab: {fileID: 128148204942571291, guid: b547d0a11f72c804198b52875420d449,
+  gameManagerPrefab: {fileID: 128148204942571291, guid: b547d0a11f72c804198b52875420d449,
     type: 3}
   playerID: 0
   playerReady: 0

@@ -50,6 +50,8 @@ public class JB_GridManager : NetworkBehaviour
                 Vector3 spawnPoint = new Vector3(transform.position.x + length, transform.position.y + width, 89f);
                 GameObject newTile = Instantiate(tile, spawnPoint, Quaternion.identity);
                 newTile.transform.parent = gameObject.transform;
+                
+                // assigning variables on each tiles
                 newTile.GetComponent<JB_Tile>().tilePosition = newTile.transform.position;
                 newTile.GetComponent<JB_Tile>().number = index;
 
