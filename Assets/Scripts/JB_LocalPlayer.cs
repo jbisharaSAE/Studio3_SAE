@@ -17,6 +17,12 @@ public class JB_LocalPlayer : NetworkBehaviour
 
     private GameObject gridLayout;
     private GameObject gameManager;
+
+    // used to find all ships in scene
+    private GameObject[] shipsInGame;
+
+    // to make sure player does not run the function more than once
+    private bool runOnce = true;
     
     //used to reset the tiles when ship rotates
     private bool[] resetTiles;
@@ -52,7 +58,7 @@ public class JB_LocalPlayer : NetworkBehaviour
         //if local player, enable ship, otherwise turn them off
         if (!this.isLocalPlayer)
         {
-
+            
             // exit if this is not local player
             return;
 
@@ -65,11 +71,14 @@ public class JB_LocalPlayer : NetworkBehaviour
 
         gameManager = GameObject.FindGameObjectWithTag("GameManager");
 
+        
 
         // converts the network ID given to player prefabs that spawn when a client joins the server into an integer
         // used to identify player's connection object from each other
         CmdSetPlayerID(Convert.ToInt32(GetComponent<NetworkIdentity>().netId.Value));
         
+
+
     }
 
 
@@ -77,14 +86,19 @@ public class JB_LocalPlayer : NetworkBehaviour
     [Command]
     public void CmdIncrementReadyNumber()
     {
-        foreach (KeyValuePair<NetworkInstanceId, NetworkIdentity> pair in NetworkServer.objects)
+        if (runOnce)
         {
-            if (pair.Value.gameObject.tag == "GameManager")
+            foreach (KeyValuePair<NetworkInstanceId, NetworkIdentity> pair in NetworkServer.objects)
             {
-                pair.Value.gameObject.GetComponent<JB_GameManager>().readyCheckNumber++;
-            }
+                if (pair.Value.gameObject.tag == "GameManager")
+                {
+                    pair.Value.gameObject.GetComponent<JB_GameManager>().readyCheckNumber++;
+                }
 
+            }
+            runOnce = false;
         }
+        
     }
 
     [Command]
@@ -94,12 +108,14 @@ public class JB_LocalPlayer : NetworkBehaviour
 
         //grab the ship prefabs attached to game object, assign them to the array of ships
         ships = new GameObject[shipPrefabs.Length];
-        checkValidation = new bool[ships.Length];
+        // one for each ship
+        checkValidation = new bool[4];
 
         for (int i = 0; i < shipPrefabs.Length; ++i)
         {
             // instantiate ships and give them authority from this local player (client)
             ships[i] = Instantiate(shipPrefabs[i]);
+            ships[i].GetComponent<DragObject>().playerID = netID;
             NetworkServer.SpawnWithClientAuthority(ships[i], connectionToClient);
         }
 
@@ -115,7 +131,7 @@ public class JB_LocalPlayer : NetworkBehaviour
     private void OnGUI()
     {
 
-        // confirm ship positions checks all at once
+        // confirm ship positions checks all at once ======= button
         if (GUI.Button(new Rect(570, 500, 70, 25), "Confirm"))
         {
             for(int i = 0; i < ships.Length; ++i)
@@ -127,6 +143,8 @@ public class JB_LocalPlayer : NetworkBehaviour
 
             if (allTrue)
             {
+                CmdIncrementReadyNumber();
+
                 for (int i = 0; i < ships.Length; ++i)
                 {
                     ships[i].GetComponent<JB_SnappingShip>().LockShipPosition();
@@ -140,6 +158,7 @@ public class JB_LocalPlayer : NetworkBehaviour
             }
         }
 
+        // rotate ship that is selected ====== button
         if (GUI.Button(new Rect(430, 500, 70, 25), "Rotate"))
         {
             for(int i = 0; i < (shipObj.GetComponent<JB_SnappingShip>().isTileOpen.Length); ++i)
@@ -171,4 +190,6 @@ public class JB_LocalPlayer : NetworkBehaviour
         yield return new WaitForSeconds(4f);
         errorAlertTextObj.GetComponent<TextMeshProUGUI>().enabled = false;
     }
+
+    
 }

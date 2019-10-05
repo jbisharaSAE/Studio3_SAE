@@ -8,37 +8,40 @@ public class DragObject : NetworkBehaviour
     private Vector3 offset;
     private float zCoord;
     private JB_SnappingShip snapShipScript;
+
+    private GameObject[] ships;
+
+    // used to determine which player this ship belongs to
+    [SyncVar]
+    public int playerID; 
+
     public bool canDrag = true;
+
+    // to ensure a specific method is only called once
+    private bool runOnce = false;
 
     public override void OnStartAuthority()
     {
         Debug.Log(GetComponent<NetworkIdentity>().hasAuthority);
 
-        if (GetComponent<NetworkIdentity>().hasAuthority == false)
+        if (hasAuthority == false)
         {
             return;
-
         }
-
-       
     }
 
     private void Start()
     {
-        SpriteRenderer[] squareSprites = GetComponentsInChildren<SpriteRenderer>();
-
-        // for some unknown reason, the sprites were being disabled, I am forcing them to enabled
-        foreach (SpriteRenderer square in squareSprites)
-        {
-            square.GetComponent<SpriteRenderer>().enabled = true;
-        }
-
-
         snapShipScript = GetComponent<JB_SnappingShip>();
     }
 
     void OnMouseDown()
     {
+        if (GetComponent<NetworkIdentity>().hasAuthority == false)
+        {
+            return;
+        }
+
         if (canDrag)
         {
             zCoord = Camera.main.WorldToScreenPoint(gameObject.transform.position).z;
@@ -54,11 +57,17 @@ public class DragObject : NetworkBehaviour
             snapShipScript.SendMessage("MovingShip");
             Debug.Log("Clicked, shipObj variable: " + JB_LocalPlayer.shipObj);
         }
+        RemoveSpriteEnemyShips();
         
     }
 
     private Vector3 GetMouseAsWorldPoint()
     {
+        if (GetComponent<NetworkIdentity>().hasAuthority == false)
+        {
+            return Vector3.zero;
+        }
+
         if (canDrag)
         {
             // Pixel coordinates of mouse (x,y)
@@ -81,6 +90,11 @@ public class DragObject : NetworkBehaviour
 
     void OnMouseDrag()
     {
+        if (GetComponent<NetworkIdentity>().hasAuthority == false)
+        {
+            return;
+        }
+
         if (canDrag)
         {
             transform.position = GetMouseAsWorldPoint() + offset;
@@ -91,6 +105,11 @@ public class DragObject : NetworkBehaviour
 
     private void OnMouseUp()
     {
+        if (GetComponent<NetworkIdentity>().hasAuthority == false)
+        {
+            return;
+        }
+        
         if (canDrag)
         {
             // when mouse (or touch) is lifted from ship, snap the ship to the grid position closest to it
@@ -99,5 +118,25 @@ public class DragObject : NetworkBehaviour
         
     }
 
-  
+
+
+    void RemoveSpriteEnemyShips()
+    {
+        if (!runOnce)
+        {
+            GameObject[] allShips = GameObject.FindGameObjectsWithTag("Ship");
+
+            foreach (GameObject ship in allShips)
+            {
+                if (playerID != ship.GetComponent<DragObject>().playerID)
+                {
+                    ship.SetActive(false);
+                }
+
+            }
+        }
+        
+    }
+
+
 }
