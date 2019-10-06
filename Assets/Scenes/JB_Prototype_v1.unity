@@ -588,6 +588,16 @@ PrefabInstance:
       propertyPath: m_ServerOnly
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 128148204942571286, guid: b547d0a11f72c804198b52875420d449,
+        type: 3}
+      propertyPath: m_LocalPlayerAuthority
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 128148204942571289, guid: b547d0a11f72c804198b52875420d449,
+        type: 3}
+      propertyPath: abilityButtons
+      value: 
+      objectReference: {fileID: 1849376843}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b547d0a11f72c804198b52875420d449, type: 3}
 --- !u!1 &53899897
@@ -14885,6 +14895,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1846616721}
   m_CullTransparentMesh: 0
+--- !u!1 &1849376843 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2186074671680842189, guid: ae0f52b743bd17e4a8f75f0342d3f092,
+    type: 3}
+  m_PrefabInstance: {fileID: 1072984430956419793}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1857468825
 GameObject:
   m_ObjectHideFlags: 0
@@ -16069,6 +16085,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e5018f268e560947ab9ed8e23d0911a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_SyncVarDirtyBits: 0
+  m_LastSendTime: 0
+  m_SyncVarGuard: 0
+  m_MyView: {fileID: 0}
   gameManagerScript: {fileID: 0}
   errorAlertTextObj: {fileID: 981189544}
   placementIndex: 0
@@ -17046,7 +17066,7 @@ PrefabInstance:
     - target: {fileID: 2186074671680842189, guid: ae0f52b743bd17e4a8f75f0342d3f092,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6148691184822449941, guid: ae0f52b743bd17e4a8f75f0342d3f092,
         type: 3}
@@ -17187,6 +17207,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8460835903950776214, guid: ae0f52b743bd17e4a8f75f0342d3f092,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ae0f52b743bd17e4a8f75f0342d3f092, type: 3}

@@ -9,42 +9,18 @@ public class JB_GameManager : NetworkBehaviour
 {
     public static GameObject[] playerPrefabs;
 
-    [SyncVar]
-    public int readyCheckNumber;
-
-    // currently unused
-    public GameObject[] ships;
-
     [SerializeField]
     private GameObject abilityButtons;
-
-    [SerializeField]
-    private GameObject rotateConfirmButtons;
 
     private GameObject tempGridLayout;
 
     private bool isOriginal = false;
 
-    public static GameObject shipObj;
-    public GameObject errorAlertTextObj;
-    public int placementIndex = 0;
+    public int readyCheckNumber;
 
-    private Button rotateButton;
-    private Button confirmButton;
 
-    private void Awake()
-    {
-        //rotateButton = GameObject.Find("ButtonRotate").GetComponent<Button>();
-        //confirmButton = GameObject.Find("ButtonConfirm").GetComponent<Button>();
-    }
     void Start()
     {
-
-        errorAlertTextObj = GameObject.Find("Text(TMP) ErrorShipPositionAlert");
-        //rotateConfirmButtons = GameObject.Find("EGO ButtonHolderPositionStage");
-        //abilityButtons = GameObject.Find("EGO ButtonHolderAbilities");
-
-    
 
         GameObject[] all = GameObject.FindGameObjectsWithTag(this.tag);
 
@@ -61,30 +37,6 @@ public class JB_GameManager : NetworkBehaviour
 
         isOriginal = true;
 
-        //GameObject rotConfirm = GameObject.Find("EGO RotateConfirmScript");
-        //rotConfirm.GetComponent<JB_RotateConfirm>().FindGameManagerObj();
-        //JB_RotateConfirm.gameManagerScript = gameObject.GetComponent<JB_GameManager>();
-
-    }
-
-
-
-    private void OnEnable()
-    {
-
-        //rotateButton.onClick.AddListener(delegate () { RotateShip(); });
-        //confirmButton.onClick.AddListener(delegate () { ConfirmPosition(); });
-
-
-    }
-
-    private void OnDisable()
-    {
-
-       // rotateButton.onClick.RemoveListener(delegate () { RotateShip(); });
-       // confirmButton.onClick.RemoveListener(delegate () { ConfirmPosition(); });
-
-
     }
 
     // Update is called once per frame
@@ -99,39 +51,6 @@ public class JB_GameManager : NetworkBehaviour
         }
     }
 
-    [Command]
-    public void CmdCheckPlayerReady(int index)
-    {
-        Debug.Log("test when checkplayerready called");
-        // if all of players ships are in valid position
-        if (index >= 4)
-        {
-
-
-            // increment number, and game starts when variable reaches 2
-
-                //CmdIncrementReadyNumber();
-
-                //++readyCheckNumber;
-
-                //RpcIncrementReadyNumber(readyCheckNumber);
-
-            Debug.Log("ready check number is: " + readyCheckNumber);
-        }
-    }
-
-    [Command]
-    void CmdIncrementReadyNumber()
-    {
-        ++readyCheckNumber;
-        RpcIncrementReadyNumber(readyCheckNumber);
-    }
-
-    [ClientRpc]
-    void RpcIncrementReadyNumber(int n)
-    {
-        readyCheckNumber = n;
-    }
 
     public static void FindPlayerObjects()
     {
@@ -140,17 +59,13 @@ public class JB_GameManager : NetworkBehaviour
 
     }
 
-
-
     private void StartGame()
     {
-        for (int i = 0; i < playerPrefabs.Length; ++i)
+       foreach(GameObject player in playerPrefabs)
         {
-            for (int j = 0; j < playerPrefabs[i].GetComponent<JB_LocalPlayer>().shipPrefabs.Length; ++j)
-            {
-                // disabling ship objects on each player
-                playerPrefabs[i].GetComponent<JB_LocalPlayer>().shipPrefabs[j].SetActive(false);
-            }
+            player.GetComponent<JB_LocalPlayer>().showRotateConfirmButtons = false;
+
+            player.transform.DetachChildren();
         }
 
         // swapping grid layout for players
@@ -159,11 +74,12 @@ public class JB_GameManager : NetworkBehaviour
         //playerPrefabs[1].GetComponent<JB_LocalPlayer>().gridLayoutPrefab = tempGridLayout;
 
         // disable positioning buttons
-        rotateConfirmButtons.SetActive(false);
+       
 
         // enable ability buttons
-        abilityButtons.GetComponentInChildren<GameObject>().SetActive(true);
+        abilityButtons.SetActive(true);
 
+        Debug.Log("============= game has started! ===============");
     }
 
     public void AbilityOne(GameObject obj)
@@ -171,71 +87,7 @@ public class JB_GameManager : NetworkBehaviour
         obj.SetActive(true);
     }
 
-    public void RotateShip()
-    {
-        // if shipObj is not empty, rotate 90 degrees
-        if (shipObj != null)
-        {
-            shipObj.transform.Rotate(0f, 0f, 90f);
-            shipObj.GetComponent<JB_SnappingShip>().ShipPlacement();
-        }
 
 
-    }
 
-    public void FindGameManagerObj()
-    {
-        // find the game manager gameobject in scene
-        //gameManagerScript = GameObject.FindGameObjectWithTag("GameManager").GetComponent<JB_GameManager>();
-    }
-
-    public void ConfirmPosition()
-    {
-        //CmdSetAuthority();
-
-        if (shipObj != null)
-        {
-            shipObj.SendMessage("LockShipPosition");
-
-            if (shipObj.GetComponent<JB_SnappingShip>().ValidPosition()) // double checks that ship is valid position on the grid 
-            {
-                // if true we can lock the ship's position
-                shipObj.GetComponent<DragObject>().canDrag = false;
-
-                // index counter unique to each player to determine when game starts
-                ++placementIndex;
-
-                // checks if player has all ships in position and is ready to play
-                CmdCheckPlayerReady(placementIndex);
-
-                Debug.Log("Confirm Position Method, placement index: " + placementIndex);
-
-            }
-            else
-            {
-                // if not, the ship can still be moved by player
-                shipObj.GetComponent<DragObject>().canDrag = true;
-                StartCoroutine(SendErrorAlert());
-            }
-        }
-
-
-    }
-
-    IEnumerator SendErrorAlert()
-    {
-        // alerting player that their ship placement is invalid
-        errorAlertTextObj.GetComponent<TextMeshProUGUI>().enabled = true;
-        yield return new WaitForSeconds(4f);
-        errorAlertTextObj.GetComponent<TextMeshProUGUI>().enabled = false;
-    }
-
-    [Command]
-    void CmdSetAuthority( )
-    {
-        foreach (GameObject player in playerPrefabs)
-        {
-            this.GetComponent<NetworkIdentity>().AssignClientAuthority(player.GetComponent<NetworkIdentity>().connectionToClient);
-        }
-    }
 }
