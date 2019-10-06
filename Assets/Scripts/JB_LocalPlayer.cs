@@ -26,9 +26,9 @@ public class JB_LocalPlayer : NetworkBehaviour
 
     // to make sure player does not run the function more than once
     private bool runOnce = true;
-    
+
     //used to reset the tiles when ship rotates
-    private bool[] resetTiles;
+    private bool showRotateConfirmButtons;
 
     //used to check validation of ship locations
     private bool[] checkValidation;
@@ -147,66 +147,67 @@ public class JB_LocalPlayer : NetworkBehaviour
 
     private void OnGUI()
     {
-        
-        // confirm ship positions checks all at once ======= button
-        if (GUI.Button(new Rect(570, 500, 70, 25), "Confirm"))
+        if (showRotateConfirmButtons)
         {
-            // one for each ship
-            checkValidation = new bool[4];
 
-            ships = GameObject.FindGameObjectsWithTag("Ship");
-            Debug.Log(checkValidation.Length);
-            for (int i = 0; i < ships.Length ; ++i)
+
+            // confirm ship positions checks all at once ======= button
+            if (GUI.Button(new Rect(570, 500, 70, 25), "Confirm"))
             {
-                checkValidation[i] = ships[i].GetComponent<JB_SnappingShip>().ValidPosition();
-                Debug.Log("inside for loop: " + checkValidation[i] + ", " + index);
-                index = i;
-            }
+                // one for each ship
+                checkValidation = new bool[4];
 
-            Debug.Log("outside for loop: " + checkValidation + ", " + index + ", " + ships.Length);
-            allTrue = checkValidation.All(x => x);
-
-            if (allTrue)
-            {
-                GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
-
-                foreach(GameObject player in players)
-                {
-                    if(player.GetComponent<NetworkIdentity>().isLocalPlayer)
-                        player.GetComponent<JB_LocalPlayer>().CmdIncrementReadyNumber();
-
-                        
-                }
-                
-                
-
+                ships = GameObject.FindGameObjectsWithTag("Ship");
+                Debug.Log(checkValidation.Length);
                 for (int i = 0; i < ships.Length; ++i)
                 {
-                    ships[i].GetComponent<JB_SnappingShip>().LockShipPosition();
-                    ships[i].GetComponent<DragObject>().canDrag = false;
+                    checkValidation[i] = ships[i].GetComponent<JB_SnappingShip>().ValidPosition();
+                    Debug.Log("inside for loop: " + checkValidation[i] + ", " + index);
+                    index = i;
                 }
-                
-                
+
+                Debug.Log("outside for loop: " + checkValidation + ", " + index + ", " + ships.Length);
+                allTrue = checkValidation.All(x => x);
+
+                if (allTrue)
+                {
+                    GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+
+                    foreach (GameObject player in players)
+                    {
+                        if (player.GetComponent<NetworkIdentity>().isLocalPlayer)
+                            player.GetComponent<JB_LocalPlayer>().CmdIncrementReadyNumber();
+
+
+                    }
+
+
+
+                    for (int i = 0; i < ships.Length; ++i)
+                    {
+                        ships[i].GetComponent<JB_SnappingShip>().FreeOrLockShipPosition(false);
+                        ships[i].GetComponent<DragObject>().canDrag = false;
+                    }
+
+
+                }
+                else
+                {
+                    StartCoroutine(SendErrorAlert());
+                    Debug.Log("not in valid positions");
+                }
             }
-            else
+
+            // rotate ship that is selected ====== button
+            if (GUI.Button(new Rect(430, 500, 70, 25), "Rotate"))
             {
-                StartCoroutine(SendErrorAlert());
-                Debug.Log("not in valid positions");
+                // frees up tiles that were taken before rotating ship
+                shipObj.GetComponent<JB_SnappingShip>().FreeOrLockShipPosition(true);
+
+                RotateShip();
+
             }
         }
-
-        // rotate ship that is selected ====== button
-        if (GUI.Button(new Rect(430, 500, 70, 25), "Rotate"))
-        {
-            for(int i = 0; i < (shipObj.GetComponent<JB_SnappingShip>().isTileOpen.Length); ++i)
-            {
-                shipObj.GetComponent<JB_SnappingShip>().isTileOpen[i] = true;
-            }
-            
-            RotateShip();           
-
-        }
-
     }
 
     public void RotateShip()
@@ -216,6 +217,7 @@ public class JB_LocalPlayer : NetworkBehaviour
         {
             shipObj.transform.Rotate(0f, 0f, 90f);
             shipObj.GetComponent<JB_SnappingShip>().ShipPlacement();
+
         }
 
     }
