@@ -28,7 +28,7 @@ public class JB_LocalPlayer : NetworkBehaviour
     private bool runOnce = true;
 
     //used to reset the tiles when ship rotates
-    private bool showRotateConfirmButtons;
+    public bool showRotateConfirmButtons = true;
 
     //used to check validation of ship locations
     private bool[] checkValidation;

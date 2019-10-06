@@ -51,26 +51,6 @@ public class JB_GameManager : NetworkBehaviour
         }
     }
 
-    [Command]
-    public void CmdCheckPlayerReady(int index)
-    {
-        Debug.Log("test when checkplayerready called");
-        // if all of players ships are in valid position
-        if (index >= 4)
-        {
-
-
-            // increment number, and game starts when variable reaches 2
-
-                //CmdIncrementReadyNumber();
-
-                //++readyCheckNumber;
-
-                //RpcIncrementReadyNumber(readyCheckNumber);
-
-            Debug.Log("ready check number is: " + readyCheckNumber);
-        }
-    }
 
     public static void FindPlayerObjects()
     {
@@ -81,7 +61,12 @@ public class JB_GameManager : NetworkBehaviour
 
     private void StartGame()
     {
-       
+       foreach(GameObject player in playerPrefabs)
+        {
+            player.GetComponent<JB_LocalPlayer>().showRotateConfirmButtons = false;
+
+            player.transform.DetachChildren();
+        }
 
         // swapping grid layout for players
         //tempGridLayout = playerPrefabs[0].GetComponent<JB_LocalPlayer>().gridLayoutPrefab;
@@ -92,8 +77,9 @@ public class JB_GameManager : NetworkBehaviour
        
 
         // enable ability buttons
-        abilityButtons.GetComponentInChildren<GameObject>().SetActive(true);
+        abilityButtons.SetActive(true);
 
+        Debug.Log("============= game has started! ===============");
     }
 
     public void AbilityOne(GameObject obj)
