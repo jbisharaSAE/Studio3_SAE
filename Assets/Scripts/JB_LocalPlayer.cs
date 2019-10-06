@@ -9,6 +9,9 @@ using UnityEngine.UI;
 
 public class JB_LocalPlayer : NetworkBehaviour
 {
+    // testing for loop i iteration
+    public int index;
+
     // reference to objects important to each player, their ships and grid
     public GameObject[] shipPrefabs;
     public GameObject[] ships;
@@ -58,10 +61,8 @@ public class JB_LocalPlayer : NetworkBehaviour
         //if local player, enable ship, otherwise turn them off
         if (!this.isLocalPlayer)
         {
-            
             // exit if this is not local player
             return;
-
         }
 
         //spawn ship prefabs in game
@@ -71,7 +72,8 @@ public class JB_LocalPlayer : NetworkBehaviour
 
         gameManager = GameObject.FindGameObjectWithTag("GameManager");
 
-        
+       
+
 
         // converts the network ID given to player prefabs that spawn when a client joins the server into an integer
         // used to identify player's connection object from each other
@@ -92,13 +94,14 @@ public class JB_LocalPlayer : NetworkBehaviour
             {
                 if (pair.Value.gameObject.tag == "GameManager")
                 {
+                    //pair.Value.gameObject.GetComponent<NetworkIdentity>().AssignClientAuthority(this.GetComponent<NetworkIdentity>().connectionToServer);
                     pair.Value.gameObject.GetComponent<JB_GameManager>().readyCheckNumber++;
                 }
 
             }
             runOnce = false;
         }
-        
+        Debug.Log("Increment Function Called");
     }
 
     [Command]
@@ -108,6 +111,7 @@ public class JB_LocalPlayer : NetworkBehaviour
 
         //grab the ship prefabs attached to game object, assign them to the array of ships
         ships = new GameObject[shipPrefabs.Length];
+
         // one for each ship
         checkValidation = new bool[4];
 
@@ -117,6 +121,7 @@ public class JB_LocalPlayer : NetworkBehaviour
             ships[i] = Instantiate(shipPrefabs[i]);
             ships[i].GetComponent<DragObject>().playerID = netID;
             NetworkServer.SpawnWithClientAuthority(ships[i], connectionToClient);
+            RpcAssignShips(ships[i], i);
         }
 
         //gameManager.GetComponent<NetworkIdentity>().AssignClientAuthority(this.connectionToClient);
@@ -128,28 +133,60 @@ public class JB_LocalPlayer : NetworkBehaviour
 
     }
 
+    [ClientRpc]
+    void RpcAssignShips(GameObject ship, int index)
+    {
+        //grab the ship prefabs attached to game object, assign them to the array of ships
+        ships = new GameObject[shipPrefabs.Length];
+
+        ships[index] = ship;
+
+        // one for each ship
+        checkValidation = new bool[4];
+    }
+
     private void OnGUI()
     {
-
+        
         // confirm ship positions checks all at once ======= button
         if (GUI.Button(new Rect(570, 500, 70, 25), "Confirm"))
         {
-            for(int i = 0; i < ships.Length; ++i)
+            // one for each ship
+            checkValidation = new bool[4];
+
+            ships = GameObject.FindGameObjectsWithTag("Ship");
+            Debug.Log(checkValidation.Length);
+            for (int i = 0; i < ships.Length ; ++i)
             {
                 checkValidation[i] = ships[i].GetComponent<JB_SnappingShip>().ValidPosition();
+                Debug.Log("inside for loop: " + checkValidation[i] + ", " + index);
+                index = i;
             }
 
+            Debug.Log("outside for loop: " + checkValidation + ", " + index + ", " + ships.Length);
             allTrue = checkValidation.All(x => x);
 
             if (allTrue)
             {
-                CmdIncrementReadyNumber();
+                GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+
+                foreach(GameObject player in players)
+                {
+                    if(player.GetComponent<NetworkIdentity>().isLocalPlayer)
+                        player.GetComponent<JB_LocalPlayer>().CmdIncrementReadyNumber();
+
+                        
+                }
+                
+                
 
                 for (int i = 0; i < ships.Length; ++i)
                 {
                     ships[i].GetComponent<JB_SnappingShip>().LockShipPosition();
                     ships[i].GetComponent<DragObject>().canDrag = false;
                 }
+                
+                
             }
             else
             {

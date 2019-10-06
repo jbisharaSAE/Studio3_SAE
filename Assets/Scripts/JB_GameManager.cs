@@ -35,7 +35,12 @@ public class JB_GameManager : NetworkBehaviour
     private void Awake()
     {
         //rotateButton = GameObject.Find("ButtonRotate").GetComponent<Button>();
-        //confirmButton = GameObject.Find("ButtonConfirm").GetComponent<Button>();
+        //confirmButton = GameObject.Find("ButtonConfirm").GetComponent<Button>();eeee
+    }
+
+    public void AssignAuthority()
+    {
+
     }
     void Start()
     {
