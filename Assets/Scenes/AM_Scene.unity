@@ -7780,7 +7780,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 912348253}
-        m_MethodName: Aiming
+        m_MethodName: EnableAiming
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -8079,6 +8079,7 @@ MonoBehaviour:
   blastProjectileGroup: []
   blastButtonReady: 0
   deployButtonReady: 0
+  deployHasHappened: 0
 --- !u!4 &912348254
 Transform:
   m_ObjectHideFlags: 0
@@ -16548,9 +16549,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e5018f268e560947ab9ed8e23d0911a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManagerScript: {fileID: 0}
-  errorAlertTextObj: {fileID: 981189544}
-  placementIndex: 0
 --- !u!4 &1944702012
 Transform:
   m_ObjectHideFlags: 0

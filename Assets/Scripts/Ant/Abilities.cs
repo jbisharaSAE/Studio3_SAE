@@ -66,23 +66,20 @@ public class Abilities : MonoBehaviour
     //Deploying attack
     public void Deploy()
     {
-        if (deployButtonReady)
+        deployHasHappened = true;
+
+        //Set the button interactiable to false once clicked
+        GameObject deployButton = GameObject.Find("Deploy Button");
+        Button deployButtonComponent = deployButton.GetComponent<Button>();
+        deployButtonComponent.interactable = false;
+
+        foreach (GameObject mySelectionTile in selectionTileGroup)
         {
-            deployHasHappened = true;
+            Debug.Log("spawning proj");
+            GameObject myBlastProjectile = Instantiate(blastProjectile, transform.position, Quaternion.identity);
 
-            //Set the button interactiable to false once clicked
-            GameObject deployButton = GameObject.Find("Deploy Button");
-            Button deployButtonComponent = deployButton.GetComponent<Button>();
-            deployButtonComponent.interactable = false;
-
-            foreach (GameObject mySelectionTile in selectionTileGroup)
-            {
-                Debug.Log("spawning proj");
-                GameObject myBlastProjectile = Instantiate(blastProjectile, transform.position, Quaternion.identity);
-
-                //Add the projectile to a list
-                blastProjectileGroup.Add(myBlastProjectile);
-            }
+            //Add the projectile to a list
+            blastProjectileGroup.Add(myBlastProjectile);
         }
     }
 }
