@@ -9,17 +9,25 @@ using UnityEngine.UI;
 
 public class JB_LocalPlayer : NetworkBehaviour
 {
-    // testing for loop i iteration
-    public int index;
+    // spawn point for projectiles
+    public Transform projectileSpawnPoint;
+
+    // projectile blast prefab
+    public GameObject blastProjectilePrefab;
 
     // reference to objects important to each player, their ships and grid
     public GameObject[] shipPrefabs;
     public GameObject[] ships;
-    public GameObject gridLayoutPrefab;
-    public GameObject gameManagerPrefab;
-
-    private GameObject gridLayout;
+    public GameObject gridLayout;
     private GameObject gameManager;
+
+    // used for switch function, to determine which ability to use
+    [SyncVar]
+    private int abilityNumber = 5;
+    private Button[] abilityButtons;
+
+    // a boolean for each ability button to determine if button is active or not
+    private bool[] isButtonHeld;
 
     // used to find all ships in scene
     private GameObject[] shipsInGame;
@@ -27,7 +35,8 @@ public class JB_LocalPlayer : NetworkBehaviour
     // to make sure player does not run the function more than once
     private bool runOnce = true;
 
-    //used to reset the tiles when ship rotates
+    //used to hide / show rotate / confirm buttons
+    [HideInInspector]
     public bool showRotateConfirmButtons = true;
 
     //used to check validation of ship locations
@@ -37,21 +46,31 @@ public class JB_LocalPlayer : NetworkBehaviour
     // current ship that is selected
     public static GameObject shipObj;
 
-    
     [SyncVar]
-    public string playerName;
+    public string playerName; // currently unused
 
     [SyncVar]
     public int playerID;
     
     [SyncVar]
-    public bool playerReady; // currently unused
+    public bool myTurn; // currently unused
 
+    // UI text message to show error of placement of ships
     public GameObject errorAlertTextObj;
+
+    // resources for players to spend shooting / using abilities
+    public float playerResources;
+
+    // target tile position
+    private Vector3 targetPos;
 
     // Start is called before the first frame update
     void Start()
     {
+        abilityButtons = new Button[4];
+        isButtonHeld = new bool[4];
+        gameManager = GameObject.FindGameObjectWithTag("GameManager");
+
         // find my error message game object
         errorAlertTextObj = GameObject.FindGameObjectWithTag("ErrorMsg");
         
@@ -66,21 +85,213 @@ public class JB_LocalPlayer : NetworkBehaviour
         }
 
         //spawn ship prefabs in game
+
+
+        gridLayout.SetActive(true);
+
         
-
-        gridLayoutPrefab.SetActive(true);
-
-        gameManager = GameObject.FindGameObjectWithTag("GameManager");
-
-       
-
-
         // converts the network ID given to player prefabs that spawn when a client joins the server into an integer
         // used to identify player's connection object from each other
         CmdSetPlayerID(Convert.ToInt32(GetComponent<NetworkIdentity>().netId.Value));
+
+    }
+
+    private void Update()
+    {
+        if (!this.isLocalPlayer)
+        {
+            return;
+        }
+
+        // test to see if we are in battle mode
+        if (!showRotateConfirmButtons)
+        {
+            // players touch Input.Touch(0)
+            if (Input.GetMouseButtonDown(0))
+            {
+                RaycastHit hit;                                // mouse is for testing
+                if(Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit)) // shooting ray to mouse position
+                {
+                    if(hit.collider.gameObject.tag == "Tile") // did player hit a tile
+                    {
+                        targetPos = hit.collider.gameObject.GetComponent<JB_Tile>().tilePosition;
+
+                        for(int i = 0; i < isButtonHeld.Length; ++i)
+                        {
+                            if (isButtonHeld[i])
+                            {
+                                abilityNumber = i;
+                            }
+                        }
+                    }
+                    // need an else if for detecting shield - TODO
+                    //else if ()
+                    
+                    Debug.Log(hit.collider.gameObject);
+                }
+            }
+        }
+
+        switch(abilityNumber)
+        {
+            case 0:
+                // ability one - blast
+                CmdAbilityOneBlast();
+                break;
+            case 1:
+                // ability two - barrage
+                CmdAbilityTwoBarrage();
+                break;
+            case 2:
+                // ability three - radar
+                CmdAbilityThreeRadar();
+                break;
+            case 3:
+                // ability four - shield
+                CmdAbilityFourShield();
+                break;
+            default:
+                break;
+        }
+    }
+
+    // when the game starts, player still sees their grid, but colliders are disabled, to avoid aiming at own grid
+    public void DisableMyTileColliders()
+    {
+        BoxCollider[] tileColliders = gridLayout.GetComponentsInChildren<BoxCollider>();
+
+        foreach(BoxCollider collider in tileColliders)
+        {
+            collider.enabled = false;
+        }
+
+    }
+
+    [ClientRpc]
+    public void RpcFindAbilityButtons()
+    {
+        GameObject abilityButtonInScene = GameObject.Find("myButtons");
+        abilityButtons = abilityButtonInScene.GetComponentsInChildren<Button>();
+
+        abilityButtons[0].onClick.AddListener(AbilityOneToggle);      // ability button one
+        abilityButtons[1].onClick.AddListener(AbilityTwoToggle);      // ability button two
+        abilityButtons[2].onClick.AddListener(AbilityThreeToggle);    // ability button three
+        abilityButtons[3].onClick.AddListener(AbilityFourToggle);     // ability button four
+    }
+
+    private void OnEnable()
+    {
+        if (this.isLocalPlayer && !showRotateConfirmButtons)
+        {
+            // assigning functions to each ability UI button
+            abilityButtons[0].onClick.AddListener(AbilityOneToggle);
+            abilityButtons[1].onClick.AddListener(AbilityTwoToggle);
+            abilityButtons[2].onClick.AddListener(AbilityThreeToggle);
+            abilityButtons[3].onClick.AddListener(AbilityFourToggle);
+
+        }
+    }
+
+    private void OnDisable()
+    {
+        // removelisteners to avoid cpu usage, this is for UI buttons
+        if (this.isLocalPlayer && !showRotateConfirmButtons)
+        {
+            abilityButtons[0].onClick.RemoveAllListeners();
+        }
+
+    }
+
+    // =============================== toggle functions to determine if button is active or not ============================
+    private void AbilityOneToggle()
+    {
+        isButtonHeld[0] = OnlyOneButton(0, isButtonHeld[0]);
+        Debug.Log("ability one clicked!!! ======= :)" + isButtonHeld[0]);
+    }
+
+    private void AbilityTwoToggle()
+    {
+        isButtonHeld[1] = OnlyOneButton(1, isButtonHeld[1]);
+        Debug.Log("ability two clicked!!! ======= :)" + isButtonHeld[1]);
+    }
+
+    private void AbilityThreeToggle()
+    {
+        isButtonHeld[2] = OnlyOneButton(2, isButtonHeld[2]);
+        Debug.Log("ability two clicked!!! ======= :)" + isButtonHeld[2]);
+    }
+
+    private void AbilityFourToggle()
+    {
+        isButtonHeld[3] = OnlyOneButton(3, isButtonHeld[3]);
+        Debug.Log("ability two clicked!!! ======= :)" + isButtonHeld[3]);
+    }
+    // =============================== toggle functions to determine if button is active or not ============================
+
+    
         
+    // =============================== functions to execute abilities ============================
+    [Command]
+    private void CmdAbilityOneBlast()
+    {
+        abilityNumber = 5;
+
+        Debug.Log("testing spawn projectil ability one function");
+        // so this method only gets called once
+        
+        GameObject projectile = Instantiate(blastProjectilePrefab, projectileSpawnPoint.position, Quaternion.identity);
+        projectile.GetComponent<BlastProjectile>().targetTilePos = targetPos;
+
+        NetworkServer.Spawn(projectile);
+        RpcAbilityOneBlast(projectile);
+
+    }
+
+    [ClientRpc]
+    void RpcAbilityOneBlast(GameObject projectile)
+    {
+        // to ensure this method only gets called once
+        abilityNumber = 5;
+        projectile.GetComponent<BlastProjectile>().targetTilePos = targetPos;
+    }
+
+    [Command]
+    private void CmdAbilityTwoBarrage()
+    {
+        // to ensure this method only gets called once
+        abilityNumber = 5;
+    }
+
+    [Command]
+    private void CmdAbilityThreeRadar()
+    {
+        // to ensure this method only gets called once
+        abilityNumber = 5;
+    }
+
+    [Command]
+    private void CmdAbilityFourShield()
+    {
+        // to ensure this method only gets called once
+        abilityNumber = 5;
+    }
+    // =============================== functions to execute abilities ============================
 
 
+
+
+    // method used to ensure only one ability is active any one time
+    private bool OnlyOneButton(int index, bool bToChange)
+    {
+        bToChange = !bToChange;
+        for(int i = 0; i < isButtonHeld.Length; ++i)
+        {
+            isButtonHeld[i] = false;
+        }
+
+        isButtonHeld[index] = bToChange;
+
+        return bToChange;
     }
 
 
@@ -94,8 +305,8 @@ public class JB_LocalPlayer : NetworkBehaviour
             {
                 if (pair.Value.gameObject.tag == "GameManager")
                 {
-                    //pair.Value.gameObject.GetComponent<NetworkIdentity>().AssignClientAuthority(this.GetComponent<NetworkIdentity>().connectionToServer);
                     pair.Value.gameObject.GetComponent<JB_GameManager>().readyCheckNumber++;
+                    
                 }
 
             }
@@ -147,9 +358,8 @@ public class JB_LocalPlayer : NetworkBehaviour
 
     private void OnGUI()
     {
-        if (showRotateConfirmButtons)
+        if (showRotateConfirmButtons && this.isLocalPlayer)
         {
-
 
             // confirm ship positions checks all at once ======= button
             if (GUI.Button(new Rect(570, 500, 70, 25), "Confirm"))
@@ -158,30 +368,19 @@ public class JB_LocalPlayer : NetworkBehaviour
                 checkValidation = new bool[4];
 
                 ships = GameObject.FindGameObjectsWithTag("Ship");
-                Debug.Log(checkValidation.Length);
+                //Debug.Log(checkValidation.Length);
+
                 for (int i = 0; i < ships.Length; ++i)
                 {
                     checkValidation[i] = ships[i].GetComponent<JB_SnappingShip>().ValidPosition();
-                    Debug.Log("inside for loop: " + checkValidation[i] + ", " + index);
-                    index = i;
                 }
 
-                Debug.Log("outside for loop: " + checkValidation + ", " + index + ", " + ships.Length);
                 allTrue = checkValidation.All(x => x);
 
                 if (allTrue)
                 {
-                    GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
-
-                    foreach (GameObject player in players)
-                    {
-                        if (player.GetComponent<NetworkIdentity>().isLocalPlayer)
-                            player.GetComponent<JB_LocalPlayer>().CmdIncrementReadyNumber();
-
-
-                    }
-
-
+                   
+                    CmdIncrementReadyNumber();
 
                     for (int i = 0; i < ships.Length; ++i)
                     {
@@ -208,6 +407,7 @@ public class JB_LocalPlayer : NetworkBehaviour
 
             }
         }
+       
     }
 
     public void RotateShip()
@@ -217,9 +417,7 @@ public class JB_LocalPlayer : NetworkBehaviour
         {
             shipObj.transform.Rotate(0f, 0f, 90f);
             shipObj.GetComponent<JB_SnappingShip>().ShipPlacement();
-
         }
-
     }
 
     IEnumerator SendErrorAlert()

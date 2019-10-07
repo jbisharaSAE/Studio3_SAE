@@ -2,17 +2,30 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AbilityAction : MonoBehaviour
+public class BlastProjectile : MonoBehaviour
 {
     private float step;
     public float speed;
+    public Vector3 targetTilePos;
 
-    // Start is called before the first frame update
-    void Start()
+    
+
+    private void Update()
     {
+        step = speed * Time.deltaTime;
 
+        transform.position = Vector3.MoveTowards(transform.position, targetTilePos, step);
+
+        float distance = Vector3.Distance(transform.position, targetTilePos);
+
+        if(distance <= 0.1)
+        {
+            Destroy(gameObject);
+        }
     }
 
+    // ANTHONY'S CODE
+    /*
     IEnumerator Shoot()
     {
         //Get access to abilities script
@@ -51,4 +64,7 @@ public class AbilityAction : MonoBehaviour
         //Destroy the projectile when it lands
         Destroy(gameObject);
     }
+    */
+
+    // ANTHONY'S CODE
 }

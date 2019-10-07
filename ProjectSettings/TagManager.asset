@@ -9,6 +9,7 @@ TagManager:
   - OverlayCanvas
   - GameManager
   - ErrorMsg
+  - GridManager
   layers:
   - Default
   - TransparentFX

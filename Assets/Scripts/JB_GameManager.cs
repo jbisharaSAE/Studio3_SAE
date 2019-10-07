@@ -12,15 +12,20 @@ public class JB_GameManager : NetworkBehaviour
     [SerializeField]
     private GameObject abilityButtons;
 
-    private GameObject tempGridLayout;
+    public TextMeshProUGUI textDisplayTest;
 
     private bool isOriginal = false;
+    private bool runOnce = false;
 
+    [SyncVar]
     public int readyCheckNumber;
 
+    public GameObject playerObj;
 
     void Start()
     {
+        // a boolean for each ability button
+        //isButtonHeld = new bool[4];
 
         GameObject[] all = GameObject.FindGameObjectsWithTag(this.tag);
 
@@ -39,13 +44,19 @@ public class JB_GameManager : NetworkBehaviour
 
     }
 
+
     // Update is called once per frame
     void Update()
     {
         if (readyCheckNumber == 2)
         {
+
             // start game
-            StartGame();
+            if (!runOnce)
+            {
+                StartGame();
+                runOnce = true;
+            }
 
 
         }
@@ -55,36 +66,64 @@ public class JB_GameManager : NetworkBehaviour
     public static void FindPlayerObjects()
     {
         playerPrefabs = GameObject.FindGameObjectsWithTag("Player");
-      
-
     }
 
-    private void StartGame()
+    [Command]
+    void CmdShowGrid(GameObject playerObj)
     {
-       foreach(GameObject player in playerPrefabs)
-        {
-            player.GetComponent<JB_LocalPlayer>().showRotateConfirmButtons = false;
+        // displaying enemy and player grid
+        playerObj.GetComponent<JB_LocalPlayer>().gridLayout.SetActive(true);
 
-            player.transform.DetachChildren();
-        }
-
-        // swapping grid layout for players
-        //tempGridLayout = playerPrefabs[0].GetComponent<JB_LocalPlayer>().gridLayoutPrefab;
-        //playerPrefabs[0].GetComponent<JB_LocalPlayer>().gridLayoutPrefab = playerPrefabs[1].GetComponent<JB_LocalPlayer>().gridLayoutPrefab;
-        //playerPrefabs[1].GetComponent<JB_LocalPlayer>().gridLayoutPrefab = tempGridLayout;
-
-        // disable positioning buttons
-       
+        // hiding rotate / confirm buttons
+        playerObj.GetComponent<JB_LocalPlayer>().showRotateConfirmButtons = false;
 
         // enable ability buttons
         abilityButtons.SetActive(true);
 
+        RpcShowGrid(playerObj);
+
+        // start the method that find the ability buttons
+        playerObj.GetComponent<JB_LocalPlayer>().RpcFindAbilityButtons();
+
+        // calls a function to disable tile colliders locally
+        playerObj.GetComponent<JB_LocalPlayer>().DisableMyTileColliders();
+
+    }
+
+    [ClientRpc]
+    void RpcShowGrid(GameObject playerObj)
+    {
+        playerObj.GetComponent<JB_LocalPlayer>().gridLayout.SetActive(true);
+        playerObj.GetComponent<JB_LocalPlayer>().showRotateConfirmButtons = false;
+
+        // enable ability buttons
+        abilityButtons.SetActive(true);
+    }
+
+    
+    private void StartGame()
+    {
+        foreach (KeyValuePair<NetworkInstanceId, NetworkIdentity> pair in NetworkServer.objects)
+        {
+            if(pair.Value.gameObject.tag == "Player")
+            {
+                CmdShowGrid(pair.Value.gameObject);
+                
+            }
+        }
+
+        // disable positioning buttons
         Debug.Log("============= game has started! ===============");
     }
 
-    public void AbilityOne(GameObject obj)
+    public void AbilityOne()
     {
-        obj.SetActive(true);
+        // toggles the ability button
+        //isButtonHeld[0] = !isButtonHeld[0];
+
+        textDisplayTest.text = "ability one activated";
+
+        Debug.Log(playerObj.GetComponent<JB_LocalPlayer>().playerID);
     }
 
 

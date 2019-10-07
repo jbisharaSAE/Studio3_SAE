@@ -20,6 +20,8 @@ public class DragObject : NetworkBehaviour
     // to ensure a specific method is only called once
     private bool runOnce = false;
 
+  
+
     public override void OnStartAuthority()
     {
         Debug.Log(GetComponent<NetworkIdentity>().hasAuthority);
@@ -52,15 +54,14 @@ public class DragObject : NetworkBehaviour
             // change ship reference to rotate
             JB_LocalPlayer.shipObj = gameObject;
 
-            
-            
 
             // frees up tiles that were taken up by ship's last position
             snapShipScript.SendMessage("MovingShip");
             Debug.Log("Clicked, shipObj variable: "); // + JB_LocalPlayer.shipObj);
         }
+
         RemoveSpriteEnemyShips();
-        
+
     }
 
     private Vector3 GetMouseAsWorldPoint()
