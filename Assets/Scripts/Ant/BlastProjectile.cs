@@ -1,14 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
-public class BlastProjectile : MonoBehaviour
+public class BlastProjectile : NetworkBehaviour
 {
     private float step;
     public float speed;
+
+
     public Vector3 targetTilePos;
 
-    
 
     private void Update()
     {

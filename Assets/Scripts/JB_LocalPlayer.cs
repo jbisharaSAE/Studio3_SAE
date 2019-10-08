@@ -62,8 +62,11 @@ public class JB_LocalPlayer : NetworkBehaviour
     public float playerResources;
 
     // target tile position
-    private Vector3 targetPos;
+    private Vector3 tempTargetPos;
 
+    [SyncVar]
+    private Vector3 trueTarget;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -112,9 +115,9 @@ public class JB_LocalPlayer : NetworkBehaviour
                 RaycastHit hit;                                // mouse is for testing
                 if(Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit)) // shooting ray to mouse position
                 {
-                    if(hit.collider.gameObject.tag == "Tile") // did player hit a tile
+                    if(hit.collider.gameObject.tag == "Tile") // did player click on a tile
                     {
-                        targetPos = hit.collider.gameObject.GetComponent<JB_Tile>().tilePosition;
+                        tempTargetPos = hit.collider.gameObject.GetComponent<JB_Tile>().tilePosition;
 
                         for(int i = 0; i < isButtonHeld.Length; ++i)
                         {
@@ -127,7 +130,7 @@ public class JB_LocalPlayer : NetworkBehaviour
                     // need an else if for detecting shield - TODO
                     //else if ()
                     
-                    Debug.Log(hit.collider.gameObject);
+                    
                 }
             }
         }
@@ -136,19 +139,23 @@ public class JB_LocalPlayer : NetworkBehaviour
         {
             case 0:
                 // ability one - blast
-                CmdAbilityOneBlast();
+                CmdAbilityOneBlast(tempTargetPos);
+                abilityNumber = 5;
                 break;
             case 1:
                 // ability two - barrage
                 CmdAbilityTwoBarrage();
+                abilityNumber = 5;
                 break;
             case 2:
                 // ability three - radar
                 CmdAbilityThreeRadar();
+                abilityNumber = 5;
                 break;
             case 3:
                 // ability four - shield
                 CmdAbilityFourShield();
+                abilityNumber = 5;
                 break;
             default:
                 break;
@@ -198,6 +205,9 @@ public class JB_LocalPlayer : NetworkBehaviour
         if (this.isLocalPlayer && !showRotateConfirmButtons)
         {
             abilityButtons[0].onClick.RemoveAllListeners();
+            abilityButtons[1].onClick.RemoveAllListeners();
+            abilityButtons[2].onClick.RemoveAllListeners();
+            abilityButtons[3].onClick.RemoveAllListeners();
         }
 
     }
@@ -232,26 +242,32 @@ public class JB_LocalPlayer : NetworkBehaviour
         
     // =============================== functions to execute abilities ============================
     [Command]
-    private void CmdAbilityOneBlast()
+    private void CmdAbilityOneBlast(Vector3 targetPos)
     {
-        abilityNumber = 5;
+        trueTarget = targetPos;
 
-        Debug.Log("testing spawn projectil ability one function");
-        // so this method only gets called once
-        
         GameObject projectile = Instantiate(blastProjectilePrefab, projectileSpawnPoint.position, Quaternion.identity);
-        projectile.GetComponent<BlastProjectile>().targetTilePos = targetPos;
+        
+        projectile.GetComponent<BlastProjectile>().targetTilePos = trueTarget;
+        Debug.Log(projectile.GetComponent<BlastProjectile>().targetTilePos);
 
-        NetworkServer.Spawn(projectile);
-        RpcAbilityOneBlast(projectile);
+        NetworkServer.SpawnWithClientAuthority(projectile, connectionToClient);
+        
+        
+        // so this method only gets called once
+        abilityNumber = 5;
+        RpcAbilityOneBlast(projectile, trueTarget);
+
 
     }
 
     [ClientRpc]
-    void RpcAbilityOneBlast(GameObject projectile)
+    void RpcAbilityOneBlast(GameObject projectile, Vector3 targetPos)
     {
         // to ensure this method only gets called once
         abilityNumber = 5;
+        Debug.Log(projectile.GetComponent<BlastProjectile>().targetTilePos);
+
         projectile.GetComponent<BlastProjectile>().targetTilePos = targetPos;
     }
 
