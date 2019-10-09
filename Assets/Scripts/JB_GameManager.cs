@@ -36,7 +36,6 @@ public class JB_GameManager : NetworkBehaviour
             {
                 Destroy(this.gameObject);
 
-
             }
         }
 
@@ -112,8 +111,37 @@ public class JB_GameManager : NetworkBehaviour
             }
         }
 
+        CmdSetPlayerTurn();
+
         // disable positioning buttons
         Debug.Log("============= game has started! ===============");
+    }
+
+    [Command]
+    void CmdSetPlayerTurn()
+    {
+        if (!hasAuthority)
+        {
+            Debug.Log("does not have authority");
+            return;
+            
+        }
+
+        playerPrefabs[0].GetComponent<JB_LocalPlayer>().myTurn = true;
+        playerPrefabs[0].GetComponent<JB_LocalPlayer>().currentResources = 50f;
+        playerPrefabs[1].GetComponent<JB_LocalPlayer>().myTurn = false;
+    }
+
+    public void ChangePlayerTurn()
+    {
+        CmdChangePlayerTurn();
+    }
+
+    [Command]
+    void CmdChangePlayerTurn()
+    {
+        playerPrefabs[0].GetComponent<JB_LocalPlayer>().myTurn = !playerPrefabs[0].GetComponent<JB_LocalPlayer>().myTurn;
+        playerPrefabs[1].GetComponent<JB_LocalPlayer>().myTurn = !playerPrefabs[1].GetComponent<JB_LocalPlayer>().myTurn;
     }
 
     public void AbilityOne()
