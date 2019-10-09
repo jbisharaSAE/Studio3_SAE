@@ -22,6 +22,7 @@ public class JB_LocalPlayer : NetworkBehaviour
     private GameObject gameManager;
 
     // used for switch function, to determine which ability to use
+    [SyncVar]
     private int abilityNumber = 5;
     private Button[] abilityButtons;
 
@@ -58,18 +59,7 @@ public class JB_LocalPlayer : NetworkBehaviour
     public GameObject errorAlertTextObj;
 
     // resources for players to spend shooting / using abilities
-    public float currentResources;
-    private float maxResources;
-
-    // resource cost for abilities
-    [SerializeField]
-    private float blastCost = 25f;
-    [SerializeField]
-    private float barrageCost = 75f;
-    [SerializeField]
-    private float radarCost = 50f;
-    [SerializeField]
-    private float shieldCost = 50f;
+    public float playerResources;
 
     // target tile position
     private Vector3 tempTargetPos;
@@ -80,7 +70,7 @@ public class JB_LocalPlayer : NetworkBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        abilityButtons = new Button[5];
+        abilityButtons = new Button[4];
         isButtonHeld = new bool[4];
         gameManager = GameObject.FindGameObjectWithTag("GameManager");
 
@@ -97,9 +87,12 @@ public class JB_LocalPlayer : NetworkBehaviour
             return;
         }
 
+        //spawn ship prefabs in game
+
 
         gridLayout.SetActive(true);
 
+        
         // converts the network ID given to player prefabs that spawn when a client joins the server into an integer
         // used to identify player's connection object from each other
         CmdSetPlayerID(Convert.ToInt32(GetComponent<NetworkIdentity>().netId.Value));
@@ -108,11 +101,11 @@ public class JB_LocalPlayer : NetworkBehaviour
 
     private void Update()
     {
-        if (!this.isLocalPlayer) { return; }
+        if (!this.isLocalPlayer)
+        {
+            return;
+        }
 
-        if (!myTurn) { Debug.LogWarning("It is not my turn"); return; }
-        
-        
         // test to see if we are in battle mode
         if (!showRotateConfirmButtons)
         {
@@ -131,12 +124,10 @@ public class JB_LocalPlayer : NetworkBehaviour
                             if (isButtonHeld[i])
                             {
                                 abilityNumber = i;
-                                ActivateAbilities(i);
                             }
                         }
                     }
                     // need an else if for detecting shield - TODO
-                    // neeed an else if for detecting ship - TODO
                     //else if ()
                     
                     
@@ -144,69 +135,27 @@ public class JB_LocalPlayer : NetworkBehaviour
             }
         }
 
-        
-    }
-
-    private void ActivateAbilities(int index)
-    {
-        switch (index)
+        switch(abilityNumber)
         {
             case 0:
-                if(currentResources >= blastCost)
-                {
-                    // ability one - blast
-                    CmdAbilityOneBlast(tempTargetPos);
-
-                    // take away the resource cost of this ability
-                    currentResources -= blastCost;
-                }
-                
-                // we only want to run this ability once at a time
+                // ability one - blast
+                CmdAbilityOneBlast(tempTargetPos);
                 abilityNumber = 5;
-
-                // ability is no longer active
-                isButtonHeld[0] = false;
-
-                
                 break;
             case 1:
                 // ability two - barrage
                 CmdAbilityTwoBarrage();
-
-                // we only want to run this ability once at a time
                 abilityNumber = 5;
-
-                // ability is no longer active
-                isButtonHeld[1] = false;
-
-                // take away the resource cost of this ability
-                currentResources -= barrageCost;
                 break;
             case 2:
                 // ability three - radar
                 CmdAbilityThreeRadar();
-
-                // we only want to run this ability once at a time
                 abilityNumber = 5;
-
-                // ability is no longer active
-                isButtonHeld[2] = false;
-
-                // take away the resource cost of this ability
-                currentResources -= radarCost;
                 break;
             case 3:
                 // ability four - shield
                 CmdAbilityFourShield();
-
-                // we only want to run this ability once at a time
                 abilityNumber = 5;
-
-                // ability is no longer active
-                isButtonHeld[3] = false;
-
-                // take away the resource cost of this ability
-                currentResources -= shieldCost;
                 break;
             default:
                 break;
@@ -228,11 +177,6 @@ public class JB_LocalPlayer : NetworkBehaviour
     [ClientRpc]
     public void RpcFindAbilityButtons()
     {
-        if (!myTurn)
-        {
-            return;
-        }
-
         GameObject abilityButtonInScene = GameObject.Find("myButtons");
         abilityButtons = abilityButtonInScene.GetComponentsInChildren<Button>();
 
@@ -240,16 +184,10 @@ public class JB_LocalPlayer : NetworkBehaviour
         abilityButtons[1].onClick.AddListener(AbilityTwoToggle);      // ability button two
         abilityButtons[2].onClick.AddListener(AbilityThreeToggle);    // ability button three
         abilityButtons[3].onClick.AddListener(AbilityFourToggle);     // ability button four
-        abilityButtons[4].onClick.AddListener(EndTurn);               // end turn button
     }
 
     private void OnEnable()
     {
-        if (!myTurn)
-        {
-            return;
-        }
-
         if (this.isLocalPlayer && !showRotateConfirmButtons)
         {
             // assigning functions to each ability UI button
@@ -257,18 +195,12 @@ public class JB_LocalPlayer : NetworkBehaviour
             abilityButtons[1].onClick.AddListener(AbilityTwoToggle);
             abilityButtons[2].onClick.AddListener(AbilityThreeToggle);
             abilityButtons[3].onClick.AddListener(AbilityFourToggle);
-            abilityButtons[4].onClick.AddListener(EndTurn);
 
         }
     }
 
     private void OnDisable()
     {
-        if (!myTurn)
-        {
-            return;
-        }
-
         // removelisteners to avoid cpu usage, this is for UI buttons
         if (this.isLocalPlayer && !showRotateConfirmButtons)
         {
@@ -276,7 +208,6 @@ public class JB_LocalPlayer : NetworkBehaviour
             abilityButtons[1].onClick.RemoveAllListeners();
             abilityButtons[2].onClick.RemoveAllListeners();
             abilityButtons[3].onClick.RemoveAllListeners();
-            abilityButtons[4].onClick.RemoveAllListeners();
         }
 
     }
@@ -297,23 +228,16 @@ public class JB_LocalPlayer : NetworkBehaviour
     private void AbilityThreeToggle()
     {
         isButtonHeld[2] = OnlyOneButton(2, isButtonHeld[2]);
-        Debug.Log("ability three clicked!!! ======= :)" + isButtonHeld[2]);
+        Debug.Log("ability two clicked!!! ======= :)" + isButtonHeld[2]);
     }
 
     private void AbilityFourToggle()
     {
         isButtonHeld[3] = OnlyOneButton(3, isButtonHeld[3]);
-        Debug.Log("ability four clicked!!! ======= :)" + isButtonHeld[3]);
+        Debug.Log("ability two clicked!!! ======= :)" + isButtonHeld[3]);
     }
-
-    
     // =============================== toggle functions to determine if button is active or not ============================
 
-    private void EndTurn()
-    {
-        Debug.Log("End Turn Clicked!! ++++++++++++++++");
-        gameManager.GetComponent<JB_GameManager>().ChangePlayerTurn();
-    }
     
         
     // =============================== functions to execute abilities ============================
@@ -330,6 +254,8 @@ public class JB_LocalPlayer : NetworkBehaviour
         NetworkServer.SpawnWithClientAuthority(projectile, connectionToClient);
         
         
+        // so this method only gets called once
+        abilityNumber = 5;
         RpcAbilityOneBlast(projectile, trueTarget);
 
 
@@ -338,6 +264,8 @@ public class JB_LocalPlayer : NetworkBehaviour
     [ClientRpc]
     void RpcAbilityOneBlast(GameObject projectile, Vector3 targetPos)
     {
+        // to ensure this method only gets called once
+        abilityNumber = 5;
         Debug.Log(projectile.GetComponent<BlastProjectile>().targetTilePos);
 
         projectile.GetComponent<BlastProjectile>().targetTilePos = targetPos;
@@ -346,14 +274,15 @@ public class JB_LocalPlayer : NetworkBehaviour
     [Command]
     private void CmdAbilityTwoBarrage()
     {
-
+        // to ensure this method only gets called once
+        abilityNumber = 5;
     }
 
     [Command]
     private void CmdAbilityThreeRadar()
     {
-        
-
+        // to ensure this method only gets called once
+        abilityNumber = 5;
     }
 
     [Command]
