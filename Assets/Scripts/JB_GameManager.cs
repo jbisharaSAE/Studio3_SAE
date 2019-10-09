@@ -3,221 +3,130 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.UI;
-
+using TMPro;
 
 public class JB_GameManager : NetworkBehaviour
 {
     public static GameObject[] playerPrefabs;
-       
-    [SyncVar]
-    public int readyCheckNumber;
-
-    // currently unused
-    public GameObject[] ships;
 
     [SerializeField]
     private GameObject abilityButtons;
 
-    [SerializeField]
-    private GameObject rotateConfirmButtons;
-
-    private GameObject tempGridLayout;
+    public TextMeshProUGUI textDisplayTest;
 
     private bool isOriginal = false;
+    private bool runOnce = false;
 
-    public static GameObject shipObj;
-    public GameObject errorAlertTextObj;
-    public int placementIndex = 0;
+    [SyncVar]
+    public int readyCheckNumber;
 
-    private Button rotateButton;
-    private Button confirmButton;
+    public GameObject playerObj;
 
-    private void Awake()
-    {
-        rotateButton = GameObject.Find("ButtonRotate").GetComponent<Button>();
-        confirmButton = GameObject.Find("ButtonConfirm").GetComponent<Button>();
-    }
     void Start()
     {
-
-        
-
+        // a boolean for each ability button
+        //isButtonHeld = new bool[4];
 
         GameObject[] all = GameObject.FindGameObjectsWithTag(this.tag);
-        
+
         // to avoid duplicates of this game object when created, so only one exists in scene at all times
         if (all.Length > 1)
         {
             if (!isOriginal)
             {
-                OnNetworkDestroy();
+                Destroy(this.gameObject);
 
-                
-                
+
             }
         }
 
         isOriginal = true;
 
-        GameObject rotConfirm = GameObject.Find("EGO RotateConfirmScript");
-        //rotConfirm.GetComponent<JB_RotateConfirm>().FindGameManagerObj();
-        //JB_RotateConfirm.gameManagerScript = gameObject.GetComponent<JB_GameManager>();
-
     }
 
-    
-
-    public override void OnNetworkDestroy()
-    {
-        Destroy(gameObject);
-    }
-
-    private void OnEnable()
-    {
-        rotateButton.onClick.AddListener(delegate () { RotateShip(); });
-        confirmButton.onClick.AddListener(delegate () { ConfirmPosition(); });
-    }
-
-    private void OnDisable()
-    {
-        rotateButton.onClick.RemoveListener(delegate () { RotateShip(); });
-        confirmButton.onClick.RemoveListener(delegate () { ConfirmPosition(); });
-    }
 
     // Update is called once per frame
     void Update()
     {
-        if(readyCheckNumber == 2)
+        if (readyCheckNumber == 2)
         {
+
             // start game
-            StartGame();
+            if (!runOnce)
+            {
+                StartGame();
+                runOnce = true;
+            }
 
-            
+
         }
     }
 
-    [Command]
-    public void CmdCheckPlayerReady(int index)
-    {
-        Debug.Log("test when checkplayerready called");
-        // if all of players ships are in valid position
-        if(index == 4)
-        {
-            Debug.Log("Testing if statement");
-            // increment number, and game starts when variable reaches 2
-
-            //CmdIncrementReadyNumber();
-
-            ++readyCheckNumber;
-
-            RpcIncrementReadyNumber(readyCheckNumber);
-
-            Debug.Log("ready check number is: " + readyCheckNumber);
-        }
-    }
-
-    //[Command]
-    //void CmdIncrementReadyNumber()
-    //{
-    //    ++readyCheckNumber;
-    //    RpcIncrementReadyNumber(readyCheckNumber);
-    //}
-
-    [ClientRpc]
-    void RpcIncrementReadyNumber(int n)
-    {
-        readyCheckNumber = n;
-    }
 
     public static void FindPlayerObjects()
     {
         playerPrefabs = GameObject.FindGameObjectsWithTag("Player");
-        
     }
 
-    private void StartGame()
+    [Command]
+    void CmdShowGrid(GameObject playerObj)
     {
-        for (int i = 0; i < playerPrefabs.Length; ++i)
-        {
-            for(int j = 0; j < playerPrefabs[i].GetComponent<JB_LocalPlayer>().shipPrefabs.Length; ++j)
-            {
-                // disabling ship objects on each player
-                playerPrefabs[i].GetComponent<JB_LocalPlayer>().shipPrefabs[j].SetActive(false);
-            }
-        }
+        // displaying enemy and player grid
+        playerObj.GetComponent<JB_LocalPlayer>().gridLayout.SetActive(true);
 
-        // swapping grid layout for players
-        //tempGridLayout = playerPrefabs[0].GetComponent<JB_LocalPlayer>().gridLayoutPrefab;
-        //playerPrefabs[0].GetComponent<JB_LocalPlayer>().gridLayoutPrefab = playerPrefabs[1].GetComponent<JB_LocalPlayer>().gridLayoutPrefab;
-        //playerPrefabs[1].GetComponent<JB_LocalPlayer>().gridLayoutPrefab = tempGridLayout;
-
-        // disable positioning buttons
-        rotateConfirmButtons.SetActive(false);
+        // hiding rotate / confirm buttons
+        playerObj.GetComponent<JB_LocalPlayer>().showRotateConfirmButtons = false;
 
         // enable ability buttons
         abilityButtons.SetActive(true);
 
+        RpcShowGrid(playerObj);
+
+        // start the method that find the ability buttons
+        playerObj.GetComponent<JB_LocalPlayer>().RpcFindAbilityButtons();
+
+        // calls a function to disable tile colliders locally
+        playerObj.GetComponent<JB_LocalPlayer>().DisableMyTileColliders();
+
     }
 
-    public void AbilityOne(GameObject obj)
+    [ClientRpc]
+    void RpcShowGrid(GameObject playerObj)
     {
-        obj.SetActive(true);
+        playerObj.GetComponent<JB_LocalPlayer>().gridLayout.SetActive(true);
+        playerObj.GetComponent<JB_LocalPlayer>().showRotateConfirmButtons = false;
+
+        // enable ability buttons
+        abilityButtons.SetActive(true);
     }
 
-    public void RotateShip()
+    
+    private void StartGame()
     {
-        // if shipObj is not empty, rotate 90 degrees
-        if (shipObj != null)
+        foreach (KeyValuePair<NetworkInstanceId, NetworkIdentity> pair in NetworkServer.objects)
         {
-            shipObj.transform.Rotate(0f, 0f, 90f);
-            shipObj.GetComponent<JB_SnappingShip>().ShipPlacement();
-        }
-
-
-    }
-
-    public void FindGameManagerObj()
-    {
-        // find the game manager gameobject in scene
-        //gameManagerScript = GameObject.FindGameObjectWithTag("GameManager").GetComponent<JB_GameManager>();
-    }
-
-    public void ConfirmPosition()
-    {
-        if (shipObj != null)
-        {
-            shipObj.SendMessage("LockShipPosition");
-
-            if (shipObj.GetComponent<JB_SnappingShip>().ValidPosition()) // double checks that ship is valid position on the grid 
+            if(pair.Value.gameObject.tag == "Player")
             {
-                // if true we can lock the ship's position
-                shipObj.GetComponent<DragObject>().canDrag = false;
-
-                // index counter unique to each player to determine when game starts
-                ++placementIndex;
-
-                // checks if player has all ships in position and is ready to play
-                CmdCheckPlayerReady(placementIndex);
-
-                Debug.Log("Confirm Position Method, placement index: " + placementIndex);
-
-            }
-            else
-            {
-                // if not, the ship can still be moved by player
-                shipObj.GetComponent<DragObject>().canDrag = true;
-                StartCoroutine(SendErrorAlert());
+                CmdShowGrid(pair.Value.gameObject);
+                
             }
         }
 
-
+        // disable positioning buttons
+        Debug.Log("============= game has started! ===============");
     }
 
-    IEnumerator SendErrorAlert()
+    public void AbilityOne()
     {
-        // alerting player that their ship placement is invalid
-        errorAlertTextObj.SetActive(true);
-        yield return new WaitForSeconds(4f);
-        errorAlertTextObj.SetActive(false);
+        // toggles the ability button
+        //isButtonHeld[0] = !isButtonHeld[0];
+
+        textDisplayTest.text = "ability one activated";
+
+        Debug.Log(playerObj.GetComponent<JB_LocalPlayer>().playerID);
     }
+
+
+
+
 }

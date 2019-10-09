@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5897048975570967306}
   - component: {fileID: 5897048975570967305}
-  - component: {fileID: 150357352135037282}
+  - component: {fileID: 6756961502104944138}
   m_Layer: 0
   m_Name: GridLayoutManager
   m_TagString: Untagged
@@ -47,7 +47,7 @@ MonoBehaviour:
   tile: {fileID: 5383430028295497997, guid: 796d2f7d494e7c7409d215c556d09af8, type: 3}
   length: 9
   width: 9
---- !u!114 &150357352135037282
+--- !u!114 &6756961502104944138
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

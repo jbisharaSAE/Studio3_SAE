@@ -8,6 +8,8 @@ TagManager:
   - Ship
   - OverlayCanvas
   - GameManager
+  - ErrorMsg
+  - GridManager
   layers:
   - Default
   - TransparentFX
