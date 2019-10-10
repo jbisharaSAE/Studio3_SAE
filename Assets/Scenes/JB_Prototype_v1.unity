@@ -11840,6 +11840,11 @@ PrefabInstance:
     - target: {fileID: 128148204942571286, guid: b547d0a11f72c804198b52875420d449,
         type: 3}
       propertyPath: m_ServerOnly
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 128148204942571286, guid: b547d0a11f72c804198b52875420d449,
+        type: 3}
+      propertyPath: m_LocalPlayerAuthority
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 128148204942571289, guid: b547d0a11f72c804198b52875420d449,

@@ -137,8 +137,9 @@ public class DragObject : NetworkBehaviour
                 }
 
             }
+            runOnce = true;
         }
-        
+
     }
 
 

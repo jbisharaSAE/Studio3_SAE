@@ -9,6 +9,8 @@ public class JB_GameManager : NetworkBehaviour
 {
     public static GameObject[] playerPrefabs;
 
+    public GameObject networkManagerObj;
+
     [SerializeField]
     private GameObject abilityButtons;
 
@@ -21,6 +23,8 @@ public class JB_GameManager : NetworkBehaviour
     public int readyCheckNumber;
 
     public GameObject playerObj;
+
+    private List<GameObject> players = new List<GameObject>();
 
     void Start()
     {
@@ -42,6 +46,12 @@ public class JB_GameManager : NetworkBehaviour
         isOriginal = true;
 
     }
+
+    //private void OnPlayerConnected(NetworkIdentity player)
+    //{
+    //    players = GetComponent<NetworkManager>().
+            
+    //}
 
 
     // Update is called once per frame

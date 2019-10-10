@@ -33,6 +33,7 @@ public class JB_LocalPlayer : NetworkBehaviour
 
     // to make sure player does not run the function more than once
     private bool runOnce = true;
+    private bool runMeOnce = true;
 
     //used to hide / show rotate / confirm buttons
     [HideInInspector]
@@ -82,7 +83,7 @@ public class JB_LocalPlayer : NetworkBehaviour
     {
         abilityButtons = new Button[5];
         isButtonHeld = new bool[4];
-        gameManager = GameObject.FindGameObjectWithTag("GameManager");
+        
 
         // find my error message game object
         errorAlertTextObj = GameObject.FindGameObjectWithTag("ErrorMsg");
@@ -97,6 +98,7 @@ public class JB_LocalPlayer : NetworkBehaviour
             return;
         }
 
+        
 
         gridLayout.SetActive(true);
 
@@ -104,6 +106,11 @@ public class JB_LocalPlayer : NetworkBehaviour
         // used to identify player's connection object from each other
         CmdSetPlayerID(Convert.ToInt32(GetComponent<NetworkIdentity>().netId.Value));
 
+    }
+
+    private void Awake()
+    {
+        gameManager = GameObject.FindGameObjectWithTag("GameManager");
     }
 
     private void Update()
@@ -143,8 +150,27 @@ public class JB_LocalPlayer : NetworkBehaviour
                 }
             }
         }
+    }
 
-        
+    
+    // trying to run this script locally - TODO
+    void RemoveSpriteEnemyShips()
+    {
+        if (!runMeOnce)
+        {
+            GameObject[] allShips = GameObject.FindGameObjectsWithTag("Ship");
+
+            foreach (GameObject ship in allShips)
+            {
+                if (playerID != ship.GetComponent<DragObject>().playerID)
+                {
+                    ship.SetActive(false);
+                }
+
+            }
+            runMeOnce = true;
+        }
+
     }
 
     private void ActivateAbilities(int index)
