@@ -1473,21 +1473,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: EGO GameManager
       objectReference: {fileID: 0}
-    - target: {fileID: 128148204942571289, guid: b547d0a11f72c804198b52875420d449,
-        type: 3}
-      propertyPath: rotateConfirmButtons
-      value: 
-      objectReference: {fileID: 1084552849}
-    - target: {fileID: 128148204942571289, guid: b547d0a11f72c804198b52875420d449,
-        type: 3}
-      propertyPath: abilityButtons
-      value: 
-      objectReference: {fileID: 1072984430956419795}
-    - target: {fileID: 128148204942571289, guid: b547d0a11f72c804198b52875420d449,
-        type: 3}
-      propertyPath: errorAlertTextObj
-      value: 
-      objectReference: {fileID: 981189544}
     - target: {fileID: 128148204942571288, guid: b547d0a11f72c804198b52875420d449,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1543,6 +1528,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 128148204942571289, guid: b547d0a11f72c804198b52875420d449,
+        type: 3}
+      propertyPath: rotateConfirmButtons
+      value: 
+      objectReference: {fileID: 1084552849}
+    - target: {fileID: 128148204942571289, guid: b547d0a11f72c804198b52875420d449,
+        type: 3}
+      propertyPath: abilityButtons
+      value: 
+      objectReference: {fileID: 1072984430956419795}
+    - target: {fileID: 128148204942571289, guid: b547d0a11f72c804198b52875420d449,
+        type: 3}
+      propertyPath: errorAlertTextObj
+      value: 
+      objectReference: {fileID: 981189544}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b547d0a11f72c804198b52875420d449, type: 3}
 --- !u!114 &136983193 stripped
@@ -3513,6 +3513,36 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 391474943}
   m_CullTransparentMesh: 0
+--- !u!1 &419607143
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 419607144}
+  m_Layer: 0
+  m_Name: EGO AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &419607144
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 419607143}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 252.76485, y: 489.71915, z: -138.84995}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 14
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &429722784
 GameObject:
   m_ObjectHideFlags: 0
@@ -7806,6 +7836,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: AM_Ship4
       objectReference: {fileID: 0}
+    - target: {fileID: 852500995083479784, guid: 268fcc5a1abf211459103e6f0e81a7a2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 852500995083479790, guid: 268fcc5a1abf211459103e6f0e81a7a2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -11808,6 +11843,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: AM_Ship2
       objectReference: {fileID: 0}
+    - target: {fileID: 771212208799578348, guid: 892d2f1d3eb8540419c745b7f543f2b1,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 771212208799578346, guid: 892d2f1d3eb8540419c745b7f543f2b1,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -12061,6 +12101,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: AM_Ship3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1429587017747326144, guid: dd669887cd8db9e47944a0ef750490a7,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1429587017747326150, guid: dd669887cd8db9e47944a0ef750490a7,
         type: 3}
@@ -14862,10 +14907,10 @@ MonoBehaviour:
   m_SpawnPrefabs:
   - {fileID: 3918158683220688918, guid: 4f9403131931ccd439d715db9910ce79, type: 3}
   - {fileID: 5383430028295497997, guid: 796d2f7d494e7c7409d215c556d09af8, type: 3}
-  - {fileID: 4436528026164060653, guid: 7f8061adb05309443af62930f3f78fea, type: 3}
-  - {fileID: 771212208799578348, guid: 6529aebd065d19f428d309e0e428dcb1, type: 3}
-  - {fileID: 1429587017747326144, guid: e22e782f9035a0242a38c78611ae35a3, type: 3}
-  - {fileID: 852500995083479784, guid: 51adc8d002c7d2b42a5dac06b704cb78, type: 3}
+  - {fileID: 4436528026164060653, guid: bd2dc94fb99f5714084f020a09d2cfb7, type: 3}
+  - {fileID: 771212208799578348, guid: 892d2f1d3eb8540419c745b7f543f2b1, type: 3}
+  - {fileID: 1429587017747326144, guid: dd669887cd8db9e47944a0ef750490a7, type: 3}
+  - {fileID: 852500995083479784, guid: 268fcc5a1abf211459103e6f0e81a7a2, type: 3}
   - {fileID: 128148204942571291, guid: b547d0a11f72c804198b52875420d449, type: 3}
   - {fileID: 5897048975570967307, guid: e6b40b8411f638642abfb09354964bb0, type: 3}
   m_CustomConfig: 0
@@ -15053,6 +15098,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: AM_Ship1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4436528026164060653, guid: bd2dc94fb99f5714084f020a09d2cfb7,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4436528026164060655, guid: bd2dc94fb99f5714084f020a09d2cfb7,
         type: 3}
@@ -16765,9 +16815,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e5018f268e560947ab9ed8e23d0911a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManagerScript: {fileID: 136983193}
-  errorAlertTextObj: {fileID: 981189544}
-  placementIndex: 0
 --- !u!4 &1944702012
 Transform:
   m_ObjectHideFlags: 0
