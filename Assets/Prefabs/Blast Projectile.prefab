@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5283756170966495513}
   - component: {fileID: -1896301080621996477}
   - component: {fileID: 467571734970933522}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: Blast Projectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -164,7 +164,7 @@ GameObject:
   - component: {fileID: 7490413534758758332}
   - component: {fileID: 7697264580073883250}
   - component: {fileID: 5351462187184301305}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: Graphics
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -179,7 +179,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1470517622987368808}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.018, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.1112489, y: 0.1112489, z: 0.1112489}
   m_Children: []
   m_Father: {fileID: 6288587044087606652}

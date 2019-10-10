@@ -353,8 +353,8 @@ public class JB_LocalPlayer : NetworkBehaviour
 
         GameObject projectile = Instantiate(blastProjectilePrefab, projectileSpawnPoint.position, Quaternion.identity);
         
-        projectile.GetComponent<BlastProjectile>().targetTilePos = trueTarget;
-        Debug.Log(projectile.GetComponent<BlastProjectile>().targetTilePos);
+        projectile.GetComponent<AM_BlastProjectile>().targetTilePos = trueTarget;
+        Debug.Log(projectile.GetComponent<AM_BlastProjectile>().targetTilePos);
 
         NetworkServer.SpawnWithClientAuthority(projectile, connectionToClient);
         
@@ -367,9 +367,9 @@ public class JB_LocalPlayer : NetworkBehaviour
     [ClientRpc]
     void RpcAbilityOneBlast(GameObject projectile, Vector3 targetPos)
     {
-        Debug.Log(projectile.GetComponent<BlastProjectile>().targetTilePos);
+        Debug.Log(projectile.GetComponent<AM_BlastProjectile>().targetTilePos);
 
-        projectile.GetComponent<BlastProjectile>().targetTilePos = targetPos;
+        projectile.GetComponent<AM_BlastProjectile>().targetTilePos = targetPos;
     }
 
     [Command]
