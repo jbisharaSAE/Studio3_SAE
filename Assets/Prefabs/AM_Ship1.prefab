@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1000532557}
   - component: {fileID: 1000532559}
   - component: {fileID: 1000532558}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Graphics
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -113,7 +113,7 @@ GameObject:
   - component: {fileID: 4436528024734865948}
   - component: {fileID: 4436528024734865947}
   - component: {fileID: 4436528024734865949}
-  m_Layer: 8
+  m_Layer: 15
   m_Name: SquareSlot7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -222,7 +222,7 @@ GameObject:
   - component: {fileID: 4436528025099865400}
   - component: {fileID: 4436528025099865383}
   - component: {fileID: 4436528025099865401}
-  m_Layer: 8
+  m_Layer: 15
   m_Name: SquareSlot6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -331,7 +331,7 @@ GameObject:
   - component: {fileID: 4436528025233588842}
   - component: {fileID: 4436528025233588841}
   - component: {fileID: 4436528025233588843}
-  m_Layer: 8
+  m_Layer: 15
   m_Name: SquareSlot5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -440,7 +440,7 @@ GameObject:
   - component: {fileID: 4436528025273342330}
   - component: {fileID: 4436528025273342329}
   - component: {fileID: 4436528025273342331}
-  m_Layer: 8
+  m_Layer: 15
   m_Name: SquareSlot3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -549,7 +549,7 @@ GameObject:
   - component: {fileID: 4436528025430696285}
   - component: {fileID: 4436528025430696284}
   - component: {fileID: 4436528025430696286}
-  m_Layer: 8
+  m_Layer: 15
   m_Name: SquareSlot2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -658,7 +658,7 @@ GameObject:
   - component: {fileID: 4436528025855468423}
   - component: {fileID: 4436528025855468422}
   - component: {fileID: 4436528025855468440}
-  m_Layer: 8
+  m_Layer: 15
   m_Name: SquareSlot1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -767,7 +767,7 @@ GameObject:
   - component: {fileID: 4436528026161005328}
   - component: {fileID: 4436528026161005343}
   - component: {fileID: 4436528026161005329}
-  m_Layer: 8
+  m_Layer: 15
   m_Name: SquareSlot8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -878,7 +878,7 @@ GameObject:
   - component: {fileID: 4436528026164060642}
   - component: {fileID: 4436528026164060643}
   - component: {fileID: -8099898399160415981}
-  m_Layer: 8
+  m_Layer: 15
   m_Name: AM_Ship1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1010,7 +1010,7 @@ GameObject:
   - component: {fileID: 4436528026330532012}
   - component: {fileID: 4436528026330532011}
   - component: {fileID: 4436528026330532013}
-  m_Layer: 8
+  m_Layer: 15
   m_Name: SquareSlot9
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1119,7 +1119,7 @@ GameObject:
   - component: {fileID: 4436528026462948178}
   - component: {fileID: 4436528026462948177}
   - component: {fileID: 4436528026462948179}
-  m_Layer: 8
+  m_Layer: 15
   m_Name: SquareSlot4
   m_TagString: Untagged
   m_Icon: {fileID: 0}

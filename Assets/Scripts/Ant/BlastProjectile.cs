@@ -8,9 +8,9 @@ public class BlastProjectile : NetworkBehaviour
     private float step;
     public float speed;
 
-
     public Vector3 targetTilePos;
 
+    
 
     private void Update()
     {
@@ -22,8 +22,42 @@ public class BlastProjectile : NetworkBehaviour
 
         if(distance <= 0.1)
         {
-            Destroy(gameObject);
+            Debug.Log("In distance");
+
+            RaycastHit hit;
+            if (Physics.Raycast(transform.position, transform.position + new Vector3(0, 0, 1), out hit))
+            {
+                Debug.Log("Sent ray");
+                // do we hit the ship
+                if (hit.transform.tag == "Ship")
+                {
+                    Debug.Log("hit ship");
+                    AudioManager audioManagerScript = GameObject.Find("Audio Manager").GetComponent<AudioManager>();
+                    audioManagerScript.PlayBlast();
+                }
+
+                // do we hit a tile
+                // do we hit nothing
+                else
+                {
+                    Debug.Log("missed");
+                }
+
+                //Destroy(gameObject);
+
+            }
+
+            else
+            {
+                Debug.Log("Didn't hit anything");
+            }
         }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.blue;
+        Gizmos.DrawLine(transform.position, transform.position + new Vector3(0, 0, 1));
     }
 
     // ANTHONY'S CODE

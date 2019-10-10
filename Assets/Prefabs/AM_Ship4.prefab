@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 852500993403186470}
   - component: {fileID: 852500993403186471}
   - component: {fileID: 852500993403186468}
-  m_Layer: 8
+  m_Layer: 15
   m_Name: SquareSlot8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -121,7 +121,7 @@ GameObject:
   - component: {fileID: 852500993746885353}
   - component: {fileID: 852500993746885366}
   - component: {fileID: 852500993746885367}
-  m_Layer: 8
+  m_Layer: 15
   m_Name: SquareSlot1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -230,7 +230,7 @@ GameObject:
   - component: {fileID: 852500994088796193}
   - component: {fileID: 852500994088796206}
   - component: {fileID: 852500994088796207}
-  m_Layer: 8
+  m_Layer: 15
   m_Name: SquareSlot6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -339,7 +339,7 @@ GameObject:
   - component: {fileID: 852500994137736011}
   - component: {fileID: 852500994137736008}
   - component: {fileID: 852500994137736009}
-  m_Layer: 8
+  m_Layer: 15
   m_Name: SquareSlot4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -451,7 +451,7 @@ GameObject:
   - component: {fileID: 852500995083479786}
   - component: {fileID: 852500995083479787}
   - component: {fileID: -698425593090509916}
-  m_Layer: 8
+  m_Layer: 15
   m_Name: AM_Ship4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -629,7 +629,7 @@ GameObject:
   - component: {fileID: 852500995109446933}
   - component: {fileID: 852500995109446930}
   - component: {fileID: 852500995109446931}
-  m_Layer: 8
+  m_Layer: 15
   m_Name: SquareSlot2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -738,7 +738,7 @@ GameObject:
   - component: {fileID: 852500995118585455}
   - component: {fileID: 852500995118585452}
   - component: {fileID: 852500995118585453}
-  m_Layer: 8
+  m_Layer: 15
   m_Name: SquareSlot5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -846,7 +846,7 @@ GameObject:
   - component: {fileID: 5802462847406348449}
   - component: {fileID: 3626615785674454230}
   - component: {fileID: 3344341412309799161}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Graphics
   m_TagString: Untagged
   m_Icon: {fileID: 0}
