@@ -63,8 +63,8 @@ MonoBehaviour:
     i13: 0
     i14: 0
     i15: 0
-  m_ServerOnly: 1
-  m_LocalPlayerAuthority: 0
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 1
 --- !u!114 &128148204942571289
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -77,5 +77,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11405cf9571eea04b92f651067b6c5df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  networkManagerObj: {fileID: 0}
   abilityButtons: {fileID: 0}
+  textDisplayTest: {fileID: 0}
   readyCheckNumber: 0
+  playerObj: {fileID: 0}

@@ -24,7 +24,7 @@ public class DragObject : NetworkBehaviour
 
     public override void OnStartAuthority()
     {
-        Debug.Log(GetComponent<NetworkIdentity>().hasAuthority);
+        
 
         if (hasAuthority == false)
         {

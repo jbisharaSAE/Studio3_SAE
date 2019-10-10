@@ -19,11 +19,14 @@ public class JB_LocalPlayer : NetworkBehaviour
     public GameObject[] shipPrefabs;
     public GameObject[] ships;
     public GameObject gridLayout;
+    public GameObject gameManagerPrefab;
     private GameObject gameManager;
 
     // used for switch function, to determine which ability to use
     private int abilityNumber = 5;
-    private Button[] abilityButtons;
+    public Button[] abilityButtons;
+    public GameObject myButtons;
+    
 
     // a boolean for each ability button to determine if button is active or not
     private bool[] isButtonHeld;
@@ -81,9 +84,14 @@ public class JB_LocalPlayer : NetworkBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        abilityButtons = new Button[5];
+        //abilityButtons = new Button[5];
         isButtonHeld = new bool[4];
-        
+
+        // fin the canvas in game (scene)
+        Canvas overlayCanvas = GameObject.FindGameObjectWithTag("OverlayCanvas").GetComponent<Canvas>();
+
+        // set the parent of myButtons game object to the canvas in game
+        myButtons.transform.SetParent(overlayCanvas.transform);
 
         // find my error message game object
         errorAlertTextObj = GameObject.FindGameObjectWithTag("ErrorMsg");
@@ -98,19 +106,12 @@ public class JB_LocalPlayer : NetworkBehaviour
             return;
         }
 
-        
-
         gridLayout.SetActive(true);
 
         // converts the network ID given to player prefabs that spawn when a client joins the server into an integer
         // used to identify player's connection object from each other
         CmdSetPlayerID(Convert.ToInt32(GetComponent<NetworkIdentity>().netId.Value));
 
-    }
-
-    private void Awake()
-    {
-        gameManager = GameObject.FindGameObjectWithTag("GameManager");
     }
 
     private void Update()
@@ -251,23 +252,39 @@ public class JB_LocalPlayer : NetworkBehaviour
 
     }
 
-    [ClientRpc]
-    public void RpcFindAbilityButtons()
+    [Command]
+    public void CmdFindAbilityButtons()
     {
-        if (!myTurn)
-        {
-            return;
-        }
+        //buttonParent = GameObject.Find("EGO ButtonHolderAbilities");    // find top parent holding parents - it's active so we can find it
+        //myButtons = buttonParent.transform.GetChild(0).gameObject;      // child is inactive, so we find the child of the above gameobject we just found
 
-        GameObject abilityButtonInScene = GameObject.Find("myButtons");
-        abilityButtons = abilityButtonInScene.GetComponentsInChildren<Button>();
+        //myButtons.SetActive(true);                                   // set mybuttons to true, so player can now see their ability buttons
+
+        
+        //abilityButtons = myButtons.GetComponentsInChildren<Button>();           // find the references to those buttons under mybuttons gameobject
 
         abilityButtons[0].onClick.AddListener(AbilityOneToggle);      // ability button one
         abilityButtons[1].onClick.AddListener(AbilityTwoToggle);      // ability button two
         abilityButtons[2].onClick.AddListener(AbilityThreeToggle);    // ability button three
         abilityButtons[3].onClick.AddListener(AbilityFourToggle);     // ability button four
-        abilityButtons[4].onClick.AddListener(EndTurn);               // end turn button
+        abilityButtons[4].onClick.AddListener(EndTurn);               // end turn button\
+
+        //RpcFindAbilityButtons(myButtons);
+
     }
+
+    //[ClientRpc]
+    //public void RpcFindAbilityButtons(GameObject myButtons)
+    //{
+    //    myButtons.SetActive(true);
+    //    abilityButtons = myButtons.GetComponentsInChildren<Button>();           // find the references to those buttons under mybuttons gameobject
+        
+    //    abilityButtons[0].onClick.AddListener(AbilityOneToggle);      // ability button one
+    //    abilityButtons[1].onClick.AddListener(AbilityTwoToggle);      // ability button two
+    //    abilityButtons[2].onClick.AddListener(AbilityThreeToggle);    // ability button three
+    //    abilityButtons[3].onClick.AddListener(AbilityFourToggle);     // ability button four
+    //    abilityButtons[4].onClick.AddListener(EndTurn);               // end turn button
+    //}
 
     private void OnEnable()
     {
@@ -448,6 +465,12 @@ public class JB_LocalPlayer : NetworkBehaviour
             RpcAssignShips(ships[i], i);
         }
 
+        gameManager = Instantiate(gameManagerPrefab);
+
+        NetworkServer.SpawnWithClientAuthority(gameManager, connectionToClient);
+
+        RpcAssignAuthorityToGameManager(gameManager);
+
         //gameManager.GetComponent<NetworkIdentity>().AssignClientAuthority(this.connectionToClient);
 
         //gameManager = Instantiate(gameManagerPrefab);
@@ -455,6 +478,12 @@ public class JB_LocalPlayer : NetworkBehaviour
         //NetworkServer.Spawn(gameManager);
 
 
+    }
+
+    [ClientRpc]
+    void RpcAssignAuthorityToGameManager(GameObject obj)
+    {
+        gameManager = obj;
     }
 
     [ClientRpc]
@@ -519,6 +548,38 @@ public class JB_LocalPlayer : NetworkBehaviour
                 RotateShip();
 
             }
+        }
+
+        else if (this.isLocalPlayer) // SHOW ABILITY BUTTONS
+        {
+            float myHeight = Screen.height *0.1f;
+            float myWidth = Screen.width * 0.1f;
+
+            GUILayout.BeginArea(new Rect(myWidth, myHeight, Screen.width * 0.9f, Screen.height - 150));
+            GUILayout.BeginHorizontal();
+            if (GUILayout.Button("End Turn")) // end turn button - new Rect(330, myHeight, 70, 25),
+            {
+
+            }
+            if (GUILayout.Button("Blast")) // blast ability - new Rect(430, myHeight, 70, 25), 
+            {
+
+            }
+            if (GUILayout.Button("Barrage")) // barrage ability - new Rect(450, myHeight, 70, 25), 
+            {
+
+            }
+            if (GUILayout.Button("Radar")) // radar ability - new Rect(470, myHeight, 70, 25), 
+            {
+
+            }
+            if (GUILayout.Button("Shield")) // shield ability - new Rect(490, myHeight, 70, 25), 
+            {
+
+            }
+            GUILayout.EndHorizontal();
+            GUILayout.EndArea();
+
         }
        
     }
