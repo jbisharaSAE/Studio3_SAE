@@ -23,7 +23,7 @@ public class JB_LocalPlayer : NetworkBehaviour
     private GameObject gameManager;
 
     // used for switch function, to determine which ability to use
-    private int abilityNumber = 5;
+    //private int abilityNumber = 5;
     public Button[] abilityButtons;
     public GameObject myButtons;
     
@@ -138,7 +138,6 @@ public class JB_LocalPlayer : NetworkBehaviour
                         {
                             if (isButtonHeld[i])
                             {
-                                abilityNumber = i;
                                 ActivateAbilities(i);
                             }
                         }
@@ -188,9 +187,6 @@ public class JB_LocalPlayer : NetworkBehaviour
                     currentResources -= blastCost;
                 }
                 
-                // we only want to run this ability once at a time
-                abilityNumber = 5;
-
                 // ability is no longer active
                 isButtonHeld[0] = false;
 
@@ -199,9 +195,6 @@ public class JB_LocalPlayer : NetworkBehaviour
             case 1:
                 // ability two - barrage
                 CmdAbilityTwoBarrage();
-
-                // we only want to run this ability once at a time
-                abilityNumber = 5;
 
                 // ability is no longer active
                 isButtonHeld[1] = false;
@@ -213,9 +206,6 @@ public class JB_LocalPlayer : NetworkBehaviour
                 // ability three - radar
                 CmdAbilityThreeRadar();
 
-                // we only want to run this ability once at a time
-                abilityNumber = 5;
-
                 // ability is no longer active
                 isButtonHeld[2] = false;
 
@@ -225,9 +215,6 @@ public class JB_LocalPlayer : NetworkBehaviour
             case 3:
                 // ability four - shield
                 CmdAbilityFourShield();
-
-                // we only want to run this ability once at a time
-                abilityNumber = 5;
 
                 // ability is no longer active
                 isButtonHeld[3] = false;
@@ -327,8 +314,7 @@ public class JB_LocalPlayer : NetworkBehaviour
     // =============================== toggle functions to determine if button is active or not ============================
     private void AbilityOneToggle()
     {
-        isButtonHeld[0] = OnlyOneButton(0, isButtonHeld[0]);
-        Debug.Log("ability one clicked!!! ======= :)" + isButtonHeld[0]);
+        
     }
 
     private void AbilityTwoToggle()
@@ -402,8 +388,7 @@ public class JB_LocalPlayer : NetworkBehaviour
     [Command]
     private void CmdAbilityFourShield()
     {
-        // to ensure this method only gets called once
-        abilityNumber = 5;
+
     }
     // =============================== functions to execute abilities ============================
 
@@ -500,11 +485,14 @@ public class JB_LocalPlayer : NetworkBehaviour
 
     private void OnGUI()
     {
+
+
         if (showRotateConfirmButtons && this.isLocalPlayer)
         {
+            // ================= PLACEMENT STAGE ================
 
             // confirm ship positions checks all at once ======= button
-            if (GUI.Button(new Rect(570, 500, 70, 25), "Confirm"))
+            if (GUI.Button(new Rect((Screen.width / 2) + 45, (Screen.height * 0.9f), 70, 50), "Confirm"))
             {
                 // one for each ship
                 checkValidation = new bool[4];
@@ -540,7 +528,7 @@ public class JB_LocalPlayer : NetworkBehaviour
             }
 
             // rotate ship that is selected ====== button
-            if (GUI.Button(new Rect(430, 500, 70, 25), "Rotate"))
+            if (GUI.Button(new Rect((Screen.width / 2) -45f, (Screen.height * 0.9f), 70, 50), "Rotate"))
             {
                 // frees up tiles that were taken before rotating ship
                 shipObj.GetComponent<JB_SnappingShip>().FreeOrLockShipPosition(true);
@@ -550,30 +538,32 @@ public class JB_LocalPlayer : NetworkBehaviour
             }
         }
 
+        // ================== GAME ATTACK PHASE ========================
         else if (this.isLocalPlayer) // SHOW ABILITY BUTTONS
         {
-            float myHeight = Screen.height *0.1f;
-            float myWidth = Screen.width * 0.1f;
+            float screenY = Screen.height;
+            float screenX = Screen.width;
 
-            GUILayout.BeginArea(new Rect(myWidth, myHeight, Screen.width * 0.9f, Screen.height - 150));
+            GUILayout.BeginArea(new Rect(screenY * 0.1f, screenY * 0.9f, screenX * 0.9f, screenY));
             GUILayout.BeginHorizontal();
-            if (GUILayout.Button("End Turn")) // end turn button - new Rect(330, myHeight, 70, 25),
+            if (GUILayout.Button("End Turn", GUILayout.Height(50))) // end turn button - new Rect(330, myHeight, 70, 25),
+            {
+                gameManager.GetComponent<JB_GameManager>().ChangePlayerTurn();
+            }
+            if (GUILayout.Button("Blast", GUILayout.Height(50))) // blast ability - new Rect(430, myHeight, 70, 25), 
+            {
+                isButtonHeld[0] = OnlyOneButton(0, isButtonHeld[0]);
+                Debug.Log("ability one clicked!!! ======= :)" + isButtonHeld[0]);
+            }
+            if (GUILayout.Button("Barrage", GUILayout.Height(50))) // barrage ability - new Rect(450, myHeight, 70, 25), 
             {
 
             }
-            if (GUILayout.Button("Blast")) // blast ability - new Rect(430, myHeight, 70, 25), 
+            if (GUILayout.Button("Radar", GUILayout.Height(50))) // radar ability - new Rect(470, myHeight, 70, 25), 
             {
 
             }
-            if (GUILayout.Button("Barrage")) // barrage ability - new Rect(450, myHeight, 70, 25), 
-            {
-
-            }
-            if (GUILayout.Button("Radar")) // radar ability - new Rect(470, myHeight, 70, 25), 
-            {
-
-            }
-            if (GUILayout.Button("Shield")) // shield ability - new Rect(490, myHeight, 70, 25), 
+            if (GUILayout.Button("Shield", GUILayout.Height(50))) // shield ability - new Rect(490, myHeight, 70, 25), 
             {
 
             }

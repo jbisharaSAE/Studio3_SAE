@@ -166,17 +166,7 @@ public class JB_GameManager : NetworkBehaviour
         playerPrefabs[1].GetComponent<JB_LocalPlayer>().myTurn = !playerPrefabs[1].GetComponent<JB_LocalPlayer>().myTurn;
     }
 
-    public void AbilityOne()
-    {
-        // toggles the ability button
-        //isButtonHeld[0] = !isButtonHeld[0];
-
-        textDisplayTest.text = "ability one activated";
-
-        Debug.Log(playerObj.GetComponent<JB_LocalPlayer>().playerID);
-    }
-
-
+ 
 
 
 }
