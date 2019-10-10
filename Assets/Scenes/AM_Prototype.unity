@@ -1593,7 +1593,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &145564585
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18607,16 +18607,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 952664360}
     m_Modifications:
-    - target: {fileID: 2186074671680842189, guid: ae0f52b743bd17e4a8f75f0342d3f092,
-        type: 3}
-      propertyPath: m_Name
-      value: EGO ButtonHolderAbilities
-      objectReference: {fileID: 0}
-    - target: {fileID: 2186074671680842189, guid: ae0f52b743bd17e4a8f75f0342d3f092,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6148691184822449941, guid: ae0f52b743bd17e4a8f75f0342d3f092,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -18721,6 +18711,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2186074671680842189, guid: ae0f52b743bd17e4a8f75f0342d3f092,
+        type: 3}
+      propertyPath: m_Name
+      value: EGO ButtonHolderAbilities
+      objectReference: {fileID: 0}
+    - target: {fileID: 2186074671680842189, guid: ae0f52b743bd17e4a8f75f0342d3f092,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6867982951424418089, guid: ae0f52b743bd17e4a8f75f0342d3f092,
         type: 3}

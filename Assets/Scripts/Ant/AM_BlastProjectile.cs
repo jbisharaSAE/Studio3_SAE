@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 
-public class BlastProjectile : NetworkBehaviour
+public class AM_BlastProjectile : NetworkBehaviour
 {
     private float step;
     public float speed;
@@ -32,7 +32,7 @@ public class BlastProjectile : NetworkBehaviour
                 if (hit.transform.tag == "Ship")
                 {
                     Debug.Log("hit ship");
-                    AudioManager audioManagerScript = GameObject.Find("Audio Manager").GetComponent<AudioManager>();
+                    AM_AudioManager audioManagerScript = GameObject.Find("Audio Manager").GetComponent<AM_AudioManager>();
                     audioManagerScript.PlayBlast();
                 }
 
