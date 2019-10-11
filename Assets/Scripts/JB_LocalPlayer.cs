@@ -319,20 +319,17 @@ public class JB_LocalPlayer : NetworkBehaviour
 
     private void AbilityTwoToggle()
     {
-        isButtonHeld[1] = OnlyOneButton(1, isButtonHeld[1]);
-        Debug.Log("ability two clicked!!! ======= :)" + isButtonHeld[1]);
+        
     }
 
     private void AbilityThreeToggle()
     {
-        isButtonHeld[2] = OnlyOneButton(2, isButtonHeld[2]);
-        Debug.Log("ability three clicked!!! ======= :)" + isButtonHeld[2]);
+   
     }
 
     private void AbilityFourToggle()
     {
-        isButtonHeld[3] = OnlyOneButton(3, isButtonHeld[3]);
-        Debug.Log("ability four clicked!!! ======= :)" + isButtonHeld[3]);
+
     }
 
     
@@ -539,7 +536,7 @@ public class JB_LocalPlayer : NetworkBehaviour
         }
 
         // ================== GAME ATTACK PHASE ========================
-        else if (this.isLocalPlayer) // SHOW ABILITY BUTTONS
+        else if (this.isLocalPlayer && myTurn) // SHOW ABILITY BUTTONS
         {
             float screenY = Screen.height;
             float screenX = Screen.width;
@@ -557,15 +554,18 @@ public class JB_LocalPlayer : NetworkBehaviour
             }
             if (GUILayout.Button("Barrage", GUILayout.Height(50))) // barrage ability - new Rect(450, myHeight, 70, 25), 
             {
-
+                isButtonHeld[1] = OnlyOneButton(1, isButtonHeld[1]);
+                Debug.Log("ability two clicked!!! ======= :)" + isButtonHeld[1]);
             }
             if (GUILayout.Button("Radar", GUILayout.Height(50))) // radar ability - new Rect(470, myHeight, 70, 25), 
             {
-
+                isButtonHeld[2] = OnlyOneButton(2, isButtonHeld[2]);
+                Debug.Log("ability three clicked!!! ======= :)" + isButtonHeld[2]);
             }
             if (GUILayout.Button("Shield", GUILayout.Height(50))) // shield ability - new Rect(490, myHeight, 70, 25), 
             {
-
+                isButtonHeld[3] = OnlyOneButton(3, isButtonHeld[3]);
+                Debug.Log("ability four clicked!!! ======= :)" + isButtonHeld[3]);
             }
             GUILayout.EndHorizontal();
             GUILayout.EndArea();

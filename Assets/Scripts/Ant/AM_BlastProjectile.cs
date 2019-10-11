@@ -10,30 +10,61 @@ public class AM_BlastProjectile : NetworkBehaviour
 
     public Vector3 targetTilePos;
 
-    
+    private Vector2 direction;
+
+    public AudioClip missSound;
+    public AudioClip hitSound;
+
+    private AudioSource myAudioSource;
+
+    private void Start()
+    {
+        myAudioSource = GetComponent<AudioSource>();
+    }
+    private void FaceTile()
+    {
+        // maths to determine the direction of projectil to tile
+        direction = new Vector2((targetTilePos.x - transform.position.x), (targetTilePos.y - transform.position.y));
+
+        // make this projectile face the tile
+        transform.up = direction;
+    }
 
     private void Update()
     {
+        FaceTile();
+
         step = speed * Time.deltaTime;
 
-        transform.position = Vector3.MoveTowards(transform.position, targetTilePos, step);
+        transform.position = Vector2.MoveTowards(transform.position, targetTilePos, step);
 
-        float distance = Vector3.Distance(transform.position, targetTilePos);
+        
+        float distance = Vector2.Distance(transform.position, targetTilePos);
+
+        
 
         if(distance <= 0.1)
         {
             Debug.Log("In distance");
 
             RaycastHit hit;
-            if (Physics.Raycast(transform.position, transform.position + new Vector3(0, 0, 1), out hit))
+            if (Physics.Raycast(transform.position, transform.forward, out hit, Mathf.Infinity))
             {
                 Debug.Log("Sent ray");
                 // do we hit the ship
-                if (hit.transform.tag == "Ship")
+                if (hit.collider.gameObject.tag == "Square")
                 {
                     Debug.Log("hit ship");
-                    AM_AudioManager audioManagerScript = GameObject.Find("Audio Manager").GetComponent<AM_AudioManager>();
-                    audioManagerScript.PlayBlast();
+
+                    myAudioSource.clip = hitSound;
+                    myAudioSource.Play();
+
+                    // disable collider to avoid hitpoints of ship getting incorrectly calculated
+                    hit.collider.gameObject.GetComponent<BoxCollider>().enabled = false;
+                }
+                else if (hit.collider.gameObject.tag == "Tile")
+                {
+                    // spawn miss sprite
                 }
 
                 // do we hit a tile
@@ -43,7 +74,7 @@ public class AM_BlastProjectile : NetworkBehaviour
                     Debug.Log("missed");
                 }
 
-                //Destroy(gameObject);
+                Destroy(gameObject, 0.2f);
 
             }
 

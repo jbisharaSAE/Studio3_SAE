@@ -10,6 +10,7 @@ TagManager:
   - GameManager
   - ErrorMsg
   - GridManager
+  - Square
   layers:
   - Default
   - TransparentFX
