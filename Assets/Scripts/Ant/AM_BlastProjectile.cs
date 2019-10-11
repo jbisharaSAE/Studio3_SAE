@@ -51,6 +51,7 @@ public class AM_BlastProjectile : NetworkBehaviour
             if (Physics.Raycast(transform.position, transform.forward, out hit, Mathf.Infinity))
             {
                 Debug.Log("Sent ray");
+
                 // do we hit the ship
                 if (hit.collider.gameObject.tag == "Square")
                 {

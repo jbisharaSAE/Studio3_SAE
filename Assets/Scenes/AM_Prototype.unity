@@ -548,6 +548,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 50
   targetTilePos: {x: 128, y: -16, z: 0}
+  missSound: {fileID: 0}
+  hitSound: {fileID: 0}
 --- !u!114 &45076648
 MonoBehaviour:
   m_ObjectHideFlags: 0

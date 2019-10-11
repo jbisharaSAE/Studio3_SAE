@@ -664,6 +664,7 @@ GameObject:
   m_Component:
   - component: {fileID: 771212208799578346}
   - component: {fileID: 771212208799578347}
+  - component: {fileID: 5984657242548592657}
   - component: {fileID: 771212208799578345}
   - component: {fileID: 771212208799578350}
   - component: {fileID: 771212208799578351}
@@ -713,6 +714,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerID: 0
   canDrag: 1
+--- !u!114 &5984657242548592657
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 771212208799578348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24b9c56ce210d074bb073d47f44f6f47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shipHealth: 6
 --- !u!54 &771212208799578345
 Rigidbody:
   m_ObjectHideFlags: 0
