@@ -58,13 +58,14 @@ public class JB_LocalPlayer : NetworkBehaviour
     [SyncVar]
     public int playerID;
     
-    [SyncVar]
+    [SyncVar(hook = "AddCurrency")]
     public bool myTurn; // currently unused
 
     // UI text message to show error of placement of ships
     public GameObject errorAlertTextObj;
 
     // resources for players to spend shooting / using abilities
+    [SyncVar]
     public float currentResources;
     private float maxResources;
 
@@ -87,6 +88,18 @@ public class JB_LocalPlayer : NetworkBehaviour
     private Canvas overlayCanvas;
     private Text displayCurrentDallions;
 
+    private List<GameObject> myList = new List<GameObject>();
+
+    private void AddCurrency(bool playerTurn)
+    {
+        if (this.isLocalPlayer)
+        {
+            myTurn = playerTurn;
+            currentResources += 25f;
+            Debug.Log("i ran my hook! ^______________^");
+        }
+        
+    }
     private void Awake()
     {
         // find the canvas in game (scene)
@@ -99,11 +112,11 @@ public class JB_LocalPlayer : NetworkBehaviour
         //abilityButtons = new Button[5];
         isButtonHeld = new bool[4];
 
-        
-
-        dallionDisplay.transform.SetParent(overlayCanvas.transform, false);
 
 
+        //dallionDisplay.transform.SetParent(overlayCanvas.transform, false);
+
+        dallionDisplay.SetActive(true);
         displayCurrentDallions = dallionDisplay.transform.GetChild(0).gameObject.GetComponent<Text>();
         //displayCurrentDallions.text = currentResources.ToString("F0");
 
@@ -149,11 +162,23 @@ public class JB_LocalPlayer : NetworkBehaviour
                 RaycastHit hit;                                // mouse is for testing
                 if(Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit)) // shooting ray to mouse position
                 {
-                    if(hit.collider.gameObject.tag == "Tile") // did player click on a tile
+                    if (hit.collider.gameObject.tag == "Tile") // did player click on a tile
                     {
                         tempTargetPos = hit.collider.gameObject.GetComponent<JB_Tile>().tilePosition;
 
-                        for(int i = 0; i < isButtonHeld.Length; ++i)
+                        for (int i = 0; i < isButtonHeld.Length; ++i)
+                        {
+                            if (isButtonHeld[i])
+                            {
+                                ActivateAbilities(i);
+                            }
+                        }
+                    }
+                    else if(hit.collider.gameObject.tag == "Square")
+                    {
+                        tempTargetPos = hit.collider.gameObject.GetComponent<JB_SquareSprites>().tileRef.GetComponent<JB_Tile>().tilePosition;
+
+                        for (int i = 0; i < isButtonHeld.Length; ++i)
                         {
                             if (isButtonHeld[i])
                             {
@@ -257,109 +282,6 @@ public class JB_LocalPlayer : NetworkBehaviour
         }
 
     }
-
-    [Command]
-    public void CmdFindAbilityButtons()
-    {
-        //buttonParent = GameObject.Find("EGO ButtonHolderAbilities");    // find top parent holding parents - it's active so we can find it
-        //myButtons = buttonParent.transform.GetChild(0).gameObject;      // child is inactive, so we find the child of the above gameobject we just found
-
-        //myButtons.SetActive(true);                                   // set mybuttons to true, so player can now see their ability buttons
-
-        
-        //abilityButtons = myButtons.GetComponentsInChildren<Button>();           // find the references to those buttons under mybuttons gameobject
-
-        abilityButtons[0].onClick.AddListener(AbilityOneToggle);      // ability button one
-        abilityButtons[1].onClick.AddListener(AbilityTwoToggle);      // ability button two
-        abilityButtons[2].onClick.AddListener(AbilityThreeToggle);    // ability button three
-        abilityButtons[3].onClick.AddListener(AbilityFourToggle);     // ability button four
-        abilityButtons[4].onClick.AddListener(EndTurn);               // end turn button\
-
-        //RpcFindAbilityButtons(myButtons);
-
-    }
-
-    //[ClientRpc]
-    //public void RpcFindAbilityButtons(GameObject myButtons)
-    //{
-    //    myButtons.SetActive(true);
-    //    abilityButtons = myButtons.GetComponentsInChildren<Button>();           // find the references to those buttons under mybuttons gameobject
-        
-    //    abilityButtons[0].onClick.AddListener(AbilityOneToggle);      // ability button one
-    //    abilityButtons[1].onClick.AddListener(AbilityTwoToggle);      // ability button two
-    //    abilityButtons[2].onClick.AddListener(AbilityThreeToggle);    // ability button three
-    //    abilityButtons[3].onClick.AddListener(AbilityFourToggle);     // ability button four
-    //    abilityButtons[4].onClick.AddListener(EndTurn);               // end turn button
-    //}
-
-    private void OnEnable()
-    {
-        if (!myTurn)
-        {
-            return;
-        }
-
-        if (this.isLocalPlayer && !showRotateConfirmButtons)
-        {
-            // assigning functions to each ability UI button
-            abilityButtons[0].onClick.AddListener(AbilityOneToggle);
-            abilityButtons[1].onClick.AddListener(AbilityTwoToggle);
-            abilityButtons[2].onClick.AddListener(AbilityThreeToggle);
-            abilityButtons[3].onClick.AddListener(AbilityFourToggle);
-            abilityButtons[4].onClick.AddListener(EndTurn);
-
-        }
-    }
-
-    private void OnDisable()
-    {
-        if (!myTurn)
-        {
-            return;
-        }
-
-        // removelisteners to avoid cpu usage, this is for UI buttons
-        if (this.isLocalPlayer && !showRotateConfirmButtons)
-        {
-            abilityButtons[0].onClick.RemoveAllListeners();
-            abilityButtons[1].onClick.RemoveAllListeners();
-            abilityButtons[2].onClick.RemoveAllListeners();
-            abilityButtons[3].onClick.RemoveAllListeners();
-            abilityButtons[4].onClick.RemoveAllListeners();
-        }
-
-    }
-
-    // =============================== toggle functions to determine if button is active or not ============================
-    private void AbilityOneToggle()
-    {
-        
-    }
-
-    private void AbilityTwoToggle()
-    {
-        
-    }
-
-    private void AbilityThreeToggle()
-    {
-   
-    }
-
-    private void AbilityFourToggle()
-    {
-
-    }
-
-    
-    // =============================== toggle functions to determine if button is active or not ============================
-
-    private void EndTurn()
-    {
-        Debug.Log("End Turn Clicked!! ++++++++++++++++");
-        gameManager.GetComponent<JB_GameManager>().ChangePlayerTurn();
-    }
-    
         
     // =============================== functions to execute abilities ============================
     [Command]
@@ -513,12 +435,23 @@ public class JB_LocalPlayer : NetworkBehaviour
                 // one for each ship
                 checkValidation = new bool[4];
 
+
                 ships = GameObject.FindGameObjectsWithTag("Ship");
+                
+                // making sure ships belong to me (local player)
+                foreach(GameObject ship in ships)
+                {
+                    if(ship.GetComponent<DragObject>().playerID == playerID)
+                    {
+                        myList.Add(ship);
+                    }
+                }
+
                 //Debug.Log(checkValidation.Length);
 
-                for (int i = 0; i < ships.Length; ++i)
+                for (int i = 0; i < myList.Count; ++i)
                 {
-                    checkValidation[i] = ships[i].GetComponent<JB_SnappingShip>().ValidPosition();
+                    checkValidation[i] = myList[i].GetComponent<JB_SnappingShip>().ValidPosition();
                 }
 
                 allTrue = checkValidation.All(x => x);

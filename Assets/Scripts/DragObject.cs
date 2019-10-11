@@ -20,6 +20,8 @@ public class DragObject : NetworkBehaviour
     // to ensure a specific method is only called once
     private bool runOnce = false;
 
+    public GameObject shipSprite;
+
   
 
     public override void OnStartAuthority()
@@ -133,7 +135,7 @@ public class DragObject : NetworkBehaviour
             {
                 if (playerID != ship.GetComponent<DragObject>().playerID)
                 {
-                    ship.SetActive(false);
+                    ship.GetComponent<DragObject>().shipSprite.SetActive(false);
                 }
 
             }

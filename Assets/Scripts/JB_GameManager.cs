@@ -128,7 +128,7 @@ public class JB_GameManager : NetworkBehaviour
             if(pair.Value.gameObject.tag == "Player")
             {
                 CmdShowGrid(pair.Value.gameObject);
-                pair.Value.gameObject.GetComponent<JB_LocalPlayer>().CmdFindAbilityButtons();
+                
                 
             }
         }
@@ -165,18 +165,17 @@ public class JB_GameManager : NetworkBehaviour
         playerPrefabs[0].GetComponent<JB_LocalPlayer>().myTurn = !playerPrefabs[0].GetComponent<JB_LocalPlayer>().myTurn;
         playerPrefabs[1].GetComponent<JB_LocalPlayer>().myTurn = !playerPrefabs[1].GetComponent<JB_LocalPlayer>().myTurn;
 
-        foreach (KeyValuePair<NetworkInstanceId, NetworkIdentity> pair in NetworkServer.objects)
-        {
-            if (pair.Value.gameObject.tag == "Player")
-            {
-                if (pair.Value.gameObject.GetComponent<JB_LocalPlayer>().myTurn)
-                {
-                    pair.Value.gameObject.GetComponent<JB_LocalPlayer>().currentResources += 50f;
-                }
-                
+        //foreach (KeyValuePair<NetworkInstanceId, NetworkIdentity> pair in NetworkServer.objects)
+        //{
+        //    if (pair.Value.gameObject.tag == "Player")
+        //    {
+        //        if (pair.Value.gameObject.GetComponent<JB_LocalPlayer>().myTurn)
+        //        {
+        //            pair.Value.gameObject.GetComponent<JB_LocalPlayer>().currentResources += 50f;
+        //        }
 
-            }
-        }
+        //    }
+        //}
     }
 
  

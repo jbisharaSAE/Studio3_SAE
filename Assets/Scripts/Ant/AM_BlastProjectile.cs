@@ -12,14 +12,17 @@ public class AM_BlastProjectile : NetworkBehaviour
 
     private Vector2 direction;
 
-    public AudioClip missSound;
+    //public AudioClip missSound;
     public AudioClip hitSound;
+    public GameObject hitSpritePrefab;
+    public GameObject missSpritePrefab;
 
     private AudioSource myAudioSource;
 
     private void Start()
     {
         myAudioSource = GetComponent<AudioSource>();
+        myAudioSource.clip = hitSound;
     }
     private void FaceTile()
     {
@@ -57,14 +60,18 @@ public class AM_BlastProjectile : NetworkBehaviour
                 {
                     Debug.Log("hit ship");
 
-                    myAudioSource.clip = hitSound;
+                    Instantiate(hitSpritePrefab, hit.collider.gameObject.transform.position, Quaternion.identity);
                     myAudioSource.Play();
 
                     // disable collider to avoid hitpoints of ship getting incorrectly calculated
                     hit.collider.gameObject.GetComponent<BoxCollider>().enabled = false;
+                    hit.collider.gameObject.transform.GetComponentInParent<JB_Ship>().ShipHit();
                 }
                 else if (hit.collider.gameObject.tag == "Tile")
                 {
+                    Instantiate(missSpritePrefab, hit.collider.gameObject.transform.position, Quaternion.identity);
+                    hit.collider.gameObject.GetComponent<BoxCollider>().enabled = false;
+
                     // spawn miss sprite
                 }
 
@@ -75,7 +82,7 @@ public class AM_BlastProjectile : NetworkBehaviour
                     Debug.Log("missed");
                 }
 
-                Destroy(gameObject, 0.2f);
+                CmdDestroyGameObj(gameObject);
 
             }
 
@@ -89,7 +96,33 @@ public class AM_BlastProjectile : NetworkBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.blue;
-        Gizmos.DrawLine(transform.position, transform.position + new Vector3(0, 0, 1));
+        Gizmos.DrawLine(transform.position, transform.forward);
+    }
+
+    [Command]
+    void CmdDestroyGameObj(GameObject gameObj)
+    {
+        GameObject newObj = gameObj;
+        Destroy(gameObj);
+        RpcDestroyGameObj(newObj);
+    }
+
+    [ClientRpc]
+    void RpcDestroyGameObj(GameObject gameObj)
+    {
+        Destroy(gameObj);
+    }
+
+    [Command]
+    void CmdSpawnSprite(GameObject spriteObj)
+    {
+
+    }
+
+    [ClientRpc]
+    void RpcSpawnSprite(GameObject spriteObj)
+    {
+
     }
 
     // ANTHONY'S CODE

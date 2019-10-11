@@ -940,6 +940,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerID: 0
   canDrag: 1
+  shipSprite: {fileID: 3236857786358726295}
 --- !u!54 &4436528026164060640
 Rigidbody:
   m_ObjectHideFlags: 0
