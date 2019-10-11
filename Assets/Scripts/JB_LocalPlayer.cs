@@ -15,6 +15,9 @@ public class JB_LocalPlayer : NetworkBehaviour
     // projectile blast prefab
     public GameObject blastProjectilePrefab;
 
+    // currency text display
+    public GameObject dallionDisplay;
+
     // reference to objects important to each player, their ships and grid
     public GameObject[] shipPrefabs;
     public GameObject[] ships;
@@ -80,18 +83,33 @@ public class JB_LocalPlayer : NetworkBehaviour
 
     [SyncVar]
     private Vector3 trueTarget;
-    
+
+    private Canvas overlayCanvas;
+    private Text displayCurrentDallions;
+
+    private void Awake()
+    {
+        // find the canvas in game (scene)
+        overlayCanvas = GameObject.FindGameObjectWithTag("OverlayCanvas").GetComponent<Canvas>();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
         //abilityButtons = new Button[5];
         isButtonHeld = new bool[4];
 
-        // fin the canvas in game (scene)
-        Canvas overlayCanvas = GameObject.FindGameObjectWithTag("OverlayCanvas").GetComponent<Canvas>();
+        
 
+        dallionDisplay.transform.SetParent(overlayCanvas.transform, false);
+
+
+        displayCurrentDallions = dallionDisplay.transform.GetChild(0).gameObject.GetComponent<Text>();
+        //displayCurrentDallions.text = currentResources.ToString("F0");
+
+        Debug.Log(displayCurrentDallions.text);
         // set the parent of myButtons game object to the canvas in game
-        myButtons.transform.SetParent(overlayCanvas.transform);
+        //myButtons.transform.SetParent(overlayCanvas.transform);
 
         // find my error message game object
         errorAlertTextObj = GameObject.FindGameObjectWithTag("ErrorMsg");
@@ -119,8 +137,9 @@ public class JB_LocalPlayer : NetworkBehaviour
         if (!this.isLocalPlayer) { return; }
 
         if (!myTurn) { Debug.LogWarning("It is not my turn"); return; }
-        
-        
+
+        displayCurrentDallions.text = currentResources.ToString("F0");
+
         // test to see if we are in battle mode
         if (!showRotateConfirmButtons)
         {

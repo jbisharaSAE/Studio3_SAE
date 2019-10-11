@@ -2,8 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AM_Ship : MonoBehaviour
+public class JB_Ship : MonoBehaviour
+
 {
+
+    public int shipHealth;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -14,5 +18,10 @@ public class AM_Ship : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void ShipHit()
+    {
+        --shipHealth;
     }
 }
