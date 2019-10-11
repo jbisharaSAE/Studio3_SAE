@@ -8,6 +8,7 @@ public class AM_BlastProjectile : NetworkBehaviour
     private float step;
     public float speed;
 
+    private Vector3 tempTargetPos;
     public Vector3 targetTilePos;
 
     private Vector2 direction;
@@ -17,6 +18,7 @@ public class AM_BlastProjectile : NetworkBehaviour
     public GameObject hitSpritePrefab;
     public GameObject missSpritePrefab;
 
+    private GameObject mySprite;
     private AudioSource myAudioSource;
 
     private void Start()
@@ -35,7 +37,14 @@ public class AM_BlastProjectile : NetworkBehaviour
 
     private void Update()
     {
+
+
         FaceTile();
+
+        if (!hasAuthority)
+        {
+            return;
+        }
 
         step = speed * Time.deltaTime;
 
@@ -60,7 +69,11 @@ public class AM_BlastProjectile : NetworkBehaviour
                 {
                     Debug.Log("hit ship");
 
-                    Instantiate(hitSpritePrefab, hit.collider.gameObject.transform.position, Quaternion.identity);
+                    tempTargetPos = hit.collider.gameObject.transform.position;
+
+                    
+                    // index 0 for hitting ship
+                    CmdSpawnSprite(0, tempTargetPos);
                     myAudioSource.Play();
 
                     // disable collider to avoid hitpoints of ship getting incorrectly calculated
@@ -69,9 +82,13 @@ public class AM_BlastProjectile : NetworkBehaviour
                 }
                 else if (hit.collider.gameObject.tag == "Tile")
                 {
-                    Instantiate(missSpritePrefab, hit.collider.gameObject.transform.position, Quaternion.identity);
-                    hit.collider.gameObject.GetComponent<BoxCollider>().enabled = false;
+                    tempTargetPos = hit.collider.gameObject.transform.position;
 
+                    // index 1 for missing ship
+                    CmdSpawnSprite(1, tempTargetPos);
+
+                    hit.collider.gameObject.GetComponent<BoxCollider>().enabled = false;
+                    Debug.Log("hit Tile");
                     // spawn miss sprite
                 }
 
@@ -93,18 +110,13 @@ public class AM_BlastProjectile : NetworkBehaviour
         }
     }
 
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.blue;
-        Gizmos.DrawLine(transform.position, transform.forward);
-    }
 
     [Command]
     void CmdDestroyGameObj(GameObject gameObj)
     {
         GameObject newObj = gameObj;
-        Destroy(gameObj);
         RpcDestroyGameObj(newObj);
+        Destroy(gameObj);
     }
 
     [ClientRpc]
@@ -114,15 +126,32 @@ public class AM_BlastProjectile : NetworkBehaviour
     }
 
     [Command]
-    void CmdSpawnSprite(GameObject spriteObj)
+    void CmdSpawnSprite(int index, Vector3 targetPos)
     {
+        switch (index)
+        {
+            case 0:
+                mySprite = Instantiate(hitSpritePrefab, targetPos, Quaternion.identity);
+                break;
+            case 1:
+                mySprite = Instantiate(missSpritePrefab, targetPos, Quaternion.identity);
+                break;
+            default:
+                break;
+        }
+
+        GameObject newSprite = mySprite;
+
+        NetworkServer.Spawn(mySprite);
+
+        //RpcSpawnSprite(mySprite);
 
     }
 
     [ClientRpc]
     void RpcSpawnSprite(GameObject spriteObj)
     {
-
+        mySprite = spriteObj;
     }
 
     // ANTHONY'S CODE

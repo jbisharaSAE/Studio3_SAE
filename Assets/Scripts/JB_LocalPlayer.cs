@@ -109,10 +109,18 @@ public class JB_LocalPlayer : NetworkBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // call method to find all player prefabs in scene
+        JB_GameManager.FindPlayerObjects();
+
+        //if local player, enable ship, otherwise turn them off
+        if (!this.isLocalPlayer)
+        {
+            // exit if this is not local player
+            return;
+        }
+
         //abilityButtons = new Button[5];
         isButtonHeld = new bool[4];
-
-
 
         //dallionDisplay.transform.SetParent(overlayCanvas.transform, false);
 
@@ -127,15 +135,9 @@ public class JB_LocalPlayer : NetworkBehaviour
         // find my error message game object
         errorAlertTextObj = GameObject.FindGameObjectWithTag("ErrorMsg");
         
-        // call method to find all player prefabs in scene
-        JB_GameManager.FindPlayerObjects();
+        
 
-        //if local player, enable ship, otherwise turn them off
-        if (!this.isLocalPlayer)
-        {
-            // exit if this is not local player
-            return;
-        }
+
 
         gridLayout.SetActive(true);
 
@@ -159,11 +161,13 @@ public class JB_LocalPlayer : NetworkBehaviour
             // players touch Input.Touch(0)
             if (Input.GetMouseButtonDown(0))
             {
+                Debug.Log("mouse clicked");
                 RaycastHit hit;                                // mouse is for testing
                 if(Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit)) // shooting ray to mouse position
                 {
                     if (hit.collider.gameObject.tag == "Tile") // did player click on a tile
                     {
+                        Debug.Log("tile hit");
                         tempTargetPos = hit.collider.gameObject.GetComponent<JB_Tile>().tilePosition;
 
                         for (int i = 0; i < isButtonHeld.Length; ++i)
@@ -176,6 +180,7 @@ public class JB_LocalPlayer : NetworkBehaviour
                     }
                     else if(hit.collider.gameObject.tag == "Square")
                     {
+                        Debug.Log("square hit");
                         tempTargetPos = hit.collider.gameObject.GetComponent<JB_SquareSprites>().tileRef.GetComponent<JB_Tile>().tilePosition;
 
                         for (int i = 0; i < isButtonHeld.Length; ++i)
@@ -292,8 +297,7 @@ public class JB_LocalPlayer : NetworkBehaviour
         GameObject projectile = Instantiate(blastProjectilePrefab, projectileSpawnPoint.position, Quaternion.identity);
         
         projectile.GetComponent<AM_BlastProjectile>().targetTilePos = trueTarget;
-        Debug.Log(projectile.GetComponent<AM_BlastProjectile>().targetTilePos);
-
+        
         NetworkServer.SpawnWithClientAuthority(projectile, connectionToClient);
         
         
@@ -352,14 +356,16 @@ public class JB_LocalPlayer : NetworkBehaviour
     [Command]
     public void CmdIncrementReadyNumber()
     {
+        // tell the server im ready
+
+
         if (runOnce)
         {
             foreach (KeyValuePair<NetworkInstanceId, NetworkIdentity> pair in NetworkServer.objects)
             {
                 if (pair.Value.gameObject.tag == "GameManager")
                 {
-                    pair.Value.gameObject.GetComponent<JB_GameManager>().readyCheckNumber++;
-                    
+                    pair.Value.gameObject.GetComponent<JB_GameManager>().ReadyCheckNumber();
                 }
 
             }
@@ -471,6 +477,7 @@ public class JB_LocalPlayer : NetworkBehaviour
                 }
                 else
                 {
+                    myList.Clear();
                     StartCoroutine(SendErrorAlert());
                     Debug.Log("not in valid positions");
                 }

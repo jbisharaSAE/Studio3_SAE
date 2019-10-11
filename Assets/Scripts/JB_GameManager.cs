@@ -63,22 +63,17 @@ public class JB_GameManager : NetworkBehaviour
 
 
     // Update is called once per frame
-    public void Update()
+    
+
+    public void ReadyCheckNumber()
     {
-        if (readyCheckNumber == 2)
+        ++readyCheckNumber;
+
+        if(readyCheckNumber == 2)
         {
-
-            // start game
-            if (!runOnce)
-            {
-                StartGame();
-                runOnce = true;
-            }
-
-
+            StartGame();
         }
     }
-
 
     public static void FindPlayerObjects()
     {
@@ -94,6 +89,9 @@ public class JB_GameManager : NetworkBehaviour
         // hiding rotate / confirm buttons
         playerObj.GetComponent<JB_LocalPlayer>().showRotateConfirmButtons = false;
 
+        // calls a function to disable tile colliders locally
+        playerObj.GetComponent<JB_LocalPlayer>().DisableMyTileColliders();
+
         // show ability buttons
         //playerObj.GetComponent<JB_LocalPlayer>().myButtons.SetActive(true);
 
@@ -105,8 +103,7 @@ public class JB_GameManager : NetworkBehaviour
         // start the method that find the ability buttons
         //playerObj.GetComponent<JB_LocalPlayer>().RpcFindAbilityButtons();
 
-        // calls a function to disable tile colliders locally
-        playerObj.GetComponent<JB_LocalPlayer>().DisableMyTileColliders();
+        
 
     }
 
@@ -115,6 +112,7 @@ public class JB_GameManager : NetworkBehaviour
     {
         playerObj.GetComponent<JB_LocalPlayer>().gridLayout.SetActive(true);
         playerObj.GetComponent<JB_LocalPlayer>().showRotateConfirmButtons = false;
+        playerObj.GetComponent<JB_LocalPlayer>().DisableMyTileColliders();
         //playerObj.GetComponent<JB_LocalPlayer>().myButtons.SetActive(true);
         // enable ability buttons
         //abilityButtons.SetActive(true);

@@ -77,7 +77,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11405cf9571eea04b92f651067b6c5df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  networkManagerObj: {fileID: 0}
   abilityButtons: {fileID: 0}
   textDisplayTest: {fileID: 0}
   readyCheckNumber: 0

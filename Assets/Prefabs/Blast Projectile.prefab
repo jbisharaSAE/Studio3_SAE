@@ -97,7 +97,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf5164dc2cfa14b47a5514e12adda183, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 50
+  speed: 100
   targetTilePos: {x: 0, y: 0, z: 0}
   hitSound: {fileID: 8300000, guid: 5b3016dbf002a3b408fc0f274f419157, type: 3}
   hitSpritePrefab: {fileID: 3588494898839560947, guid: 255d25fe2cba4ca4d85237ebf4142271,
