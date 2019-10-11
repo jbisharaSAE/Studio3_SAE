@@ -20,6 +20,7 @@ public class JB_Ship : MonoBehaviour
 
     public void ShipHit()
     {
+        Debug.Log("Ship Hit!!!! ++ = " + shipHealth);
         --shipHealth;
     }
 }

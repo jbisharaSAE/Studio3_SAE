@@ -78,7 +78,11 @@ public class AM_BlastProjectile : NetworkBehaviour
 
                     // disable collider to avoid hitpoints of ship getting incorrectly calculated
                     hit.collider.gameObject.GetComponent<BoxCollider>().enabled = false;
+
                     hit.collider.gameObject.transform.GetComponentInParent<JB_Ship>().ShipHit();
+
+                    Debug.Log(NetworkServer.localConnections.Count);
+
                 }
                 else if (hit.collider.gameObject.tag == "Tile")
                 {
@@ -109,6 +113,7 @@ public class AM_BlastProjectile : NetworkBehaviour
             }
         }
     }
+
 
 
     [Command]
