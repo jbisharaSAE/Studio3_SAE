@@ -39,6 +39,15 @@ public class DragObject : NetworkBehaviour
         snapShipScript = GetComponent<JB_SnappingShip>();
     }
 
+    public void EnableShipSprite()
+    {
+        if (!hasAuthority)
+        {
+            return;
+        }
+        shipSprite.SetActive(true);
+    }
+
     void OnMouseDown()
     {
         if (GetComponent<NetworkIdentity>().hasAuthority == false)
@@ -62,7 +71,7 @@ public class DragObject : NetworkBehaviour
             Debug.Log("Clicked, shipObj variable: "); // + JB_LocalPlayer.shipObj);
         }
 
-        RemoveSpriteEnemyShips();
+        //RemoveSpriteEnemyShips();
 
     }
 
@@ -125,24 +134,24 @@ public class DragObject : NetworkBehaviour
 
 
 
-    void RemoveSpriteEnemyShips()
-    {
-        if (!runOnce)
-        {
-            GameObject[] allShips = GameObject.FindGameObjectsWithTag("Ship");
+    //void RemoveSpriteEnemyShips()
+    //{
+    //    if (!runOnce)
+    //    {
+    //        GameObject[] allShips = GameObject.FindGameObjectsWithTag("Ship");
 
-            foreach (GameObject ship in allShips)
-            {
-                if (playerID != ship.GetComponent<DragObject>().playerID)
-                {
-                    ship.GetComponent<DragObject>().shipSprite.SetActive(false);
-                }
+    //        foreach (GameObject ship in allShips)
+    //        {
+    //            if (playerID != ship.GetComponent<DragObject>().playerID)
+    //            {
+    //                ship.GetComponent<DragObject>().shipSprite.SetActive(false);
+    //            }
 
-            }
-            runOnce = true;
-        }
+    //        }
+    //        runOnce = true;
+    //    }
 
-    }
+    //}
 
 
 }

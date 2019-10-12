@@ -58,7 +58,7 @@ public class JB_LocalPlayer : NetworkBehaviour
     [SyncVar]
     public int playerID;
     
-    [SyncVar(hook = "AddCurrency")]
+    [SyncVar]
     public bool myTurn; // currently unused
 
     // UI text message to show error of placement of ships
@@ -90,16 +90,7 @@ public class JB_LocalPlayer : NetworkBehaviour
 
     private List<GameObject> myList = new List<GameObject>();
 
-    private void AddCurrency(bool playerTurn)
-    {
-        if (this.isLocalPlayer)
-        {
-            myTurn = playerTurn;
-            currentResources += 25f;
-            Debug.Log("i ran my hook! ^______________^");
-        }
-        
-    }
+   
     private void Awake()
     {
         // find the canvas in game (scene)
@@ -119,6 +110,8 @@ public class JB_LocalPlayer : NetworkBehaviour
             return;
         }
 
+        //this.gameObject.tag = "LocalPlayer";
+
         //abilityButtons = new Button[5];
         isButtonHeld = new bool[4];
 
@@ -135,9 +128,6 @@ public class JB_LocalPlayer : NetworkBehaviour
         // find my error message game object
         errorAlertTextObj = GameObject.FindGameObjectWithTag("ErrorMsg");
         
-        
-
-
 
         gridLayout.SetActive(true);
 
@@ -203,23 +193,24 @@ public class JB_LocalPlayer : NetworkBehaviour
 
     
     // trying to run this script locally - TODO
-    void RemoveSpriteEnemyShips()
+    public void RemoveSpriteEnemyShips()
     {
-        if (!runMeOnce)
+        if (!this.isLocalPlayer)
         {
-            GameObject[] allShips = GameObject.FindGameObjectsWithTag("Ship");
-
-            foreach (GameObject ship in allShips)
-            {
-                if (playerID != ship.GetComponent<DragObject>().playerID)
-                {
-                    ship.SetActive(false);
-                }
-
-            }
-            runMeOnce = true;
+            return;
         }
+      
+        GameObject[] allShips = GameObject.FindGameObjectsWithTag("Ship");
 
+        foreach (GameObject ship in allShips)
+        {
+            if (playerID != ship.GetComponent<DragObject>().playerID)
+            {
+                ship.GetComponent<DragObject>().shipSprite.SetActive(false);
+            }
+
+        }
+      
     }
 
     private void ActivateAbilities(int index)
@@ -279,15 +270,32 @@ public class JB_LocalPlayer : NetworkBehaviour
     // when the game starts, player still sees their grid, but colliders are disabled, to avoid aiming at own grid
     public void DisableMyTileColliders()
     {
+        
         BoxCollider[] tileColliders = gridLayout.GetComponentsInChildren<BoxCollider>();
+        GameObject[] allShips = GameObject.FindGameObjectsWithTag("Ship");
 
         foreach(BoxCollider collider in tileColliders)
         {
             collider.enabled = false;
         }
 
+        foreach(GameObject ship in allShips)
+        {
+            if(ship.GetComponent<NetworkIdentity>().hasAuthority)
+            {
+                BoxCollider[] shipSquares = ship.GetComponentsInChildren<BoxCollider>();
+                foreach (BoxCollider square in shipSquares)
+                {
+                    square.enabled = false;
+                }
+                
+            }
+            
+        }
+
     }
-        
+
+   
     // =============================== functions to execute abilities ============================
     [Command]
     private void CmdAbilityOneBlast(Vector3 targetPos)
@@ -390,6 +398,7 @@ public class JB_LocalPlayer : NetworkBehaviour
             // instantiate ships and give them authority from this local player (client)
             ships[i] = Instantiate(shipPrefabs[i]);
             ships[i].GetComponent<DragObject>().playerID = netID;
+            ships[i].GetComponent<DragObject>().EnableShipSprite();
             NetworkServer.SpawnWithClientAuthority(ships[i], connectionToClient);
             RpcAssignShips(ships[i], i);
         }
@@ -422,7 +431,7 @@ public class JB_LocalPlayer : NetworkBehaviour
         ships = new GameObject[shipPrefabs.Length];
 
         ships[index] = ship;
-
+        ships[index].GetComponent<DragObject>().EnableShipSprite();
         // one for each ship
         checkValidation = new bool[4];
     }
@@ -442,10 +451,10 @@ public class JB_LocalPlayer : NetworkBehaviour
                 checkValidation = new bool[4];
 
 
-                ships = GameObject.FindGameObjectsWithTag("Ship");
+                GameObject[] allShips = GameObject.FindGameObjectsWithTag("Ship");
                 
                 // making sure ships belong to me (local player)
-                foreach(GameObject ship in ships)
+                foreach(GameObject ship in allShips)
                 {
                     if(ship.GetComponent<DragObject>().playerID == playerID)
                     {
@@ -467,10 +476,10 @@ public class JB_LocalPlayer : NetworkBehaviour
                    
                     CmdIncrementReadyNumber();
 
-                    for (int i = 0; i < ships.Length; ++i)
+                    for (int i = 0; i < myList.Count; ++i)
                     {
-                        ships[i].GetComponent<JB_SnappingShip>().FreeOrLockShipPosition(false);
-                        ships[i].GetComponent<DragObject>().canDrag = false;
+                        myList[i].GetComponent<JB_SnappingShip>().FreeOrLockShipPosition(false);
+                        myList[i].GetComponent<DragObject>().canDrag = false;
                     }
 
 

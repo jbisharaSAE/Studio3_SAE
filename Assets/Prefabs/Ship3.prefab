@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 5632474237388198939}
   - component: {fileID: -890038217860784166}
   - component: {fileID: 8678676228836533154}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Ship3
   m_TagString: Ship
   m_Icon: {fileID: 0}
@@ -654,7 +654,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5397650376563697181
 Transform:
   m_ObjectHideFlags: 0
