@@ -97,12 +97,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf5164dc2cfa14b47a5514e12adda183, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerObj: {fileID: 0}
   speed: 100
   targetTilePos: {x: 0, y: 0, z: 0}
   hitSound: {fileID: 8300000, guid: 5b3016dbf002a3b408fc0f274f419157, type: 3}
-  hitSpritePrefab: {fileID: 3588494898839560947, guid: 255d25fe2cba4ca4d85237ebf4142271,
+  hitSpritePrefab: {fileID: 1650641585431926389, guid: eccdb072c2d37f34ba8a2fc315096862,
     type: 3}
-  missSpritePrefab: {fileID: 1650641585431926389, guid: eccdb072c2d37f34ba8a2fc315096862,
+  missSpritePrefab: {fileID: 3945157713611324876, guid: 783ae560ec0153045bdd07ecf47da91b,
     type: 3}
 --- !u!114 &-1896301080621996477
 MonoBehaviour:

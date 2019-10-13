@@ -5,6 +5,8 @@ using UnityEngine;
 public class JB_Ship : MonoBehaviour
 
 {
+    public ShipType shipType;
+
     public int shipHealth;
 
     // Start is called before the first frame update

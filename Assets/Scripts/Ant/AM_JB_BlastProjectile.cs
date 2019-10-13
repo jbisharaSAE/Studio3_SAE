@@ -3,29 +3,60 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 
-public class AM_BlastProjectile : NetworkBehaviour
+public class AM_JB_BlastProjectile : NetworkBehaviour
 {
+    public GameObject playerObj;
+
     private float step;
     public float speed;
 
     private Vector3 tempTargetPos;
+
+    // target location for projetile to end
+    [HideInInspector]
     public Vector3 targetTilePos;
 
+    // vector direction to ensure projectile faces the tile
     private Vector2 direction;
 
     //public AudioClip missSound;
+    // audio to play when player hits ship
     public AudioClip hitSound;
+
+    // stored prefabs of missing ship and hitting ship
     public GameObject hitSpritePrefab;
     public GameObject missSpritePrefab;
 
+    // variable used to spawn the correct sprite on the server
     private GameObject mySprite;
+
+    // simple audio source player attached to this game object
     private AudioSource myAudioSource;
+
+    // references to the player objects (that connect to server - currently unused - TODO)
+    private GameObject[] players;
+
+    // reference the ship type we hit
+    private ShipType ship;
+    
+    public override void OnStartClient()
+    {
+        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+    }
 
     private void Start()
     {
+        if (!hasAuthority)
+        {
+            return;
+        }
+
         myAudioSource = GetComponent<AudioSource>();
         myAudioSource.clip = hitSound;
+
+        
     }
+
     private void FaceTile()
     {
         // maths to determine the direction of projectil to tile
@@ -46,19 +77,18 @@ public class AM_BlastProjectile : NetworkBehaviour
             return;
         }
 
+        // adjusts the speed of the projectile, making it framerate independent
         step = speed * Time.deltaTime;
 
+        // move this projectil towards target location
         transform.position = Vector2.MoveTowards(transform.position, targetTilePos, step);
 
-        
+        // using distance to calculate proximity
         float distance = Vector2.Distance(transform.position, targetTilePos);
 
-        
 
         if(distance <= 0.1)
         {
-            Debug.Log("In distance");
-
             RaycastHit hit;
             if (Physics.Raycast(transform.position, transform.forward, out hit, Mathf.Infinity))
             {
@@ -69,20 +99,26 @@ public class AM_BlastProjectile : NetworkBehaviour
                 {
                     Debug.Log("hit ship");
 
+                    // take tile position from click and store in our variable
                     tempTargetPos = hit.collider.gameObject.transform.position;
 
-                    
                     // index 0 for hitting ship
                     CmdSpawnSprite(0, tempTargetPos);
-                    myAudioSource.Play();
+                    //myAudioSource.Play();
+
 
                     // disable collider to avoid hitpoints of ship getting incorrectly calculated
                     hit.collider.gameObject.GetComponent<BoxCollider>().enabled = false;
 
-                    hit.collider.gameObject.transform.GetComponentInParent<JB_Ship>().ShipHit();
+                    // getting reference to the parent object (the ship)
+                    GameObject shipObj = hit.collider.gameObject.transform.parent.gameObject;
 
-                    Debug.Log(NetworkServer.localConnections.Count);
+                    ship = shipObj.GetComponent<JB_Ship>().shipType;
 
+                    playerObj.GetComponent<JB_LocalPlayer>().FindShipHit(ship);
+
+                    CmdDestroyGameObj(gameObject);
+                    return;
                 }
                 else if (hit.collider.gameObject.tag == "Tile")
                 {
@@ -94,6 +130,8 @@ public class AM_BlastProjectile : NetworkBehaviour
                     hit.collider.gameObject.GetComponent<BoxCollider>().enabled = false;
                     Debug.Log("hit Tile");
                     // spawn miss sprite
+                    CmdDestroyGameObj(gameObject);
+                    return;
                 }
 
                 // do we hit a tile
@@ -101,20 +139,34 @@ public class AM_BlastProjectile : NetworkBehaviour
                 else
                 {
                     Debug.Log("missed");
+                    CmdDestroyGameObj(gameObject);
+                    return;
                 }
 
-                CmdDestroyGameObj(gameObject);
+                
 
             }
 
             else
             {
+                CmdDestroyGameObj(gameObject);
                 Debug.Log("Didn't hit anything");
+                return;
             }
         }
     }
 
+    [Command]
+    void CmdRemoveAuthority(GameObject ship, NetworkIdentity netID)
+    {
+        ship.GetComponent<NetworkIdentity>().RemoveClientAuthority(netID.connectionToClient);
+    }
 
+    [Command]
+    void CmdAssignAuthority(GameObject ship, NetworkIdentity netID)
+    {
+        ship.GetComponent<NetworkIdentity>().AssignClientAuthority(netID.connectionToClient);
+    }
 
     [Command]
     void CmdDestroyGameObj(GameObject gameObj)

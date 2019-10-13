@@ -595,6 +595,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24b9c56ce210d074bb073d47f44f6f47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shipType: 3
   shipHealth: 9
 --- !u!114 &4436528026164060654
 MonoBehaviour:
@@ -717,6 +718,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24b9c56ce210d074bb073d47f44f6f47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shipType: 0
   shipHealth: 6
 --- !u!114 &1297134687108599740
 MonoBehaviour:

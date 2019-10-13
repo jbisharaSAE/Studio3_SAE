@@ -4,15 +4,20 @@ using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.UI;
 using TMPro;
+using System.Linq;
+
+
+public enum ShipType { Ship1, Ship2, Ship3, Ship4 };
 
 public class JB_GameManager : NetworkBehaviour
 {
+    private bool[] isShipDead = new bool[4];
+    public int[] hitPoints = { 9, 6, 4, 6 };
+    
+    // testing to see if all hitpoint are 0
+    private bool allTrue;
+
     public static GameObject[] playerPrefabs;
-
-    [SerializeField]
-    private GameObject abilityButtons;
-
-    public TextMeshProUGUI textDisplayTest;
 
     [SyncVar]
     [HideInInspector]
@@ -20,19 +25,59 @@ public class JB_GameManager : NetworkBehaviour
 
     public GameObject playerObj;
 
-    private List<GameObject> players = new List<GameObject>();
-
-    // reference to client
-    private GameObject localPlayer;
-    // find reference to the other player object
-    private GameObject otherPlayer;
-
     [SerializeField]
     [Tooltip("Amount of dallions a player gets when it becomes their turn")]
     private float dallionsToAdd = 50f;
 
-    private int counter;
 
+
+    
+    public void ShipHit(ShipType ship)
+    {
+
+        Debug.Log("ship sent thru parameter = " + ship);
+        switch (ship)
+        {
+            case ShipType.Ship1:
+                --hitPoints[0];
+                break;
+            case ShipType.Ship2:
+                --hitPoints[2];
+                break;
+            case ShipType.Ship3:
+                --hitPoints[2];
+                break;
+            case ShipType.Ship4:
+                --hitPoints[3];
+                break;
+            default:
+                break;
+        }
+
+        ShipsRemaining();
+    }
+
+    
+    void ShipsRemaining()
+    {
+        for(int i = 0; i < hitPoints.Length; ++i)
+        {
+            if(hitPoints[i] <= 0)
+            {
+                isShipDead[i] = true;
+            }
+        }
+
+        allTrue = isShipDead.All(x => x);
+
+        if (allTrue)
+        {
+            // game over - other player wins
+        }
+        
+    }
+
+   
     public override void OnStartAuthority()
     {
 

@@ -727,6 +727,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24b9c56ce210d074bb073d47f44f6f47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shipType: 1
   shipHealth: 6
 --- !u!54 &771212208799578345
 Rigidbody:
@@ -856,6 +857,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24b9c56ce210d074bb073d47f44f6f47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shipType: 0
   shipHealth: 6
 --- !u!1 &7161579351915792777
 GameObject:

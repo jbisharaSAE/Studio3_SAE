@@ -171,7 +171,7 @@ public class JB_LocalPlayer : NetworkBehaviour
                     else if(hit.collider.gameObject.tag == "Square")
                     {
                         Debug.Log("square hit");
-                        tempTargetPos = hit.collider.gameObject.GetComponent<JB_SquareSprites>().tileRef.GetComponent<JB_Tile>().tilePosition;
+                        tempTargetPos = hit.collider.gameObject.transform.position;          //GetComponent<JB_SquareSprites>().tileRef.GetComponent<JB_Tile>().tilePosition;
 
                         for (int i = 0; i < isButtonHeld.Length; ++i)
                         {
@@ -192,27 +192,6 @@ public class JB_LocalPlayer : NetworkBehaviour
     }
 
     
-    // trying to run this script locally - TODO
-    public void RemoveSpriteEnemyShips()
-    {
-        if (!this.isLocalPlayer)
-        {
-            return;
-        }
-      
-        GameObject[] allShips = GameObject.FindGameObjectsWithTag("Ship");
-
-        foreach (GameObject ship in allShips)
-        {
-            if (playerID != ship.GetComponent<DragObject>().playerID)
-            {
-                ship.GetComponent<DragObject>().shipSprite.SetActive(false);
-            }
-
-        }
-      
-    }
-
     private void ActivateAbilities(int index)
     {
         switch (index)
@@ -268,9 +247,9 @@ public class JB_LocalPlayer : NetworkBehaviour
     }
 
     // when the game starts, player still sees their grid, but colliders are disabled, to avoid aiming at own grid
+    // colliders on own player also disabled, to avoid targeting own ships, by accident or w/e
     public void DisableMyTileColliders()
-    {
-        
+    {   
         BoxCollider[] tileColliders = gridLayout.GetComponentsInChildren<BoxCollider>();
         GameObject[] allShips = GameObject.FindGameObjectsWithTag("Ship");
 
@@ -300,14 +279,17 @@ public class JB_LocalPlayer : NetworkBehaviour
     [Command]
     private void CmdAbilityOneBlast(Vector3 targetPos)
     {
+        // assigning tile position from click to the variable trueTarget
         trueTarget = targetPos;
 
+        // spawns my projectile
         GameObject projectile = Instantiate(blastProjectilePrefab, projectileSpawnPoint.position, Quaternion.identity);
         
-        projectile.GetComponent<AM_BlastProjectile>().targetTilePos = trueTarget;
+        // assigning variables on projectile
+        projectile.GetComponent<AM_JB_BlastProjectile>().targetTilePos = trueTarget;
+        projectile.GetComponent<AM_JB_BlastProjectile>().playerObj = this.gameObject;
         
         NetworkServer.SpawnWithClientAuthority(projectile, connectionToClient);
-        
         
         RpcAbilityOneBlast(projectile, trueTarget);
 
@@ -317,9 +299,9 @@ public class JB_LocalPlayer : NetworkBehaviour
     [ClientRpc]
     void RpcAbilityOneBlast(GameObject projectile, Vector3 targetPos)
     {
-        Debug.Log(projectile.GetComponent<AM_BlastProjectile>().targetTilePos);
-
-        projectile.GetComponent<AM_BlastProjectile>().targetTilePos = targetPos;
+        // letting everyone know what those variables are
+        projectile.GetComponent<AM_JB_BlastProjectile>().targetTilePos = targetPos;
+        projectile.GetComponent<AM_JB_BlastProjectile>().playerObj = this.gameObject;
     }
 
     [Command]
@@ -359,6 +341,14 @@ public class JB_LocalPlayer : NetworkBehaviour
         return bToChange;
     }
 
+    
+    public void FindShipHit(ShipType ship)
+    {
+        //ShipType myShip = ship;
+        Debug.Log("Before FoR LOOP!");
+
+        gameManager.GetComponent<JB_GameManager>().ShipHit(ship);
+    }
 
     // unused at the moment
     [Command]
