@@ -39,7 +39,7 @@ public class JB_LocalPlayer : NetworkBehaviour
 
     // to make sure player does not run the function more than once
     private bool runOnce = true;
-    private bool runMeOnce = true;
+    
 
     //used to hide / show rotate / confirm buttons
     [HideInInspector]
@@ -148,12 +148,14 @@ public class JB_LocalPlayer : NetworkBehaviour
         // test to see if we are in battle mode
         if (!showRotateConfirmButtons)
         {
-            // players touch Input.Touch(0)
-            if (Input.GetMouseButtonDown(0))
+            // players touch Input.Touch(0) --- Input.GetMouseButtonDown(0) 
+            if (Input.touchCount > 0)
             {
-                Debug.Log("mouse clicked");
+                // get information from player's touch on screen
+                Touch touch = Input.GetTouch(0);
+                
                 RaycastHit hit;                                // mouse is for testing
-                if(Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit)) // shooting ray to mouse position
+                if(Physics.Raycast(Camera.main.ScreenPointToRay(touch.position), out hit)) // shooting ray to mouse position
                 {
                     if (hit.collider.gameObject.tag == "Tile") // did player click on a tile
                     {
@@ -344,9 +346,7 @@ public class JB_LocalPlayer : NetworkBehaviour
     
     public void FindShipHit(ShipType ship)
     {
-        //ShipType myShip = ship;
-        Debug.Log("Before FoR LOOP!");
-
+        // information for when a player hits an enemy ship
         gameManager.GetComponent<JB_GameManager>().ShipHit(ship);
     }
 
@@ -369,7 +369,7 @@ public class JB_LocalPlayer : NetworkBehaviour
             }
             runOnce = false;
         }
-        Debug.Log("Increment Function Called");
+        
     }
 
     [Command]
@@ -550,5 +550,12 @@ public class JB_LocalPlayer : NetworkBehaviour
         errorAlertTextObj.GetComponent<TextMeshProUGUI>().enabled = false;
     }
 
+    public void GameOver()
+    {
+        errorAlertTextObj = GameObject.FindGameObjectWithTag("ErrorMsg");
+        errorAlertTextObj.GetComponent<TextMeshProUGUI>().text = "Game Over!";
+        errorAlertTextObj.GetComponent<TextMeshProUGUI>().enabled = true;
+        this.enabled = false;
+    }
     
 }

@@ -42,7 +42,7 @@ public class JB_GameManager : NetworkBehaviour
                 --hitPoints[0];
                 break;
             case ShipType.Ship2:
-                --hitPoints[2];
+                --hitPoints[1];
                 break;
             case ShipType.Ship3:
                 --hitPoints[2];
@@ -72,9 +72,26 @@ public class JB_GameManager : NetworkBehaviour
 
         if (allTrue)
         {
-            // game over - other player wins
+            // game over
+            CmdGameOver();
         }
         
+    }
+
+    [Command]
+    void CmdGameOver()
+    {
+        foreach(GameObject player in playerPrefabs)
+        {
+            player.GetComponent<JB_LocalPlayer>().GameOver();
+            RpcGameOver(player);
+        }
+    }
+
+    [ClientRpc]
+    void RpcGameOver(GameObject playerObj)
+    {
+        playerObj.GetComponent<JB_LocalPlayer>().GameOver();
     }
 
    
@@ -197,7 +214,11 @@ public class JB_GameManager : NetworkBehaviour
     [Command]
     void CmdAddResourcesToPlayer(GameObject playerObj)
     {
-        playerObj.GetComponent<JB_LocalPlayer>().currentResources += dallionsToAdd;
+        if(playerObj.GetComponent<JB_LocalPlayer>().currentResources < 250)
+        {
+            playerObj.GetComponent<JB_LocalPlayer>().currentResources += dallionsToAdd;
+        }
+        
     }
 
 
