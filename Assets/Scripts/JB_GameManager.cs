@@ -23,7 +23,8 @@ public class JB_GameManager : NetworkBehaviour
     [HideInInspector]
     public int readyCheckNumber;
 
-    public GameObject playerObj;
+    public GameObject shipDestroyedParticle;
+    public GameObject shipHitParicle;
 
     [SerializeField]
     [Tooltip("Amount of dallions a player gets when it becomes their turn")]
@@ -32,7 +33,7 @@ public class JB_GameManager : NetworkBehaviour
 
 
     
-    public void ShipHit(ShipType ship)
+    public void ShipHit(ShipType ship, GameObject shipObj, Vector3 squarePos)
     {
 
         Debug.Log("ship sent thru parameter = " + ship);
@@ -40,15 +41,23 @@ public class JB_GameManager : NetworkBehaviour
         {
             case ShipType.Ship1:
                 --hitPoints[0];
+                CmdSpawnShipHitParticle(squarePos);
+                CmdTestShipLife(hitPoints[0], shipObj);
                 break;
             case ShipType.Ship2:
                 --hitPoints[1];
+                CmdSpawnShipHitParticle(squarePos);
+                CmdTestShipLife(hitPoints[1], shipObj);
                 break;
             case ShipType.Ship3:
                 --hitPoints[2];
+                CmdSpawnShipHitParticle(squarePos);
+                CmdTestShipLife(hitPoints[2], shipObj);
                 break;
             case ShipType.Ship4:
                 --hitPoints[3];
+                CmdSpawnShipHitParticle(squarePos);
+                CmdTestShipLife(hitPoints[3], shipObj);
                 break;
             default:
                 break;
@@ -57,7 +66,27 @@ public class JB_GameManager : NetworkBehaviour
         ShipsRemaining();
     }
 
-    
+    [Command]
+    void CmdTestShipLife(float hitPoints, GameObject shipObj)
+    {
+        if(hitPoints == 0)
+        {
+            GameObject go = Instantiate(shipDestroyedParticle, shipObj.transform.position, Quaternion.identity);
+
+            NetworkServer.Spawn(go);
+
+        }
+    }
+
+    [Command]
+    void CmdSpawnShipHitParticle(Vector3 squarePos)
+    {
+        GameObject go = Instantiate(shipHitParicle, squarePos, Quaternion.identity);
+
+        NetworkServer.Spawn(go);
+    }
+
+
     void ShipsRemaining()
     {
         for(int i = 0; i < hitPoints.Length; ++i)
@@ -198,17 +227,26 @@ public class JB_GameManager : NetworkBehaviour
         playerPrefabs[0].GetComponent<JB_LocalPlayer>().myTurn = !playerPrefabs[0].GetComponent<JB_LocalPlayer>().myTurn;
         playerPrefabs[1].GetComponent<JB_LocalPlayer>().myTurn = !playerPrefabs[1].GetComponent<JB_LocalPlayer>().myTurn;
 
-        foreach (KeyValuePair<NetworkInstanceId, NetworkIdentity> pair in NetworkServer.objects)
+        if (playerPrefabs[0].GetComponent<JB_LocalPlayer>().myTurn)
         {
-            if (pair.Value.gameObject.tag == "Player")
-            {
-                if (pair.Value.gameObject.GetComponent<JB_LocalPlayer>().myTurn)
-                {
-                    CmdAddResourcesToPlayer(pair.Value.gameObject);
-                }
-
-            }
+            CmdAddResourcesToPlayer(playerPrefabs[0]);  // add dallions to this player
         }
+        else
+        {
+            CmdAddResourcesToPlayer(playerPrefabs[1]);  // add dallions to this player
+        }
+
+        //foreach (KeyValuePair<NetworkInstanceId, NetworkIdentity> pair in NetworkServer.objects)
+        //{
+        //    if (pair.Value.gameObject.tag == "Player")
+        //    {
+        //        if (pair.Value.gameObject.GetComponent<JB_LocalPlayer>().myTurn)
+        //        {
+        //            CmdAddResourcesToPlayer(pair.Value.gameObject);
+        //        }
+
+        //    }
+        //}
     }
 
     [Command]
@@ -217,8 +255,15 @@ public class JB_GameManager : NetworkBehaviour
         if(playerObj.GetComponent<JB_LocalPlayer>().currentResources < 250)
         {
             playerObj.GetComponent<JB_LocalPlayer>().currentResources += dallionsToAdd;
+            RpcAddResourcesToPlayer(playerObj, playerObj.GetComponent<JB_LocalPlayer>().currentResources);
         }
         
+    }
+
+    [ClientRpc]
+    void RpcAddResourcesToPlayer(GameObject playerObj, float amount)
+    {
+        playerObj.GetComponent<JB_LocalPlayer>().currentResources = amount;
     }
 
 

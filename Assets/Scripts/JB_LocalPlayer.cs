@@ -15,6 +15,14 @@ public class JB_LocalPlayer : NetworkBehaviour
     // projectile blast prefab
     public GameObject blastProjectilePrefab;
 
+    // barrage projectile prefab
+    public GameObject barrageProjectilePrefab;
+    // barrage location prefab
+    public GameObject barragePrefab;
+
+    // barrage projectile spawn points
+    private Vector3[] barrageSpawnPoint;
+
     // currency text display
     public GameObject dallionDisplay;
 
@@ -110,6 +118,8 @@ public class JB_LocalPlayer : NetworkBehaviour
             return;
         }
 
+        barrageSpawnPoint = new Vector3[4];
+
         //this.gameObject.tag = "LocalPlayer";
 
         //abilityButtons = new Button[5];
@@ -148,14 +158,14 @@ public class JB_LocalPlayer : NetworkBehaviour
         // test to see if we are in battle mode
         if (!showRotateConfirmButtons)
         {
-            // players touch Input.Touch(0) --- Input.GetMouseButtonDown(0) 
-            if (Input.touchCount > 0)
+            // players touch Input.Touch(0) ---  Input.touchCount > 0
+            if (Input.GetMouseButtonDown(0))
             {
                 // get information from player's touch on screen
-                Touch touch = Input.GetTouch(0);
+                //Touch touch = Input.GetTouch(0);
                 
                 RaycastHit hit;                                // mouse is for testing
-                if(Physics.Raycast(Camera.main.ScreenPointToRay(touch.position), out hit)) // shooting ray to mouse position
+                if(Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit)) // shooting ray to mouse position
                 {
                     if (hit.collider.gameObject.tag == "Tile") // did player click on a tile
                     {
@@ -201,11 +211,11 @@ public class JB_LocalPlayer : NetworkBehaviour
             case 0:
                 if(currentResources >= blastCost)
                 {
-                    // ability one - blast
-                    CmdAbilityOneBlast(tempTargetPos);
-
                     // take away the resource cost of this ability
                     currentResources -= blastCost;
+
+                    // ability one - blast
+                    CmdAbilityOneBlast(tempTargetPos, currentResources);
                 }
                 
                 // ability is no longer active
@@ -214,14 +224,18 @@ public class JB_LocalPlayer : NetworkBehaviour
                 
                 break;
             case 1:
-                // ability two - barrage
-                CmdAbilityTwoBarrage();
+                if(currentResources >= barrageCost)
+                {
+                    // take away the resource cost of this ability
+                    currentResources -= barrageCost;
 
+                    // ability two - barrage
+                    CmdAbilityTwoBarrage(tempTargetPos, currentResources);
+                }
+                
                 // ability is no longer active
                 isButtonHeld[1] = false;
 
-                // take away the resource cost of this ability
-                currentResources -= barrageCost;
                 break;
             case 2:
                 // ability three - radar
@@ -279,7 +293,7 @@ public class JB_LocalPlayer : NetworkBehaviour
    
     // =============================== functions to execute abilities ============================
     [Command]
-    private void CmdAbilityOneBlast(Vector3 targetPos)
+    private void CmdAbilityOneBlast(Vector3 targetPos, float updateCurrency)
     {
         // assigning tile position from click to the variable trueTarget
         trueTarget = targetPos;
@@ -292,24 +306,72 @@ public class JB_LocalPlayer : NetworkBehaviour
         projectile.GetComponent<AM_JB_BlastProjectile>().playerObj = this.gameObject;
         
         NetworkServer.SpawnWithClientAuthority(projectile, connectionToClient);
-        
-        RpcAbilityOneBlast(projectile, trueTarget);
+
+        currentResources = updateCurrency;
+
+        RpcAbilityOneBlast(projectile, trueTarget, updateCurrency);
 
 
     }
 
     [ClientRpc]
-    void RpcAbilityOneBlast(GameObject projectile, Vector3 targetPos)
+    void RpcAbilityOneBlast(GameObject projectile, Vector3 targetPos, float updateCurrency)
     {
         // letting everyone know what those variables are
         projectile.GetComponent<AM_JB_BlastProjectile>().targetTilePos = targetPos;
         projectile.GetComponent<AM_JB_BlastProjectile>().playerObj = this.gameObject;
+        currentResources = updateCurrency;
     }
 
     [Command]
-    private void CmdAbilityTwoBarrage()
+    private void CmdAbilityTwoBarrage(Vector3 targetPos, float updateCurrency)
     {
+        // assigning tile position from click to the variable trueTarget
+        trueTarget = targetPos;
 
+        // spawn barrage prefab
+        GameObject barrage = Instantiate(barragePrefab, targetPos, Quaternion.identity);
+        NetworkServer.SpawnWithClientAuthority(barrage, connectionToClient);
+
+        // target locations for barrage projectiles
+        //barrageSpawnPoint
+        for (int i = 0; i < 4; ++i)
+        {
+            // first 4 child objects of barrage prefab (ie the projectiles)             // 154 is just above the screen
+            barrageSpawnPoint[i] = new Vector3(barrage.transform.GetChild(i).position.x, 154.0f, barrage.transform.GetChild(i).position.z);  // GetComponent<JB_BarrageProjectile>().playerObj = this.gameObject;
+            GameObject barrageProj = Instantiate(barrageProjectilePrefab, barrageSpawnPoint[i], Quaternion.identity);
+
+            Vector3 pos = barrage.transform.GetChild(i).position;
+            float delayTime;
+            // assigning variables to the spawned barrage projectiles
+            barrageProj.GetComponent<JB_BarrageProjectile>().targetPos = pos;
+            barrageProj.GetComponent<JB_BarrageProjectile>().delayTime = delayTime = ((float)i);
+            barrageProj.GetComponent<JB_BarrageProjectile>().playerObj = this.gameObject;
+
+            NetworkServer.SpawnWithClientAuthority(barrageProj, connectionToClient);
+
+            RpcSpawnBarrageProjectiles(barrageProj, pos, delayTime);
+        }
+
+        
+
+        RpcAbilityTwoBarrage(barrage, updateCurrency);
+    }
+
+    [ClientRpc]
+    private void RpcSpawnBarrageProjectiles(GameObject projectile, Vector3 targetPos, float delayTime)
+    {
+        projectile.GetComponent<JB_BarrageProjectile>().targetPos = targetPos;
+        projectile.GetComponent<JB_BarrageProjectile>().delayTime = delayTime;
+        projectile.GetComponent<JB_BarrageProjectile>().playerObj = this.gameObject;
+    }
+
+    [ClientRpc]
+    private void RpcAbilityTwoBarrage(GameObject barrage, float updateCurrency)
+    {
+        currentResources = updateCurrency;
+
+               
     }
 
     [Command]
@@ -344,10 +406,10 @@ public class JB_LocalPlayer : NetworkBehaviour
     }
 
     
-    public void FindShipHit(ShipType ship)
+    public void FindShipHit(ShipType ship, GameObject shipObj, Vector3 squarePos)
     {
         // information for when a player hits an enemy ship
-        gameManager.GetComponent<JB_GameManager>().ShipHit(ship);
+        gameManager.GetComponent<JB_GameManager>().ShipHit(ship, shipObj, squarePos);
     }
 
     // unused at the moment

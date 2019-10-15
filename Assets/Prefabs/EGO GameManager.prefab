@@ -77,7 +77,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11405cf9571eea04b92f651067b6c5df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  abilityButtons: {fileID: 0}
-  textDisplayTest: {fileID: 0}
+  hitPoints: 09000000060000000400000006000000
   readyCheckNumber: 0
-  playerObj: {fileID: 0}
+  shipDestroyedParticle: {fileID: 3108652179736610719, guid: 0dd7a64cf0d2d954e8a1494787b25076,
+    type: 3}
+  shipHitParicle: {fileID: 3243021494529554619, guid: 445ca62131ca4554fae03d2a70948984,
+    type: 3}
+  dallionsToAdd: 50

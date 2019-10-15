@@ -3,91 +3,52 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 
-public class AM_JB_BlastProjectile : NetworkBehaviour
+public class JB_BarrageProjectile : NetworkBehaviour
 {
+    private float step;
+
     public GameObject playerObj;
 
-    private float step;
-    public float speed;
-
-    private Vector3 tempTargetPos;
-
-    // target location for projetile to end
-    [HideInInspector]
-    public Vector3 targetTilePos;
-
-    // vector direction to ensure projectile faces the tile
-    private Vector2 direction;
-
-    //public AudioClip missSound;
-    // audio to play when player hits ship
-    public AudioClip hitSound;
-
-    // stored prefabs of missing ship and hitting ship
     public GameObject hitSpritePrefab;
     public GameObject missSpritePrefab;
 
-    // variable used to spawn the correct sprite on the server
     private GameObject mySprite;
 
-    // simple audio source player attached to this game object
-    private AudioSource myAudioSource;
+    // speed of projectile
+    public float speed;
 
-    // references to the player objects (that connect to server - currently unused - TODO)
-    private GameObject[] players;
+    // location for projectile to travel to
+    public Vector3 targetPos;
+
+    // delay for each projectile
+    public float delayTime;
+
+    // timer
+    private float time;
 
     // reference the ship type we hit
     private ShipType ship;
-    
-    public override void OnStartClient()
+
+    private Vector3 tempTargetPos;
+
+    // Update is called once per frame
+    void Update()
     {
-        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
-    }
-
-    private void Start()
-    {
-        if (!hasAuthority)
-        {
-            return;
-        }
-
-        myAudioSource = GetComponent<AudioSource>();
-        myAudioSource.clip = hitSound;
-
-        
-    }
-
-    private void FaceTile()
-    {
-        // maths to determine the direction of projectil to tile
-        direction = new Vector2((targetTilePos.x - transform.position.x), (targetTilePos.y - transform.position.y));
-
-        // make this projectile face the tile
-        transform.up = direction;
-    }
-
-    private void Update()
-    {
-
-
-        FaceTile();
-
-        if (!hasAuthority)
-        {
-            return;
-        }
-
-        // adjusts the speed of the projectile, making it framerate independent
         step = speed * Time.deltaTime;
 
-        // move this projectil towards target location
-        transform.position = Vector2.MoveTowards(transform.position, targetTilePos, step);
+        if (delayTime > time)
+        {
+            transform.position = Vector2.MoveTowards(transform.position, targetPos, step);
+        }
+        else
+        {
+            time += Time.deltaTime; 
+        }
+        
 
-        // using distance to calculate proximity
-        float distance = Vector2.Distance(transform.position, targetTilePos);
+        float distance = Vector2.Distance(transform.position, targetPos);
 
-
-        if(distance <= 0.1)
+        if(distance < 0.1f)
         {
             RaycastHit hit;
             if (Physics.Raycast(transform.position, transform.forward, out hit, Mathf.Infinity))
@@ -106,7 +67,7 @@ public class AM_JB_BlastProjectile : NetworkBehaviour
 
                     // index 0 for hitting ship
                     CmdSpawnSprite(0, tempTargetPos);
-                    
+
                     //myAudioSource.Play();
 
 
@@ -147,7 +108,7 @@ public class AM_JB_BlastProjectile : NetworkBehaviour
                     return;
                 }
 
-                
+
 
             }
 
@@ -157,9 +118,12 @@ public class AM_JB_BlastProjectile : NetworkBehaviour
                 Debug.Log("Didn't hit anything");
                 return;
             }
+            // spawn particle effects
+            // ray cast for ship hit or miss
         }
     }
 
+   
     [Command]
     void CmdDestroyGameObj(GameObject gameObj)
     {
@@ -202,48 +166,4 @@ public class AM_JB_BlastProjectile : NetworkBehaviour
     {
         mySprite = spriteObj;
     }
-
-    // ANTHONY'S CODE
-    /*
-    IEnumerator Shoot()
-    {
-        //Get access to abilities script
-        GameObject abilityManager = GameObject.Find("EGO AbilityManager");
-        Abilities abilitiesScript = abilityManager.GetComponent<Abilities>();
-
-        for (int i = 0; i < abilitiesScript.blastProjectileGroup.Count; i++)
-        {
-            //Establish the target for the FIRST projectile (which is the first selectiontile)  - 1
-            Vector3 target = abilitiesScript.selectionTileGroup[i].transform.position;
-
-            //Make first projectile move to target0 position
-            abilitiesScript.blastProjectileGroup[i].transform.position = Vector2.MoveTowards(abilitiesScript.blastProjectileGroup[i].transform.position, target, step);
-
-            //Kill projectile if it touches the target
-            if (abilitiesScript.blastProjectileGroup[i].transform.position == target)
-            {
-                HitTarget();
-            }
-            //Wait time before deploying another projectile
-            yield return new WaitForSeconds(abilitiesScript.blastDeployDelay);
-        }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        //Set up speed of projectiles
-        step = speed * Time.deltaTime;
-
-        StartCoroutine("Shoot");
-    }
-
-    void HitTarget()
-    {
-        //Destroy the projectile when it lands
-        Destroy(gameObject);
-    }
-    */
-
-    // ANTHONY'S CODE
 }
