@@ -457,7 +457,7 @@ public class JB_LocalPlayer : NetworkBehaviour
     }
 
     
-    public void FindShipHit(ShipType ship, GameObject shipObj, Vector3 squarePos)
+    public void FindShipHit(ShipType ship, GameObject shipObj, Vector2 squarePos)
     {
         // information for when a player hits an enemy ship
         gameManager.GetComponent<JB_GameManager>().ShipHit(ship, shipObj, squarePos);

@@ -105,7 +105,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66adb3f43037e8d44bdb66647e459322, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blastSpawnPoint: {fileID: 0}
+  blastSpawnPoint: {fileID: 4837943201891535469}
   blastProjectilePrefab: {fileID: 1094035655059741561, guid: 54d2356025bcc01478c200b7d04200eb,
     type: 3}
   barrageProjectilePrefab: {fileID: 3043257392722660612, guid: 08642d2841778ec49a40746374a3db7b,

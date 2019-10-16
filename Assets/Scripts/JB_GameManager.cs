@@ -13,7 +13,7 @@ public class JB_GameManager : NetworkBehaviour
 {
     private bool[] isShipDead = new bool[4];
     public int[] hitPoints = { 9, 6, 4, 6 };
-    
+
     // testing to see if all hitpoint are 0
     private bool allTrue;
 
@@ -23,8 +23,11 @@ public class JB_GameManager : NetworkBehaviour
     [HideInInspector]
     public int readyCheckNumber;
 
-    public GameObject shipDestroyedParticle;
-    public GameObject shipHitParicle;
+    [SerializeField] private GameObject shipDestroyedPrefab;
+    [SerializeField] private GameObject shipHitPrefab;
+
+    private GameObject shipDestroy;
+    private GameObject shipHit;
 
     [SerializeField]
     [Tooltip("Amount of dallions a player gets when it becomes their turn")]
@@ -33,7 +36,7 @@ public class JB_GameManager : NetworkBehaviour
 
 
     
-    public void ShipHit(ShipType ship, GameObject shipObj, Vector3 squarePos)
+    public void ShipHit(ShipType ship, GameObject shipObj, Vector2 squarePos)
     {
 
         Debug.Log("ship sent thru parameter = " + ship);
@@ -71,19 +74,34 @@ public class JB_GameManager : NetworkBehaviour
     {
         if(hitPoints == 0)
         {
-            GameObject go = Instantiate(shipDestroyedParticle, shipObj.transform.position, Quaternion.identity);
+            shipDestroy = Instantiate(shipDestroyedPrefab, shipObj.transform.position, Quaternion.identity);
 
-            NetworkServer.Spawn(go);
+            NetworkServer.Spawn(shipDestroy);
 
         }
+    }
+
+    [ClientRpc]
+    void RpcTestShipLife(GameObject shipDestroyed)
+    {
+        shipDestroy = shipDestroyed;
     }
 
     [Command]
     void CmdSpawnShipHitParticle(Vector3 squarePos)
     {
-        GameObject go = Instantiate(shipHitParicle, squarePos, Quaternion.identity);
+        shipHit = Instantiate(shipHitPrefab, squarePos, Quaternion.identity);
 
-        NetworkServer.Spawn(go);
+        NetworkServer.Spawn(shipHit);
+        RpcSpawnShipHitParticle(shipHit);
+
+
+    }
+
+    [ClientRpc]
+    void RpcSpawnShipHitParticle(GameObject particle)
+    {
+        shipHit = particle;
     }
 
 
@@ -236,28 +254,42 @@ public class JB_GameManager : NetworkBehaviour
             CmdAddResourcesToPlayer(playerPrefabs[1]);  // add dallions to this player
         }
 
-        //foreach (KeyValuePair<NetworkInstanceId, NetworkIdentity> pair in NetworkServer.objects)
-        //{
-        //    if (pair.Value.gameObject.tag == "Player")
-        //    {
-        //        if (pair.Value.gameObject.GetComponent<JB_LocalPlayer>().myTurn)
-        //        {
-        //            CmdAddResourcesToPlayer(pair.Value.gameObject);
-        //        }
-
-        //    }
-        //}
+    
     }
 
     [Command]
     void CmdAddResourcesToPlayer(GameObject playerObj)
     {
-        if(playerObj.GetComponent<JB_LocalPlayer>().currentResources < 250)
+        //playerObj.GetComponent<JB_LocalPlayer>().currentResources += dallionsToAdd;
+
+        int rand = Random.Range(0, 4);
+
+        switch (rand)
         {
-            playerObj.GetComponent<JB_LocalPlayer>().currentResources += dallionsToAdd;
-            RpcAddResourcesToPlayer(playerObj, playerObj.GetComponent<JB_LocalPlayer>().currentResources);
+            case 0:
+                playerObj.GetComponent<JB_LocalPlayer>().currentResources += 25;
+                break;
+            case 1:
+                playerObj.GetComponent<JB_LocalPlayer>().currentResources += 50;
+                break;
+            case 2:
+                playerObj.GetComponent<JB_LocalPlayer>().currentResources += 75;
+                break;
+            case 3:
+                playerObj.GetComponent<JB_LocalPlayer>().currentResources += 100;
+                break;
+            default:
+                break;
+
         }
-        
+
+        if (playerObj.GetComponent<JB_LocalPlayer>().currentResources >= 250)
+        {
+            playerObj.GetComponent<JB_LocalPlayer>().currentResources = 250f;
+        }
+
+        RpcAddResourcesToPlayer(playerObj, playerObj.GetComponent<JB_LocalPlayer>().currentResources);
+
     }
 
     [ClientRpc]
