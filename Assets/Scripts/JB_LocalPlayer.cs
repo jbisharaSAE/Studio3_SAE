@@ -20,6 +20,12 @@ public class JB_LocalPlayer : NetworkBehaviour
     // barrage location prefab
     public GameObject barragePrefab;
 
+    // the projectile to instantiate
+    private GameObject barrageProj;
+
+    // spawn points for projectile to fly to
+    private GameObject barrage;
+
     // barrage projectile spawn points
     private Vector3[] barrageSpawnPoint;
 
@@ -169,7 +175,7 @@ public class JB_LocalPlayer : NetworkBehaviour
                 {
                     if (hit.collider.gameObject.tag == "Tile") // did player click on a tile
                     {
-                        Debug.Log("tile hit");
+                        Debug.Log("tile hit, we clicked on a tile");
                         tempTargetPos = hit.collider.gameObject.GetComponent<JB_Tile>().tilePosition;
 
                         for (int i = 0; i < isButtonHeld.Length; ++i)
@@ -182,7 +188,7 @@ public class JB_LocalPlayer : NetworkBehaviour
                     }
                     else if(hit.collider.gameObject.tag == "Square")
                     {
-                        Debug.Log("square hit");
+                        Debug.Log("square hit, we have clicked on a ship");
                         tempTargetPos = hit.collider.gameObject.transform.position;          //GetComponent<JB_SquareSprites>().tileRef.GetComponent<JB_Tile>().tilePosition;
 
                         for (int i = 0; i < isButtonHeld.Length; ++i)
@@ -265,7 +271,11 @@ public class JB_LocalPlayer : NetworkBehaviour
     // when the game starts, player still sees their grid, but colliders are disabled, to avoid aiming at own grid
     // colliders on own player also disabled, to avoid targeting own ships, by accident or w/e
     public void DisableMyTileColliders()
-    {   
+    {
+        if (!this.isLocalPlayer)
+        {
+            return;
+        }
         BoxCollider[] tileColliders = gridLayout.GetComponentsInChildren<BoxCollider>();
         GameObject[] allShips = GameObject.FindGameObjectsWithTag("Ship");
 
@@ -326,11 +336,13 @@ public class JB_LocalPlayer : NetworkBehaviour
     [Command]
     private void CmdAbilityTwoBarrage(Vector3 targetPos, float updateCurrency)
     {
+        barrageSpawnPoint = new Vector3[4];
+
         // assigning tile position from click to the variable trueTarget
         trueTarget = targetPos;
 
         // spawn barrage prefab
-        GameObject barrage = Instantiate(barragePrefab, targetPos, Quaternion.identity);
+        barrage = Instantiate(barragePrefab, targetPos, Quaternion.identity);
         NetworkServer.SpawnWithClientAuthority(barrage, connectionToClient);
 
         // target locations for barrage projectiles
@@ -338,14 +350,14 @@ public class JB_LocalPlayer : NetworkBehaviour
         for (int i = 0; i < 4; ++i)
         {
             // first 4 child objects of barrage prefab (ie the projectiles)             // 154 is just above the screen
-            barrageSpawnPoint[i] = new Vector3(barrage.transform.GetChild(i).position.x, 154.0f, barrage.transform.GetChild(i).position.z);  // GetComponent<JB_BarrageProjectile>().playerObj = this.gameObject;
-            GameObject barrageProj = Instantiate(barrageProjectilePrefab, barrageSpawnPoint[i], Quaternion.identity);
+            barrageSpawnPoint[i] = new Vector3(barrage.transform.GetChild(i).position.x, 154.0f, barrage.transform.GetChild(i).position.z);  
+            barrageProj = Instantiate(barrageProjectilePrefab, barrageSpawnPoint[i], barrageProjectilePrefab.transform.rotation);
 
             Vector3 pos = barrage.transform.GetChild(i).position;
             float delayTime;
             // assigning variables to the spawned barrage projectiles
             barrageProj.GetComponent<JB_BarrageProjectile>().targetPos = pos;
-            barrageProj.GetComponent<JB_BarrageProjectile>().delayTime = delayTime = ((float)i);
+            barrageProj.GetComponent<JB_BarrageProjectile>().delayTime = delayTime = ((float)i /4);
             barrageProj.GetComponent<JB_BarrageProjectile>().playerObj = this.gameObject;
 
             NetworkServer.SpawnWithClientAuthority(barrageProj, connectionToClient);
@@ -387,8 +399,6 @@ public class JB_LocalPlayer : NetworkBehaviour
 
     }
     // =============================== functions to execute abilities ============================
-
-
 
 
     // method used to ensure only one ability is active any one time

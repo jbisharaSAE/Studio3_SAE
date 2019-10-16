@@ -36,7 +36,7 @@ public class JB_BarrageProjectile : NetworkBehaviour
     {
         step = speed * Time.deltaTime;
 
-        if (delayTime > time)
+        if (delayTime < time)
         {
             transform.position = Vector2.MoveTowards(transform.position, targetPos, step);
         }
@@ -58,7 +58,7 @@ public class JB_BarrageProjectile : NetworkBehaviour
                 // do we hit the ship
                 if (hit.collider.gameObject.tag == "Square")
                 {
-                    Debug.Log("hit ship");
+                    Debug.Log("hit ship " + hit.collider.gameObject.name);
 
                     // take tile position from click and store in our variable
                     tempTargetPos = hit.collider.gameObject.transform.position;
@@ -82,7 +82,7 @@ public class JB_BarrageProjectile : NetworkBehaviour
                     // calling function to count ship hits
                     playerObj.GetComponent<JB_LocalPlayer>().FindShipHit(ship, shipObj, hitPos.position);
 
-                    CmdDestroyGameObj(gameObject);
+                    
                     return;
                 }
                 else if (hit.collider.gameObject.tag == "Tile")
@@ -93,9 +93,9 @@ public class JB_BarrageProjectile : NetworkBehaviour
                     CmdSpawnSprite(1, tempTargetPos);
 
                     hit.collider.gameObject.GetComponent<BoxCollider>().enabled = false;
-                    Debug.Log("hit Tile");
-                    // spawn miss sprite
-                    CmdDestroyGameObj(gameObject);
+                    Debug.Log("hit Tile " + hit.collider.gameObject.name);
+                    
+                    
                     return;
                 }
 
@@ -114,9 +114,9 @@ public class JB_BarrageProjectile : NetworkBehaviour
 
             else
             {
-                CmdDestroyGameObj(gameObject);
+                //CmdDestroyGameObj(gameObject);
                 Debug.Log("Didn't hit anything");
-                return;
+                //return;
             }
             // spawn particle effects
             // ray cast for ship hit or miss
@@ -156,6 +156,8 @@ public class JB_BarrageProjectile : NetworkBehaviour
         GameObject newSprite = mySprite;
 
         NetworkServer.Spawn(mySprite);
+
+        CmdDestroyGameObj(gameObject);
 
         //RpcSpawnSprite(mySprite);
 
