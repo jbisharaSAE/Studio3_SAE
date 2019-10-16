@@ -4,65 +4,58 @@ using UnityEngine;
 
 public class AM_AudioManager : MonoBehaviour
 {
+    [SerializeField]
     //Blast Abilty SFX reference
-    private GameObject blastPlayer;
     private AudioSource blastSFX;
 
+    [SerializeField]
     //Barrage Ability SFX reference
-    private GameObject barragePlayer;
     private AudioSource barrageSFX;
 
+    [SerializeField]
     //Ship Death SFX reference
-    private GameObject shipDeathPlayer;
     private AudioSource shipDeathSFX;
 
+    [SerializeField]
     //Player Lose SFX reference
-    private GameObject playerLosePlayer;
     private AudioSource playerLoseSFX;
 
+    [SerializeField]
     //Player Win SFX reference
-    private GameObject playerWinPlayer;
     private AudioSource playerWinSFX;
 
+    [SerializeField]
     //Shield spawn SFX reference
-    private GameObject shieldSpawnPlayer;
     private AudioSource shieldSpawnSFX;
 
+    [SerializeField]
     //Shield death SFX reference
-    private GameObject shieldDeathPlayer;
     private AudioSource shieldDeathSFX;
 
     // Start is called before the first frame update
     void Start()
     {
-        //Get access to gameobject that holds the blast ability audio source,
-        //As well as the audio source compoenent inside that game object
-        blastPlayer = GameObject.Find("Blast");
-        blastSFX = blastPlayer.GetComponent<AudioSource>();
+        //Get access to gameobject that holds the ability audio source,
+        //As well as the audio source compoenent inside that game object;
+        blastSFX = GameObject.Find("Blast").GetComponent<AudioSource>();
 
         //access to Barrage audio source
-        barragePlayer = GameObject.Find("Barrage");
-        barrageSFX = barragePlayer.GetComponent<AudioSource>();
+        barrageSFX = GameObject.Find("Barrage").GetComponent<AudioSource>();
 
         //access to Ship death audio source
-        shipDeathPlayer = GameObject.Find("Ship Death");
-        shipDeathSFX = shipDeathPlayer.GetComponent<AudioSource>();
+        shipDeathSFX = GameObject.Find("Ship Death").GetComponent<AudioSource>();
 
         //access to Player Lose audio source
-        playerLosePlayer = GameObject.Find("Player Lose");
-        playerLoseSFX = playerLosePlayer.GetComponent<AudioSource>();
+        playerLoseSFX = GameObject.Find("Ship Death").GetComponent<AudioSource>();
 
         //access to Player Win audio source
-        playerWinPlayer = GameObject.Find("Player Win");
-        playerWinSFX = playerWinPlayer.GetComponent<AudioSource>();
+        playerWinSFX = GameObject.Find("Ship Death").GetComponent<AudioSource>();
 
         //access to Shield Spawn audio source
-        shieldSpawnPlayer = GameObject.Find("Shield Ability 1");
-        shieldSpawnSFX = shieldSpawnPlayer.GetComponent<AudioSource>();
+        shieldSpawnSFX = GameObject.Find("Shield Ability 1").GetComponent<AudioSource>();
 
         //access to Shield Despawn audio source
-        shieldDeathPlayer = GameObject.Find("Shield Ability 2");
-        shieldDeathSFX = shieldDeathPlayer.GetComponent<AudioSource>();
+        shieldDeathSFX = GameObject.Find("Shield Ability 2").GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
