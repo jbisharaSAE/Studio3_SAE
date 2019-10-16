@@ -663,6 +663,7 @@ public class JB_LocalPlayer : NetworkBehaviour
         }
         else
         {
+            Debug.Log("other Player");
             BoxCollider[] tiles = players[1].transform.GetChild(0).GetComponentsInChildren<BoxCollider>();
             foreach (BoxCollider tile in tiles)
             {
