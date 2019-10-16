@@ -105,14 +105,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66adb3f43037e8d44bdb66647e459322, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectileSpawnPoint: {fileID: 4837943201891535469}
+  blastSpawnPoint: {fileID: 0}
   blastProjectilePrefab: {fileID: 1094035655059741561, guid: 54d2356025bcc01478c200b7d04200eb,
     type: 3}
   barrageProjectilePrefab: {fileID: 3043257392722660612, guid: 08642d2841778ec49a40746374a3db7b,
     type: 3}
   barragePrefab: {fileID: 1125239548481286110, guid: 23cf82afe8f4bfc41929b2ae0661db21,
     type: 3}
-  barrageSpawnPoint: {fileID: 7494240432211627075}
+  shieldPrefab: {fileID: 7635250123401073762, guid: 3ad88a02e504f2e409688e098e5e4f64,
+    type: 3}
   dallionDisplay: {fileID: 2563031429035756386}
   shipPrefabs:
   - {fileID: 4436528026164060653, guid: 7f8061adb05309443af62930f3f78fea, type: 3}

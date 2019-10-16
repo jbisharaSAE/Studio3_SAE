@@ -124,6 +124,7 @@ public class AM_JB_BlastProjectile : NetworkBehaviour
                     CmdDestroyGameObj(gameObject);
                     return;
                 }
+                // do we hit a tile
                 else if (hit.collider.gameObject.tag == "Tile")
                 {
                     tempTargetPos = hit.collider.gameObject.transform.position;
@@ -138,13 +139,15 @@ public class AM_JB_BlastProjectile : NetworkBehaviour
                     return;
                 }
 
-                // do we hit a tile
-                // do we hit nothing
-                else
+                
+                // do we hit shield
+                else if (hit.collider.gameObject.tag == "Shield")
                 {
                     Debug.Log("missed");
+
+                    Destroy(hit.collider.gameObject);
                     CmdDestroyGameObj(gameObject);
-                    return;
+                    
                 }
 
                 

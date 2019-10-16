@@ -12,6 +12,7 @@ TagManager:
   - GridManager
   - Square
   - LocalPlayer
+  - Shield
   layers:
   - Default
   - TransparentFX

@@ -10,15 +10,20 @@ using UnityEngine.UI;
 public class JB_LocalPlayer : NetworkBehaviour
 {
     // spawn point for projectiles
-    public Transform projectileSpawnPoint;
+    public Transform blastSpawnPoint;
 
     // projectile blast prefab
     public GameObject blastProjectilePrefab;
 
     // barrage projectile prefab
     public GameObject barrageProjectilePrefab;
+    
     // barrage location prefab
     public GameObject barragePrefab;
+
+    // shield prefab
+    public GameObject shieldPrefab;
+    private GameObject shield;
 
     // the projectile to instantiate
     private GameObject barrageProj;
@@ -161,6 +166,12 @@ public class JB_LocalPlayer : NetworkBehaviour
 
         displayCurrentDallions.text = currentResources.ToString("F0");
 
+        PlayerInput();
+        
+    }
+
+    private void PlayerInput()
+    {
         // test to see if we are in battle mode
         if (!showRotateConfirmButtons)
         {
@@ -169,9 +180,9 @@ public class JB_LocalPlayer : NetworkBehaviour
             {
                 // get information from player's touch on screen
                 //Touch touch = Input.GetTouch(0);
-                
+
                 RaycastHit hit;                                // mouse is for testing
-                if(Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit)) // shooting ray to mouse position
+                if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit)) // shooting ray to mouse position
                 {
                     if (hit.collider.gameObject.tag == "Tile") // did player click on a tile
                     {
@@ -186,7 +197,7 @@ public class JB_LocalPlayer : NetworkBehaviour
                             }
                         }
                     }
-                    else if(hit.collider.gameObject.tag == "Square")
+                    else if (hit.collider.gameObject.tag == "Square")
                     {
                         Debug.Log("square hit, we have clicked on a ship");
                         tempTargetPos = hit.collider.gameObject.transform.position;          //GetComponent<JB_SquareSprites>().tileRef.GetComponent<JB_Tile>().tilePosition;
@@ -199,16 +210,25 @@ public class JB_LocalPlayer : NetworkBehaviour
                             }
                         }
                     }
+                    else if (hit.collider.gameObject.tag == "Shield")
+                    {
+                        for (int i = 0; i < isButtonHeld.Length; ++i)
+                        {
+                            if (isButtonHeld[i])
+                            {
+                                ActivateAbilities(i);
+                            }
+                        }
+                    }
                     // need an else if for detecting shield - TODO
                     // neeed an else if for detecting ship - TODO
                     //else if ()
-                    
-                    
+
+
                 }
             }
         }
     }
-
     
     private void ActivateAbilities(int index)
     {
@@ -254,14 +274,21 @@ public class JB_LocalPlayer : NetworkBehaviour
                 currentResources -= radarCost;
                 break;
             case 3:
-                // ability four - shield
-                CmdAbilityFourShield();
+                if(currentResources>= shieldCost)
+                {
+                    // ability four - shield
+                    CmdAbilityFourShield(tempTargetPos, currentResources);
+
+                    // take away the resource cost of this ability
+                    currentResources -= shieldCost;
+                }
+                
 
                 // ability is no longer active
                 isButtonHeld[3] = false;
+                SwapGridColliders(false);
 
-                // take away the resource cost of this ability
-                currentResources -= shieldCost;
+                
                 break;
             default:
                 break;
@@ -276,8 +303,10 @@ public class JB_LocalPlayer : NetworkBehaviour
         {
             return;
         }
-        BoxCollider[] tileColliders = gridLayout.GetComponentsInChildren<BoxCollider>();
         GameObject[] allShips = GameObject.FindGameObjectsWithTag("Ship");
+
+        BoxCollider[] tileColliders = gridLayout.GetComponentsInChildren<BoxCollider>();
+        
 
         foreach(BoxCollider collider in tileColliders)
         {
@@ -309,7 +338,7 @@ public class JB_LocalPlayer : NetworkBehaviour
         trueTarget = targetPos;
 
         // spawns my projectile
-        GameObject projectile = Instantiate(blastProjectilePrefab, projectileSpawnPoint.position, Quaternion.identity);
+        GameObject projectile = Instantiate(blastProjectilePrefab, blastSpawnPoint.position, Quaternion.identity);
         
         // assigning variables on projectile
         projectile.GetComponent<AM_JB_BlastProjectile>().targetTilePos = trueTarget;
@@ -367,7 +396,7 @@ public class JB_LocalPlayer : NetworkBehaviour
 
         
 
-        RpcAbilityTwoBarrage(barrage, updateCurrency);
+        RpcAbilityTwoBarrage(updateCurrency);
     }
 
     [ClientRpc]
@@ -379,7 +408,7 @@ public class JB_LocalPlayer : NetworkBehaviour
     }
 
     [ClientRpc]
-    private void RpcAbilityTwoBarrage(GameObject barrage, float updateCurrency)
+    private void RpcAbilityTwoBarrage(float updateCurrency)
     {
         currentResources = updateCurrency;
 
@@ -394,9 +423,21 @@ public class JB_LocalPlayer : NetworkBehaviour
     }
 
     [Command]
-    private void CmdAbilityFourShield()
+    private void CmdAbilityFourShield(Vector3 targetPos, float updateCurrency)
     {
+        shield = Instantiate(shieldPrefab, targetPos, Quaternion.identity);
+        currentResources = updateCurrency;
+        NetworkServer.Spawn(shield);
+        RpcAbilityFourShield(shield, updateCurrency);
 
+
+    }
+
+    [ClientRpc]
+    private void RpcAbilityFourShield(GameObject shieldObj, float updateCurrency)
+    {
+        shield = shieldObj;
+        currentResources = updateCurrency;
     }
     // =============================== functions to execute abilities ============================
 
@@ -479,6 +520,7 @@ public class JB_LocalPlayer : NetworkBehaviour
 
 
     }
+
 
     [ClientRpc]
     void RpcAssignAuthorityToGameManager(GameObject obj)
@@ -595,6 +637,7 @@ public class JB_LocalPlayer : NetworkBehaviour
             if (GUILayout.Button("Shield", GUILayout.Height(50))) // shield ability - new Rect(490, myHeight, 70, 25), 
             {
                 isButtonHeld[3] = OnlyOneButton(3, isButtonHeld[3]);
+                SwapGridColliders(isButtonHeld[3]);
                 Debug.Log("ability four clicked!!! ======= :)" + isButtonHeld[3]);
             }
             GUILayout.EndHorizontal();
@@ -602,6 +645,35 @@ public class JB_LocalPlayer : NetworkBehaviour
 
         }
        
+    }
+
+    private void SwapGridColliders(bool onOff)
+    {
+
+        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+         
+        if(players[0].GetComponent<JB_LocalPlayer>().playerID == playerID)
+        {
+            BoxCollider[] tiles = players[0].transform.GetChild(0).GetComponentsInChildren<BoxCollider>();
+            foreach(BoxCollider tile in tiles)
+            {
+                tile.enabled = onOff;
+            }
+
+        }
+        else
+        {
+            BoxCollider[] tiles = players[1].transform.GetChild(0).GetComponentsInChildren<BoxCollider>();
+            foreach (BoxCollider tile in tiles)
+            {
+                tile.enabled = !onOff;
+            }
+        }
+
+        //foreach (GameObject tile in tiles)
+        //{
+        //    tile.GetComponent<BoxCollider>().enabled = onOff;
+        //}
     }
 
     public void RotateShip()
