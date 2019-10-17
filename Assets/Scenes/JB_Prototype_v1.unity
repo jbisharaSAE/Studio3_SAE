@@ -174,6 +174,9 @@ MonoBehaviour:
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
   isTileFree: 1
+  visited: 1
+  x: 0
+  y: 0
 --- !u!65 &10467733
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -279,6 +282,9 @@ MonoBehaviour:
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
   isTileFree: 1
+  visited: 1
+  x: 0
+  y: 0
 --- !u!65 &18379608
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -465,6 +471,9 @@ MonoBehaviour:
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
   isTileFree: 1
+  visited: 1
+  x: 0
+  y: 0
 --- !u!65 &34025629
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -570,6 +579,9 @@ MonoBehaviour:
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
   isTileFree: 1
+  visited: 1
+  x: 0
+  y: 0
 --- !u!65 &53899900
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -675,6 +687,9 @@ MonoBehaviour:
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
   isTileFree: 1
+  visited: 1
+  x: 0
+  y: 0
 --- !u!65 &72900577
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -780,6 +795,9 @@ MonoBehaviour:
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
   isTileFree: 1
+  visited: 1
+  x: 0
+  y: 0
 --- !u!65 &74752911
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -885,6 +903,9 @@ MonoBehaviour:
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
   isTileFree: 1
+  visited: 1
+  x: 0
+  y: 0
 --- !u!65 &75921324
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -990,6 +1011,9 @@ MonoBehaviour:
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
   isTileFree: 1
+  visited: 1
+  x: 0
+  y: 0
 --- !u!65 &104627552
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1095,6 +1119,9 @@ MonoBehaviour:
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
   isTileFree: 1
+  visited: 1
+  x: 0
+  y: 0
 --- !u!65 &106492526
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1200,6 +1227,9 @@ MonoBehaviour:
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
   isTileFree: 1
+  visited: 1
+  x: 0
+  y: 0
 --- !u!65 &111210865
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1305,6 +1335,9 @@ MonoBehaviour:
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
   isTileFree: 1
+  visited: 1
+  x: 0
+  y: 0
 --- !u!65 &116100670
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1410,6 +1443,9 @@ MonoBehaviour:
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
   isTileFree: 1
+  visited: 1
+  x: 0
+  y: 0
 --- !u!65 &134231459
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1515,6 +1551,9 @@ MonoBehaviour:
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
   isTileFree: 1
+  visited: 1
+  x: 0
+  y: 0
 --- !u!65 &165274844
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1620,6 +1659,9 @@ MonoBehaviour:
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
   isTileFree: 1
+  visited: 1
+  x: 0
+  y: 0
 --- !u!65 &169040482
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1791,6 +1833,9 @@ MonoBehaviour:
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
   isTileFree: 1
+  visited: 1
+  x: 0
+  y: 0
 --- !u!65 &175555606
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1896,6 +1941,9 @@ MonoBehaviour:
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
   isTileFree: 1
+  visited: 1
+  x: 0
+  y: 0
 --- !u!65 &186976618
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2001,6 +2049,9 @@ MonoBehaviour:
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
   isTileFree: 1
+  visited: 1
+  x: 0
+  y: 0
 --- !u!65 &217438881
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2106,6 +2157,9 @@ MonoBehaviour:
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
   isTileFree: 1
+  visited: 1
+  x: 0
+  y: 0
 --- !u!65 &249878378
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2211,6 +2265,9 @@ MonoBehaviour:
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
   isTileFree: 1
+  visited: 1
+  x: 0
+  y: 0
 --- !u!65 &264362268
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2316,6 +2373,9 @@ MonoBehaviour:
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
   isTileFree: 1
+  visited: 1
+  x: 0
+  y: 0
 --- !u!65 &265486520
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2421,6 +2481,9 @@ MonoBehaviour:
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
   isTileFree: 1
+  visited: 1
+  x: 0
+  y: 0
 --- !u!65 &271814548
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2526,6 +2589,9 @@ MonoBehaviour:
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
   isTileFree: 1
+  visited: 1
+  x: 0
+  y: 0
 --- !u!65 &301065449
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2631,6 +2697,9 @@ MonoBehaviour:
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
   isTileFree: 1
+  visited: 1
+  x: 0
+  y: 0
 --- !u!65 &311989572
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2736,6 +2805,9 @@ MonoBehaviour:
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
   isTileFree: 1
+  visited: 1
+  x: 0
+  y: 0
 --- !u!65 &313966022
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2841,6 +2913,9 @@ MonoBehaviour:
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
   isTileFree: 1
+  visited: 1
+  x: 0
+  y: 0
 --- !u!65 &327607289
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2946,6 +3021,9 @@ MonoBehaviour:
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
   isTileFree: 1
+  visited: 1
+  x: 0
+  y: 0
 --- !u!65 &329381789
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3051,6 +3129,9 @@ MonoBehaviour:
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
   isTileFree: 1
+  visited: 1
+  x: 0
+  y: 0
 --- !u!65 &350650818
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3156,6 +3237,9 @@ MonoBehaviour:
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
   isTileFree: 1
+  visited: 1
+  x: 0
+  y: 0
 --- !u!65 &352037284
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3261,6 +3345,9 @@ MonoBehaviour:
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
   isTileFree: 1
+  visited: 1
+  x: 0
+  y: 0
 --- !u!65 &364552408
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3366,6 +3453,9 @@ MonoBehaviour:
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
   isTileFree: 1
+  visited: 1
+  x: 0
+  y: 0
 --- !u!65 &391474946
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3471,6 +3561,9 @@ MonoBehaviour:
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
   isTileFree: 1
+  visited: 1
+  x: 0
+  y: 0
 --- !u!65 &429722787
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3576,6 +3669,9 @@ MonoBehaviour:
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
   isTileFree: 1
+  visited: 1
+  x: 0
+  y: 0
 --- !u!65 &435150206
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3681,6 +3777,9 @@ MonoBehaviour:
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
   isTileFree: 1
+  visited: 1
+  x: 0
+  y: 0
 --- !u!65 &473201459
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3786,6 +3885,9 @@ MonoBehaviour:
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
   isTileFree: 1
+  visited: 1
+  x: 0
+  y: 0
 --- !u!65 &480729897
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3891,6 +3993,9 @@ MonoBehaviour:
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
   isTileFree: 1
+  visited: 1
+  x: 0
+  y: 0
 --- !u!65 &489188677
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3996,6 +4101,9 @@ MonoBehaviour:
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
   isTileFree: 1
+  visited: 1
+  x: 0
+  y: 0
 --- !u!65 &491934927
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4101,6 +4209,9 @@ MonoBehaviour:
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
   isTileFree: 1
+  visited: 1
+  x: 0
+  y: 0
 --- !u!65 &524987769
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4206,6 +4317,9 @@ MonoBehaviour:
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
   isTileFree: 1
+  visited: 1
+  x: 0
+  y: 0
 --- !u!65 &552252422
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4311,6 +4425,9 @@ MonoBehaviour:
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
   isTileFree: 1
+  visited: 1
+  x: 0
+  y: 0
 --- !u!65 &566622324
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4416,6 +4533,9 @@ MonoBehaviour:
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
   isTileFree: 1
+  visited: 1
+  x: 0
+  y: 0
 --- !u!65 &570306035
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4521,6 +4641,9 @@ MonoBehaviour:
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
   isTileFree: 1
+  visited: 1
+  x: 0
+  y: 0
 --- !u!65 &573879042
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4626,6 +4749,9 @@ MonoBehaviour:
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
   isTileFree: 1
+  visited: 1
+  x: 0
+  y: 0
 --- !u!65 &576713882
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4731,6 +4857,9 @@ MonoBehaviour:
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
   isTileFree: 1
+  visited: 1
+  x: 0
+  y: 0
 --- !u!65 &591338836
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4836,6 +4965,9 @@ MonoBehaviour:
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
   isTileFree: 1
+  visited: 1
+  x: 0
+  y: 0
 --- !u!65 &617013765
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4941,6 +5073,9 @@ MonoBehaviour:
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
   isTileFree: 1
+  visited: 1
+  x: 0
+  y: 0
 --- !u!65 &643092481
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5046,6 +5181,9 @@ MonoBehaviour:
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
   isTileFree: 1
+  visited: 1
+  x: 0
+  y: 0
 --- !u!65 &645293666
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5151,6 +5289,9 @@ MonoBehaviour:
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
   isTileFree: 1
+  visited: 1
+  x: 0
+  y: 0
 --- !u!65 &671460249
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5256,6 +5397,9 @@ MonoBehaviour:
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
   isTileFree: 1
+  visited: 1
+  x: 0
+  y: 0
 --- !u!65 &680081511
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5361,6 +5505,9 @@ MonoBehaviour:
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
   isTileFree: 1
+  visited: 1
+  x: 0
+  y: 0
 --- !u!65 &692596719
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5466,6 +5613,9 @@ MonoBehaviour:
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
   isTileFree: 1
+  visited: 1
+  x: 0
+  y: 0
 --- !u!65 &701333319
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5571,6 +5721,9 @@ MonoBehaviour:
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
   isTileFree: 1
+  visited: 1
+  x: 0
+  y: 0
 --- !u!65 &701656485
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5676,6 +5829,9 @@ MonoBehaviour:
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
   isTileFree: 1
+  visited: 1
+  x: 0
+  y: 0
 --- !u!65 &703251240
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5727,102 +5883,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 703251237}
   m_CullTransparentMesh: 0
---- !u!1 &708924572
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 708924575}
-  - component: {fileID: 708924574}
-  - component: {fileID: 708924573}
-  m_Layer: 0
-  m_Name: Reporter
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!114 &708924573
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 708924572}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6767a180de870304caa2013b2772dd62, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &708924574
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 708924572}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 600c02144c4813244abd262cbcbe8825, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  show: 0
-  UserData: 
-  fps: 0
-  fpsText: 
-  images:
-    clearImage: {fileID: 2800000, guid: 112c6fcf56e349449ab2e6ad76b67816, type: 3}
-    collapseImage: {fileID: 2800000, guid: 4623f326a884a2546ab39078bf7822c3, type: 3}
-    clearOnNewSceneImage: {fileID: 2800000, guid: 3a6bc61a8319b1949ab9f1f2db1302b4,
-      type: 3}
-    showTimeImage: {fileID: 2800000, guid: 782e03669fa4a614e89ef56252134250, type: 3}
-    showSceneImage: {fileID: 2800000, guid: ff4dfb29f203a174ab8e4c498afe908a, type: 3}
-    userImage: {fileID: 2800000, guid: 2bcdc012e7356f1449ce7d3a31dc458c, type: 3}
-    showMemoryImage: {fileID: 2800000, guid: f447d62f2dacf9843be7cbf168a3a9d0, type: 3}
-    softwareImage: {fileID: 2800000, guid: 6c91fc88ee6c791468318d85febfb48d, type: 3}
-    dateImage: {fileID: 2800000, guid: a7561cd0a9f62a84e99bff1abce2a222, type: 3}
-    showFpsImage: {fileID: 2800000, guid: 90b2f48155dc0e74f8e428561ac79da5, type: 3}
-    infoImage: {fileID: 2800000, guid: 2954bef266e6d794aba08ceacc887a0f, type: 3}
-    saveLogsImage: {fileID: 2800000, guid: 4a4821d80a1fc774fb76eac6213544e7, type: 3}
-    searchImage: {fileID: 2800000, guid: bfef37b5a26d2264798616d960451329, type: 3}
-    copyImage: {fileID: 2800000, guid: 7f36d71624c630046b855909c497be17, type: 3}
-    closeImage: {fileID: 2800000, guid: b65e9be99974bc94eab5d6698811d0b8, type: 3}
-    buildFromImage: {fileID: 2800000, guid: 8702be598dd9f504ca33be2afee2ca33, type: 3}
-    systemInfoImage: {fileID: 2800000, guid: e9011b1dc9256ad4d9c19a31c595f95f, type: 3}
-    graphicsInfoImage: {fileID: 2800000, guid: 999d31716332cc04eb4abc9c9270b0ca, type: 3}
-    backImage: {fileID: 2800000, guid: a0632a18e7c665641b94fea66506ab50, type: 3}
-    logImage: {fileID: 2800000, guid: e876b803a4dd5c5488078071d15aa9c0, type: 3}
-    warningImage: {fileID: 2800000, guid: 1066be8e7b994b94c8a182b8dbe30705, type: 3}
-    errorImage: {fileID: 2800000, guid: 7640ebf8b3a92124d821d3b4b8b3fd7e, type: 3}
-    barImage: {fileID: 2800000, guid: 8128d4f4c0193e34586f9631ef7d4787, type: 3}
-    button_activeImage: {fileID: 2800000, guid: 2580a2e903691e44282e56ed6e0ff37a,
-      type: 3}
-    even_logImage: {fileID: 2800000, guid: d27aad55b568c6544b0b95a95da44bc7, type: 3}
-    odd_logImage: {fileID: 2800000, guid: 8ffbb44a2c3adae45913474e4fd487f5, type: 3}
-    selectedImage: {fileID: 2800000, guid: 17117a429b08e7e43b0b6c8421de69fe, type: 3}
-    reporterScrollerSkin: {fileID: 11400000, guid: 1cc68832d00d3284a9324a4dc05be753,
-      type: 2}
-  size: {x: 32, y: 32}
-  maxSize: 20
-  numOfCircleToShow: 1
-  Initialized: 0
---- !u!4 &708924575
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 708924572}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &715436093
 GameObject:
   m_ObjectHideFlags: 0
@@ -5877,6 +5937,9 @@ MonoBehaviour:
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
   isTileFree: 1
+  visited: 1
+  x: 0
+  y: 0
 --- !u!65 &715436096
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6115,6 +6178,9 @@ MonoBehaviour:
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
   isTileFree: 1
+  visited: 1
+  x: 0
+  y: 0
 --- !u!65 &717074696
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6220,6 +6286,9 @@ MonoBehaviour:
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
   isTileFree: 1
+  visited: 1
+  x: 0
+  y: 0
 --- !u!65 &742292254
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6325,6 +6394,9 @@ MonoBehaviour:
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
   isTileFree: 1
+  visited: 1
+  x: 0
+  y: 0
 --- !u!65 &744858722
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6426,7 +6498,7 @@ PrefabInstance:
     - target: {fileID: 3918158683220688923, guid: 4f9403131931ccd439d715db9910ce79,
         type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3918158683220688923, guid: 4f9403131931ccd439d715db9910ce79,
         type: 3}
@@ -6510,6 +6582,9 @@ MonoBehaviour:
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
   isTileFree: 1
+  visited: 1
+  x: 0
+  y: 0
 --- !u!65 &813629792
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6615,6 +6690,9 @@ MonoBehaviour:
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
   isTileFree: 1
+  visited: 1
+  x: 0
+  y: 0
 --- !u!65 &830943996
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6720,6 +6798,9 @@ MonoBehaviour:
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
   isTileFree: 1
+  visited: 1
+  x: 0
+  y: 0
 --- !u!65 &860026563
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6825,6 +6906,9 @@ MonoBehaviour:
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
   isTileFree: 1
+  visited: 1
+  x: 0
+  y: 0
 --- !u!65 &867026751
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7093,9 +7177,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97565bc21800a434eb539e6daeb5f7bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rows: 12
+  columns: 12
   tile: {fileID: 0}
   length: 8.77
   width: 8.77
+  startX: 0
+  startY: 0
+  endX: 2
+  endY: 2
+  path: []
 --- !u!1 &874403862
 GameObject:
   m_ObjectHideFlags: 0
@@ -7150,6 +7241,9 @@ MonoBehaviour:
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
   isTileFree: 1
+  visited: 1
+  x: 0
+  y: 0
 --- !u!65 &874403865
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7255,6 +7349,9 @@ MonoBehaviour:
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
   isTileFree: 1
+  visited: 1
+  x: 0
+  y: 0
 --- !u!65 &885625483
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7360,6 +7457,9 @@ MonoBehaviour:
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
   isTileFree: 1
+  visited: 1
+  x: 0
+  y: 0
 --- !u!65 &887367133
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7465,6 +7565,9 @@ MonoBehaviour:
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
   isTileFree: 1
+  visited: 1
+  x: 0
+  y: 0
 --- !u!65 &901264194
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7570,6 +7673,9 @@ MonoBehaviour:
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
   isTileFree: 1
+  visited: 1
+  x: 0
+  y: 0
 --- !u!65 &910220812
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7810,6 +7916,9 @@ MonoBehaviour:
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
   isTileFree: 1
+  visited: 1
+  x: 0
+  y: 0
 --- !u!65 &955949822
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7915,6 +8024,9 @@ MonoBehaviour:
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
   isTileFree: 1
+  visited: 1
+  x: 0
+  y: 0
 --- !u!65 &958408457
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8020,6 +8132,9 @@ MonoBehaviour:
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
   isTileFree: 1
+  visited: 1
+  x: 0
+  y: 0
 --- !u!65 &969726410
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8415,6 +8530,9 @@ MonoBehaviour:
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
   isTileFree: 1
+  visited: 1
+  x: 0
+  y: 0
 --- !u!65 &986595850
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8520,6 +8638,9 @@ MonoBehaviour:
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
   isTileFree: 1
+  visited: 1
+  x: 0
+  y: 0
 --- !u!65 &998904931
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8625,6 +8746,9 @@ MonoBehaviour:
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
   isTileFree: 1
+  visited: 1
+  x: 0
+  y: 0
 --- !u!65 &1003418459
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8813,6 +8937,9 @@ MonoBehaviour:
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
   isTileFree: 1
+  visited: 1
+  x: 0
+  y: 0
 --- !u!65 &1041059156
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8918,6 +9045,9 @@ MonoBehaviour:
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
   isTileFree: 1
+  visited: 1
+  x: 0
+  y: 0
 --- !u!65 &1048215171
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9114,6 +9244,9 @@ MonoBehaviour:
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
   isTileFree: 1
+  visited: 1
+  x: 0
+  y: 0
 --- !u!65 &1061988842
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9319,6 +9452,9 @@ MonoBehaviour:
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
   isTileFree: 1
+  visited: 1
+  x: 0
+  y: 0
 --- !u!65 &1080735954
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9461,6 +9597,9 @@ MonoBehaviour:
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
   isTileFree: 1
+  visited: 1
+  x: 0
+  y: 0
 --- !u!65 &1085681211
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9566,6 +9705,9 @@ MonoBehaviour:
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
   isTileFree: 1
+  visited: 1
+  x: 0
+  y: 0
 --- !u!65 &1097687397
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9671,6 +9813,9 @@ MonoBehaviour:
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
   isTileFree: 1
+  visited: 1
+  x: 0
+  y: 0
 --- !u!65 &1106600137
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9776,6 +9921,9 @@ MonoBehaviour:
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
   isTileFree: 1
+  visited: 1
+  x: 0
+  y: 0
 --- !u!65 &1129296200
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9881,6 +10029,9 @@ MonoBehaviour:
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
   isTileFree: 1
+  visited: 1
+  x: 0
+  y: 0
 --- !u!65 &1133209410
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9986,6 +10137,9 @@ MonoBehaviour:
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
   isTileFree: 1
+  visited: 1
+  x: 0
+  y: 0
 --- !u!65 &1178740851
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10091,6 +10245,9 @@ MonoBehaviour:
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
   isTileFree: 1
+  visited: 1
+  x: 0
+  y: 0
 --- !u!65 &1187710841
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10196,6 +10353,9 @@ MonoBehaviour:
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
   isTileFree: 1
+  visited: 1
+  x: 0
+  y: 0
 --- !u!65 &1208031794
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10301,6 +10461,9 @@ MonoBehaviour:
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
   isTileFree: 1
+  visited: 1
+  x: 0
+  y: 0
 --- !u!65 &1214885849
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10406,6 +10569,9 @@ MonoBehaviour:
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
   isTileFree: 1
+  visited: 1
+  x: 0
+  y: 0
 --- !u!65 &1221190165
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10511,6 +10677,9 @@ MonoBehaviour:
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
   isTileFree: 1
+  visited: 1
+  x: 0
+  y: 0
 --- !u!65 &1239950827
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10616,6 +10785,9 @@ MonoBehaviour:
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
   isTileFree: 1
+  visited: 1
+  x: 0
+  y: 0
 --- !u!65 &1245002474
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10721,6 +10893,9 @@ MonoBehaviour:
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
   isTileFree: 1
+  visited: 1
+  x: 0
+  y: 0
 --- !u!65 &1267285940
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10826,6 +11001,9 @@ MonoBehaviour:
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
   isTileFree: 1
+  visited: 1
+  x: 0
+  y: 0
 --- !u!65 &1270712981
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10931,6 +11109,9 @@ MonoBehaviour:
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
   isTileFree: 1
+  visited: 1
+  x: 0
+  y: 0
 --- !u!65 &1291037696
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11036,6 +11217,9 @@ MonoBehaviour:
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
   isTileFree: 1
+  visited: 1
+  x: 0
+  y: 0
 --- !u!65 &1304513595
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11141,6 +11325,9 @@ MonoBehaviour:
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
   isTileFree: 1
+  visited: 1
+  x: 0
+  y: 0
 --- !u!65 &1306064178
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11441,6 +11628,9 @@ MonoBehaviour:
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
   isTileFree: 1
+  visited: 1
+  x: 0
+  y: 0
 --- !u!65 &1329790739
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11508,6 +11698,9 @@ MonoBehaviour:
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
   isTileFree: 1
+  visited: 1
+  x: 0
+  y: 0
 --- !u!65 &1342321665
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11613,6 +11806,9 @@ MonoBehaviour:
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
   isTileFree: 1
+  visited: 1
+  x: 0
+  y: 0
 --- !u!65 &1381042628
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11718,6 +11914,9 @@ MonoBehaviour:
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
   isTileFree: 1
+  visited: 1
+  x: 0
+  y: 0
 --- !u!65 &1405297007
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11902,6 +12101,9 @@ MonoBehaviour:
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
   isTileFree: 1
+  visited: 1
+  x: 0
+  y: 0
 --- !u!65 &1441923458
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12007,6 +12209,9 @@ MonoBehaviour:
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
   isTileFree: 1
+  visited: 1
+  x: 0
+  y: 0
 --- !u!65 &1451552922
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12112,6 +12317,9 @@ MonoBehaviour:
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
   isTileFree: 1
+  visited: 1
+  x: 0
+  y: 0
 --- !u!65 &1465389362
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12217,6 +12425,9 @@ MonoBehaviour:
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
   isTileFree: 1
+  visited: 1
+  x: 0
+  y: 0
 --- !u!65 &1466125657
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12322,6 +12533,9 @@ MonoBehaviour:
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
   isTileFree: 1
+  visited: 1
+  x: 0
+  y: 0
 --- !u!65 &1478242905
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12427,6 +12641,9 @@ MonoBehaviour:
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
   isTileFree: 1
+  visited: 1
+  x: 0
+  y: 0
 --- !u!65 &1481117794
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12532,6 +12749,9 @@ MonoBehaviour:
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
   isTileFree: 1
+  visited: 1
+  x: 0
+  y: 0
 --- !u!65 &1488486182
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12637,6 +12857,9 @@ MonoBehaviour:
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
   isTileFree: 1
+  visited: 1
+  x: 0
+  y: 0
 --- !u!65 &1540292734
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12742,6 +12965,9 @@ MonoBehaviour:
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
   isTileFree: 1
+  visited: 1
+  x: 0
+  y: 0
 --- !u!65 &1550904828
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12847,6 +13073,9 @@ MonoBehaviour:
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
   isTileFree: 1
+  visited: 1
+  x: 0
+  y: 0
 --- !u!65 &1572459092
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12952,6 +13181,9 @@ MonoBehaviour:
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
   isTileFree: 1
+  visited: 1
+  x: 0
+  y: 0
 --- !u!65 &1572997049
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -13057,6 +13289,9 @@ MonoBehaviour:
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
   isTileFree: 1
+  visited: 1
+  x: 0
+  y: 0
 --- !u!65 &1574459692
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -13162,6 +13397,9 @@ MonoBehaviour:
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
   isTileFree: 1
+  visited: 1
+  x: 0
+  y: 0
 --- !u!65 &1586850265
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -13267,6 +13505,9 @@ MonoBehaviour:
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
   isTileFree: 1
+  visited: 1
+  x: 0
+  y: 0
 --- !u!65 &1589762162
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -13372,6 +13613,9 @@ MonoBehaviour:
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
   isTileFree: 1
+  visited: 1
+  x: 0
+  y: 0
 --- !u!65 &1591170413
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -13477,6 +13721,9 @@ MonoBehaviour:
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
   isTileFree: 1
+  visited: 1
+  x: 0
+  y: 0
 --- !u!65 &1603426353
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -13582,6 +13829,9 @@ MonoBehaviour:
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
   isTileFree: 1
+  visited: 1
+  x: 0
+  y: 0
 --- !u!65 &1619586833
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -13687,6 +13937,9 @@ MonoBehaviour:
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
   isTileFree: 1
+  visited: 1
+  x: 0
+  y: 0
 --- !u!65 &1620041758
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -13792,6 +14045,9 @@ MonoBehaviour:
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
   isTileFree: 1
+  visited: 1
+  x: 0
+  y: 0
 --- !u!65 &1635368596
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -13897,6 +14153,9 @@ MonoBehaviour:
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
   isTileFree: 1
+  visited: 1
+  x: 0
+  y: 0
 --- !u!65 &1652411404
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -14002,6 +14261,9 @@ MonoBehaviour:
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
   isTileFree: 1
+  visited: 1
+  x: 0
+  y: 0
 --- !u!65 &1662888077
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -14107,6 +14369,9 @@ MonoBehaviour:
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
   isTileFree: 1
+  visited: 1
+  x: 0
+  y: 0
 --- !u!65 &1698681262
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -14212,6 +14477,9 @@ MonoBehaviour:
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
   isTileFree: 1
+  visited: 1
+  x: 0
+  y: 0
 --- !u!65 &1729376311
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -14317,6 +14585,9 @@ MonoBehaviour:
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
   isTileFree: 1
+  visited: 1
+  x: 0
+  y: 0
 --- !u!65 &1778289046
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -14446,6 +14717,7 @@ MonoBehaviour:
   - {fileID: 1125239548481286110, guid: 23cf82afe8f4bfc41929b2ae0661db21, type: 3}
   - {fileID: 3043257392722660612, guid: 08642d2841778ec49a40746374a3db7b, type: 3}
   - {fileID: 7635250123401073762, guid: 3ad88a02e504f2e409688e098e5e4f64, type: 3}
+  - {fileID: 9105887185410814878, guid: 85c422591eee9884aa42b90b982da3d6, type: 3}
   m_CustomConfig: 0
   m_MaxConnections: 4
   m_ConnectionConfig:
@@ -14513,7 +14785,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1810379825
 GameObject:
@@ -14569,6 +14841,9 @@ MonoBehaviour:
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
   isTileFree: 1
+  visited: 1
+  x: 0
+  y: 0
 --- !u!65 &1810379828
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -14749,6 +15024,9 @@ MonoBehaviour:
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
   isTileFree: 1
+  visited: 1
+  x: 0
+  y: 0
 --- !u!65 &1821296393
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -14854,6 +15132,9 @@ MonoBehaviour:
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
   isTileFree: 1
+  visited: 1
+  x: 0
+  y: 0
 --- !u!65 &1843412874
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -14959,6 +15240,9 @@ MonoBehaviour:
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
   isTileFree: 1
+  visited: 1
+  x: 0
+  y: 0
 --- !u!65 &1846616724
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -15064,6 +15348,9 @@ MonoBehaviour:
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
   isTileFree: 1
+  visited: 1
+  x: 0
+  y: 0
 --- !u!65 &1857468828
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -15169,6 +15456,9 @@ MonoBehaviour:
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
   isTileFree: 1
+  visited: 1
+  x: 0
+  y: 0
 --- !u!65 &1862968897
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -15274,6 +15564,9 @@ MonoBehaviour:
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
   isTileFree: 1
+  visited: 1
+  x: 0
+  y: 0
 --- !u!65 &1875815117
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -15379,6 +15672,9 @@ MonoBehaviour:
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
   isTileFree: 1
+  visited: 1
+  x: 0
+  y: 0
 --- !u!65 &1891530996
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -15484,6 +15780,9 @@ MonoBehaviour:
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
   isTileFree: 1
+  visited: 1
+  x: 0
+  y: 0
 --- !u!65 &1892107137
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -15589,6 +15888,9 @@ MonoBehaviour:
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
   isTileFree: 1
+  visited: 1
+  x: 0
+  y: 0
 --- !u!65 &1909273015
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -15730,7 +16032,7 @@ Transform:
   m_LocalScale: {x: 218.65335, y: 430.93048, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!1 &1909764258
 GameObject:
@@ -15786,6 +16088,9 @@ MonoBehaviour:
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
   isTileFree: 1
+  visited: 1
+  x: 0
+  y: 0
 --- !u!65 &1909764261
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -15891,6 +16196,9 @@ MonoBehaviour:
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
   isTileFree: 1
+  visited: 1
+  x: 0
+  y: 0
 --- !u!65 &1911990916
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -15996,6 +16304,9 @@ MonoBehaviour:
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
   isTileFree: 1
+  visited: 1
+  x: 0
+  y: 0
 --- !u!65 &1924987365
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -16101,6 +16412,9 @@ MonoBehaviour:
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
   isTileFree: 1
+  visited: 1
+  x: 0
+  y: 0
 --- !u!65 &1926529110
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -16206,6 +16520,9 @@ MonoBehaviour:
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
   isTileFree: 1
+  visited: 1
+  x: 0
+  y: 0
 --- !u!65 &1939672579
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -16311,6 +16628,9 @@ MonoBehaviour:
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
   isTileFree: 1
+  visited: 1
+  x: 0
+  y: 0
 --- !u!65 &1988218418
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -16416,6 +16736,9 @@ MonoBehaviour:
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
   isTileFree: 1
+  visited: 1
+  x: 0
+  y: 0
 --- !u!65 &2038959226
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -16521,6 +16844,9 @@ MonoBehaviour:
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
   isTileFree: 1
+  visited: 1
+  x: 0
+  y: 0
 --- !u!65 &2050435996
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -16626,6 +16952,9 @@ MonoBehaviour:
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
   isTileFree: 1
+  visited: 1
+  x: 0
+  y: 0
 --- !u!65 &2052446635
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -16731,6 +17060,9 @@ MonoBehaviour:
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
   isTileFree: 1
+  visited: 1
+  x: 0
+  y: 0
 --- !u!65 &2093697153
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -16836,6 +17168,9 @@ MonoBehaviour:
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
   isTileFree: 1
+  visited: 1
+  x: 0
+  y: 0
 --- !u!65 &2097157734
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -16941,6 +17276,9 @@ MonoBehaviour:
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
   isTileFree: 1
+  visited: 1
+  x: 0
+  y: 0
 --- !u!65 &2127235476
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -17046,6 +17384,9 @@ MonoBehaviour:
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
   isTileFree: 1
+  visited: 1
+  x: 0
+  y: 0
 --- !u!65 &2127989932
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -17151,6 +17492,9 @@ MonoBehaviour:
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
   isTileFree: 1
+  visited: 1
+  x: 0
+  y: 0
 --- !u!65 &2129481250
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -17252,7 +17596,7 @@ PrefabInstance:
     - target: {fileID: 3918158683220688923, guid: 4f9403131931ccd439d715db9910ce79,
         type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3918158683220688923, guid: 4f9403131931ccd439d715db9910ce79,
         type: 3}

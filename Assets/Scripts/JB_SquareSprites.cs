@@ -7,6 +7,11 @@ public class JB_SquareSprites : MonoBehaviour
     public bool isTileOpen;
     public JB_Tile tileRef;
 
+    public int x;
+    public int y;
+
+    public GameObject gridManagerObj;
+
     private void Update()
     {
         RaycastHit hit;
@@ -20,6 +25,12 @@ public class JB_SquareSprites : MonoBehaviour
 
                 //reference to the tile to be considered taken after player confirms ship position
                 tileRef = hit.collider.gameObject.GetComponent<JB_Tile>();
+
+                x = tileRef.GetComponent<JB_Tile>().x;
+                y = tileRef.GetComponent<JB_Tile>().y;
+
+                gridManagerObj = tileRef.transform.parent.gameObject;
+
             }
             else
             {
@@ -36,13 +47,4 @@ public class JB_SquareSprites : MonoBehaviour
             
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        //Debug.Log(other.gameObject.GetComponent<JB_Tile>().number);
-        Debug.Log(other.gameObject.GetComponent<JB_Tile>().tilePosition);
-    }
-    //private void OnCollisionEnter2D(Collision2D collision)
-    //{
-    //    Debug.Log(collision.gameObject.GetComponent<JB_Tile>().number);
-    //}
 }

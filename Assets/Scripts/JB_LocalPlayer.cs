@@ -25,6 +25,10 @@ public class JB_LocalPlayer : NetworkBehaviour
     public GameObject shieldPrefab;
     private GameObject shield;
 
+    // radar prefab
+    public GameObject radarPrefab;
+    private GameObject radarObj;
+
     // the projectile to instantiate
     private GameObject barrageProj;
 
@@ -109,6 +113,14 @@ public class JB_LocalPlayer : NetworkBehaviour
 
     private List<GameObject> myList = new List<GameObject>();
 
+
+    // used to calculate closest ship using grid
+    public int startX;
+    public int startY;
+
+    // tiles closest to radar ping
+    public int radarCount;
+
    
     private void Awake()
     {
@@ -189,6 +201,9 @@ public class JB_LocalPlayer : NetworkBehaviour
                         Debug.Log("tile hit, we clicked on a tile");
                         tempTargetPos = hit.collider.gameObject.GetComponent<JB_Tile>().tilePosition;
 
+                        startX = hit.collider.gameObject.GetComponent<JB_Tile>().x;
+                        startY = hit.collider.gameObject.GetComponent<JB_Tile>().y;
+
                         for (int i = 0; i < isButtonHeld.Length; ++i)
                         {
                             if (isButtonHeld[i])
@@ -264,23 +279,28 @@ public class JB_LocalPlayer : NetworkBehaviour
 
                 break;
             case 2:
-                // ability three - radar
-                CmdAbilityThreeRadar();
+                if(currentResources >= radarCost)
+                {
+                    // take away the resource cost of this ability
+                    currentResources -= radarCost;
+
+                    // ability three - radar
+                    CmdAbilityThreeRadar(tempTargetPos, currentResources);
+                }
+                
 
                 // ability is no longer active
                 isButtonHeld[2] = false;
 
-                // take away the resource cost of this ability
-                currentResources -= radarCost;
                 break;
             case 3:
                 if(currentResources>= shieldCost)
                 {
-                    // ability four - shield
-                    CmdAbilityFourShield(tempTargetPos, currentResources);
-
                     // take away the resource cost of this ability
                     currentResources -= shieldCost;
+
+                    // ability four - shield
+                    CmdAbilityFourShield(tempTargetPos, currentResources);
                 }
                 
 
@@ -288,7 +308,6 @@ public class JB_LocalPlayer : NetworkBehaviour
                 isButtonHeld[3] = false;
                 CmdSwapGridColliders(false);
 
-                
                 break;
             default:
                 break;
@@ -326,6 +345,17 @@ public class JB_LocalPlayer : NetworkBehaviour
             }
             
         }
+
+    }
+
+    public void FindClosestShip(GameObject gridManagerObj, int endX, int endY)
+    {
+        gridManagerObj.GetComponent<JB_GridManager>().startX = startX;
+        gridManagerObj.GetComponent<JB_GridManager>().startY = startY;
+        gridManagerObj.GetComponent<JB_GridManager>().endX = endX;
+        gridManagerObj.GetComponent<JB_GridManager>().endY = endY;
+
+        radarCount = gridManagerObj.GetComponent<JB_GridManager>().FindClosestShip();
 
     }
 
@@ -416,10 +446,26 @@ public class JB_LocalPlayer : NetworkBehaviour
     }
 
     [Command]
-    private void CmdAbilityThreeRadar()
+    private void CmdAbilityThreeRadar(Vector3 targetPos, float updateCurrency)
     {
-        
+        currentResources = updateCurrency;
 
+        radarObj = Instantiate(radarPrefab, targetPos, Quaternion.identity);
+
+        radarObj.GetComponent<JB_RadarScript>().playerObj = gameObject;
+
+        NetworkServer.SpawnWithClientAuthority(radarObj, connectionToClient);
+
+        RpcAbilityThreeRadar(radarObj, updateCurrency);
+
+    }
+
+    [ClientRpc]
+    private void RpcAbilityThreeRadar(GameObject radar, float updateCurrency)
+    {
+        currentResources = updateCurrency;
+
+        radar.GetComponent<JB_RadarScript>().playerObj = gameObject;
     }
 
     [Command]
@@ -440,6 +486,7 @@ public class JB_LocalPlayer : NetworkBehaviour
         currentResources = updateCurrency;
     }
     // =============================== functions to execute abilities ============================
+
 
 
     // method used to ensure only one ability is active any one time
@@ -542,8 +589,6 @@ public class JB_LocalPlayer : NetworkBehaviour
 
     private void OnGUI()
     {
-
-
         if (showRotateConfirmButtons && this.isLocalPlayer)
         {
             // ================= PLACEMENT STAGE ================
