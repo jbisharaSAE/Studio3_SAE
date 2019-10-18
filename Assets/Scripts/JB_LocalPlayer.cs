@@ -10,15 +10,24 @@ using UnityEngine.UI;
 public class JB_LocalPlayer : NetworkBehaviour
 {
     // spawn point for projectiles
-    public Transform projectileSpawnPoint;
+    public Transform blastSpawnPoint;
 
     // projectile blast prefab
     public GameObject blastProjectilePrefab;
 
     // barrage projectile prefab
     public GameObject barrageProjectilePrefab;
+    
     // barrage location prefab
     public GameObject barragePrefab;
+
+    // shield prefab
+    public GameObject shieldPrefab;
+    private GameObject shield;
+
+    // radar prefab
+    public GameObject radarPrefab;
+    private GameObject radarObj;
 
     // the projectile to instantiate
     private GameObject barrageProj;
@@ -104,6 +113,14 @@ public class JB_LocalPlayer : NetworkBehaviour
 
     private List<GameObject> myList = new List<GameObject>();
 
+
+    // used to calculate closest ship using grid
+    public int startX;
+    public int startY;
+
+    // tiles closest to radar ping
+    public int radarCount;
+
    
     private void Awake()
     {
@@ -161,6 +178,12 @@ public class JB_LocalPlayer : NetworkBehaviour
 
         displayCurrentDallions.text = currentResources.ToString("F0");
 
+        PlayerInput();
+        
+    }
+
+    private void PlayerInput()
+    {
         // test to see if we are in battle mode
         if (!showRotateConfirmButtons)
         {
@@ -169,14 +192,17 @@ public class JB_LocalPlayer : NetworkBehaviour
             {
                 // get information from player's touch on screen
                 //Touch touch = Input.GetTouch(0);
-                
+
                 RaycastHit hit;                                // mouse is for testing
-                if(Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit)) // shooting ray to mouse position
+                if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit)) // shooting ray to mouse position
                 {
                     if (hit.collider.gameObject.tag == "Tile") // did player click on a tile
                     {
                         Debug.Log("tile hit, we clicked on a tile");
                         tempTargetPos = hit.collider.gameObject.GetComponent<JB_Tile>().tilePosition;
+
+                        startX = hit.collider.gameObject.GetComponent<JB_Tile>().x;
+                        startY = hit.collider.gameObject.GetComponent<JB_Tile>().y;
 
                         for (int i = 0; i < isButtonHeld.Length; ++i)
                         {
@@ -186,7 +212,7 @@ public class JB_LocalPlayer : NetworkBehaviour
                             }
                         }
                     }
-                    else if(hit.collider.gameObject.tag == "Square")
+                    else if (hit.collider.gameObject.tag == "Square")
                     {
                         Debug.Log("square hit, we have clicked on a ship");
                         tempTargetPos = hit.collider.gameObject.transform.position;          //GetComponent<JB_SquareSprites>().tileRef.GetComponent<JB_Tile>().tilePosition;
@@ -199,16 +225,25 @@ public class JB_LocalPlayer : NetworkBehaviour
                             }
                         }
                     }
+                    else if (hit.collider.gameObject.tag == "Shield")
+                    {
+                        for (int i = 0; i < isButtonHeld.Length; ++i)
+                        {
+                            if (isButtonHeld[i])
+                            {
+                                ActivateAbilities(i);
+                            }
+                        }
+                    }
                     // need an else if for detecting shield - TODO
                     // neeed an else if for detecting ship - TODO
                     //else if ()
-                    
-                    
+
+
                 }
             }
         }
     }
-
     
     private void ActivateAbilities(int index)
     {
@@ -244,24 +279,35 @@ public class JB_LocalPlayer : NetworkBehaviour
 
                 break;
             case 2:
-                // ability three - radar
-                CmdAbilityThreeRadar();
+                if(currentResources >= radarCost)
+                {
+                    // take away the resource cost of this ability
+                    currentResources -= radarCost;
+
+                    // ability three - radar
+                    CmdAbilityThreeRadar(tempTargetPos, currentResources);
+                }
+                
 
                 // ability is no longer active
                 isButtonHeld[2] = false;
 
-                // take away the resource cost of this ability
-                currentResources -= radarCost;
                 break;
             case 3:
-                // ability four - shield
-                CmdAbilityFourShield();
+                if(currentResources>= shieldCost)
+                {
+                    // take away the resource cost of this ability
+                    currentResources -= shieldCost;
+
+                    // ability four - shield
+                    CmdAbilityFourShield(tempTargetPos, currentResources);
+                }
+                
 
                 // ability is no longer active
                 isButtonHeld[3] = false;
+                CmdSwapGridColliders(false);
 
-                // take away the resource cost of this ability
-                currentResources -= shieldCost;
                 break;
             default:
                 break;
@@ -276,8 +322,10 @@ public class JB_LocalPlayer : NetworkBehaviour
         {
             return;
         }
-        BoxCollider[] tileColliders = gridLayout.GetComponentsInChildren<BoxCollider>();
         GameObject[] allShips = GameObject.FindGameObjectsWithTag("Ship");
+
+        BoxCollider[] tileColliders = gridLayout.GetComponentsInChildren<BoxCollider>();
+        
 
         foreach(BoxCollider collider in tileColliders)
         {
@@ -300,6 +348,17 @@ public class JB_LocalPlayer : NetworkBehaviour
 
     }
 
+    public void ShipDetection(GameObject gridManagerObj, int endX, int endY)
+    {
+        gridManagerObj.GetComponent<JB_GridManager>().startX = startX;
+        gridManagerObj.GetComponent<JB_GridManager>().startY = startY;
+        gridManagerObj.GetComponent<JB_GridManager>().endX = endX;
+        gridManagerObj.GetComponent<JB_GridManager>().endY = endY;
+
+        radarCount = gridManagerObj.GetComponent<JB_GridManager>().FindClosestShip();
+
+    }
+
    
     // =============================== functions to execute abilities ============================
     [Command]
@@ -309,7 +368,7 @@ public class JB_LocalPlayer : NetworkBehaviour
         trueTarget = targetPos;
 
         // spawns my projectile
-        GameObject projectile = Instantiate(blastProjectilePrefab, projectileSpawnPoint.position, Quaternion.identity);
+        GameObject projectile = Instantiate(blastProjectilePrefab, blastSpawnPoint.position, Quaternion.identity);
         
         // assigning variables on projectile
         projectile.GetComponent<AM_JB_BlastProjectile>().targetTilePos = trueTarget;
@@ -367,7 +426,7 @@ public class JB_LocalPlayer : NetworkBehaviour
 
         
 
-        RpcAbilityTwoBarrage(barrage, updateCurrency);
+        RpcAbilityTwoBarrage(updateCurrency);
     }
 
     [ClientRpc]
@@ -379,7 +438,7 @@ public class JB_LocalPlayer : NetworkBehaviour
     }
 
     [ClientRpc]
-    private void RpcAbilityTwoBarrage(GameObject barrage, float updateCurrency)
+    private void RpcAbilityTwoBarrage(float updateCurrency)
     {
         currentResources = updateCurrency;
 
@@ -387,18 +446,47 @@ public class JB_LocalPlayer : NetworkBehaviour
     }
 
     [Command]
-    private void CmdAbilityThreeRadar()
+    private void CmdAbilityThreeRadar(Vector3 targetPos, float updateCurrency)
     {
-        
+        currentResources = updateCurrency;
 
+        radarObj = Instantiate(radarPrefab, targetPos, Quaternion.identity);
+
+        radarObj.GetComponent<JB_RadarScript>().playerObj = gameObject;
+
+        NetworkServer.SpawnWithClientAuthority(radarObj, connectionToClient);
+
+        RpcAbilityThreeRadar(radarObj, updateCurrency);
+
+    }
+
+    [ClientRpc]
+    private void RpcAbilityThreeRadar(GameObject radar, float updateCurrency)
+    {
+        currentResources = updateCurrency;
+
+        radar.GetComponent<JB_RadarScript>().playerObj = gameObject;
     }
 
     [Command]
-    private void CmdAbilityFourShield()
+    private void CmdAbilityFourShield(Vector3 targetPos, float updateCurrency)
     {
+        shield = Instantiate(shieldPrefab, targetPos, Quaternion.identity);
+        currentResources = updateCurrency;
+        NetworkServer.Spawn(shield);
+        RpcAbilityFourShield(shield, updateCurrency);
+
 
     }
+
+    [ClientRpc]
+    private void RpcAbilityFourShield(GameObject shieldObj, float updateCurrency)
+    {
+        shield = shieldObj;
+        currentResources = updateCurrency;
+    }
     // =============================== functions to execute abilities ============================
+
 
 
     // method used to ensure only one ability is active any one time
@@ -416,7 +504,7 @@ public class JB_LocalPlayer : NetworkBehaviour
     }
 
     
-    public void FindShipHit(ShipType ship, GameObject shipObj, Vector3 squarePos)
+    public void FindShipHit(ShipType ship, GameObject shipObj, Vector2 squarePos)
     {
         // information for when a player hits an enemy ship
         gameManager.GetComponent<JB_GameManager>().ShipHit(ship, shipObj, squarePos);
@@ -480,6 +568,7 @@ public class JB_LocalPlayer : NetworkBehaviour
 
     }
 
+
     [ClientRpc]
     void RpcAssignAuthorityToGameManager(GameObject obj)
     {
@@ -500,8 +589,6 @@ public class JB_LocalPlayer : NetworkBehaviour
 
     private void OnGUI()
     {
-
-
         if (showRotateConfirmButtons && this.isLocalPlayer)
         {
             // ================= PLACEMENT STAGE ================
@@ -595,6 +682,7 @@ public class JB_LocalPlayer : NetworkBehaviour
             if (GUILayout.Button("Shield", GUILayout.Height(50))) // shield ability - new Rect(490, myHeight, 70, 25), 
             {
                 isButtonHeld[3] = OnlyOneButton(3, isButtonHeld[3]);
+                CmdSwapGridColliders(isButtonHeld[3]);
                 Debug.Log("ability four clicked!!! ======= :)" + isButtonHeld[3]);
             }
             GUILayout.EndHorizontal();
@@ -602,6 +690,50 @@ public class JB_LocalPlayer : NetworkBehaviour
 
         }
        
+    }
+
+    [Command]
+    private void CmdSwapGridColliders(bool onOff)
+    {
+
+        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+         
+        foreach(GameObject player in players)
+        {
+            if (player.GetComponent<JB_LocalPlayer>().playerID == playerID)
+            {
+                BoxCollider[] tiles = player.transform.GetChild(0).GetComponentsInChildren<BoxCollider>();
+
+                Debug.Log("my player");
+                foreach (BoxCollider tile in tiles)
+                {
+                    tile.enabled = onOff;
+                    RpcSwapGridColliders(player, onOff);
+                }
+            }
+            else
+            {
+                Debug.Log("other Player");
+                BoxCollider[] tiles = player.transform.GetChild(0).GetComponentsInChildren<BoxCollider>();
+                foreach (BoxCollider tile in tiles)
+                {
+                    tile.enabled = !onOff;
+                    RpcSwapGridColliders(player, !onOff);
+                }
+            }
+        }
+        
+
+        //foreach (GameObject tile in tiles)
+        //{
+        //    tile.GetComponent<BoxCollider>().enabled = onOff;
+        //}
+    }
+
+    [ClientRpc]
+    private void RpcSwapGridColliders(GameObject playerObj, bool onOff)
+    {
+        playerObj.transform.GetChild(0).GetComponentInChildren<BoxCollider>().enabled = onOff;
     }
 
     public void RotateShip()

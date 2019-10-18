@@ -19,7 +19,8 @@ public class AM_JB_BlastProjectile : NetworkBehaviour
     // vector direction to ensure projectile faces the tile
     private Vector2 direction;
 
-    //public AudioClip missSound;
+    // audio to play when projectile launches
+    public AudioClip blastAudio;
     // audio to play when player hits ship
     public AudioClip hitSound;
 
@@ -38,10 +39,31 @@ public class AM_JB_BlastProjectile : NetworkBehaviour
 
     // reference the ship type we hit
     private ShipType ship;
-    
-    public override void OnStartClient()
+
+    public override void OnStartAuthority()
     {
-        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+        CmdLaunchProjectile();
+    }
+
+    [Command]
+    void CmdLaunchProjectile()
+    {
+        myAudioSource.clip = blastAudio;
+        myAudioSource.Play();
+        RpcLaunchProjectile();
+    }
+
+    [ClientRpc]
+    void RpcLaunchProjectile()
+    {
+        myAudioSource.clip = blastAudio;
+        myAudioSource.Play();
+    }
+
+    private void Awake()
+    {
+        myAudioSource = GetComponent<AudioSource>();
+        
     }
 
     private void Start()
@@ -50,10 +72,6 @@ public class AM_JB_BlastProjectile : NetworkBehaviour
         {
             return;
         }
-
-        myAudioSource = GetComponent<AudioSource>();
-        myAudioSource.clip = hitSound;
-
         
     }
 
@@ -107,9 +125,6 @@ public class AM_JB_BlastProjectile : NetworkBehaviour
                     // index 0 for hitting ship
                     CmdSpawnSprite(0, tempTargetPos);
                     
-                    //myAudioSource.Play();
-
-
                     // disable collider to avoid hitpoints of ship getting incorrectly calculated
                     hit.collider.gameObject.GetComponent<BoxCollider>().enabled = false;
 
@@ -117,6 +132,8 @@ public class AM_JB_BlastProjectile : NetworkBehaviour
                     GameObject shipObj = hit.collider.gameObject.transform.parent.gameObject;
 
                     ship = shipObj.GetComponent<JB_Ship>().shipType;
+          
+                    CmdShipHitAudio();
 
                     // calling function to count ship hits
                     playerObj.GetComponent<JB_LocalPlayer>().FindShipHit(ship, shipObj, hitPos.position);
@@ -124,6 +141,7 @@ public class AM_JB_BlastProjectile : NetworkBehaviour
                     CmdDestroyGameObj(gameObject);
                     return;
                 }
+                // do we hit a tile
                 else if (hit.collider.gameObject.tag == "Tile")
                 {
                     tempTargetPos = hit.collider.gameObject.transform.position;
@@ -138,13 +156,15 @@ public class AM_JB_BlastProjectile : NetworkBehaviour
                     return;
                 }
 
-                // do we hit a tile
-                // do we hit nothing
-                else
+                
+                // do we hit shield
+                else if (hit.collider.gameObject.tag == "Shield")
                 {
                     Debug.Log("missed");
+
+                    Destroy(hit.collider.gameObject);
                     CmdDestroyGameObj(gameObject);
-                    return;
+                    
                 }
 
                 
@@ -189,8 +209,6 @@ public class AM_JB_BlastProjectile : NetworkBehaviour
                 break;
         }
 
-        GameObject newSprite = mySprite;
-
         NetworkServer.Spawn(mySprite);
 
         //RpcSpawnSprite(mySprite);
@@ -202,6 +220,24 @@ public class AM_JB_BlastProjectile : NetworkBehaviour
     {
         mySprite = spriteObj;
     }
+
+    [Command]
+    void CmdShipHitAudio()
+    {
+        myAudioSource.clip = hitSound;
+        myAudioSource.Play();
+        RpcShipHitAudio();
+    }
+
+    [ClientRpc]
+    void RpcShipHitAudio()
+    {
+        myAudioSource.clip = hitSound;
+        myAudioSource.Play();
+    }
+
+
+
 
     // ANTHONY'S CODE
     /*

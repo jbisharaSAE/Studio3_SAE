@@ -11,9 +11,9 @@ public class JB_Tile : NetworkBehaviour
     public Vector3 tilePosition;
     public bool isTileFree = true;
 
-    private void OnMouseDown()
-    {
-        Debug.Log("tile " + number + " clicked");
-    }
+    public int visited = 1;
+    public int x = 0;
+    public int y = 0;
 
+ 
 }
