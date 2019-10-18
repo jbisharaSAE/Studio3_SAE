@@ -239,7 +239,7 @@ public class AM_JB_BlastProjectile : NetworkBehaviour
 
 
     //Barrage  
-    {
+    //{
 
     // ANTHONY'S CODE
     /*
