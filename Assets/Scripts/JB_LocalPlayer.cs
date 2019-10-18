@@ -348,7 +348,7 @@ public class JB_LocalPlayer : NetworkBehaviour
 
     }
 
-    public void FindClosestShip(GameObject gridManagerObj, int endX, int endY)
+    public void ShipDetection(GameObject gridManagerObj, int endX, int endY)
     {
         gridManagerObj.GetComponent<JB_GridManager>().startX = startX;
         gridManagerObj.GetComponent<JB_GridManager>().startY = startY;

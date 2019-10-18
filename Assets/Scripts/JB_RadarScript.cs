@@ -46,7 +46,7 @@ public class JB_RadarScript : NetworkBehaviour
             y = other.gameObject.GetComponent<JB_SquareSprites>().y;
             gridManagerObj = other.gameObject.GetComponent<JB_SquareSprites>().gridManagerObj;
 
-            playerObj.GetComponent<JB_LocalPlayer>().FindClosestShip(gridManagerObj, x, y);
+            playerObj.GetComponent<JB_LocalPlayer>().ShipDetection(gridManagerObj, x, y);
 
             expand = false;
 
