@@ -101,7 +101,8 @@ MonoBehaviour:
   speed: 100
   targetTilePos: {x: 0, y: 0, z: 0}
   blastAudio: {fileID: 8300000, guid: 3b9d2771b806199478c87d30597e2bea, type: 3}
-  hitSound: {fileID: 8300000, guid: 5b3016dbf002a3b408fc0f274f419157, type: 3}
+  hitShipSound: {fileID: 8300000, guid: 5b3016dbf002a3b408fc0f274f419157, type: 3}
+  shieldOffSound: {fileID: 8300000, guid: 0a1ff2e78b8a684468d86799e1eb7077, type: 3}
   hitSpritePrefab: {fileID: 1650641585431926389, guid: bc988d5eee36af54d88dc931a8204c98,
     type: 3}
   missSpritePrefab: {fileID: 3945157713611324876, guid: 783ae560ec0153045bdd07ecf47da91b,

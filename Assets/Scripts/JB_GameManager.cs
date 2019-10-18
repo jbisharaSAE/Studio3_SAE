@@ -23,6 +23,9 @@ public class JB_GameManager : NetworkBehaviour
     [HideInInspector]
     public int readyCheckNumber;
 
+    [SyncVar]
+    public int checkNumber;
+
     [SerializeField] private GameObject shipDestroyedPrefab;
     [SerializeField] private GameObject shipHitPrefab;
 
@@ -34,8 +37,27 @@ public class JB_GameManager : NetworkBehaviour
     private float dallionsToAdd = 50f;
 
 
+    public void CheckPlayerReady()
+    {
+        ++checkNumber;
 
-    
+        if (checkNumber == 2)
+        {
+            
+            foreach (KeyValuePair<NetworkInstanceId, NetworkIdentity> pair in NetworkServer.objects)
+            {
+                if (pair.Value.gameObject.tag == "Player")
+                {
+                    pair.Value.gameObject.GetComponent<JB_LocalPlayer>().StartPlacementPhase();
+                }
+            }
+            
+        }
+
+    }
+
+
+
     public void ShipHit(ShipType ship, GameObject shipObj, Vector2 squarePos)
     {
 

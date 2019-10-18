@@ -18,16 +18,45 @@ public class JB_RadarScript : NetworkBehaviour
     // reference to enemy grid layout
     private GameObject gridManagerObj;
 
+    public AudioClip radarSound;
+    private AudioSource myAudioSource;
+
     [SyncVar]
     private int x; // x position of tile
     [SyncVar]
     private int y; // y position of tile
 
+    public override void OnStartAuthority()
+    {
+        CmdPlayRadarSound();
+    }
+
+    [Command]
+    void CmdPlayRadarSound()
+    {
+        myAudioSource.clip = radarSound;
+        myAudioSource.Play();
+        RpcPlayRadarSound();
+    }
+
+
+    [ClientRpc]
+    void RpcPlayRadarSound()
+    {
+        myAudioSource.clip = radarSound;
+        myAudioSource.Play();
+    }
+
+    private void Awake()
+    {
+        myAudioSource = GetComponent<AudioSource>();
+    }
+
+
     // Update is called once per frame
     void Update()
     {
         
-
         if (expand)
         {
             speed += 0.02f;
