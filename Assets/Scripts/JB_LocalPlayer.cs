@@ -9,6 +9,9 @@ using UnityEngine.UI;
 
 public class JB_LocalPlayer : NetworkBehaviour
 {
+    // number to display for radar
+    public GameObject radarDisplayPrefab;
+
     // spawn point for projectiles
     public Transform blastSpawnPoint;
 
@@ -153,11 +156,7 @@ public class JB_LocalPlayer : NetworkBehaviour
         dallionDisplay.SetActive(true);
         displayCurrentDallions = dallionDisplay.transform.GetChild(0).gameObject.GetComponent<Text>();
         //displayCurrentDallions.text = currentResources.ToString("F0");
-
-        Debug.Log(displayCurrentDallions.text);
-        // set the parent of myButtons game object to the canvas in game
-        //myButtons.transform.SetParent(overlayCanvas.transform);
-
+        
         // find my error message game object
         errorAlertTextObj = GameObject.FindGameObjectWithTag("ErrorMsg");
         
@@ -357,6 +356,12 @@ public class JB_LocalPlayer : NetworkBehaviour
 
         radarCount = gridManagerObj.GetComponent<JB_GridManager>().FindClosestShip();
 
+        GameObject radarNumber = Instantiate(radarDisplayPrefab, tempTargetPos, Quaternion.identity);
+        radarNumber.GetComponentInChildren<TextMeshProUGUI>().text = radarCount.ToString();
+
+        Destroy(radarNumber, 3f);
+
+
     }
 
    
@@ -452,7 +457,7 @@ public class JB_LocalPlayer : NetworkBehaviour
 
         radarObj = Instantiate(radarPrefab, targetPos, Quaternion.identity);
 
-        radarObj.GetComponent<JB_RadarScript>().playerObj = gameObject;
+        radarObj.GetComponent<JB_RadarScript>().playerObj = this.gameObject;
 
         NetworkServer.SpawnWithClientAuthority(radarObj, connectionToClient);
 
@@ -465,7 +470,7 @@ public class JB_LocalPlayer : NetworkBehaviour
     {
         currentResources = updateCurrency;
 
-        radar.GetComponent<JB_RadarScript>().playerObj = gameObject;
+        radar.GetComponent<JB_RadarScript>().playerObj = this.gameObject;
     }
 
     [Command]
