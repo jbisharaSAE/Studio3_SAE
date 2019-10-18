@@ -155,7 +155,7 @@ public class JB_GridManager : MonoBehaviour
         if(gridArray[endX, endY] && gridArray[endX, endY].GetComponent<JB_Tile>().visited > 0)
         {
             path.Add(gridArray[x, y]);
-            step = gridArray[x, y].GetComponent<JB_Tile>().visited = -1;
+            step = gridArray[x, y].GetComponent<JB_Tile>().visited -1;
         }
         else
         {

@@ -10,7 +10,7 @@ public class JB_RadarScript : NetworkBehaviour
     // when i want my collider to stop expanding
     private bool expand = true;
     // position of ship square
-    private Vector3 squarePos;
+    //private Vector3 squarePos;
 
     // reference to owner's player's obj
     public GameObject playerObj;
@@ -38,22 +38,35 @@ public class JB_RadarScript : NetworkBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        expand = false;
         Debug.Log("testing trigger");
         if (other.gameObject.tag == "Square")
         {
-            squarePos = other.gameObject.transform.position;
+            //squarePos = other.gameObject.transform.position;
             x = other.gameObject.GetComponent<JB_SquareSprites>().x;
             y = other.gameObject.GetComponent<JB_SquareSprites>().y;
             gridManagerObj = other.gameObject.GetComponent<JB_SquareSprites>().gridManagerObj;
 
-            playerObj.GetComponent<JB_LocalPlayer>().FindClosestShip(gridManagerObj, x, y);
+            playerObj.GetComponent<JB_LocalPlayer>().ShipDetection(gridManagerObj, x, y);
 
             expand = false;
 
-            Destroy(gameObject, 0.1f);
+            CmdDestroyThisRadar(gameObject);
 
         }
     }
 
-
+    [Command]
+    void CmdDestroyThisRadar(GameObject obj)
+    {
+        expand = false;
+        Destroy(obj);
+        RpcDestroyThisRadar(obj);
+    }
+    [ClientRpc]
+    void RpcDestroyThisRadar(GameObject obj)
+    {
+        expand = false;
+        Destroy(obj);
+    }
 }

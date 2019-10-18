@@ -9,6 +9,9 @@ using UnityEngine.UI;
 
 public class JB_LocalPlayer : NetworkBehaviour
 {
+    // number to display for radar
+    public GameObject radarDisplayPrefab;
+
     // spawn point for projectiles
     public Transform blastSpawnPoint;
 
@@ -153,11 +156,7 @@ public class JB_LocalPlayer : NetworkBehaviour
         dallionDisplay.SetActive(true);
         displayCurrentDallions = dallionDisplay.transform.GetChild(0).gameObject.GetComponent<Text>();
         //displayCurrentDallions.text = currentResources.ToString("F0");
-
-        Debug.Log(displayCurrentDallions.text);
-        // set the parent of myButtons game object to the canvas in game
-        //myButtons.transform.SetParent(overlayCanvas.transform);
-
+        
         // find my error message game object
         errorAlertTextObj = GameObject.FindGameObjectWithTag("ErrorMsg");
         
@@ -306,7 +305,7 @@ public class JB_LocalPlayer : NetworkBehaviour
 
                 // ability is no longer active
                 isButtonHeld[3] = false;
-                CmdSwapGridColliders(false);
+                SwapGridColliders(false);
 
                 break;
             default:
@@ -348,7 +347,7 @@ public class JB_LocalPlayer : NetworkBehaviour
 
     }
 
-    public void FindClosestShip(GameObject gridManagerObj, int endX, int endY)
+    public void ShipDetection(GameObject gridManagerObj, int endX, int endY)
     {
         gridManagerObj.GetComponent<JB_GridManager>().startX = startX;
         gridManagerObj.GetComponent<JB_GridManager>().startY = startY;
@@ -356,6 +355,12 @@ public class JB_LocalPlayer : NetworkBehaviour
         gridManagerObj.GetComponent<JB_GridManager>().endY = endY;
 
         radarCount = gridManagerObj.GetComponent<JB_GridManager>().FindClosestShip();
+
+        GameObject radarNumber = Instantiate(radarDisplayPrefab, tempTargetPos, Quaternion.identity);
+        radarNumber.GetComponentInChildren<TextMeshProUGUI>().text = radarCount.ToString();
+
+        Destroy(radarNumber, 3f);
+
 
     }
 
@@ -452,7 +457,7 @@ public class JB_LocalPlayer : NetworkBehaviour
 
         radarObj = Instantiate(radarPrefab, targetPos, Quaternion.identity);
 
-        radarObj.GetComponent<JB_RadarScript>().playerObj = gameObject;
+        radarObj.GetComponent<JB_RadarScript>().playerObj = this.gameObject;
 
         NetworkServer.SpawnWithClientAuthority(radarObj, connectionToClient);
 
@@ -465,7 +470,7 @@ public class JB_LocalPlayer : NetworkBehaviour
     {
         currentResources = updateCurrency;
 
-        radar.GetComponent<JB_RadarScript>().playerObj = gameObject;
+        radar.GetComponent<JB_RadarScript>().playerObj = this.gameObject;
     }
 
     [Command]
@@ -682,7 +687,7 @@ public class JB_LocalPlayer : NetworkBehaviour
             if (GUILayout.Button("Shield", GUILayout.Height(50))) // shield ability - new Rect(490, myHeight, 70, 25), 
             {
                 isButtonHeld[3] = OnlyOneButton(3, isButtonHeld[3]);
-                CmdSwapGridColliders(isButtonHeld[3]);
+                SwapGridColliders(isButtonHeld[3]);
                 Debug.Log("ability four clicked!!! ======= :)" + isButtonHeld[3]);
             }
             GUILayout.EndHorizontal();
@@ -692,8 +697,8 @@ public class JB_LocalPlayer : NetworkBehaviour
        
     }
 
-    [Command]
-    private void CmdSwapGridColliders(bool onOff)
+    
+    private void SwapGridColliders(bool onOff)
     {
 
         GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
@@ -703,12 +708,12 @@ public class JB_LocalPlayer : NetworkBehaviour
             if (player.GetComponent<JB_LocalPlayer>().playerID == playerID)
             {
                 BoxCollider[] tiles = player.transform.GetChild(0).GetComponentsInChildren<BoxCollider>();
-
+                Debug.Log("Tiles array length = " + tiles.Length);
                 Debug.Log("my player");
                 foreach (BoxCollider tile in tiles)
                 {
                     tile.enabled = onOff;
-                    RpcSwapGridColliders(player, onOff);
+                    //RpcSwapGridColliders(player, onOff);
                 }
             }
             else
@@ -718,23 +723,13 @@ public class JB_LocalPlayer : NetworkBehaviour
                 foreach (BoxCollider tile in tiles)
                 {
                     tile.enabled = !onOff;
-                    RpcSwapGridColliders(player, !onOff);
+                    
                 }
             }
         }
-        
-
-        //foreach (GameObject tile in tiles)
-        //{
-        //    tile.GetComponent<BoxCollider>().enabled = onOff;
-        //}
+     
     }
 
-    [ClientRpc]
-    private void RpcSwapGridColliders(GameObject playerObj, bool onOff)
-    {
-        playerObj.transform.GetChild(0).GetComponentInChildren<BoxCollider>().enabled = onOff;
-    }
 
     public void RotateShip()
     {
