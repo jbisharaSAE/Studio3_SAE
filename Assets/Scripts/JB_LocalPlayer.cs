@@ -306,7 +306,7 @@ public class JB_LocalPlayer : NetworkBehaviour
 
                 // ability is no longer active
                 isButtonHeld[3] = false;
-                CmdSwapGridColliders(false);
+                SwapGridColliders(false);
 
                 break;
             default:
@@ -682,7 +682,7 @@ public class JB_LocalPlayer : NetworkBehaviour
             if (GUILayout.Button("Shield", GUILayout.Height(50))) // shield ability - new Rect(490, myHeight, 70, 25), 
             {
                 isButtonHeld[3] = OnlyOneButton(3, isButtonHeld[3]);
-                CmdSwapGridColliders(isButtonHeld[3]);
+                SwapGridColliders(isButtonHeld[3]);
                 Debug.Log("ability four clicked!!! ======= :)" + isButtonHeld[3]);
             }
             GUILayout.EndHorizontal();
@@ -692,8 +692,8 @@ public class JB_LocalPlayer : NetworkBehaviour
        
     }
 
-    [Command]
-    private void CmdSwapGridColliders(bool onOff)
+    
+    private void SwapGridColliders(bool onOff)
     {
 
         GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
@@ -703,12 +703,12 @@ public class JB_LocalPlayer : NetworkBehaviour
             if (player.GetComponent<JB_LocalPlayer>().playerID == playerID)
             {
                 BoxCollider[] tiles = player.transform.GetChild(0).GetComponentsInChildren<BoxCollider>();
-
+                Debug.Log("Tiles array length = " + tiles.Length);
                 Debug.Log("my player");
                 foreach (BoxCollider tile in tiles)
                 {
                     tile.enabled = onOff;
-                    RpcSwapGridColliders(player, onOff);
+                    //RpcSwapGridColliders(player, onOff);
                 }
             }
             else
@@ -718,23 +718,13 @@ public class JB_LocalPlayer : NetworkBehaviour
                 foreach (BoxCollider tile in tiles)
                 {
                     tile.enabled = !onOff;
-                    RpcSwapGridColliders(player, !onOff);
+                    
                 }
             }
         }
-        
-
-        //foreach (GameObject tile in tiles)
-        //{
-        //    tile.GetComponent<BoxCollider>().enabled = onOff;
-        //}
+     
     }
 
-    [ClientRpc]
-    private void RpcSwapGridColliders(GameObject playerObj, bool onOff)
-    {
-        playerObj.transform.GetChild(0).GetComponentInChildren<BoxCollider>().enabled = onOff;
-    }
 
     public void RotateShip()
     {
