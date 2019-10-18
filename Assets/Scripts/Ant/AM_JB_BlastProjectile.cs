@@ -63,7 +63,7 @@ public class AM_JB_BlastProjectile : NetworkBehaviour
     private void Awake()
     {
         myAudioSource = GetComponent<AudioSource>();
-        
+
     }
 
     private void Start()
@@ -72,7 +72,7 @@ public class AM_JB_BlastProjectile : NetworkBehaviour
         {
             return;
         }
-        
+
     }
 
     private void FaceTile()
@@ -105,7 +105,7 @@ public class AM_JB_BlastProjectile : NetworkBehaviour
         float distance = Vector2.Distance(transform.position, targetTilePos);
 
 
-        if(distance <= 0.1)
+        if (distance <= 0.1)
         {
             RaycastHit hit;
             if (Physics.Raycast(transform.position, transform.forward, out hit, Mathf.Infinity))
@@ -124,7 +124,7 @@ public class AM_JB_BlastProjectile : NetworkBehaviour
 
                     // index 0 for hitting ship
                     CmdSpawnSprite(0, tempTargetPos);
-                    
+
                     // disable collider to avoid hitpoints of ship getting incorrectly calculated
                     hit.collider.gameObject.GetComponent<BoxCollider>().enabled = false;
 
@@ -132,7 +132,7 @@ public class AM_JB_BlastProjectile : NetworkBehaviour
                     GameObject shipObj = hit.collider.gameObject.transform.parent.gameObject;
 
                     ship = shipObj.GetComponent<JB_Ship>().shipType;
-          
+
                     CmdShipHitAudio();
 
                     // calling function to count ship hits
@@ -156,7 +156,7 @@ public class AM_JB_BlastProjectile : NetworkBehaviour
                     return;
                 }
 
-                
+
                 // do we hit shield
                 else if (hit.collider.gameObject.tag == "Shield")
                 {
@@ -164,10 +164,10 @@ public class AM_JB_BlastProjectile : NetworkBehaviour
 
                     Destroy(hit.collider.gameObject);
                     CmdDestroyGameObj(gameObject);
-                    
+
                 }
 
-                
+
 
             }
 
@@ -239,7 +239,52 @@ public class AM_JB_BlastProjectile : NetworkBehaviour
 
 
     //Barrage  
+<<<<<<< HEAD
     //{
+=======
+    
+    // audio to play when projectile launches
+    public AudioClip BarrageAudio;
+    // audio to play when player hits ship
+    
+
+
+
+
+
+    //Shield
+
+
+
+
+
+
+    //Radar /Radar Detect 
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+>>>>>>> master
 
     // ANTHONY'S CODE
     /*
