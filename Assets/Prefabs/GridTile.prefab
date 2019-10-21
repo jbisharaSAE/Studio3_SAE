@@ -112,6 +112,9 @@ MonoBehaviour:
   number: 0
   tilePosition: {x: 0, y: 0, z: 0}
   isTileFree: 1
+  visited: 1
+  x: 0
+  y: 0
 --- !u!114 &-8098136458766409575
 MonoBehaviour:
   m_ObjectHideFlags: 0

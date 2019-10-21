@@ -10,7 +10,7 @@ public class JB_RadarScript : NetworkBehaviour
     // when i want my collider to stop expanding
     private bool expand = true;
     // position of ship square
-    private Vector3 squarePos;
+    //private Vector3 squarePos;
 
     // reference to owner's player's obj
     public GameObject playerObj;
@@ -18,16 +18,45 @@ public class JB_RadarScript : NetworkBehaviour
     // reference to enemy grid layout
     private GameObject gridManagerObj;
 
+    public AudioClip radarSound;
+    private AudioSource myAudioSource;
+
     [SyncVar]
     private int x; // x position of tile
     [SyncVar]
     private int y; // y position of tile
 
+    public override void OnStartAuthority()
+    {
+        CmdPlayRadarSound();
+    }
+
+    [Command]
+    void CmdPlayRadarSound()
+    {
+        myAudioSource.clip = radarSound;
+        myAudioSource.Play();
+        RpcPlayRadarSound();
+    }
+
+
+    [ClientRpc]
+    void RpcPlayRadarSound()
+    {
+        myAudioSource.clip = radarSound;
+        myAudioSource.Play();
+    }
+
+    private void Awake()
+    {
+        myAudioSource = GetComponent<AudioSource>();
+    }
+
+
     // Update is called once per frame
     void Update()
     {
         
-
         if (expand)
         {
             speed += 0.02f;
@@ -38,10 +67,11 @@ public class JB_RadarScript : NetworkBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        expand = false;
         Debug.Log("testing trigger");
         if (other.gameObject.tag == "Square")
         {
-            squarePos = other.gameObject.transform.position;
+            //squarePos = other.gameObject.transform.position;
             x = other.gameObject.GetComponent<JB_SquareSprites>().x;
             y = other.gameObject.GetComponent<JB_SquareSprites>().y;
             gridManagerObj = other.gameObject.GetComponent<JB_SquareSprites>().gridManagerObj;
@@ -50,10 +80,22 @@ public class JB_RadarScript : NetworkBehaviour
 
             expand = false;
 
-            Destroy(gameObject, 0.1f);
+            CmdDestroyThisRadar(gameObject);
 
         }
     }
 
-
+    [Command]
+    void CmdDestroyThisRadar(GameObject obj)
+    {
+        expand = false;
+        Destroy(obj);
+        RpcDestroyThisRadar(obj);
+    }
+    [ClientRpc]
+    void RpcDestroyThisRadar(GameObject obj)
+    {
+        expand = false;
+        Destroy(obj);
+    }
 }

@@ -14,6 +14,12 @@ public class JB_BarrageProjectile : NetworkBehaviour
 
     private GameObject mySprite;
 
+    public AudioClip barrageLaunchSound;
+    public AudioClip hitShipSound;
+    public AudioClip shieldOffSound;
+
+    private AudioSource myAudioSource;
+
     // speed of projectile
     public float speed;
 
@@ -30,6 +36,33 @@ public class JB_BarrageProjectile : NetworkBehaviour
     private ShipType ship;
 
     private Vector3 tempTargetPos;
+
+    public override void OnStartAuthority()
+    {
+        CmdLaunchProjectile();
+    }
+
+    [Command]
+    void CmdLaunchProjectile()
+    {
+        myAudioSource.clip = barrageLaunchSound;
+        myAudioSource.Play();
+        RpcLaunchProjectile();
+    }
+
+    [ClientRpc]
+    void RpcLaunchProjectile()
+    {
+        myAudioSource.clip = barrageLaunchSound;
+        myAudioSource.Play();
+    }
+
+    private void Awake()
+    {
+        myAudioSource = GetComponent<AudioSource>();
+
+    }
+
 
     // Update is called once per frame
     void Update()
@@ -68,7 +101,7 @@ public class JB_BarrageProjectile : NetworkBehaviour
                     // index 0 for hitting ship
                     CmdSpawnSprite(0, tempTargetPos);
 
-                    //myAudioSource.Play();
+                    CmdShipHitAudio();
 
 
                     // disable collider to avoid hitpoints of ship getting incorrectly calculated
@@ -99,25 +132,16 @@ public class JB_BarrageProjectile : NetworkBehaviour
                     return;
                 }
 
-                // do we hit a tile
-                // do we hit nothing
-                else
+                else if (hit.collider.gameObject.tag == "Shield")
                 {
-                    Debug.Log("missed");
+                    CmdShieldOff();
+                    Destroy(hit.collider.gameObject);
                     CmdDestroyGameObj(gameObject);
-                    return;
                 }
 
-
-
             }
 
-            else
-            {
-                //CmdDestroyGameObj(gameObject);
-                Debug.Log("Didn't hit anything");
-                //return;
-            }
+            
             // spawn particle effects
             // ray cast for ship hit or miss
         }
@@ -159,13 +183,36 @@ public class JB_BarrageProjectile : NetworkBehaviour
 
         CmdDestroyGameObj(gameObject);
 
-        //RpcSpawnSprite(mySprite);
+    }
 
+    [Command]
+    void CmdShipHitAudio()
+    {
+        myAudioSource.clip = hitShipSound;
+        myAudioSource.Play();
+        RpcShipHitAudio();
     }
 
     [ClientRpc]
-    void RpcSpawnSprite(GameObject spriteObj)
+    void RpcShipHitAudio()
     {
-        mySprite = spriteObj;
+        myAudioSource.clip = hitShipSound;
+        myAudioSource.Play();
     }
+
+    [Command]
+    void CmdShieldOff()
+    {
+        myAudioSource.clip = shieldOffSound;
+        myAudioSource.Play();
+        RpcShieldOff();
+    }
+
+    [ClientRpc]
+    void RpcShieldOff()
+    {
+        myAudioSource.clip = shieldOffSound;
+        myAudioSource.Play();
+    }
+
 }

@@ -22,7 +22,8 @@ public class AM_JB_BlastProjectile : NetworkBehaviour
     // audio to play when projectile launches
     public AudioClip blastAudio;
     // audio to play when player hits ship
-    public AudioClip hitSound;
+    public AudioClip hitShipSound;
+    public AudioClip shieldOffSound;
 
     // stored prefabs of missing ship and hitting ship
     public GameObject hitSpritePrefab;
@@ -63,17 +64,9 @@ public class AM_JB_BlastProjectile : NetworkBehaviour
     private void Awake()
     {
         myAudioSource = GetComponent<AudioSource>();
-        
+
     }
 
-    private void Start()
-    {
-        if (!hasAuthority)
-        {
-            return;
-        }
-        
-    }
 
     private void FaceTile()
     {
@@ -105,7 +98,7 @@ public class AM_JB_BlastProjectile : NetworkBehaviour
         float distance = Vector2.Distance(transform.position, targetTilePos);
 
 
-        if(distance <= 0.1)
+        if (distance <= 0.1)
         {
             RaycastHit hit;
             if (Physics.Raycast(transform.position, transform.forward, out hit, Mathf.Infinity))
@@ -124,7 +117,7 @@ public class AM_JB_BlastProjectile : NetworkBehaviour
 
                     // index 0 for hitting ship
                     CmdSpawnSprite(0, tempTargetPos);
-                    
+
                     // disable collider to avoid hitpoints of ship getting incorrectly calculated
                     hit.collider.gameObject.GetComponent<BoxCollider>().enabled = false;
 
@@ -132,7 +125,7 @@ public class AM_JB_BlastProjectile : NetworkBehaviour
                     GameObject shipObj = hit.collider.gameObject.transform.parent.gameObject;
 
                     ship = shipObj.GetComponent<JB_Ship>().shipType;
-          
+
                     CmdShipHitAudio();
 
                     // calling function to count ship hits
@@ -156,19 +149,14 @@ public class AM_JB_BlastProjectile : NetworkBehaviour
                     return;
                 }
 
-                
+
                 // do we hit shield
                 else if (hit.collider.gameObject.tag == "Shield")
                 {
-                    Debug.Log("missed");
-
+                    CmdShieldOff();
                     Destroy(hit.collider.gameObject);
                     CmdDestroyGameObj(gameObject);
-                    
                 }
-
-                
-
             }
 
             else
@@ -179,6 +167,7 @@ public class AM_JB_BlastProjectile : NetworkBehaviour
             }
         }
     }
+
 
     [Command]
     void CmdDestroyGameObj(GameObject gameObj)
@@ -211,20 +200,14 @@ public class AM_JB_BlastProjectile : NetworkBehaviour
 
         NetworkServer.Spawn(mySprite);
 
-        //RpcSpawnSprite(mySprite);
+        
 
-    }
-
-    [ClientRpc]
-    void RpcSpawnSprite(GameObject spriteObj)
-    {
-        mySprite = spriteObj;
     }
 
     [Command]
     void CmdShipHitAudio()
     {
-        myAudioSource.clip = hitSound;
+        myAudioSource.clip = hitShipSound;
         myAudioSource.Play();
         RpcShipHitAudio();
     }
@@ -232,12 +215,25 @@ public class AM_JB_BlastProjectile : NetworkBehaviour
     [ClientRpc]
     void RpcShipHitAudio()
     {
-        myAudioSource.clip = hitSound;
+        myAudioSource.clip = hitShipSound;
         myAudioSource.Play();
     }
 
 
+    [Command]
+    void CmdShieldOff()
+    {
+        myAudioSource.clip = shieldOffSound;
+        myAudioSource.Play();
+        RpcShieldOff();
+    }
 
+    [ClientRpc]
+    void RpcShieldOff()
+    {
+        myAudioSource.clip = shieldOffSound;
+        myAudioSource.Play();
+    }
 
     // ANTHONY'S CODE
     /*
