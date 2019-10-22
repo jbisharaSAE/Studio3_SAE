@@ -210,6 +210,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isTileOpen: 0
   tileRef: {fileID: 0}
+  x: 0
+  y: 0
+  gridManagerObj: {fileID: 0}
 --- !u!1 &4436528025233588823
 GameObject:
   m_ObjectHideFlags: 0
@@ -319,6 +322,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isTileOpen: 0
   tileRef: {fileID: 0}
+  x: 0
+  y: 0
+  gridManagerObj: {fileID: 0}
 --- !u!1 &4436528025430696282
 GameObject:
   m_ObjectHideFlags: 0
@@ -428,6 +434,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isTileOpen: 0
   tileRef: {fileID: 0}
+  x: 0
+  y: 0
+  gridManagerObj: {fileID: 0}
 --- !u!1 &4436528025855468420
 GameObject:
   m_ObjectHideFlags: 0
@@ -537,6 +546,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isTileOpen: 0
   tileRef: {fileID: 0}
+  x: 0
+  y: 0
+  gridManagerObj: {fileID: 0}
 --- !u!1 &4436528026164060653
 GameObject:
   m_ObjectHideFlags: 0
@@ -555,7 +567,7 @@ GameObject:
   - component: {fileID: 1297134687108599740}
   - component: {fileID: 8380760089962027164}
   m_Layer: 0
-  m_Name: Ship 4
+  m_Name: Ship4
   m_TagString: Ship
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -837,6 +849,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isTileOpen: 0
   tileRef: {fileID: 0}
+  x: 0
+  y: 0
+  gridManagerObj: {fileID: 0}
 --- !u!1 &6572659783558570882
 GameObject:
   m_ObjectHideFlags: 0
@@ -946,3 +961,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isTileOpen: 0
   tileRef: {fileID: 0}
+  x: 0
+  y: 0
+  gridManagerObj: {fileID: 0}

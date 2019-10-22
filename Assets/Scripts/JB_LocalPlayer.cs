@@ -9,6 +9,10 @@ using UnityEngine.UI;
 
 public class JB_LocalPlayer : NetworkBehaviour
 {
+    public GameObject namingPhase;
+    public TextMeshProUGUI nameDisplay;
+    
+
     public int readyNumber;
 
     // number to display for radar
@@ -53,8 +57,6 @@ public class JB_LocalPlayer : NetworkBehaviour
     public GameObject gameManagerPrefab;
     private GameObject gameManager;
 
-    public Button readyButton;
-    
     // a boolean for each ability button to determine if button is active or not
     private bool[] isButtonHeld;
 
@@ -108,12 +110,11 @@ public class JB_LocalPlayer : NetworkBehaviour
     [SyncVar]
     private Vector3 trueTarget;
 
-   
     private Text displayCurrentDallions;
 
     private List<GameObject> myList = new List<GameObject>();
 
-    private TMP_InputField inputFieldObj;
+    public TMP_InputField inputFieldObj;
 
     // used to calculate closest ship using grid
     public int startX;
@@ -136,80 +137,62 @@ public class JB_LocalPlayer : NetworkBehaviour
             return;
         }
 
-        readyButton = GameObject.FindGameObjectWithTag("Ready").GetComponent<Button>();
+        //readyButton = GameObject.FindGameObjectWithTag("Ready").GetComponent<Button>();
 
-        readyButton.onClick.AddListener(CmdPlayerReady);
+        //readyButton.onClick.AddListener(CmdPlayerReady);
 
         barrageSpawnPoint = new Vector3[4];
 
         isButtonHeld = new bool[4];
-
-        inputFieldObj = GameObject.FindGameObjectWithTag("InputField").GetComponent<TMP_InputField>();
-
-        inputFieldObj.onEndEdit.AddListener(CmdChangePlayerName);
 
         // find my error message game object
         errorAlertTextObj = GameObject.FindGameObjectWithTag("ErrorMsg");
 
         CmdSpawnGameManager();
 
+        namingPhase.SetActive(true);
+        
+        // converts the network ID given to player prefabs that spawn when a client joins the server into an integer
+        // used to identify player's connection object from each other
+        CmdSetPlayerID(Convert.ToInt32(GetComponent<NetworkIdentity>().netId.Value));
+
+        Debug.Log(JB_GameManager.playerPrefabs.Length);
+
     }
 
-    [Command]
-    private void CmdPlayerReady()
+    public void PlayerReady()
     {
         
-        Debug.Log("ready check called ");
-
-        foreach (KeyValuePair<NetworkInstanceId, NetworkIdentity> pair in NetworkServer.objects)
-        {
-            if (pair.Value.gameObject.tag == "GameManager")
-            {
-                pair.Value.gameObject.GetComponent<JB_GameManager>().CheckPlayerReady();
-                readyNumber++;
-            }
-
-        }
-
-        
-        if (readyNumber < 2)
-        {
-            GameObject textObj = GameObject.Find("InputField");
-            GameObject readyObj = GameObject.Find("Button Ready");
-            TextMeshProUGUI myText = GameObject.FindGameObjectWithTag("Enter").GetComponent<TextMeshProUGUI>();
-            myText.text = "Waiting for other player...";
-
-            textObj.SetActive(false);
-            readyObj.SetActive(false);
-        }
-        else
-        {
-            
-        }
-
+        StartPlacementPhase();
     }
 
-    private void OnDisable()
-    {
-        readyButton.onClick.RemoveAllListeners();
-        inputFieldObj.onEndEdit.RemoveAllListeners();
-    }
-
+    
     public void StartPlacementPhase()
     {
-        GameObject welcomeSign = GameObject.Find("WelcomeSign");
-        welcomeSign.SetActive(false);
 
         dallionDisplay.SetActive(true);
         displayCurrentDallions = dallionDisplay.transform.GetChild(0).gameObject.GetComponent<Text>();
+
+        namingPhase.SetActive(false);
 
         showRotateConfirmButtons = true;
 
         gridLayout.SetActive(true);
 
-        // converts the network ID given to player prefabs that spawn when a client joins the server into an integer
-        // used to identify player's connection object from each other
-        CmdSetPlayerID(Convert.ToInt32(GetComponent<NetworkIdentity>().netId.Value));
+        GameObject[] ships = GameObject.FindGameObjectsWithTag("Ship");
+
+        for(int i = 0; i < ships.Length; ++i)
+        {
+            if (ships[i].GetComponent<NetworkIdentity>().hasAuthority)
+            {
+                ships[i].GetComponent<DragObject>().EnableShipSprite();
+                //RpcAssignShips(ships[i], i, true);
+            }
+            
+        }
+
+        nameDisplay.text = playerName;
+        
     }
 
     [Command]
@@ -220,6 +203,7 @@ public class JB_LocalPlayer : NetworkBehaviour
         RpcChangePlayerName(playerName);
     }
 
+    [ClientRpc]
     public void RpcChangePlayerName(string n)
     {
         playerName = n;
@@ -237,7 +221,7 @@ public class JB_LocalPlayer : NetworkBehaviour
         PlayerInput();
         
     }
-
+    #region input
     private void PlayerInput()
     {
         // test to see if we are in battle mode
@@ -300,7 +284,10 @@ public class JB_LocalPlayer : NetworkBehaviour
             }
         }
     }
+
+    #endregion
     
+    #region abilityCalls
     private void ActivateAbilities(int index)
     {
         switch (index)
@@ -369,6 +356,7 @@ public class JB_LocalPlayer : NetworkBehaviour
                 break;
         }
     }
+    #endregion
 
     // when the game starts, player still sees their grid, but colliders are disabled, to avoid aiming at own grid
     // colliders on own player also disabled, to avoid targeting own ships, by accident or w/e
@@ -574,7 +562,7 @@ public class JB_LocalPlayer : NetworkBehaviour
         gameManager.GetComponent<JB_GameManager>().ShipHit(ship, shipObj, squarePos);
     }
 
-    // unused at the moment
+    
     [Command]
     public void CmdIncrementReadyNumber()
     {
@@ -612,7 +600,6 @@ public class JB_LocalPlayer : NetworkBehaviour
             // instantiate ships and give them authority from this local player (client)
             ships[i] = Instantiate(shipPrefabs[i]);
             ships[i].GetComponent<DragObject>().playerID = netID;
-            ships[i].GetComponent<DragObject>().EnableShipSprite();
             NetworkServer.SpawnWithClientAuthority(ships[i], connectionToClient);
             RpcAssignShips(ships[i], i);
         }
@@ -644,8 +631,7 @@ public class JB_LocalPlayer : NetworkBehaviour
         ships = new GameObject[shipPrefabs.Length];
 
         ships[index] = ship;
-        ships[index].GetComponent<DragObject>().EnableShipSprite();
-        
+
     }
 
     private void OnGUI()

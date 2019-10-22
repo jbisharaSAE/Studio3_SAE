@@ -37,31 +37,11 @@ public class JB_GameManager : NetworkBehaviour
     private float dallionsToAdd = 50f;
 
 
-    public void CheckPlayerReady()
-    {
-        ++checkNumber;
-
-        if (checkNumber == 2)
-        {
-            
-            foreach (KeyValuePair<NetworkInstanceId, NetworkIdentity> pair in NetworkServer.objects)
-            {
-                if (pair.Value.gameObject.tag == "Player")
-                {
-                    pair.Value.gameObject.GetComponent<JB_LocalPlayer>().StartPlacementPhase();
-                }
-            }
-            
-        }
-
-    }
-
-
-
     public void ShipHit(ShipType ship, GameObject shipObj, Vector2 squarePos)
     {
 
-        Debug.Log("ship sent thru parameter = " + ship);
+        // taking hp off a ship
+        
         switch (ship)
         {
             case ShipType.Ship1:
@@ -203,6 +183,9 @@ public class JB_GameManager : NetworkBehaviour
         // calls a function to disable tile colliders locally
         playerObj.GetComponent<JB_LocalPlayer>().DisableMyTileColliders();
 
+        // displaying player's name
+        playerObj.GetComponent<JB_LocalPlayer>().nameDisplay.text = playerObj.GetComponent<JB_LocalPlayer>().playerName;
+
         RpcBeginPlay(playerObj);
 
         // start the method that find the ability buttons
@@ -218,6 +201,7 @@ public class JB_GameManager : NetworkBehaviour
         playerObj.GetComponent<JB_LocalPlayer>().gridLayout.SetActive(true);
         playerObj.GetComponent<JB_LocalPlayer>().showRotateConfirmButtons = false;
         playerObj.GetComponent<JB_LocalPlayer>().DisableMyTileColliders();
+        playerObj.GetComponent<JB_LocalPlayer>().nameDisplay.text = playerObj.GetComponent<JB_LocalPlayer>().playerName;
     }
 
     
@@ -246,7 +230,7 @@ public class JB_GameManager : NetworkBehaviour
     {
         if (!hasAuthority)
         {
-            Debug.Log("does not have authority");
+            
             return;
             
         }
@@ -284,7 +268,7 @@ public class JB_GameManager : NetworkBehaviour
     {
         //playerObj.GetComponent<JB_LocalPlayer>().currentResources += dallionsToAdd;
 
-        int rand = Random.Range(0, 4);
+        int rand = Random.Range(0, 3);
 
         switch (rand)
         {
@@ -296,9 +280,6 @@ public class JB_GameManager : NetworkBehaviour
                 break;
             case 2:
                 playerObj.GetComponent<JB_LocalPlayer>().currentResources += 75;
-                break;
-            case 3:
-                playerObj.GetComponent<JB_LocalPlayer>().currentResources += 100;
                 break;
             default:
                 break;
