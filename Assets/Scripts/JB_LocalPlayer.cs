@@ -240,10 +240,11 @@ public class JB_LocalPlayer : NetworkBehaviour
 
     private void DisplayTimer()
     {
+
         if (!showRotateConfirmButtons && startTimer)
         {
             timer -= Time.deltaTime;
-            timerDisplay.text = timer.ToString("F2");
+            timerDisplay.text = timer.ToString("F1");
 
             if(timer <= 0)
             {
@@ -251,7 +252,10 @@ public class JB_LocalPlayer : NetworkBehaviour
                 // reset timer to 30
 
                 timer = 30f;
+
                 gameManager.GetComponent<JB_GameManager>().ChangePlayerTurn();
+
+
 
             }
 

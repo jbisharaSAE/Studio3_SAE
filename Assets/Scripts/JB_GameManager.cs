@@ -76,12 +76,34 @@ public class JB_GameManager : NetworkBehaviour
     {
         if(hitPoints == 0)
         {
-            shipDestroy = Instantiate(shipDestroyedPrefab, shipObj.transform.position, Quaternion.identity);
+            List<Transform> squares = new List<Transform>();
 
-            NetworkServer.Spawn(shipDestroy);
+            //Transform[] squares = shipObj.GetComponentsInChildren<Transform>();
 
+            for(int i = 0; i < (shipObj.transform.childCount -1); ++i)
+            {
+                squares.Add(shipObj.transform.GetChild(i));
+            }
+
+            StartCoroutine(SpawnDestroyParticle(squares));
+         
         }
     }
+
+    
+
+    private IEnumerator SpawnDestroyParticle(List<Transform> squareList)
+    {
+        foreach (Transform square in squareList)
+        {
+            shipDestroy = Instantiate(shipDestroyedPrefab, square.position, Quaternion.identity);
+            NetworkServer.Spawn(shipDestroy);
+            yield return new WaitForSeconds(0.2f);
+        }
+
+        
+    }
+
 
     [ClientRpc]
     void RpcTestShipLife(GameObject shipDestroyed)
