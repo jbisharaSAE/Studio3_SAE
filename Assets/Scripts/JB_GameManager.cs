@@ -186,6 +186,10 @@ public class JB_GameManager : NetworkBehaviour
         // displaying player's name
         playerObj.GetComponent<JB_LocalPlayer>().nameDisplay.text = playerObj.GetComponent<JB_LocalPlayer>().playerName;
 
+        // start timer
+        playerObj.GetComponent<JB_LocalPlayer>().timer = 30f;
+        playerObj.GetComponent<JB_LocalPlayer>().startTimer = true;
+
         RpcBeginPlay(playerObj);
 
         // start the method that find the ability buttons
@@ -202,6 +206,8 @@ public class JB_GameManager : NetworkBehaviour
         playerObj.GetComponent<JB_LocalPlayer>().showRotateConfirmButtons = false;
         playerObj.GetComponent<JB_LocalPlayer>().DisableMyTileColliders();
         playerObj.GetComponent<JB_LocalPlayer>().nameDisplay.text = playerObj.GetComponent<JB_LocalPlayer>().playerName;
+        playerObj.GetComponent<JB_LocalPlayer>().timer = 30f;
+        playerObj.GetComponent<JB_LocalPlayer>().startTimer = true;
     }
 
     
@@ -215,13 +221,9 @@ public class JB_GameManager : NetworkBehaviour
 
             }
         }
-        
-        //CmdSwapShipAuthority();
 
         CmdSetPlayerTurn();
 
-        // disable positioning buttons
-        Debug.Log("============= game has started! ===============");
     }
 
 
@@ -235,9 +237,11 @@ public class JB_GameManager : NetworkBehaviour
             
         }
 
+        // begin player turns using booleans
         playerPrefabs[0].GetComponent<JB_LocalPlayer>().myTurn = true;
         playerPrefabs[0].GetComponent<JB_LocalPlayer>().currentResources = 50f;
         playerPrefabs[1].GetComponent<JB_LocalPlayer>().myTurn = false;
+
     }
 
     public void ChangePlayerTurn()
@@ -251,16 +255,36 @@ public class JB_GameManager : NetworkBehaviour
         playerPrefabs[0].GetComponent<JB_LocalPlayer>().myTurn = !playerPrefabs[0].GetComponent<JB_LocalPlayer>().myTurn;
         playerPrefabs[1].GetComponent<JB_LocalPlayer>().myTurn = !playerPrefabs[1].GetComponent<JB_LocalPlayer>().myTurn;
 
+
         if (playerPrefabs[0].GetComponent<JB_LocalPlayer>().myTurn)
         {
             CmdAddResourcesToPlayer(playerPrefabs[0]);  // add dallions to this player
+            //playerPrefabs[0].GetComponent<JB_LocalPlayer>().timer = 0;
         }
         else
         {
             CmdAddResourcesToPlayer(playerPrefabs[1]);  // add dallions to this player
         }
 
-    
+        foreach(GameObject player in playerPrefabs)
+        {
+            CmdResetTimer(player);
+        }
+
+    }
+
+    [Command]
+    private void CmdResetTimer(GameObject playerObj)
+    {
+        // resetting timer
+        playerObj.GetComponent<JB_LocalPlayer>().timer = 30f;
+        RpcResetTimer(playerObj);
+    }
+
+    [ClientRpc]
+    private void RpcResetTimer(GameObject playerObj)
+    {
+        playerObj.GetComponent<JB_LocalPlayer>().timer = 30f;
     }
 
     [Command]
@@ -270,6 +294,7 @@ public class JB_GameManager : NetworkBehaviour
 
         int rand = Random.Range(0, 3);
 
+        // randomisation of getting resources per turn 
         switch (rand)
         {
             case 0:
@@ -286,10 +311,13 @@ public class JB_GameManager : NetworkBehaviour
 
         }
 
+        // to make sure player does not exceed limit of resources
         if (playerObj.GetComponent<JB_LocalPlayer>().currentResources >= 250)
         {
             playerObj.GetComponent<JB_LocalPlayer>().currentResources = 250f;
         }
+
+        
 
         RpcAddResourcesToPlayer(playerObj, playerObj.GetComponent<JB_LocalPlayer>().currentResources);
 
