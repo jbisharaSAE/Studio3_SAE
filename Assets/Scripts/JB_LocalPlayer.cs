@@ -11,7 +11,7 @@ public class JB_LocalPlayer : NetworkBehaviour
 {
     public GameObject namingPhase;
     public TextMeshProUGUI nameDisplay;
-    
+    public TextMeshProUGUI timerDisplay;
 
     public int readyNumber;
 
@@ -69,6 +69,7 @@ public class JB_LocalPlayer : NetworkBehaviour
     //used to hide / show rotate / confirm buttons
     
     public bool showRotateConfirmButtons = false;
+    public bool startTimer = false;
 
     //used to check validation of ship locations
     private bool[] checkValidation;
@@ -98,11 +99,11 @@ public class JB_LocalPlayer : NetworkBehaviour
     [SerializeField]
     private float blastCost = 25f;
     [SerializeField]
-    private float barrageCost = 75f;
+    private float barrageCost = 70f;
     [SerializeField]
     private float radarCost = 50f;
     [SerializeField]
-    private float shieldCost = 50f;
+    private float shieldCost = 30f;
 
     // target tile position
     private Vector3 tempTargetPos;
@@ -122,6 +123,10 @@ public class JB_LocalPlayer : NetworkBehaviour
 
     // tiles closest to radar ping
     public int radarCount;
+
+    // timer for player's turn
+    [SyncVar]
+    public float timer = 30f;
 
    
     // Start is called before the first frame update
@@ -160,12 +165,6 @@ public class JB_LocalPlayer : NetworkBehaviour
 
     }
 
-    public void PlayerReady()
-    {
-        
-        StartPlacementPhase();
-    }
-
     
     public void StartPlacementPhase()
     {
@@ -195,12 +194,26 @@ public class JB_LocalPlayer : NetworkBehaviour
         
     }
 
+    public void ChangePlayerName(String n)
+    {
+        if (isServer)
+        {
+            RpcChangePlayerName(n);
+        }
+        else
+        {
+            CmdChangePlayerName(n);
+        }
+    }
+
     [Command]
     public void CmdChangePlayerName(string n)
     {
-        playerName = n;
+
+        RpcChangePlayerName(n);
         // change text game object to this playername
-        RpcChangePlayerName(playerName);
+       
+        
     }
 
     [ClientRpc]
@@ -214,11 +227,37 @@ public class JB_LocalPlayer : NetworkBehaviour
     {
         if (!this.isLocalPlayer) { return; }
 
+        DisplayTimer();
+
         if (!myTurn) { Debug.LogWarning("It is not my turn"); return; }
 
         displayCurrentDallions.text = currentResources.ToString("F0");
 
         PlayerInput();
+        
+        
+    }
+
+    private void DisplayTimer()
+    {
+        if (!showRotateConfirmButtons && startTimer)
+        {
+            timer -= Time.deltaTime;
+            timerDisplay.text = timer.ToString("F2");
+
+            if(timer <= 0)
+            {
+                // next player's turn
+                // reset timer to 30
+
+                timer = 30f;
+                gameManager.GetComponent<JB_GameManager>().ChangePlayerTurn();
+
+            }
+
+        }
+        
+
         
     }
     #region input
