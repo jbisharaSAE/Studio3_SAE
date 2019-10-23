@@ -13,8 +13,6 @@ public class JB_LocalPlayer : NetworkBehaviour
     public TextMeshProUGUI nameDisplay;
     public TextMeshProUGUI timerDisplay;
 
-    public int readyNumber;
-
     // number to display for radar
     public GameObject radarDisplayPrefab;
 
@@ -26,9 +24,18 @@ public class JB_LocalPlayer : NetworkBehaviour
 
     // barrage projectile prefab
     public GameObject barrageProjectilePrefab;
+
+    // area for barrage projectiles to fly to
+    public GameObject barrageAreaPrefab;
     
-    // barrage location prefab
-    public GameObject barragePrefab;
+    // spawn point for barrage projectiles
+    public Transform barrageSpawnPoint;
+
+    // volley projectile prefab
+    public GameObject volleyProjectilePrefab;
+
+    // volley location prefab
+    public GameObject volleyAreaPrefab;
 
     // shield prefab
     public GameObject shieldPrefab;
@@ -38,14 +45,20 @@ public class JB_LocalPlayer : NetworkBehaviour
     public GameObject radarPrefab;
     private GameObject radarObj;
 
-    // the projectile to instantiate
+    // the barrage projectile to instantiate
     private GameObject barrageProj;
 
-    // spawn points for projectile to fly to
-    private GameObject barrage;
+    // the volley projectile to instantiate
+    private GameObject volleyProj;
 
-    // barrage projectile spawn points
-    private Vector3[] barrageSpawnPoint;
+    // spawn points for volley projectile to fly to
+    private GameObject volleyArea;
+
+    // spawn points for barrage projectiles to fly to
+    private GameObject barrageArea;
+
+    // volley projectile spawn points
+    private Vector3[] volleySpawnPoint;
 
     // currency text display
     public GameObject dallionDisplay;
@@ -99,11 +112,13 @@ public class JB_LocalPlayer : NetworkBehaviour
     [SerializeField]
     private float blastCost = 25f;
     [SerializeField]
-    private float barrageCost = 70f;
+    private float volleyCost = 70f;
     [SerializeField]
     private float radarCost = 50f;
     [SerializeField]
     private float shieldCost = 30f;
+    [SerializeField]
+    private float barrageCost = 100f;
 
     // target tile position
     private Vector3 tempTargetPos;
@@ -142,13 +157,9 @@ public class JB_LocalPlayer : NetworkBehaviour
             return;
         }
 
-        //readyButton = GameObject.FindGameObjectWithTag("Ready").GetComponent<Button>();
+        volleySpawnPoint = new Vector3[4];
 
-        //readyButton.onClick.AddListener(CmdPlayerReady);
-
-        barrageSpawnPoint = new Vector3[4];
-
-        isButtonHeld = new bool[4];
+        isButtonHeld = new bool[5];
 
         // find my error message game object
         errorAlertTextObj = GameObject.FindGameObjectWithTag("ErrorMsg");
@@ -213,7 +224,6 @@ public class JB_LocalPlayer : NetworkBehaviour
         RpcChangePlayerName(n);
         // change text game object to this playername
        
-        
     }
 
     [ClientRpc]
@@ -248,14 +258,13 @@ public class JB_LocalPlayer : NetworkBehaviour
 
             if(timer <= 0)
             {
-                // next player's turn
-                // reset timer to 30
-
+                
                 timer = 30f;
 
-                gameManager.GetComponent<JB_GameManager>().ChangePlayerTurn();
-
-
+                if (myTurn)
+                {
+                    gameManager.GetComponent<JB_GameManager>().ChangePlayerTurn();
+                }
 
             }
 
@@ -357,7 +366,7 @@ public class JB_LocalPlayer : NetworkBehaviour
                     currentResources -= barrageCost;
 
                     // ability two - barrage
-                    CmdAbilityTwoBarrage(tempTargetPos, currentResources);
+                    CmdAbilityTwoVolley(tempTargetPos, currentResources);
                 }
                 
                 // ability is no longer active
@@ -389,10 +398,22 @@ public class JB_LocalPlayer : NetworkBehaviour
                     CmdAbilityFourShield(tempTargetPos, currentResources);
                 }
                 
-
                 // ability is no longer active
                 isButtonHeld[3] = false;
                 SwapGridColliders(false);
+
+                break;
+            case 4:
+                if(currentResources >= barrageCost)
+                {
+                    // take away the resource cost of this ability
+                    currentResources -= barrageCost;
+
+                    // ability five - barrage
+                    CmdAbilityFiveBarrage(tempTargetPos, currentResources);
+                }
+
+                isButtonHeld[4] = false;
 
                 break;
             default:
@@ -487,51 +508,51 @@ public class JB_LocalPlayer : NetworkBehaviour
     }
 
     [Command]
-    private void CmdAbilityTwoBarrage(Vector3 targetPos, float updateCurrency)
+    private void CmdAbilityTwoVolley(Vector3 targetPos, float updateCurrency)
     {
-        barrageSpawnPoint = new Vector3[4];
+        volleySpawnPoint = new Vector3[4];
 
         // assigning tile position from click to the variable trueTarget
         trueTarget = targetPos;
 
         // spawn barrage prefab
-        barrage = Instantiate(barragePrefab, targetPos, Quaternion.identity);
-        NetworkServer.SpawnWithClientAuthority(barrage, connectionToClient);
+        volleyArea = Instantiate(volleyAreaPrefab, targetPos, Quaternion.identity);
+        NetworkServer.SpawnWithClientAuthority(volleyArea, connectionToClient);
 
         // target locations for barrage projectiles
         //barrageSpawnPoint
         for (int i = 0; i < 4; ++i)
         {
-            // first 4 child objects of barrage prefab (ie the projectiles)             // 154 is just above the screen
-            barrageSpawnPoint[i] = new Vector3(barrage.transform.GetChild(i).position.x, 154.0f, barrage.transform.GetChild(i).position.z);  
-            barrageProj = Instantiate(barrageProjectilePrefab, barrageSpawnPoint[i], barrageProjectilePrefab.transform.rotation);
+            // first 4 child objects of volley area prefab (ie the projectiles)         // 154 is just above the screen
+            volleySpawnPoint[i] = new Vector3(volleyArea.transform.GetChild(i).position.x, 154.0f, volleyArea.transform.GetChild(i).position.z);  
+            volleyProj = Instantiate(volleyProjectilePrefab, volleySpawnPoint[i], volleyProjectilePrefab.transform.rotation);
 
-            Vector3 pos = barrage.transform.GetChild(i).position;
+            Vector3 pos = volleyArea.transform.GetChild(i).position;
             float delayTime;
             // assigning variables to the spawned barrage projectiles
-            barrageProj.GetComponent<JB_BarrageProjectile>().targetPos = pos;
-            barrageProj.GetComponent<JB_BarrageProjectile>().delayTime = delayTime = ((float)i /4);
-            barrageProj.GetComponent<JB_BarrageProjectile>().playerObj = this.gameObject;
+            volleyProj.GetComponent<JB_VolleyProjectile>().targetPos = pos;
+            volleyProj.GetComponent<JB_VolleyProjectile>().delayTime = delayTime = ((float)i /4);
+            volleyProj.GetComponent<JB_VolleyProjectile>().playerObj = this.gameObject;
 
-            NetworkServer.SpawnWithClientAuthority(barrageProj, connectionToClient);
+            NetworkServer.SpawnWithClientAuthority(volleyProj, connectionToClient);
 
-            RpcSpawnBarrageProjectiles(barrageProj, pos, delayTime);
+            RpcSpawnVolleyProjectiles(volleyProj, pos, delayTime);
         }
 
 
-        RpcAbilityTwoBarrage(updateCurrency);
+        RpcAbilityTwoVolley(updateCurrency);
     }
 
     [ClientRpc]
-    private void RpcSpawnBarrageProjectiles(GameObject projectile, Vector3 targetPos, float delayTime)
+    private void RpcSpawnVolleyProjectiles(GameObject projectile, Vector3 targetPos, float delayTime)
     {
-        projectile.GetComponent<JB_BarrageProjectile>().targetPos = targetPos;
-        projectile.GetComponent<JB_BarrageProjectile>().delayTime = delayTime;
-        projectile.GetComponent<JB_BarrageProjectile>().playerObj = this.gameObject;
+        projectile.GetComponent<JB_VolleyProjectile>().targetPos = targetPos;
+        projectile.GetComponent<JB_VolleyProjectile>().delayTime = delayTime;
+        projectile.GetComponent<JB_VolleyProjectile>().playerObj = this.gameObject;
     }
 
     [ClientRpc]
-    private void RpcAbilityTwoBarrage(float updateCurrency)
+    private void RpcAbilityTwoVolley(float updateCurrency)
     {
         currentResources = updateCurrency;
 
@@ -543,8 +564,10 @@ public class JB_LocalPlayer : NetworkBehaviour
     {
         currentResources = updateCurrency;
 
+        // spawn radar prefab
         radarObj = Instantiate(radarPrefab, targetPos, Quaternion.identity);
 
+        // assigning variables on instantiated object
         radarObj.GetComponent<JB_RadarScript>().playerObj = this.gameObject;
 
         NetworkServer.SpawnWithClientAuthority(radarObj, connectionToClient);
@@ -576,6 +599,54 @@ public class JB_LocalPlayer : NetworkBehaviour
     private void RpcAbilityFourShield(GameObject shieldObj, float updateCurrency)
     {
         shield = shieldObj;
+        currentResources = updateCurrency;
+    }
+
+    [Command]
+    private void CmdAbilityFiveBarrage(Vector3 targetPos, float updateCurrency)
+    {
+        // assigning tile position from click to the variable trueTarget
+        //trueTarget = targetPos;
+
+        // spawn barrage prefab
+        barrageArea = Instantiate(barrageAreaPrefab, targetPos, Quaternion.identity);
+        NetworkServer.SpawnWithClientAuthority(barrageArea, connectionToClient);
+
+        // target locations for barrage projectiles
+        //barrageSpawnPoint
+        for (int i = 0; i < 5; ++i)
+        {
+            // need the same rotation of the spawn point
+            Quaternion newRot = new Quaternion(0f, 0f, barrageSpawnPoint.eulerAngles.z, 1f);
+
+            barrageProj = Instantiate(barrageProjectilePrefab, barrageSpawnPoint.position, newRot);
+
+            Vector3 pos = barrageArea.transform.GetChild(i).position;
+            
+            // assigning variables to the spawned barrage projectiles
+            barrageProj.GetComponent<JB_BarrageProjectile>().targetPos = pos;
+            barrageProj.GetComponent<JB_BarrageProjectile>().playerObj = this.gameObject;
+
+            NetworkServer.SpawnWithClientAuthority(barrageProj, connectionToClient);
+
+            RpcSpawnBarrageProjectiles(barrageProj, pos);
+        }
+
+
+        RpcAbilityFiveBarrage(updateCurrency);
+    }
+
+    [ClientRpc]
+    void RpcSpawnBarrageProjectiles(GameObject projectile, Vector3 targetPos)
+    {
+        projectile.GetComponent<JB_BarrageProjectile>().targetPos = targetPos;
+        projectile.GetComponent<JB_BarrageProjectile>().playerObj = this.gameObject;
+
+    }
+
+    [ClientRpc]
+    void RpcAbilityFiveBarrage(float updateCurrency)
+    {
         currentResources = updateCurrency;
     }
 
@@ -759,7 +830,7 @@ public class JB_LocalPlayer : NetworkBehaviour
                 isButtonHeld[0] = OnlyOneButton(0, isButtonHeld[0]);
                 Debug.Log("ability one clicked!!! ======= :)" + isButtonHeld[0]);
             }
-            if (GUILayout.Button("Barrage", GUILayout.Height(50))) // barrage ability - new Rect(450, myHeight, 70, 25), 
+            if (GUILayout.Button("Barrage", GUILayout.Height(50))) // volley ability - new Rect(450, myHeight, 70, 25), 
             {
                 isButtonHeld[1] = OnlyOneButton(1, isButtonHeld[1]);
                 Debug.Log("ability two clicked!!! ======= :)" + isButtonHeld[1]);
@@ -774,6 +845,11 @@ public class JB_LocalPlayer : NetworkBehaviour
                 isButtonHeld[3] = OnlyOneButton(3, isButtonHeld[3]);
                 SwapGridColliders(isButtonHeld[3]);
                 Debug.Log("ability four clicked!!! ======= :)" + isButtonHeld[3]);
+            }
+            if (GUILayout.Button("Barrage", GUILayout.Height(50))) // barrage ability - new Rect(490, myHeight, 70, 25), 
+            {
+                isButtonHeld[4] = OnlyOneButton(4, isButtonHeld[4]);
+                Debug.Log("ability four clicked!!! ======= :)" + isButtonHeld[4]);
             }
             GUILayout.EndHorizontal();
             GUILayout.EndArea();

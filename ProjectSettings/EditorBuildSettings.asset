@@ -5,7 +5,7 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/CS_MainMenu.unity
     guid: ec12fa58eb5aa5f49807bca21c343594
   - enabled: 0
@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/JB_Prototype_v2.unity
     guid: aaf8b5a04f396ac439442736d830f16b
+  - enabled: 1
+    path: Assets/Scenes/AM_GameOver.unity
+    guid: cc79c217ee1ea5b42ba67ab3bf8a4995
   m_configObjects: {}

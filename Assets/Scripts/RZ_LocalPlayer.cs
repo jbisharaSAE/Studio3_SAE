@@ -421,9 +421,9 @@ public class RZ_LocalPlayer : NetworkBehaviour
             Vector3 pos = barrage.transform.GetChild(i).position;
             float delayTime;
             // assigning variables to the spawned barrage projectiles
-            barrageProj.GetComponent<JB_BarrageProjectile>().targetPos = pos;
-            barrageProj.GetComponent<JB_BarrageProjectile>().delayTime = delayTime = ((float)i / 4);
-            barrageProj.GetComponent<JB_BarrageProjectile>().playerObj = this.gameObject;
+            barrageProj.GetComponent<JB_VolleyProjectile>().targetPos = pos;
+            barrageProj.GetComponent<JB_VolleyProjectile>().delayTime = delayTime = ((float)i / 4);
+            barrageProj.GetComponent<JB_VolleyProjectile>().playerObj = this.gameObject;
 
             NetworkServer.SpawnWithClientAuthority(barrageProj, connectionToClient);
 
@@ -438,9 +438,9 @@ public class RZ_LocalPlayer : NetworkBehaviour
     [ClientRpc]
     private void RpcSpawnBarrageProjectiles(GameObject projectile, Vector3 targetPos, float delayTime)
     {
-        projectile.GetComponent<JB_BarrageProjectile>().targetPos = targetPos;
-        projectile.GetComponent<JB_BarrageProjectile>().delayTime = delayTime;
-        projectile.GetComponent<JB_BarrageProjectile>().playerObj = this.gameObject;
+        projectile.GetComponent<JB_VolleyProjectile>().targetPos = targetPos;
+        projectile.GetComponent<JB_VolleyProjectile>().delayTime = delayTime;
+        projectile.GetComponent<JB_VolleyProjectile>().playerObj = this.gameObject;
     }
 
     [ClientRpc]

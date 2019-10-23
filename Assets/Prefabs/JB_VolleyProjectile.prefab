@@ -11,11 +11,11 @@ GameObject:
   - component: {fileID: 2627621828101067033}
   - component: {fileID: 8131939598976268296}
   - component: {fileID: 1241224880462458455}
-  - component: {fileID: 548005497461970653}
   - component: {fileID: 1228952717349793038}
   - component: {fileID: -3534250719227356642}
+  - component: {fileID: 7435173467308049849}
   m_Layer: 0
-  m_Name: JB_barrage projectile
+  m_Name: JB_VolleyProjectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -117,29 +117,6 @@ MonoBehaviour:
     i15: 0
   m_ServerOnly: 0
   m_LocalPlayerAuthority: 1
---- !u!114 &548005497461970653
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3043257392722660612}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 527126940523eb44ebfcc1afd0e6640c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerObj: {fileID: 0}
-  hitSpritePrefab: {fileID: 1650641585431926389, guid: bc988d5eee36af54d88dc931a8204c98,
-    type: 3}
-  missSpritePrefab: {fileID: 3945157713611324876, guid: 783ae560ec0153045bdd07ecf47da91b,
-    type: 3}
-  barrageLaunchSound: {fileID: 8300000, guid: 6ccd6a398e236394284a9c76069d9996, type: 3}
-  hitShipSound: {fileID: 8300000, guid: 5b3016dbf002a3b408fc0f274f419157, type: 3}
-  shieldOffSound: {fileID: 8300000, guid: 0a1ff2e78b8a684468d86799e1eb7077, type: 3}
-  speed: 100
-  targetPos: {x: 0, y: 0, z: 0}
-  delayTime: 0
 --- !u!114 &1228952717349793038
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -258,3 +235,26 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &7435173467308049849
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3043257392722660612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 527126940523eb44ebfcc1afd0e6640c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerObj: {fileID: 0}
+  hitSpritePrefab: {fileID: 1650641585431926389, guid: bc988d5eee36af54d88dc931a8204c98,
+    type: 3}
+  missSpritePrefab: {fileID: 3945157713611324876, guid: 783ae560ec0153045bdd07ecf47da91b,
+    type: 3}
+  barrageLaunchSound: {fileID: 8300000, guid: 6ccd6a398e236394284a9c76069d9996, type: 3}
+  hitShipSound: {fileID: 8300000, guid: 5b3016dbf002a3b408fc0f274f419157, type: 3}
+  shieldOffSound: {fileID: 8300000, guid: 0a1ff2e78b8a684468d86799e1eb7077, type: 3}
+  speed: 0
+  targetPos: {x: 0, y: 0, z: 0}
+  delayTime: 0

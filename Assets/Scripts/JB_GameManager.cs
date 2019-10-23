@@ -5,7 +5,7 @@ using UnityEngine.Networking;
 using UnityEngine.UI;
 using TMPro;
 using System.Linq;
-
+using UnityEngine.SceneManagement;
 
 public enum ShipType { Ship1, Ship2, Ship3, Ship4 };
 
@@ -144,7 +144,8 @@ public class JB_GameManager : NetworkBehaviour
         if (allTrue)
         {
             // game over
-            CmdGameOver();
+            //CmdGameOver();
+            SceneManager.LoadScene(2);
         }
         
     }
@@ -274,6 +275,7 @@ public class JB_GameManager : NetworkBehaviour
     [Command]
     void CmdChangePlayerTurn()
     {
+
         playerPrefabs[0].GetComponent<JB_LocalPlayer>().myTurn = !playerPrefabs[0].GetComponent<JB_LocalPlayer>().myTurn;
         playerPrefabs[1].GetComponent<JB_LocalPlayer>().myTurn = !playerPrefabs[1].GetComponent<JB_LocalPlayer>().myTurn;
 
@@ -281,7 +283,7 @@ public class JB_GameManager : NetworkBehaviour
         if (playerPrefabs[0].GetComponent<JB_LocalPlayer>().myTurn)
         {
             CmdAddResourcesToPlayer(playerPrefabs[0]);  // add dallions to this player
-            //playerPrefabs[0].GetComponent<JB_LocalPlayer>().timer = 0;
+            
         }
         else
         {
