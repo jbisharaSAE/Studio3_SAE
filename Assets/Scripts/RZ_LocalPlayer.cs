@@ -14,6 +14,7 @@ public class RZ_LocalPlayer : NetworkBehaviour
     public Texture2D barrageImage;
     public Texture2D radarImage;
     public Texture2D shieldImage;
+    public Texture2D volleyImage;
 
     // spawn point for projectiles
     public Transform blastSpawnPoint;
@@ -686,6 +687,12 @@ public class RZ_LocalPlayer : NetworkBehaviour
                 isButtonHeld[3] = OnlyOneButton(3, isButtonHeld[3]);
                 CmdSwapGridColliders(isButtonHeld[3]);
                 Debug.Log("ability four clicked!!! ======= :)" + isButtonHeld[3]);
+            }
+            if (GUILayout.Button(volleyImage, GUILayout.Height(100))) // volley ability - new Rect(490, myHeight, 70, 25), 
+            {
+                isButtonHeld[4] = OnlyOneButton(4, isButtonHeld[4]);
+                CmdSwapGridColliders(isButtonHeld[4]);
+                Debug.Log("ability five clicked!!! ======= :)" + isButtonHeld[4]);
             }
 
             GUILayout.Space(25);

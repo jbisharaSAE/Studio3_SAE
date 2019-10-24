@@ -12475,6 +12475,129 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1451552919}
   m_CullTransparentMesh: 0
+--- !u!1 &1458446437
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1458446440}
+  - component: {fileID: 1458446439}
+  - component: {fileID: 1458446438}
+  m_Layer: 0
+  m_Name: EGO GUITester
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1458446438
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1458446437}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7702ccd4aa6c16f49bc751c4ccda6181, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blastImage: {fileID: 2800000, guid: c5d811a1f7d45aa469a53f6f1e92c27e, type: 3}
+  barrageImage: {fileID: 2800000, guid: d65854e9fba8531499879a41eb92cd3a, type: 3}
+  radarImage: {fileID: 2800000, guid: 8f084c407d07c9348b62e23ab745331a, type: 3}
+  shieldImage: {fileID: 2800000, guid: 9768b9c63e13cf8429e2264a7365a046, type: 3}
+  volleyImage: {fileID: 0}
+  blastSpawnPoint: {fileID: 0}
+  blastProjectilePrefab: {fileID: 1094035655059741561, guid: 54d2356025bcc01478c200b7d04200eb,
+    type: 3}
+  barrageProjectilePrefab: {fileID: 1094035655059741561, guid: dd063c765d720d54e9a050475d363717,
+    type: 3}
+  barragePrefab: {fileID: 0}
+  shieldPrefab: {fileID: 7635250123401073762, guid: 3ad88a02e504f2e409688e098e5e4f64,
+    type: 3}
+  radarPrefab: {fileID: 9105887185410814878, guid: 85c422591eee9884aa42b90b982da3d6,
+    type: 3}
+  dallionDisplay: {fileID: 356088080028493322, guid: de91bc139cf1ca0428f700ec1ef12146,
+    type: 3}
+  shipPrefabs:
+  - {fileID: 4436528026164060653, guid: bd2dc94fb99f5714084f020a09d2cfb7, type: 3}
+  - {fileID: 771212208799578348, guid: 892d2f1d3eb8540419c745b7f543f2b1, type: 3}
+  - {fileID: 1429587017747326144, guid: dd669887cd8db9e47944a0ef750490a7, type: 3}
+  - {fileID: 852500995083479784, guid: 268fcc5a1abf211459103e6f0e81a7a2, type: 3}
+  ships:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  gridLayout: {fileID: 0}
+  gameManagerPrefab: {fileID: 128148204942571291, guid: b547d0a11f72c804198b52875420d449,
+    type: 3}
+  abilityButtons: []
+  myButtons: {fileID: 8562903674326852643, guid: 5e7814bba5485c74f815c2c7cca07375,
+    type: 3}
+  showRotateConfirmButtons: 1
+  playerName: 
+  playerID: 0
+  myTurn: 0
+  errorAlertTextObj: {fileID: 0}
+  currentResources: 0
+  blastCost: 25
+  barrageCost: 75
+  radarCost: 50
+  shieldCost: 15
+  startX: 0
+  startY: 0
+  radarCount: 0
+--- !u!114 &1458446439
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1458446437}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8258ea15b8f74c4889ce485d21cbbb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 0
+    i1: 0
+    i2: 0
+    i3: 0
+    i4: 0
+    i5: 0
+    i6: 0
+    i7: 0
+    i8: 0
+    i9: 0
+    i10: 0
+    i11: 0
+    i12: 0
+    i13: 0
+    i14: 0
+    i15: 0
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 0
+--- !u!4 &1458446440
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1458446437}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1465389359
 GameObject:
   m_ObjectHideFlags: 0
