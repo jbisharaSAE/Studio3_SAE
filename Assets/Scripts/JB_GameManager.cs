@@ -151,21 +151,21 @@ public class JB_GameManager : NetworkBehaviour
         
     }
 
-    [Command]
-    void CmdGameOver()
-    {
-        foreach(GameObject player in playerPrefabs)
-        {
-            player.GetComponent<JB_LocalPlayer>().GameOver();
-            RpcGameOver(player);
-        }
-    }
+    //[Command]
+    //void CmdGameOver()
+    //{
+    //    foreach(GameObject player in playerPrefabs)
+    //    {
+    //        player.GetComponent<JB_LocalPlayer>().GameOver();
+    //        RpcGameOver(player);
+    //    }
+    //}
 
-    [ClientRpc]
-    void RpcGameOver(GameObject playerObj)
-    {
-        playerObj.GetComponent<JB_LocalPlayer>().GameOver();
-    }
+    //[ClientRpc]
+    //void RpcGameOver(GameObject playerObj)
+    //{
+    //    playerObj.GetComponent<JB_LocalPlayer>().GameOver();
+    //}
 
    
     public override void OnStartAuthority()

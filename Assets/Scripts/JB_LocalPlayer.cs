@@ -13,7 +13,8 @@ public class JB_LocalPlayer : NetworkBehaviour
     public GameObject namingPhase;
     public TextMeshProUGUI nameDisplay;
     public TextMeshProUGUI timerDisplay;
-    
+    public TextMeshProUGUI playerNameDisplay;
+
     private GameObject zoomControl;
 
     // number to display for radar
@@ -250,7 +251,15 @@ public class JB_LocalPlayer : NetworkBehaviour
 
         DisplayTimer();
 
-        if (!myTurn) { Debug.LogWarning("It is not my turn"); return; }
+        if (!myTurn)
+        {
+            playerNameDisplay.text = "enemy turn";
+            return;
+        }
+        else
+        {
+            playerNameDisplay.text = "your turn";
+        }
 
         displayCurrentDallions.text = currentResources.ToString("F0");
 
@@ -364,6 +373,10 @@ public class JB_LocalPlayer : NetworkBehaviour
                     // ability one - blast
                     CmdAbilityOneBlast(tempTargetPos, currentResources);
                 }
+                else
+                {
+                    StartCoroutine(NotEnoughMoney());
+                }
                 
                 // ability is no longer active
                 isButtonHeld[0] = false;
@@ -379,7 +392,11 @@ public class JB_LocalPlayer : NetworkBehaviour
                     // ability two - barrage
                     CmdAbilityTwoVolley(tempTargetPos, currentResources);
                 }
-                
+                else
+                {
+                    StartCoroutine(NotEnoughMoney());
+                }
+
                 // ability is no longer active
                 isButtonHeld[1] = false;
 
@@ -393,7 +410,11 @@ public class JB_LocalPlayer : NetworkBehaviour
                     // ability three - radar
                     CmdAbilityThreeRadar(tempTargetPos, currentResources);
                 }
-                
+                else
+                {
+                    StartCoroutine(NotEnoughMoney());
+                }
+
 
                 // ability is no longer active
                 isButtonHeld[2] = false;
@@ -408,7 +429,12 @@ public class JB_LocalPlayer : NetworkBehaviour
                     // ability four - shield
                     CmdAbilityFourShield(tempTargetPos, currentResources);
                 }
-                
+                else
+                {
+                    StartCoroutine(NotEnoughMoney());
+                }
+
+
                 // ability is no longer active
                 isButtonHeld[3] = false;
                 SwapGridColliders(false);
@@ -422,6 +448,10 @@ public class JB_LocalPlayer : NetworkBehaviour
 
                     // ability five - barrage
                     CmdAbilityFiveBarrage(tempTargetPos, currentResources);
+                }
+                else
+                {
+                    StartCoroutine(NotEnoughMoney());
                 }
 
                 isButtonHeld[4] = false;
@@ -701,6 +731,8 @@ public class JB_LocalPlayer : NetworkBehaviour
     {
         // tell the server im ready
 
+        // setting up error message for not enough resources to use ability
+        errorAlertTextObj.GetComponent<TextMeshProUGUI>().text = "Not enough dallions!";
 
         if (runOnce)
         {
@@ -929,12 +961,12 @@ public class JB_LocalPlayer : NetworkBehaviour
         errorAlertTextObj.GetComponent<TextMeshProUGUI>().enabled = false;
     }
 
-    public void GameOver()
+    IEnumerator NotEnoughMoney()
     {
-        errorAlertTextObj = GameObject.FindGameObjectWithTag("ErrorMsg");
-        errorAlertTextObj.GetComponent<TextMeshProUGUI>().text = "Game Over!";
         errorAlertTextObj.GetComponent<TextMeshProUGUI>().enabled = true;
-        this.enabled = false;
+        yield return new WaitForSeconds(3f);
+        errorAlertTextObj.GetComponent<TextMeshProUGUI>().enabled = false;
     }
     
+
 }
