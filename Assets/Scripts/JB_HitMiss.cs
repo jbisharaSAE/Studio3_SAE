@@ -23,7 +23,7 @@ public class JB_HitMiss : MonoBehaviour
         while (alpha<1)
         {
 
-            alpha += 0.05f;
+            alpha += 0.005f;
             
             color.a = alpha;
 

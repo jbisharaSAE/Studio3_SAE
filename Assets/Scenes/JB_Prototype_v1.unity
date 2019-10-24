@@ -7177,6 +7177,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97565bc21800a434eb539e6daeb5f7bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  miniPlaceHolder: {fileID: 0}
+  shipMinis: []
   rows: 12
   columns: 12
   tile: {fileID: 0}

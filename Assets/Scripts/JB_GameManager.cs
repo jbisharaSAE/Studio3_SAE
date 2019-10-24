@@ -11,6 +11,7 @@ public enum ShipType { Ship1, Ship2, Ship3, Ship4 };
 
 public class JB_GameManager : NetworkBehaviour
 {
+    // variables to manage ship hit points
     private bool[] isShipDead = new bool[4];
     public int[] hitPoints = { 9, 6, 4, 6 };
 

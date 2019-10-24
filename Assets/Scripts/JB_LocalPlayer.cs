@@ -9,6 +9,7 @@ using UnityEngine.UI;
 
 public class JB_LocalPlayer : NetworkBehaviour
 {
+    public GameObject plusParticlePrefab;
     public GameObject zoomControlPrefab;
     public GameObject namingPhase;
     public TextMeshProUGUI nameDisplay;
@@ -266,6 +267,11 @@ public class JB_LocalPlayer : NetworkBehaviour
         PlayerInput();
         
         
+    }
+
+    public void SpawnPlusParticle()
+    {
+        Instantiate(plusParticlePrefab, dallionDisplay.transform.position, Quaternion.identity);
     }
 
     private void DisplayTimer()
@@ -659,12 +665,13 @@ public class JB_LocalPlayer : NetworkBehaviour
         //barrageSpawnPoint
         for (int i = 0; i < 5; ++i)
         {
-            float rotZ = UnityEngine.Random.Range(barrageSpawnPoint.eulerAngles.z - 45, barrageSpawnPoint.eulerAngles.z + 45);
+            float rotZ = UnityEngine.Random.Range(barrageSpawnPoint.eulerAngles.z - 20, barrageSpawnPoint.eulerAngles.z + 20);
             
             // need the same rotation of the spawn point
-            Quaternion newRot = new Quaternion(0f, 0f, rotZ, 1f);
+            //Quaternion newRot = new Quaternion(0f, 0f, rotZ, 1f);
+            
 
-            barrageProj = Instantiate(barrageProjectilePrefab, barrageSpawnPoint.position, newRot);
+            barrageProj = Instantiate(barrageProjectilePrefab, barrageSpawnPoint.position, barrageSpawnPoint.rotation);
 
             Vector3 pos = barrageArea.transform.GetChild(i).position;
 
@@ -674,10 +681,11 @@ public class JB_LocalPlayer : NetworkBehaviour
             barrageProj.GetComponent<JB_BarrageProjectile>().targetPos = pos;
             barrageProj.GetComponent<JB_BarrageProjectile>().delayTime = delayTime = ((float)i / 4);
             barrageProj.GetComponent<JB_BarrageProjectile>().playerObj = this.gameObject;
+            barrageProj.transform.Rotate(0f, 0f, rotZ);
 
             NetworkServer.SpawnWithClientAuthority(barrageProj, connectionToClient);
 
-            RpcSpawnBarrageProjectiles(barrageProj, pos, delayTime);
+            RpcSpawnBarrageProjectiles(barrageProj, pos, delayTime, rotZ);
         }
 
 
@@ -685,11 +693,12 @@ public class JB_LocalPlayer : NetworkBehaviour
     }
 
     [ClientRpc]
-    void RpcSpawnBarrageProjectiles(GameObject projectile, Vector3 targetPos, float delayTime)
+    void RpcSpawnBarrageProjectiles(GameObject projectile, Vector3 targetPos, float delayTime, float z)
     {
         projectile.GetComponent<JB_BarrageProjectile>().targetPos = targetPos;
         projectile.GetComponent<JB_BarrageProjectile>().delayTime = delayTime;
         projectile.GetComponent<JB_BarrageProjectile>().playerObj = this.gameObject;
+        projectile.transform.Rotate(0f, 0f, z);
 
     }
 
@@ -732,7 +741,7 @@ public class JB_LocalPlayer : NetworkBehaviour
         // tell the server im ready
 
         // setting up error message for not enough resources to use ability
-        errorAlertTextObj.GetComponent<TextMeshProUGUI>().text = "Not enough dallions!";
+        //errorAlertTextObj.GetComponent<TextMeshProUGUI>().text = "Not enough dallions!";
 
         if (runOnce)
         {
