@@ -255,6 +255,6 @@ MonoBehaviour:
   barrageLaunchSound: {fileID: 8300000, guid: 6ccd6a398e236394284a9c76069d9996, type: 3}
   hitShipSound: {fileID: 8300000, guid: 5b3016dbf002a3b408fc0f274f419157, type: 3}
   shieldOffSound: {fileID: 8300000, guid: 0a1ff2e78b8a684468d86799e1eb7077, type: 3}
-  speed: 0
+  speed: 100
   targetPos: {x: 0, y: 0, z: 0}
   delayTime: 0

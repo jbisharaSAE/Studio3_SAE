@@ -47,22 +47,22 @@ public class JB_GameManager : NetworkBehaviour
             case ShipType.Ship1:
                 --hitPoints[0];
                 CmdSpawnShipHitParticle(squarePos);
-                CmdTestShipLife(hitPoints[0], shipObj);
+                CmdTestShipLife(hitPoints[0], shipObj, ship);
                 break;
             case ShipType.Ship2:
                 --hitPoints[1];
                 CmdSpawnShipHitParticle(squarePos);
-                CmdTestShipLife(hitPoints[1], shipObj);
+                CmdTestShipLife(hitPoints[1], shipObj, ship);
                 break;
             case ShipType.Ship3:
                 --hitPoints[2];
                 CmdSpawnShipHitParticle(squarePos);
-                CmdTestShipLife(hitPoints[2], shipObj);
+                CmdTestShipLife(hitPoints[2], shipObj, ship);
                 break;
             case ShipType.Ship4:
                 --hitPoints[3];
                 CmdSpawnShipHitParticle(squarePos);
-                CmdTestShipLife(hitPoints[3], shipObj);
+                CmdTestShipLife(hitPoints[3], shipObj, ship);
                 break;
             default:
                 break;
@@ -72,13 +72,11 @@ public class JB_GameManager : NetworkBehaviour
     }
 
     [Command]
-    void CmdTestShipLife(float hitPoints, GameObject shipObj)
+    void CmdTestShipLife(float hitPoints, GameObject shipObj, ShipType shipType)
     {
         if(hitPoints == 0)
         {
             List<Transform> squares = new List<Transform>();
-
-            //Transform[] squares = shipObj.GetComponentsInChildren<Transform>();
 
             for(int i = 0; i < (shipObj.transform.childCount -1); ++i)
             {
@@ -86,8 +84,17 @@ public class JB_GameManager : NetworkBehaviour
             }
 
             StartCoroutine(SpawnDestroyParticle(squares));
-         
+
+
+            foreach (GameObject player in playerPrefabs)
+            {
+                if (!player.GetComponent<NetworkIdentity>().hasAuthority)
+                {
+                    player.GetComponentInChildren<JB_GridManager>().ShowCross(shipType);
+                }
+            }
         }
+
     }
 
     
@@ -104,12 +111,6 @@ public class JB_GameManager : NetworkBehaviour
         
     }
 
-
-    [ClientRpc]
-    void RpcTestShipLife(GameObject shipDestroyed)
-    {
-        shipDestroy = shipDestroyed;
-    }
 
     [Command]
     void CmdSpawnShipHitParticle(Vector3 squarePos)
@@ -200,6 +201,9 @@ public class JB_GameManager : NetworkBehaviour
         // displaying enemy and player grid
         playerObj.GetComponent<JB_LocalPlayer>().gridLayout.SetActive(true);
 
+        // showing mini ship icons
+        playerObj.GetComponentInChildren<JB_GridManager>().ShowMiniShips();
+
         // hiding rotate / confirm buttons
         playerObj.GetComponent<JB_LocalPlayer>().showRotateConfirmButtons = false;
 
@@ -231,6 +235,7 @@ public class JB_GameManager : NetworkBehaviour
         playerObj.GetComponent<JB_LocalPlayer>().nameDisplay.text = playerObj.GetComponent<JB_LocalPlayer>().playerName;
         playerObj.GetComponent<JB_LocalPlayer>().timer = 30f;
         playerObj.GetComponent<JB_LocalPlayer>().startTimer = true;
+        playerObj.GetComponentInChildren<JB_GridManager>().ShowMiniShips();
     }
 
     
@@ -248,6 +253,7 @@ public class JB_GameManager : NetworkBehaviour
         CmdSetPlayerTurn();
 
     }
+
 
 
     [Command]

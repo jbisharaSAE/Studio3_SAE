@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class JB_GridManager : MonoBehaviour
 {
+    public GameObject miniPlaceHolder;
+    public GameObject[] shipMinis;
+
     public int rows = 12;
     public int columns = 12;
     
@@ -26,6 +29,22 @@ public class JB_GridManager : MonoBehaviour
     private void Awake()
     {
         gridArray = new GameObject[columns, rows];
+    }
+
+    public void ShowMiniShips()
+    {
+        miniPlaceHolder.SetActive(true);
+    }
+
+    public void ShowCross(ShipType shipType)
+    {
+        foreach(GameObject ship in shipMinis)
+        {
+            if(shipType == ship.GetComponent<JB_ShipMini>().shipType)
+            {
+                ship.transform.GetChild(0).gameObject.SetActive(true);
+            }
+        }
     }
 
     // Start is called before the first frame update

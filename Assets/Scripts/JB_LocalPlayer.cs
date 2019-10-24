@@ -13,7 +13,7 @@ public class JB_LocalPlayer : NetworkBehaviour
     public GameObject namingPhase;
     public TextMeshProUGUI nameDisplay;
     public TextMeshProUGUI timerDisplay;
-
+    
     private GameObject zoomControl;
 
     // number to display for radar
@@ -464,6 +464,8 @@ public class JB_LocalPlayer : NetworkBehaviour
             }
             
         }
+
+        
 
     }
 
