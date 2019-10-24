@@ -9,9 +9,12 @@ using UnityEngine.UI;
 
 public class JB_LocalPlayer : NetworkBehaviour
 {
+    public GameObject zoomControlPrefab;
     public GameObject namingPhase;
     public TextMeshProUGUI nameDisplay;
     public TextMeshProUGUI timerDisplay;
+
+    private GameObject zoomControl;
 
     // number to display for radar
     public GameObject radarDisplayPrefab;
@@ -172,8 +175,16 @@ public class JB_LocalPlayer : NetworkBehaviour
         // used to identify player's connection object from each other
         CmdSetPlayerID(Convert.ToInt32(GetComponent<NetworkIdentity>().netId.Value));
 
-        Debug.Log(JB_GameManager.playerPrefabs.Length);
+        CmdSpawnZoom();
 
+    }
+
+    [Command]
+    private void CmdSpawnZoom()
+    {
+        zoomControl = Instantiate(zoomControlPrefab);
+
+        NetworkServer.SpawnWithClientAuthority(zoomControl, connectionToClient);
     }
 
     
@@ -515,12 +526,12 @@ public class JB_LocalPlayer : NetworkBehaviour
         // assigning tile position from click to the variable trueTarget
         trueTarget = targetPos;
 
-        // spawn barrage prefab
+        // spawn volley prefab
         volleyArea = Instantiate(volleyAreaPrefab, targetPos, Quaternion.identity);
         NetworkServer.SpawnWithClientAuthority(volleyArea, connectionToClient);
 
-        // target locations for barrage projectiles
-        //barrageSpawnPoint
+        // target locations for volley projectiles
+        // volley area target locations
         for (int i = 0; i < 4; ++i)
         {
             // first 4 child objects of volley area prefab (ie the projectiles)         // 154 is just above the screen
@@ -529,7 +540,7 @@ public class JB_LocalPlayer : NetworkBehaviour
 
             Vector3 pos = volleyArea.transform.GetChild(i).position;
             float delayTime;
-            // assigning variables to the spawned barrage projectiles
+            // assigning variables to the spawned volley projectiles
             volleyProj.GetComponent<JB_VolleyProjectile>().targetPos = pos;
             volleyProj.GetComponent<JB_VolleyProjectile>().delayTime = delayTime = ((float)i /4);
             volleyProj.GetComponent<JB_VolleyProjectile>().playerObj = this.gameObject;
@@ -616,20 +627,25 @@ public class JB_LocalPlayer : NetworkBehaviour
         //barrageSpawnPoint
         for (int i = 0; i < 5; ++i)
         {
+            float rotZ = UnityEngine.Random.Range(barrageSpawnPoint.eulerAngles.z - 45, barrageSpawnPoint.eulerAngles.z + 45);
+            
             // need the same rotation of the spawn point
-            Quaternion newRot = new Quaternion(0f, 0f, barrageSpawnPoint.eulerAngles.z, 1f);
+            Quaternion newRot = new Quaternion(0f, 0f, rotZ, 1f);
 
             barrageProj = Instantiate(barrageProjectilePrefab, barrageSpawnPoint.position, newRot);
 
             Vector3 pos = barrageArea.transform.GetChild(i).position;
-            
+
+            float delayTime;
+
             // assigning variables to the spawned barrage projectiles
             barrageProj.GetComponent<JB_BarrageProjectile>().targetPos = pos;
+            barrageProj.GetComponent<JB_BarrageProjectile>().delayTime = delayTime = ((float)i / 4);
             barrageProj.GetComponent<JB_BarrageProjectile>().playerObj = this.gameObject;
 
             NetworkServer.SpawnWithClientAuthority(barrageProj, connectionToClient);
 
-            RpcSpawnBarrageProjectiles(barrageProj, pos);
+            RpcSpawnBarrageProjectiles(barrageProj, pos, delayTime);
         }
 
 
@@ -637,9 +653,10 @@ public class JB_LocalPlayer : NetworkBehaviour
     }
 
     [ClientRpc]
-    void RpcSpawnBarrageProjectiles(GameObject projectile, Vector3 targetPos)
+    void RpcSpawnBarrageProjectiles(GameObject projectile, Vector3 targetPos, float delayTime)
     {
         projectile.GetComponent<JB_BarrageProjectile>().targetPos = targetPos;
+        projectile.GetComponent<JB_BarrageProjectile>().delayTime = delayTime;
         projectile.GetComponent<JB_BarrageProjectile>().playerObj = this.gameObject;
 
     }

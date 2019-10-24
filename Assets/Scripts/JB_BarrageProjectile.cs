@@ -42,19 +42,14 @@ public class JB_BarrageProjectile : NetworkBehaviour
     private ShipType ship;
 
     private float timer;
+    private float time;
+
     private Rigidbody2D rb;
+    private bool runOnce = true;
+
     public float rotateSpeed = 200f;
+    public float delayTime;
 
-    public override void OnStartAuthority()
-    {
-        float rotZ = Random.Range(transform.eulerAngles.z - 45, transform.eulerAngles.z + 45);
-
-        Quaternion newRot = new Quaternion(transform.eulerAngles.x, transform.eulerAngles.y, rotZ, 1);
-
-        transform.rotation = newRot;
-
-        CmdLaunchProjectile();
-    }
 
     [Command]
     void CmdLaunchProjectile()
@@ -78,25 +73,7 @@ public class JB_BarrageProjectile : NetworkBehaviour
 
     }
 
-    private void Start()
-    {
-        float rotZ = Random.Range(transform.eulerAngles.z - 45, transform.eulerAngles.z + 45);
-
-        Quaternion newRot = new Quaternion(transform.eulerAngles.x, transform.eulerAngles.y, rotZ, 1);
-
-        transform.rotation = newRot;
-        
-    }
-
-    private void FaceTile()
-    {
-        // maths to determine the direction of projectil to tile
-        direction = new Vector2((targetPos.x - transform.position.x), (targetPos.y - transform.position.y));
-
-        // make this projectile face the tile
-        transform.up = direction;
-    }
-
+   
     private void FixedUpdate()
     {
         Vector2 direction = (Vector2)targetPos - rb.position;
@@ -107,21 +84,37 @@ public class JB_BarrageProjectile : NetworkBehaviour
 
         rb.velocity = transform.up * speed;
 
-        if (timer > 0.7f)
+        //transform.Translate(transform.up * speed);
+
+        if(delayTime < time)
         {
-            rb.angularVelocity = -rotAmount * rotateSpeed;
+            if (runOnce)
+            {
+                CmdLaunchProjectile();
+                runOnce = false;
+            }
+
+            if (timer > 0.5f)
+            {
+                rb.angularVelocity = -rotAmount * rotateSpeed;
+            }
+            else
+            {
+                timer += Time.deltaTime;
+
+            }
         }
         else
         {
-            timer += Time.deltaTime;
-            
+            time += Time.deltaTime;
         }
+        
 
         // using distance to calculate proximity
         float distance = Vector2.Distance(transform.position, targetPos);
 
 
-        if (distance <= 0.1)
+        if (distance <= 3f)
         {
             RaycastHit hit;
             if (Physics.Raycast(transform.position, transform.forward, out hit, Mathf.Infinity))
