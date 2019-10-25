@@ -177,7 +177,7 @@ public class JB_GameManager : NetworkBehaviour
     [ClientRpc]
     void RpcGameOverScene()
     {
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene("AM_GameOver");
     }
 
     //[Command]

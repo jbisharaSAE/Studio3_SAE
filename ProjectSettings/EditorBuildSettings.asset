@@ -8,15 +8,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/CS_MainMenu.unity
     guid: ec12fa58eb5aa5f49807bca21c343594
-  - enabled: 0
-    path: Assets/Scenes/JB_Lobby.unity
-    guid: 728a26aca8591a24786286a1275f691d
-  - enabled: 0
-    path: Assets/Scenes/JB_Prototype_v1.unity
-    guid: e748642367fdf744abd74cb03ca3c5e9
-  - enabled: 0
-    path: Assets/Scenes/AM_Prototype.unity
-    guid: 0f06b16a03000fd4f88d6d0bb30677a3
   - enabled: 1
     path: Assets/Scenes/JB_Prototype_v2.unity
     guid: aaf8b5a04f396ac439442736d830f16b

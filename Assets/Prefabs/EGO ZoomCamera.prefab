@@ -77,5 +77,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35b4014391b82004eb6de1c9afae4b45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  zoomOutMin: 1
-  zoomOutMax: 8
+  zoomOutMin: 50
+  zoomOutMax: 100
