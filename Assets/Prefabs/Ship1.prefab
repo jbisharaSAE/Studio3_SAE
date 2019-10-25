@@ -210,6 +210,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isTileOpen: 0
   tileRef: {fileID: 0}
+  x: 0
+  y: 0
+  gridManagerObj: {fileID: 0}
 --- !u!1 &4436528025099865381
 GameObject:
   m_ObjectHideFlags: 0
@@ -319,6 +322,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isTileOpen: 0
   tileRef: {fileID: 0}
+  x: 0
+  y: 0
+  gridManagerObj: {fileID: 0}
 --- !u!1 &4436528025233588823
 GameObject:
   m_ObjectHideFlags: 0
@@ -428,6 +434,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isTileOpen: 0
   tileRef: {fileID: 0}
+  x: 0
+  y: 0
+  gridManagerObj: {fileID: 0}
 --- !u!1 &4436528025273342311
 GameObject:
   m_ObjectHideFlags: 0
@@ -537,6 +546,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isTileOpen: 0
   tileRef: {fileID: 0}
+  x: 0
+  y: 0
+  gridManagerObj: {fileID: 0}
 --- !u!1 &4436528025430696282
 GameObject:
   m_ObjectHideFlags: 0
@@ -646,6 +658,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isTileOpen: 0
   tileRef: {fileID: 0}
+  x: 0
+  y: 0
+  gridManagerObj: {fileID: 0}
 --- !u!1 &4436528025855468420
 GameObject:
   m_ObjectHideFlags: 0
@@ -755,6 +770,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isTileOpen: 0
   tileRef: {fileID: 0}
+  x: 0
+  y: 0
+  gridManagerObj: {fileID: 0}
 --- !u!1 &4436528026161005341
 GameObject:
   m_ObjectHideFlags: 0
@@ -864,6 +882,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isTileOpen: 0
   tileRef: {fileID: 0}
+  x: 0
+  y: 0
+  gridManagerObj: {fileID: 0}
 --- !u!1 &4436528026164060653
 GameObject:
   m_ObjectHideFlags: 0
@@ -879,7 +900,6 @@ GameObject:
   - component: {fileID: 4436528026164060642}
   - component: {fileID: 4436528026164060643}
   - component: {fileID: -8099898399160415981}
-  - component: {fileID: 353998515961435907}
   - component: {fileID: 7549414845813235334}
   - component: {fileID: 1297134687108599740}
   m_Layer: 0
@@ -954,7 +974,7 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 0
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -969,8 +989,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 0
   serializedVersion: 2
-  m_Size: {x: 0.7, y: 0.7, z: 3}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 2.64, y: 3.09, z: 3}
+  m_Center: {x: 0, y: -1.12, z: 0}
 --- !u!114 &4436528026164060643
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1017,25 +1037,6 @@ MonoBehaviour:
     i15: 0
   m_ServerOnly: 0
   m_LocalPlayerAuthority: 1
---- !u!95 &353998515961435907
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4436528026164060653}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &7549414845813235334
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1181,6 +1182,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isTileOpen: 0
   tileRef: {fileID: 0}
+  x: 0
+  y: 0
+  gridManagerObj: {fileID: 0}
 --- !u!1 &4436528026462948191
 GameObject:
   m_ObjectHideFlags: 0
@@ -1290,3 +1294,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isTileOpen: 0
   tileRef: {fileID: 0}
+  x: 0
+  y: 0
+  gridManagerObj: {fileID: 0}

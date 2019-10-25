@@ -7,9 +7,10 @@ public class JB_BarrageProjectile : NetworkBehaviour
 {
     public GameObject playerObj;
 
+    private bool velocity;
     private float step;
     public float speed;
-
+    
     private Vector3 tempTargetPos;
 
     // target location for projetile to end
@@ -87,7 +88,7 @@ public class JB_BarrageProjectile : NetworkBehaviour
 
         float rotAmount = Vector3.Cross(direction, transform.up).z;
 
-        rb.velocity = transform.up * speed;
+
 
         //transform.Translate(transform.up * speed);
 
@@ -115,12 +116,38 @@ public class JB_BarrageProjectile : NetworkBehaviour
         }
         
 
+
+
+       
+        if(velocity)
+        {
+            rb.velocity = transform.up * speed;
+        }
+    }
+
+    private void Update()
+    {
+        // adjusts the speed of the projectile, making it framerate independent
+        //step = speed * Time.deltaTime;
+
+       
+        //FaceTile();
+
+        if (!hasAuthority)
+        {
+            return;
+        }
+
+
         // using distance to calculate proximity
         float distance = Vector2.Distance(transform.position, targetPos);
 
-
         if (distance <= 3f)
         {
+            velocity = false;
+            rb.velocity = Vector2.zero;
+            rb.angularVelocity = 0f;
+
             RaycastHit hit;
             if (Physics.Raycast(transform.position, transform.forward, out hit, Mathf.Infinity))
             {
@@ -132,7 +159,7 @@ public class JB_BarrageProjectile : NetworkBehaviour
                     Debug.Log("hit ship");
 
                     // take tile position from click and store in our variable
-                    tempTargetPos = hit.collider.gameObject.transform.position;
+                    tempTargetPos = hit.collider.gameObject.GetComponent<JB_SquareSprites>().tileRef.GetComponent<JB_Tile>().tilePosition;
 
                     Transform hitPos = hit.collider.gameObject.transform;
 
@@ -152,7 +179,7 @@ public class JB_BarrageProjectile : NetworkBehaviour
                     // calling function to count ship hits
                     playerObj.GetComponent<JB_LocalPlayer>().FindShipHit(ship, shipObj, hitPos.position);
 
-                    CmdDestroyGameObj(gameObject);
+                    DestroyGameObject(gameObject);
                     return;
                 }
                 // do we hit a tile
@@ -166,55 +193,57 @@ public class JB_BarrageProjectile : NetworkBehaviour
                     hit.collider.gameObject.GetComponent<BoxCollider>().enabled = false;
                     Debug.Log("hit Tile");
                     // spawn miss sprite
-                    CmdDestroyGameObj(gameObject);
+                    DestroyGameObject(gameObject);
                     return;
                 }
-
 
                 // do we hit shield
                 else if (hit.collider.gameObject.tag == "Shield")
                 {
+                    Debug.Log("hit shield " + hit.collider.name);
+                    //hit.collider.gameObject.GetComponent<SpriteRenderer>().enabled = false;
+                    //hit.collider.gameObject.GetComponent<BoxCollider>().enabled = false;
                     CmdShieldOff();
-                    Destroy(hit.collider.gameObject);
-                    CmdDestroyGameObj(gameObject);
+                    //Destroy(hit.collider.gameObject);
+                    DestroyGameObject(hit.collider.gameObject.transform.parent.gameObject);
+                    DestroyGameObject(gameObject);
                 }
             }
 
             else
             {
-                CmdDestroyGameObj(gameObject);
+                DestroyGameObject(gameObject);
                 Debug.Log("Didn't hit anything");
                 return;
             }
         }
-    }
-
-    private void Update()
-    {
-        // adjusts the speed of the projectile, making it framerate independent
-        //step = speed * Time.deltaTime;
-
-       
-        //FaceTile();
-
-        if (!hasAuthority)
+        else
         {
-            return;
+            velocity = true;
         }
 
-        
         // move this projectile towards target location
         //transform.position = Vector2.MoveTowards(transform.position, targetTilePos, step);
 
-       
     }
 
+    void DestroyGameObject(GameObject gameObj)
+    {
+        if (isServer)
+        {
+            RpcDestroyGameObj(gameObj);
+        }
+        else
+        {
+            CmdDestroyGameObj(gameObj);
+        }
+    }
 
     [Command]
     void CmdDestroyGameObj(GameObject gameObj)
     {
-        GameObject newObj = gameObj;
-        RpcDestroyGameObj(newObj);
+        //GameObject newObj = gameObj;
+        RpcDestroyGameObj(gameObj);
         Destroy(gameObj);
     }
 
@@ -248,32 +277,36 @@ public class JB_BarrageProjectile : NetworkBehaviour
     [Command]
     void CmdShipHitAudio()
     {
-        myAudioSource.clip = hitShipSound;
-        myAudioSource.Play();
+        //myAudioSource.clip = hitShipSound;
+        //myAudioSource.Play();
+        myAudioSource.PlayOneShot(hitShipSound);
         RpcShipHitAudio();
     }
 
     [ClientRpc]
     void RpcShipHitAudio()
     {
-        myAudioSource.clip = hitShipSound;
-        myAudioSource.Play();
+        //myAudioSource.clip = hitShipSound;
+        //myAudioSource.Play();
+        myAudioSource.PlayOneShot(hitShipSound);
     }
 
 
     [Command]
     void CmdShieldOff()
     {
-        myAudioSource.clip = shieldOffSound;
-        myAudioSource.Play();
+        //myAudioSource.clip = shieldOffSound;
+        //myAudioSource.Play();
+        myAudioSource.PlayOneShot(shieldOffSound);
         RpcShieldOff();
     }
 
     [ClientRpc]
     void RpcShieldOff()
     {
-        myAudioSource.clip = shieldOffSound;
-        myAudioSource.Play();
+        //myAudioSource.clip = shieldOffSound;
+        //myAudioSource.Play();
+        myAudioSource.PlayOneShot(shieldOffSound);
     }
 
     // ANTHONY'S CODE

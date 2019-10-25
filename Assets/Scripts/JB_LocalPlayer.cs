@@ -122,7 +122,7 @@ public class JB_LocalPlayer : NetworkBehaviour
     [SerializeField]
     private float radarCost = 50f;
     [SerializeField]
-    private float shieldCost = 30f;
+    private float shieldCost = 15f;
     [SerializeField]
     private float barrageCost = 100f;
 
@@ -181,15 +181,15 @@ public class JB_LocalPlayer : NetworkBehaviour
         CmdSpawnZoom();
 
         // checking to see if we are on the right side or left, to change the spawn location for our barrage missiles
-        if(transform.position.x < (Screen.width/2))
+        if(transform.position.x < 0)
         {
-            float x = Screen.width - (Screen.width + 50f);
+            float x = barrageSpawnPoint.position.x - 250f;
             barrageSpawnPoint.position = new Vector2(x, barrageSpawnPoint.position.y);
             barrageSpawnPoint.up = Vector2.right;
         }
         else
         {
-            float x = Screen.width + 50f;
+            float x = 800f + barrageSpawnPoint.position.x;
             barrageSpawnPoint.position = new Vector2(x, barrageSpawnPoint.position.y);
             barrageSpawnPoint.up = Vector2.left;
         }
@@ -305,9 +305,12 @@ public class JB_LocalPlayer : NetworkBehaviour
         
     }
 
+    
     public void SpawnPlusParticle()
     {
-        Instantiate(plusParticlePrefab, dallionDisplay.transform.position, Quaternion.identity);
+        Vector3 pos = new Vector3((Screen.width * 0.75f), 100f, 0f);
+        GameObject go = Instantiate(plusParticlePrefab, pos, Quaternion.identity);
+
     }
 
     private void DisplayTimer()
@@ -341,13 +344,13 @@ public class JB_LocalPlayer : NetworkBehaviour
         // test to see if we are in battle mode
         if (!showRotateConfirmButtons)
         {
-            // players touch Input.Touch(0) ---  Input.touchCount > 0 ---Input.GetMouseButtonDown(0)
+            // players touch Input.Touch(0) ---  Input.touchCount > 0 && Input.touchCount < 2 ---Input.GetMouseButtonDown(0)
             if (Input.touchCount > 0 && Input.touchCount < 2)
             {
                 // get information from player's touch on screen
                 Touch touch = Input.GetTouch(0);
 
-                RaycastHit hit;                                // mouse is for testing
+                RaycastHit hit;                                // mouse is for testing -- touch.position -- Input.mousePosition
                 if (Physics.Raycast(Camera.main.ScreenPointToRay(touch.position), out hit)) // shooting ray to mouse position
                 {
                     if (hit.collider.gameObject.tag == "Tile") // did player click on a tile
@@ -381,6 +384,7 @@ public class JB_LocalPlayer : NetworkBehaviour
                     }
                     else if (hit.collider.gameObject.tag == "Shield")
                     {
+                        tempTargetPos = hit.collider.gameObject.transform.position;
                         for (int i = 0; i < isButtonHeld.Length; ++i)
                         {
                             if (isButtonHeld[i])
@@ -423,12 +427,12 @@ public class JB_LocalPlayer : NetworkBehaviour
                 
                 break;
             case 1:
-                if(currentResources >= barrageCost)
+                if(currentResources >= volleyCost)
                 {
                     // take away the resource cost of this ability
-                    currentResources -= barrageCost;
+                    currentResources -= volleyCost;
 
-                    // ability two - barrage
+                    // ability two - volley
                     CmdAbilityTwoVolley(tempTargetPos, currentResources);
                 }
                 
@@ -794,6 +798,7 @@ public class JB_LocalPlayer : NetworkBehaviour
         {
             // instantiate ships and give them authority from this local player (client)
             ships[i] = Instantiate(shipPrefabs[i]);
+            ships[i].GetComponent<DragObject>().enabled = true;
             ships[i].GetComponent<DragObject>().playerID = netID;
             NetworkServer.SpawnWithClientAuthority(ships[i], connectionToClient);
             RpcAssignShips(ships[i], i);
@@ -948,7 +953,7 @@ public class JB_LocalPlayer : NetworkBehaviour
 
                 Debug.Log("ability three clicked!!! ======= :)" + isButtonHeld[2]);
             }
-            if (GUILayout.Button("Shield / 30", GUILayout.Height(50))) // shield ability - new Rect(490, myHeight, 70, 25), 
+            if (GUILayout.Button("Shield / 15", GUILayout.Height(50))) // shield ability - new Rect(490, myHeight, 70, 25), 
             {
                 if (currentResources >= shieldCost)
                 {

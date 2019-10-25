@@ -6,12 +6,12 @@ using TMPro;
 public class JB_GameOverWinner : MonoBehaviour
 {
     public TextMeshProUGUI winnerDisplayText;
-    public string winnerName;
+    private string winnerName;
 
     private void OnLevelWasLoaded(int level)
     {
         winnerName = PlayerPrefs.GetString("Winner");
-        winnerDisplayText.text = winnerName;
+        winnerDisplayText.text = winnerName + " wins!";
 
     }
 }

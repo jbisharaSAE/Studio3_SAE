@@ -115,7 +115,9 @@ public class JB_VolleyProjectile : NetworkBehaviour
                     // calling function to count ship hits
                     playerObj.GetComponent<JB_LocalPlayer>().FindShipHit(ship, shipObj, hitPos.position);
 
-                    
+                    DestroyGameObject(gameObject);
+
+
                     return;
                 }
                 else if (hit.collider.gameObject.tag == "Tile")
@@ -134,9 +136,13 @@ public class JB_VolleyProjectile : NetworkBehaviour
 
                 else if (hit.collider.gameObject.tag == "Shield")
                 {
+                    Debug.Log("hit shield " + hit.collider.name);
+                    //hit.collider.gameObject.GetComponent<SpriteRenderer>().enabled = false;
+                    //hit.collider.gameObject.GetComponent<BoxCollider>().enabled = false;
                     CmdShieldOff();
-                    Destroy(hit.collider.gameObject);
-                    CmdDestroyGameObj(gameObject);
+                    //Destroy(hit.collider.gameObject);
+                    DestroyGameObject(hit.collider.gameObject.transform.parent.gameObject);
+                    DestroyGameObject(gameObject);
                 }
 
             }
@@ -147,13 +153,25 @@ public class JB_VolleyProjectile : NetworkBehaviour
         }
     }
 
-   
+
+    void DestroyGameObject(GameObject gameObj)
+    {
+        if (isServer)
+        {
+            RpcDestroyGameObj(gameObj);
+        }
+        else
+        {
+            CmdDestroyGameObj(gameObj);
+        }
+    }
+
     [Command]
     void CmdDestroyGameObj(GameObject gameObj)
     {
-        GameObject newObj = gameObj;
-        RpcDestroyGameObj(newObj);
-        Destroy(gameObj);
+        //GameObject newObj = gameObj;
+        RpcDestroyGameObj(gameObj);
+        //Destroy(gameObj);
     }
 
     [ClientRpc]

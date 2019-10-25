@@ -221,7 +221,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerObj: {fileID: 0}
-  speed: 150
+  speed: 180
   targetPos: {x: 0, y: 0, z: 0}
   barrageAudio: {fileID: 8300000, guid: 20b7c59166bf3724ba43bba04c9c1637, type: 3}
   hitShipSound: {fileID: 8300000, guid: 5b3016dbf002a3b408fc0f274f419157, type: 3}
@@ -230,7 +230,7 @@ MonoBehaviour:
     type: 3}
   missSpritePrefab: {fileID: 3945157713611324876, guid: 783ae560ec0153045bdd07ecf47da91b,
     type: 3}
-  rotateSpeed: 500
+  rotateSpeed: 600
   delayTime: 0
 --- !u!1 &1470517622987368808
 GameObject:

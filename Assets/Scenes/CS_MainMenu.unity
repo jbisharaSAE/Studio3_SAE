@@ -177,7 +177,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 884e2768d9ca8a44b803a10c0b588566, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 46580143f72bde045bde0bc35be58e80, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -408,9 +408,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 2e09c9341b7fdf949bcd8a7f84b32fed, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 63e1805d5892dd945a5a7be67839b2af, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.304
+  m_Volume: 0.484
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -657,6 +657,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1484107630}
     m_Modifications:
+    - target: {fileID: 869623988387575524, guid: 3aeaa9bb5178ce246b75ad66638a0fb4,
+        type: 3}
+      propertyPath: m_Name
+      value: CS_ButtonQuit
+      objectReference: {fileID: 0}
     - target: {fileID: 869623988387575525, guid: 3aeaa9bb5178ce246b75ad66638a0fb4,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -776,11 +781,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1.75
-      objectReference: {fileID: 0}
-    - target: {fileID: 869623988387575524, guid: 3aeaa9bb5178ce246b75ad66638a0fb4,
-        type: 3}
-      propertyPath: m_Name
-      value: CS_ButtonQuit
       objectReference: {fileID: 0}
     - target: {fileID: 869623987128754001, guid: 3aeaa9bb5178ce246b75ad66638a0fb4,
         type: 3}
@@ -1017,6 +1017,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1912541137}
     m_Modifications:
+    - target: {fileID: 869623988387575524, guid: 3aeaa9bb5178ce246b75ad66638a0fb4,
+        type: 3}
+      propertyPath: m_Name
+      value: CS_ButtonMainMenu
+      objectReference: {fileID: 0}
     - target: {fileID: 869623988387575525, guid: 3aeaa9bb5178ce246b75ad66638a0fb4,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1121,11 +1126,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 869623988387575524, guid: 3aeaa9bb5178ce246b75ad66638a0fb4,
-        type: 3}
-      propertyPath: m_Name
-      value: CS_ButtonMainMenu
       objectReference: {fileID: 0}
     - target: {fileID: 869623987128754001, guid: 3aeaa9bb5178ce246b75ad66638a0fb4,
         type: 3}
@@ -1463,6 +1463,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1484107630}
     m_Modifications:
+    - target: {fileID: 869623988387575524, guid: 3aeaa9bb5178ce246b75ad66638a0fb4,
+        type: 3}
+      propertyPath: m_Name
+      value: CS_ButtonInfo
+      objectReference: {fileID: 0}
     - target: {fileID: 869623988387575525, guid: 3aeaa9bb5178ce246b75ad66638a0fb4,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1582,11 +1587,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1.75
-      objectReference: {fileID: 0}
-    - target: {fileID: 869623988387575524, guid: 3aeaa9bb5178ce246b75ad66638a0fb4,
-        type: 3}
-      propertyPath: m_Name
-      value: CS_ButtonInfo
       objectReference: {fileID: 0}
     - target: {fileID: 869623987128754001, guid: 3aeaa9bb5178ce246b75ad66638a0fb4,
         type: 3}
@@ -1789,6 +1789,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1484107630}
     m_Modifications:
+    - target: {fileID: 869623988387575524, guid: 3aeaa9bb5178ce246b75ad66638a0fb4,
+        type: 3}
+      propertyPath: m_Name
+      value: CS_ButtonPlay
+      objectReference: {fileID: 0}
     - target: {fileID: 869623988387575525, guid: 3aeaa9bb5178ce246b75ad66638a0fb4,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1908,11 +1913,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1.75
-      objectReference: {fileID: 0}
-    - target: {fileID: 869623988387575524, guid: 3aeaa9bb5178ce246b75ad66638a0fb4,
-        type: 3}
-      propertyPath: m_Name
-      value: CS_ButtonPlay
       objectReference: {fileID: 0}
     - target: {fileID: 869623987128754001, guid: 3aeaa9bb5178ce246b75ad66638a0fb4,
         type: 3}

@@ -212,11 +212,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 221304121}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5ba5fd20d7d0f064cb238f687569ecf8, type: 3}
+  m_Script: {fileID: 11500000, guid: 370a67ce658c75a47a1315fe830ddd5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   winnerDisplayText: {fileID: 567522933}
-  winnerName: 
 --- !u!4 &221304123
 Transform:
   m_ObjectHideFlags: 0
@@ -423,7 +422,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 261}
+  m_AnchoredPosition: {x: 0, y: 131}
   m_SizeDelta: {x: 535.2, y: 152.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &620512712
@@ -907,8 +906,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1909548941}
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -0.39, y: 0.02, z: 90}
-  m_LocalScale: {x: 254.18452, y: 377.06418, z: 1}
+  m_LocalPosition: {x: -1.1, y: -5.8, z: 90}
+  m_LocalScale: {x: 307.5633, y: 456.24768, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4

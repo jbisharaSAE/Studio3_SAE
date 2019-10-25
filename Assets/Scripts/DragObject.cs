@@ -16,10 +16,7 @@ public class DragObject : NetworkBehaviour
     public int playerID; 
 
     public bool canDrag = true;
-
-    // to ensure a specific method is only called once
-    private bool runOnce = false;
-
+    
     public GameObject shipSprite;
 
   

@@ -30,7 +30,7 @@ public class JB_ZoomCamera : NetworkBehaviour
 
             float difference = currentMagnitude - prevMagnitude;
 
-            Zoom(difference * 0.01f);
+            Zoom(difference * 0.07f);
         }
         
     }

@@ -131,7 +131,7 @@ public class AM_JB_BlastProjectile : NetworkBehaviour
                     // calling function to count ship hits
                     playerObj.GetComponent<JB_LocalPlayer>().FindShipHit(ship, shipObj, hitPos.position);
 
-                    CmdDestroyGameObj(gameObject);
+                    DestroyGameObject(gameObject);
                     return;
                 }
                 // do we hit a tile
@@ -145,7 +145,7 @@ public class AM_JB_BlastProjectile : NetworkBehaviour
                     hit.collider.gameObject.GetComponent<BoxCollider>().enabled = false;
                     Debug.Log("hit Tile");
                     // spawn miss sprite
-                    CmdDestroyGameObj(gameObject);
+                    DestroyGameObject(gameObject);
                     return;
                 }
 
@@ -153,28 +153,44 @@ public class AM_JB_BlastProjectile : NetworkBehaviour
                 // do we hit shield
                 else if (hit.collider.gameObject.tag == "Shield")
                 {
+                    Debug.Log("hit shield " + hit.collider.name);
                     CmdShieldOff();
-                    Destroy(hit.collider.gameObject);
-                    CmdDestroyGameObj(gameObject);
+                    //hit.collider.gameObject.GetComponent<SpriteRenderer>().enabled = false;
+                    //hit.collider.gameObject.GetComponent<BoxCollider>().enabled = false;
+                    //Destroy(hit.collider.gameObject);
+                    DestroyGameObject(hit.collider.gameObject.transform.parent.gameObject);
+                    DestroyGameObject(gameObject);
+                    
                 }
             }
 
             else
             {
-                CmdDestroyGameObj(gameObject);
+                DestroyGameObject(gameObject);
                 Debug.Log("Didn't hit anything");
                 return;
             }
         }
     }
 
+    void DestroyGameObject(GameObject gameObj)
+    {
+        if (isServer)
+        {
+            RpcDestroyGameObj(gameObj);
+        }
+        else
+        {
+            CmdDestroyGameObj(gameObj);
+        }
+    }
 
     [Command]
     void CmdDestroyGameObj(GameObject gameObj)
     {
-        GameObject newObj = gameObj;
-        RpcDestroyGameObj(newObj);
-        Destroy(gameObj);
+        //GameObject newObj = gameObj;
+        RpcDestroyGameObj(gameObj);
+        //Destroy(gameObj);
     }
 
     [ClientRpc]
@@ -207,32 +223,36 @@ public class AM_JB_BlastProjectile : NetworkBehaviour
     [Command]
     void CmdShipHitAudio()
     {
-        myAudioSource.clip = hitShipSound;
-        myAudioSource.Play();
+        //myAudioSource.clip = hitShipSound;
+        //myAudioSource.Play();
+        myAudioSource.PlayOneShot(hitShipSound);
         RpcShipHitAudio();
     }
 
     [ClientRpc]
     void RpcShipHitAudio()
     {
-        myAudioSource.clip = hitShipSound;
-        myAudioSource.Play();
+        //myAudioSource.clip = hitShipSound;
+        //myAudioSource.Play();
+        myAudioSource.PlayOneShot(hitShipSound);
     }
 
 
     [Command]
     void CmdShieldOff()
     {
-        myAudioSource.clip = shieldOffSound;
-        myAudioSource.Play();
+        //myAudioSource.clip = shieldOffSound;
+        //myAudioSource.Play();
+        myAudioSource.PlayOneShot(shieldOffSound);
         RpcShieldOff();
     }
 
     [ClientRpc]
     void RpcShieldOff()
     {
-        myAudioSource.clip = shieldOffSound;
-        myAudioSource.Play();
+        //myAudioSource.clip = shieldOffSound;
+        //myAudioSource.Play();
+        myAudioSource.PlayOneShot(shieldOffSound);
     }
 
     // ANTHONY'S CODE

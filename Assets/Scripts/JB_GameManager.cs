@@ -33,9 +33,7 @@ public class JB_GameManager : NetworkBehaviour
     private GameObject shipDestroy;
     private GameObject shipHit;
 
-    [SerializeField]
-    [Tooltip("Amount of dallions a player gets when it becomes their turn")]
-    private float dallionsToAdd = 50f;
+    private string winnersName;
 
 
     public void ShipHit(ShipType ship, GameObject shipObj, Vector2 squarePos)
@@ -89,13 +87,32 @@ public class JB_GameManager : NetworkBehaviour
 
             foreach (GameObject player in playerPrefabs)
             {
-                if (!player.GetComponent<NetworkIdentity>().hasAuthority)
+                if (player.GetComponent<JB_LocalPlayer>().playerID == shipObj.GetComponent<DragObject>().playerID)
                 {
-                    player.GetComponentInChildren<JB_GridManager>().ShowCross(shipType);
+                    if (isServer)
+                    {
+                        RpcShowCross(player, shipType);
+                    }
+                    else
+                    {
+                        CmdShowCross(player, shipType);
+                    }
+                    
                 }
             }
         }
 
+    }
+    [Command]
+    void CmdShowCross(GameObject playerObj, ShipType shipType)
+    {
+        RpcShowCross(playerObj, shipType);
+    }
+
+    [ClientRpc]
+    void RpcShowCross(GameObject playerObj, ShipType shipType)
+    {
+        playerObj.GetComponentInChildren<JB_GridManager>().ShowCross(shipType);
     }
 
     
@@ -151,17 +168,16 @@ public class JB_GameManager : NetworkBehaviour
             {
                 if (player.GetComponent<NetworkIdentity>().hasAuthority)
                 {
-                    string name = player.GetComponent<JB_LocalPlayer>().playerName;
-                    PlayerPrefs.SetString("Winner", name);
+                    winnersName = player.GetComponent<JB_LocalPlayer>().playerName;
                 }
             }
             if (isServer)
             {
-                RpcGameOverScene();
+                RpcGameOverScene(winnersName);
             }
             else
             {
-                CmdGameOverScene();
+                CmdGameOverScene(winnersName);
             }
             
         }
@@ -169,14 +185,15 @@ public class JB_GameManager : NetworkBehaviour
     }
 
     [Command]
-    void CmdGameOverScene()
+    void CmdGameOverScene(string n)
     {
-        RpcGameOverScene();
+        RpcGameOverScene(n);
     }
 
     [ClientRpc]
-    void RpcGameOverScene()
+    void RpcGameOverScene(string n)
     {
+        PlayerPrefs.SetString("Winner", n);
         SceneManager.LoadScene("AM_GameOver");
     }
 
@@ -321,13 +338,12 @@ public class JB_GameManager : NetworkBehaviour
         if (playerPrefabs[0].GetComponent<JB_LocalPlayer>().myTurn)
         {
             CmdAddResourcesToPlayer(playerPrefabs[0]);  // add dallions to this player
-            playerPrefabs[0].GetComponent<JB_LocalPlayer>().SpawnPlusParticle();
             
         }
         else
         {
             CmdAddResourcesToPlayer(playerPrefabs[1]);  // add dallions to this player
-            playerPrefabs[1].GetComponent<JB_LocalPlayer>().SpawnPlusParticle();
+            
         }
 
         foreach(GameObject player in playerPrefabs)
@@ -357,6 +373,8 @@ public class JB_GameManager : NetworkBehaviour
         //playerObj.GetComponent<JB_LocalPlayer>().currentResources += dallionsToAdd;
 
         int rand = Random.Range(0, 3);
+
+        playerObj.GetComponent<JB_LocalPlayer>().SpawnPlusParticle();
 
         // randomisation of getting resources per turn 
         switch (rand)
