@@ -17,6 +17,7 @@ TagManager:
   - StartManager
   - InputField
   - Enter
+  - Gameover
   layers:
   - Default
   - TransparentFX

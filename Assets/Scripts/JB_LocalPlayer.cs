@@ -14,7 +14,7 @@ public class JB_LocalPlayer : NetworkBehaviour
     public GameObject namingPhase;
     public TextMeshProUGUI nameDisplay;
     public TextMeshProUGUI timerDisplay;
-    public TextMeshProUGUI playerNameDisplay;
+    public TextMeshProUGUI playerTurnDisplay;
 
     private GameObject zoomControl;
 
@@ -254,12 +254,12 @@ public class JB_LocalPlayer : NetworkBehaviour
 
         if (!myTurn)
         {
-            playerNameDisplay.text = "enemy turn";
+            playerTurnDisplay.text = "enemy turn";
             return;
         }
         else
         {
-            playerNameDisplay.text = "your turn";
+            playerTurnDisplay.text = "your turn";
         }
 
         displayCurrentDallions.text = currentResources.ToString("F0");
@@ -846,6 +846,9 @@ public class JB_LocalPlayer : NetworkBehaviour
                    
                     CmdIncrementReadyNumber();
 
+                    playerTurnDisplay.transform.parent.gameObject.SetActive(true);
+                    timerDisplay.transform.parent.gameObject.SetActive(true);
+
                     for (int i = 0; i < myList.Count; ++i)
                     {
                         myList[i].GetComponent<JB_SnappingShip>().FreeOrLockShipPosition(false);
@@ -934,7 +937,7 @@ public class JB_LocalPlayer : NetworkBehaviour
                 foreach (BoxCollider tile in tiles)
                 {
                     tile.enabled = onOff;
-                    //RpcSwapGridColliders(player, onOff);
+                    
                 }
             }
             else
@@ -972,6 +975,7 @@ public class JB_LocalPlayer : NetworkBehaviour
 
     IEnumerator NotEnoughMoney()
     {
+        errorAlertTextObj.GetComponent<TextMeshProUGUI>().text = "Not enough dallions!";
         errorAlertTextObj.GetComponent<TextMeshProUGUI>().enabled = true;
         yield return new WaitForSeconds(3f);
         errorAlertTextObj.GetComponent<TextMeshProUGUI>().enabled = false;

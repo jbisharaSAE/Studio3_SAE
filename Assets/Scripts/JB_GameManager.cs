@@ -147,6 +147,14 @@ public class JB_GameManager : NetworkBehaviour
         {
             // game over
             //CmdGameOver();
+            foreach(GameObject player in playerPrefabs)
+            {
+                if (player.GetComponent<NetworkIdentity>().hasAuthority)
+                {
+                    string name = player.GetComponent<JB_LocalPlayer>().playerName;
+                    PlayerPrefs.SetString("Winner", name);
+                }
+            }
             SceneManager.LoadScene(2);
         }
         

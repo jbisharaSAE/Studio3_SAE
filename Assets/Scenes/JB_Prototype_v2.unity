@@ -437,7 +437,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 33.8, y: -71.6}
+  m_AnchoredPosition: {x: 33.80005, y: -71.600006}
   m_SizeDelta: {x: 30, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &613829102
@@ -1314,8 +1314,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   manager: {fileID: 0}
   showGUI: 1
-  offsetX: 0
-  offsetY: 0
+  offsetX: 200
+  offsetY: 200
 --- !u!114 &1784795021
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1364,7 +1364,8 @@ MonoBehaviour:
   - {fileID: 4310702038846840586, guid: c248c3ddcc7dbe24082c886e4d228efd, type: 3}
   - {fileID: 1125239548481286110, guid: f075364e108e7d3488bd565ae2a3a14e, type: 3}
   - {fileID: 1094035655059741561, guid: dd063c765d720d54e9a050475d363717, type: 3}
-  - {fileID: 3493533705172312444, guid: bf503e2b65630e64684f5ae7ecc5f8de, type: 3}
+  - {fileID: 3493533705172312444, guid: 6a0b702384030c54ba3fc8ebd37cee37, type: 3}
+  - {fileID: 2074319793514757878, guid: 45fa61af63403cb42b5e37275c03db72, type: 3}
   m_CustomConfig: 0
   m_MaxConnections: 4
   m_ConnectionConfig:

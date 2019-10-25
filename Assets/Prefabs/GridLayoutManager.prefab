@@ -528,10 +528,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   miniPlaceHolder: {fileID: 5012754572995189270}
   shipMinis:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 1947140696691018697}
+  - {fileID: 436958790074814948}
+  - {fileID: 4450833853702352786}
+  - {fileID: 7097859253351085744}
   rows: 12
   columns: 12
   tile: {fileID: 5383430028295497997, guid: 796d2f7d494e7c7409d215c556d09af8, type: 3}

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3544605183841680239}
   - component: {fileID: 2252032741034814669}
-  - component: {fileID: 2978732537510886515}
+  - component: {fileID: 8099263669465907154}
   m_Layer: 0
   m_Name: EGO ZoomCamera
   m_TagString: Untagged
@@ -65,7 +65,7 @@ MonoBehaviour:
     i15: 0
   m_ServerOnly: 0
   m_LocalPlayerAuthority: 1
---- !u!114 &2978732537510886515
+--- !u!114 &8099263669465907154
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -74,7 +74,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3493533705172312444}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2fba55d9308b84a4d96f8e827f341413, type: 3}
+  m_Script: {fileID: 11500000, guid: 35b4014391b82004eb6de1c9afae4b45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   zoomOutMin: 1
