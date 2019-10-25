@@ -290,16 +290,19 @@ public class JB_GameManager : NetworkBehaviour
         if (playerPrefabs[0].GetComponent<JB_LocalPlayer>().myTurn)
         {
             CmdAddResourcesToPlayer(playerPrefabs[0]);  // add dallions to this player
+            playerPrefabs[0].GetComponent<JB_LocalPlayer>().SpawnPlusParticle();
             
         }
         else
         {
             CmdAddResourcesToPlayer(playerPrefabs[1]);  // add dallions to this player
+            playerPrefabs[1].GetComponent<JB_LocalPlayer>().SpawnPlusParticle();
         }
 
         foreach(GameObject player in playerPrefabs)
         {
             CmdResetTimer(player);
+
         }
 
     }

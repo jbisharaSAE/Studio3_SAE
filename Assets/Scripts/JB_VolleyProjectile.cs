@@ -188,31 +188,35 @@ public class JB_VolleyProjectile : NetworkBehaviour
     [Command]
     void CmdShipHitAudio()
     {
-        myAudioSource.clip = hitShipSound;
-        myAudioSource.Play();
+        //myAudioSource.clip = hitShipSound;
+        //myAudioSource.Play();
+        myAudioSource.PlayOneShot(hitShipSound);
         RpcShipHitAudio();
     }
 
     [ClientRpc]
     void RpcShipHitAudio()
     {
-        myAudioSource.clip = hitShipSound;
-        myAudioSource.Play();
+        //myAudioSource.clip = hitShipSound;
+        //myAudioSource.Play();
+        myAudioSource.PlayOneShot(hitShipSound);
     }
 
     [Command]
     void CmdShieldOff()
     {
-        myAudioSource.clip = shieldOffSound;
-        myAudioSource.Play();
+        //myAudioSource.clip = shieldOffSound;
+        //myAudioSource.Play();
+        myAudioSource.PlayOneShot(shieldOffSound);
         RpcShieldOff();
     }
 
     [ClientRpc]
     void RpcShieldOff()
     {
-        myAudioSource.clip = shieldOffSound;
-        myAudioSource.Play();
+        //myAudioSource.clip = shieldOffSound;
+        //myAudioSource.Play();
+        myAudioSource.PlayOneShot(shieldOffSound);
     }
 
 }

@@ -783,7 +783,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1.31, y: 194.41}
+  m_AnchoredPosition: {x: -1.31, y: 142.9}
   m_SizeDelta: {x: 349.38, y: 121.18}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &981189546
@@ -876,13 +876,13 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0.6991577, w: -0.33251953}
   m_textInfo:
     textComponent: {fileID: 981189546}
-    characterCount: 0
+    characterCount: 42
     spriteCount: 0
-    spaceCount: 0
-    wordCount: 0
+    spaceCount: 6
+    wordCount: 7
     linkCount: 0
-    lineCount: 0
-    pageCount: 0
+    lineCount: 3
+    pageCount: 1
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0

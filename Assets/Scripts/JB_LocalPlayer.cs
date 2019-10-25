@@ -14,7 +14,8 @@ public class JB_LocalPlayer : NetworkBehaviour
     public GameObject namingPhase;
     public TextMeshProUGUI nameDisplay;
     public TextMeshProUGUI timerDisplay;
-    public TextMeshProUGUI playerNameDisplay;
+    public TextMeshProUGUI playerTurnDisplay;
+    public GameObject placementAlertSign;
 
     private GameObject zoomControl;
 
@@ -192,8 +193,9 @@ public class JB_LocalPlayer : NetworkBehaviour
     
     public void StartPlacementPhase()
     {
-
+        StartCoroutine(TurnOnPlacementSign());
         dallionDisplay.SetActive(true);
+        
         displayCurrentDallions = dallionDisplay.transform.GetChild(0).gameObject.GetComponent<Text>();
 
         namingPhase.SetActive(false);
@@ -216,6 +218,13 @@ public class JB_LocalPlayer : NetworkBehaviour
 
         nameDisplay.text = playerName;
         
+    }
+
+    IEnumerator TurnOnPlacementSign()
+    {
+        placementAlertSign.SetActive(true);
+        yield return new WaitForSeconds(3.5f);
+        placementAlertSign.SetActive(false);
     }
 
     public void ChangePlayerName(String n)
@@ -254,12 +263,12 @@ public class JB_LocalPlayer : NetworkBehaviour
 
         if (!myTurn)
         {
-            playerNameDisplay.text = "enemy turn";
+            playerTurnDisplay.text = "enemy turn";
             return;
         }
         else
         {
-            playerNameDisplay.text = "your turn";
+            playerTurnDisplay.text = "your turn";
         }
 
         displayCurrentDallions.text = currentResources.ToString("F0");
@@ -271,7 +280,8 @@ public class JB_LocalPlayer : NetworkBehaviour
 
     public void SpawnPlusParticle()
     {
-        Instantiate(plusParticlePrefab, dallionDisplay.transform.position, Quaternion.identity);
+        GameObject go = Instantiate(plusParticlePrefab, dallionDisplay.transform.position, Quaternion.identity);
+        Destroy(go, 1.5f);
     }
 
     private void DisplayTimer()
@@ -379,11 +389,7 @@ public class JB_LocalPlayer : NetworkBehaviour
                     // ability one - blast
                     CmdAbilityOneBlast(tempTargetPos, currentResources);
                 }
-                else
-                {
-                    StartCoroutine(NotEnoughMoney());
-                }
-                
+              
                 // ability is no longer active
                 isButtonHeld[0] = false;
 
@@ -398,10 +404,7 @@ public class JB_LocalPlayer : NetworkBehaviour
                     // ability two - barrage
                     CmdAbilityTwoVolley(tempTargetPos, currentResources);
                 }
-                else
-                {
-                    StartCoroutine(NotEnoughMoney());
-                }
+               
 
                 // ability is no longer active
                 isButtonHeld[1] = false;
@@ -416,11 +419,7 @@ public class JB_LocalPlayer : NetworkBehaviour
                     // ability three - radar
                     CmdAbilityThreeRadar(tempTargetPos, currentResources);
                 }
-                else
-                {
-                    StartCoroutine(NotEnoughMoney());
-                }
-
+              
 
                 // ability is no longer active
                 isButtonHeld[2] = false;
@@ -435,10 +434,7 @@ public class JB_LocalPlayer : NetworkBehaviour
                     // ability four - shield
                     CmdAbilityFourShield(tempTargetPos, currentResources);
                 }
-                else
-                {
-                    StartCoroutine(NotEnoughMoney());
-                }
+           
 
 
                 // ability is no longer active
@@ -455,10 +451,7 @@ public class JB_LocalPlayer : NetworkBehaviour
                     // ability five - barrage
                     CmdAbilityFiveBarrage(tempTargetPos, currentResources);
                 }
-                else
-                {
-                    StartCoroutine(NotEnoughMoney());
-                }
+             
 
                 isButtonHeld[4] = false;
 
@@ -846,6 +839,9 @@ public class JB_LocalPlayer : NetworkBehaviour
                    
                     CmdIncrementReadyNumber();
 
+                    timerDisplay.transform.parent.gameObject.SetActive(true);
+                    playerTurnDisplay.transform.parent.gameObject.SetActive(true);
+
                     for (int i = 0; i < myList.Count; ++i)
                     {
                         myList[i].GetComponent<JB_SnappingShip>().FreeOrLockShipPosition(false);
@@ -887,28 +883,68 @@ public class JB_LocalPlayer : NetworkBehaviour
             }
             if (GUILayout.Button("Blast", GUILayout.Height(50))) // blast ability - new Rect(430, myHeight, 70, 25), 
             {
-                isButtonHeld[0] = OnlyOneButton(0, isButtonHeld[0]);
+                if(currentResources >= blastCost)
+                {
+                    isButtonHeld[0] = OnlyOneButton(0, isButtonHeld[0]);
+                }
+                else
+                {
+                    StartCoroutine(NotEnoughMoney());
+                }
+
                 Debug.Log("ability one clicked!!! ======= :)" + isButtonHeld[0]);
             }
-            if (GUILayout.Button("Barrage", GUILayout.Height(50))) // volley ability - new Rect(450, myHeight, 70, 25), 
+            if (GUILayout.Button("Volley", GUILayout.Height(50))) // volley ability - new Rect(450, myHeight, 70, 25), 
             {
-                isButtonHeld[1] = OnlyOneButton(1, isButtonHeld[1]);
+                if (currentResources >= volleyCost)
+                {
+                    isButtonHeld[1] = OnlyOneButton(1, isButtonHeld[1]);
+                }
+                else
+                {
+                    StartCoroutine(NotEnoughMoney());
+                }
+
                 Debug.Log("ability two clicked!!! ======= :)" + isButtonHeld[1]);
             }
             if (GUILayout.Button("Radar", GUILayout.Height(50))) // radar ability - new Rect(470, myHeight, 70, 25), 
             {
-                isButtonHeld[2] = OnlyOneButton(2, isButtonHeld[2]);
+                if(currentResources >= radarCost)
+                {
+                    isButtonHeld[2] = OnlyOneButton(2, isButtonHeld[2]);
+                }
+                else
+                {
+                    StartCoroutine(NotEnoughMoney());
+                }
+                
                 Debug.Log("ability three clicked!!! ======= :)" + isButtonHeld[2]);
             }
             if (GUILayout.Button("Shield", GUILayout.Height(50))) // shield ability - new Rect(490, myHeight, 70, 25), 
             {
-                isButtonHeld[3] = OnlyOneButton(3, isButtonHeld[3]);
-                SwapGridColliders(isButtonHeld[3]);
+                if(currentResources >= shieldCost)
+                {
+                    isButtonHeld[3] = OnlyOneButton(3, isButtonHeld[3]);
+                    SwapGridColliders(isButtonHeld[3]);
+                }
+                else
+                {
+                    StartCoroutine(NotEnoughMoney());
+                }
+                
                 Debug.Log("ability four clicked!!! ======= :)" + isButtonHeld[3]);
             }
             if (GUILayout.Button("Barrage", GUILayout.Height(50))) // barrage ability - new Rect(490, myHeight, 70, 25), 
             {
-                isButtonHeld[4] = OnlyOneButton(4, isButtonHeld[4]);
+                if(currentResources >= barrageCost)
+                {
+                    isButtonHeld[4] = OnlyOneButton(4, isButtonHeld[4]);
+                }
+                else
+                {
+                    StartCoroutine(NotEnoughMoney());
+                }
+                
                 Debug.Log("ability four clicked!!! ======= :)" + isButtonHeld[4]);
             }
             GUILayout.EndHorizontal();
@@ -972,6 +1008,7 @@ public class JB_LocalPlayer : NetworkBehaviour
 
     IEnumerator NotEnoughMoney()
     {
+        errorAlertTextObj.GetComponent<TextMeshProUGUI>().text = "Not enough dallions!";
         errorAlertTextObj.GetComponent<TextMeshProUGUI>().enabled = true;
         yield return new WaitForSeconds(3f);
         errorAlertTextObj.GetComponent<TextMeshProUGUI>().enabled = false;
