@@ -259,7 +259,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 11
-  m_Sprite: {fileID: 21300000, guid: f9c9747f6bd308547bf174f955f8629d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f8c49d5075def8242b2f5ccf5ed19c62, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -267,7 +267,7 @@ SpriteRenderer:
   m_Size: {x: 5.82, y: 5.74}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &4450833853702352786
@@ -468,7 +468,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 11
-  m_Sprite: {fileID: 21300000, guid: f9c9747f6bd308547bf174f955f8629d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f8c49d5075def8242b2f5ccf5ed19c62, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -476,7 +476,7 @@ SpriteRenderer:
   m_Size: {x: 5.82, y: 5.74}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &5897048975570967307
@@ -761,7 +761,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 11
-  m_Sprite: {fileID: 21300000, guid: f9c9747f6bd308547bf174f955f8629d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f8c49d5075def8242b2f5ccf5ed19c62, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -769,7 +769,7 @@ SpriteRenderer:
   m_Size: {x: 5.82, y: 5.74}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &8916335809773847758
@@ -841,7 +841,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 11
-  m_Sprite: {fileID: 21300000, guid: f9c9747f6bd308547bf174f955f8629d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f8c49d5075def8242b2f5ccf5ed19c62, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -849,7 +849,7 @@ SpriteRenderer:
   m_Size: {x: 5.82, y: 5.74}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1001 &8254883947068626647
@@ -859,6 +859,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5897048975570967306}
     m_Modifications:
+    - target: {fileID: 5865151194739067671, guid: 05f499ec16db8ab41860b27c47bde104,
+        type: 3}
+      propertyPath: m_Name
+      value: Grid Background
+      objectReference: {fileID: 0}
     - target: {fileID: 5940431443211961824, guid: 05f499ec16db8ab41860b27c47bde104,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -928,11 +933,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5865151194739067671, guid: 05f499ec16db8ab41860b27c47bde104,
-        type: 3}
-      propertyPath: m_Name
-      value: Grid Background
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 05f499ec16db8ab41860b27c47bde104, type: 3}

@@ -9,6 +9,7 @@ using UnityEngine.UI;
 
 public class JB_LocalPlayer : NetworkBehaviour
 {
+    public GameObject placementAlertDisplay;
     public GameObject plusParticlePrefab;
     public GameObject zoomControlPrefab;
     public GameObject namingPhase;
@@ -179,6 +180,20 @@ public class JB_LocalPlayer : NetworkBehaviour
 
         CmdSpawnZoom();
 
+        // checking to see if we are on the right side or left, to change the spawn location for our barrage missiles
+        if(transform.position.x < (Screen.width/2))
+        {
+            float x = Screen.width - (Screen.width + 50f);
+            barrageSpawnPoint.position = new Vector2(x, barrageSpawnPoint.position.y);
+            barrageSpawnPoint.up = Vector2.right;
+        }
+        else
+        {
+            float x = Screen.width + 50f;
+            barrageSpawnPoint.position = new Vector2(x, barrageSpawnPoint.position.y);
+            barrageSpawnPoint.up = Vector2.left;
+        }
+
     }
 
     [Command]
@@ -192,9 +207,16 @@ public class JB_LocalPlayer : NetworkBehaviour
     
     public void StartPlacementPhase()
     {
+        if (!this.isLocalPlayer)
+        {
+            return;
+        }
+
+        StartCoroutine(PlacementAlertMsg());
 
         dallionDisplay.SetActive(true);
         displayCurrentDallions = dallionDisplay.transform.GetChild(0).gameObject.GetComponent<Text>();
+        playerTurnDisplay.enabled = true;
 
         namingPhase.SetActive(false);
 
@@ -216,6 +238,13 @@ public class JB_LocalPlayer : NetworkBehaviour
 
         nameDisplay.text = playerName;
         
+    }
+
+    IEnumerator PlacementAlertMsg()
+    {
+        placementAlertDisplay.SetActive(true);
+        yield return new WaitForSeconds(3.5f);
+        placementAlertDisplay.SetActive(false);
     }
 
     public void ChangePlayerName(String n)
@@ -252,14 +281,21 @@ public class JB_LocalPlayer : NetworkBehaviour
 
         DisplayTimer();
 
+
         if (!myTurn)
         {
             playerTurnDisplay.text = "enemy turn";
-            return;
+            
         }
         else
         {
             playerTurnDisplay.text = "your turn";
+        }
+
+
+        if (!myTurn)
+        {
+            return;
         }
 
         displayCurrentDallions.text = currentResources.ToString("F0");
@@ -305,14 +341,14 @@ public class JB_LocalPlayer : NetworkBehaviour
         // test to see if we are in battle mode
         if (!showRotateConfirmButtons)
         {
-            // players touch Input.Touch(0) ---  Input.touchCount > 0
-            if (Input.GetMouseButtonDown(0))
+            // players touch Input.Touch(0) ---  Input.touchCount > 0 ---Input.GetMouseButtonDown(0)
+            if (Input.touchCount > 0 && Input.touchCount < 2)
             {
                 // get information from player's touch on screen
-                //Touch touch = Input.GetTouch(0);
+                Touch touch = Input.GetTouch(0);
 
                 RaycastHit hit;                                // mouse is for testing
-                if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit)) // shooting ray to mouse position
+                if (Physics.Raycast(Camera.main.ScreenPointToRay(touch.position), out hit)) // shooting ray to mouse position
                 {
                     if (hit.collider.gameObject.tag == "Tile") // did player click on a tile
                     {
@@ -379,10 +415,7 @@ public class JB_LocalPlayer : NetworkBehaviour
                     // ability one - blast
                     CmdAbilityOneBlast(tempTargetPos, currentResources);
                 }
-                else
-                {
-                    StartCoroutine(NotEnoughMoney());
-                }
+               
                 
                 // ability is no longer active
                 isButtonHeld[0] = false;
@@ -398,10 +431,7 @@ public class JB_LocalPlayer : NetworkBehaviour
                     // ability two - barrage
                     CmdAbilityTwoVolley(tempTargetPos, currentResources);
                 }
-                else
-                {
-                    StartCoroutine(NotEnoughMoney());
-                }
+                
 
                 // ability is no longer active
                 isButtonHeld[1] = false;
@@ -416,10 +446,7 @@ public class JB_LocalPlayer : NetworkBehaviour
                     // ability three - radar
                     CmdAbilityThreeRadar(tempTargetPos, currentResources);
                 }
-                else
-                {
-                    StartCoroutine(NotEnoughMoney());
-                }
+              
 
 
                 // ability is no longer active
@@ -435,10 +462,7 @@ public class JB_LocalPlayer : NetworkBehaviour
                     // ability four - shield
                     CmdAbilityFourShield(tempTargetPos, currentResources);
                 }
-                else
-                {
-                    StartCoroutine(NotEnoughMoney());
-                }
+               
 
 
                 // ability is no longer active
@@ -455,10 +479,7 @@ public class JB_LocalPlayer : NetworkBehaviour
                     // ability five - barrage
                     CmdAbilityFiveBarrage(tempTargetPos, currentResources);
                 }
-                else
-                {
-                    StartCoroutine(NotEnoughMoney());
-                }
+               
 
                 isButtonHeld[4] = false;
 
@@ -665,7 +686,7 @@ public class JB_LocalPlayer : NetworkBehaviour
         //barrageSpawnPoint
         for (int i = 0; i < 5; ++i)
         {
-            float rotZ = UnityEngine.Random.Range(barrageSpawnPoint.eulerAngles.z - 20, barrageSpawnPoint.eulerAngles.z + 20);
+            float rotZ = UnityEngine.Random.Range(barrageSpawnPoint.eulerAngles.z - 10, barrageSpawnPoint.eulerAngles.z + 10);
             
             // need the same rotation of the spawn point
             //Quaternion newRot = new Quaternion(0f, 0f, rotZ, 1f);
@@ -846,8 +867,7 @@ public class JB_LocalPlayer : NetworkBehaviour
                    
                     CmdIncrementReadyNumber();
 
-                    playerTurnDisplay.transform.parent.gameObject.SetActive(true);
-                    timerDisplay.transform.parent.gameObject.SetActive(true);
+                    
 
                     for (int i = 0; i < myList.Count; ++i)
                     {
@@ -888,30 +908,71 @@ public class JB_LocalPlayer : NetworkBehaviour
             {
                 gameManager.GetComponent<JB_GameManager>().ChangePlayerTurn();
             }
-            if (GUILayout.Button("Blast", GUILayout.Height(50))) // blast ability - new Rect(430, myHeight, 70, 25), 
+            GUILayout.Space(25f);
+            if (GUILayout.Button("Blast / 25", GUILayout.Height(50))) // blast ability - new Rect(430, myHeight, 70, 25), 
             {
-                isButtonHeld[0] = OnlyOneButton(0, isButtonHeld[0]);
+                if(currentResources >= blastCost)
+                {
+                    isButtonHeld[0] = OnlyOneButton(0, isButtonHeld[0]);
+                }
+                else
+                {
+                    StartCoroutine(NotEnoughMoney());
+                }
+                
                 Debug.Log("ability one clicked!!! ======= :)" + isButtonHeld[0]);
             }
-            if (GUILayout.Button("Barrage", GUILayout.Height(50))) // volley ability - new Rect(450, myHeight, 70, 25), 
+            if (GUILayout.Button("Volley / 70", GUILayout.Height(50))) // volley ability - new Rect(450, myHeight, 70, 25), 
             {
-                isButtonHeld[1] = OnlyOneButton(1, isButtonHeld[1]);
+                if (currentResources >= volleyCost)
+                {
+                    isButtonHeld[1] = OnlyOneButton(1, isButtonHeld[1]);
+                }
+                else
+                {
+                    StartCoroutine(NotEnoughMoney());
+                }
+
                 Debug.Log("ability two clicked!!! ======= :)" + isButtonHeld[1]);
             }
-            if (GUILayout.Button("Radar", GUILayout.Height(50))) // radar ability - new Rect(470, myHeight, 70, 25), 
+            if (GUILayout.Button("Radar / 50", GUILayout.Height(50))) // radar ability - new Rect(470, myHeight, 70, 25), 
             {
-                isButtonHeld[2] = OnlyOneButton(2, isButtonHeld[2]);
+                if (currentResources >= radarCost)
+                {
+                    isButtonHeld[2] = OnlyOneButton(2, isButtonHeld[2]);
+                }
+                else
+                {
+                    StartCoroutine(NotEnoughMoney());
+                }
+
                 Debug.Log("ability three clicked!!! ======= :)" + isButtonHeld[2]);
             }
-            if (GUILayout.Button("Shield", GUILayout.Height(50))) // shield ability - new Rect(490, myHeight, 70, 25), 
+            if (GUILayout.Button("Shield / 30", GUILayout.Height(50))) // shield ability - new Rect(490, myHeight, 70, 25), 
             {
-                isButtonHeld[3] = OnlyOneButton(3, isButtonHeld[3]);
+                if (currentResources >= shieldCost)
+                {
+                    isButtonHeld[3] = OnlyOneButton(3, isButtonHeld[3]);
+                }
+                else
+                {
+                    StartCoroutine(NotEnoughMoney());
+                }
+
                 SwapGridColliders(isButtonHeld[3]);
                 Debug.Log("ability four clicked!!! ======= :)" + isButtonHeld[3]);
             }
-            if (GUILayout.Button("Barrage", GUILayout.Height(50))) // barrage ability - new Rect(490, myHeight, 70, 25), 
+            if (GUILayout.Button("Barrage / 100", GUILayout.Height(50))) // barrage ability - new Rect(490, myHeight, 70, 25), 
             {
-                isButtonHeld[4] = OnlyOneButton(4, isButtonHeld[4]);
+                if (currentResources >= barrageCost)
+                {
+                    isButtonHeld[4] = OnlyOneButton(4, isButtonHeld[4]);
+                }
+                else
+                {
+                    StartCoroutine(NotEnoughMoney());
+                }
+
                 Debug.Log("ability four clicked!!! ======= :)" + isButtonHeld[4]);
             }
             GUILayout.EndHorizontal();

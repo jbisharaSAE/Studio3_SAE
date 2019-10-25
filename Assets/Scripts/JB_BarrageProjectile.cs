@@ -76,6 +76,11 @@ public class JB_BarrageProjectile : NetworkBehaviour
    
     private void FixedUpdate()
     {
+        if (!hasAuthority)
+        {
+            return;
+        }
+
         Vector2 direction = (Vector2)targetPos - rb.position;
 
         direction.Normalize();

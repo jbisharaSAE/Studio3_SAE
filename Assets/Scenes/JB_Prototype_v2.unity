@@ -136,7 +136,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!82 &59758271
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1314,8 +1314,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   manager: {fileID: 0}
   showGUI: 1
-  offsetX: 200
-  offsetY: 200
+  offsetX: 0
+  offsetY: 0
 --- !u!114 &1784795021
 MonoBehaviour:
   m_ObjectHideFlags: 0

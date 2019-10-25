@@ -36,6 +36,7 @@ public class JB_GridManager : MonoBehaviour
         miniPlaceHolder.SetActive(true);
     }
 
+    
     public void ShowCross(ShipType shipType)
     {
         foreach(GameObject ship in shipMinis)

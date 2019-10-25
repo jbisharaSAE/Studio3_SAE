@@ -155,9 +155,29 @@ public class JB_GameManager : NetworkBehaviour
                     PlayerPrefs.SetString("Winner", name);
                 }
             }
-            SceneManager.LoadScene(2);
+            if (isServer)
+            {
+                RpcGameOverScene();
+            }
+            else
+            {
+                CmdGameOverScene();
+            }
+            
         }
         
+    }
+
+    [Command]
+    void CmdGameOverScene()
+    {
+        RpcGameOverScene();
+    }
+
+    [ClientRpc]
+    void RpcGameOverScene()
+    {
+        SceneManager.LoadScene(2);
     }
 
     //[Command]
@@ -226,6 +246,8 @@ public class JB_GameManager : NetworkBehaviour
         playerObj.GetComponent<JB_LocalPlayer>().timer = 30f;
         playerObj.GetComponent<JB_LocalPlayer>().startTimer = true;
 
+        
+
         RpcBeginPlay(playerObj);
 
         // start the method that find the ability buttons
@@ -245,6 +267,7 @@ public class JB_GameManager : NetworkBehaviour
         playerObj.GetComponent<JB_LocalPlayer>().timer = 30f;
         playerObj.GetComponent<JB_LocalPlayer>().startTimer = true;
         playerObj.GetComponentInChildren<JB_GridManager>().ShowMiniShips();
+        
     }
 
     
@@ -298,11 +321,13 @@ public class JB_GameManager : NetworkBehaviour
         if (playerPrefabs[0].GetComponent<JB_LocalPlayer>().myTurn)
         {
             CmdAddResourcesToPlayer(playerPrefabs[0]);  // add dallions to this player
+            playerPrefabs[0].GetComponent<JB_LocalPlayer>().SpawnPlusParticle();
             
         }
         else
         {
             CmdAddResourcesToPlayer(playerPrefabs[1]);  // add dallions to this player
+            playerPrefabs[1].GetComponent<JB_LocalPlayer>().SpawnPlusParticle();
         }
 
         foreach(GameObject player in playerPrefabs)
