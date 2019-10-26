@@ -15,9 +15,9 @@ public class CS_SceneChange : MonoBehaviour
         InfoGraphic.gameObject.SetActive(false);
     }
 
-    public void LoadLobbyScene()
+    public void LoadAnyScene(int index)
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(index);
     }
 
     public void ActiavateInfo()

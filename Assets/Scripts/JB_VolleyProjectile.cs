@@ -37,6 +37,11 @@ public class JB_VolleyProjectile : NetworkBehaviour
 
     private Vector3 tempTargetPos;
 
+    private void Start()
+    {
+        Destroy(gameObject, 8f);
+    }
+
     public override void OnStartAuthority()
     {
         CmdLaunchProjectile();
@@ -107,6 +112,8 @@ public class JB_VolleyProjectile : NetworkBehaviour
                     // disable collider to avoid hitpoints of ship getting incorrectly calculated
                     hit.collider.gameObject.GetComponent<BoxCollider>().enabled = false;
 
+                    hit.collider.gameObject.GetComponent<JB_SquareSprites>().tileRef.GetComponent<BoxCollider>().enabled = false;
+
                     // getting reference to the parent object (the ship)
                     GameObject shipObj = hit.collider.gameObject.transform.parent.gameObject;
 
@@ -127,6 +134,9 @@ public class JB_VolleyProjectile : NetworkBehaviour
                     // index 1 for missing ship
                     CmdSpawnSprite(1, tempTargetPos);
 
+                    // so player does not aim at the same tile twice
+                    hit.collider.gameObject.GetComponent<BoxCollider>().enabled = false;
+
                     hit.collider.gameObject.GetComponent<BoxCollider>().enabled = false;
                     Debug.Log("hit Tile " + hit.collider.gameObject.name);
                     
@@ -146,6 +156,7 @@ public class JB_VolleyProjectile : NetworkBehaviour
                 }
 
             }
+            
 
             
             // spawn particle effects

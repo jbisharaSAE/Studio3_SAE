@@ -45,6 +45,10 @@ public class AM_JB_BlastProjectile : NetworkBehaviour
     {
         CmdLaunchProjectile();
     }
+    private void Start()
+    {
+        Destroy(gameObject, 8f);
+    }
 
     [Command]
     void CmdLaunchProjectile()
@@ -121,6 +125,8 @@ public class AM_JB_BlastProjectile : NetworkBehaviour
                     // disable collider to avoid hitpoints of ship getting incorrectly calculated
                     hit.collider.gameObject.GetComponent<BoxCollider>().enabled = false;
 
+                    hit.collider.gameObject.GetComponent<JB_SquareSprites>().tileRef.GetComponent<BoxCollider>().enabled = false;
+
                     // getting reference to the parent object (the ship)
                     GameObject shipObj = hit.collider.gameObject.transform.parent.gameObject;
 
@@ -142,7 +148,9 @@ public class AM_JB_BlastProjectile : NetworkBehaviour
                     // index 1 for missing ship
                     CmdSpawnSprite(1, tempTargetPos);
 
+                    // so player does not aim at the same tile twice
                     hit.collider.gameObject.GetComponent<BoxCollider>().enabled = false;
+
                     Debug.Log("hit Tile");
                     // spawn miss sprite
                     DestroyGameObject(gameObject);

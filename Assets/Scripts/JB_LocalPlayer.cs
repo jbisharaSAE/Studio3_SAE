@@ -9,8 +9,9 @@ using UnityEngine.UI;
 
 public class JB_LocalPlayer : NetworkBehaviour
 {
+    public GameObject waitingOnPlayerSign;
     public GameObject placementAlertDisplay;
-    public GameObject plusParticlePrefab;
+    public GameObject plusParticleEffect;
     public GameObject zoomControlPrefab;
     public GameObject namingPhase;
     public TextMeshProUGUI nameDisplay;
@@ -18,6 +19,7 @@ public class JB_LocalPlayer : NetworkBehaviour
     public TextMeshProUGUI playerTurnDisplay;
 
     private GameObject zoomControl;
+    private int readyNumber;
 
     // number to display for radar
     public GameObject radarDisplayPrefab;
@@ -33,7 +35,7 @@ public class JB_LocalPlayer : NetworkBehaviour
 
     // area for barrage projectiles to fly to
     public GameObject barrageAreaPrefab;
-    
+
     // spawn point for barrage projectiles
     public Transform barrageSpawnPoint;
 
@@ -86,7 +88,7 @@ public class JB_LocalPlayer : NetworkBehaviour
     private bool runOnce = true;
 
     //used to hide / show rotate / confirm buttons
-    
+
     public bool showRotateConfirmButtons = false;
     public bool startTimer = false;
 
@@ -102,9 +104,9 @@ public class JB_LocalPlayer : NetworkBehaviour
 
     [SyncVar]
     public int playerID;
-    
+
     [SyncVar]
-    public bool myTurn; // currently unused
+    public bool myTurn; 
 
     // UI text message to show error of placement of ships
     public GameObject errorAlertTextObj;
@@ -148,8 +150,9 @@ public class JB_LocalPlayer : NetworkBehaviour
     // timer for player's turn
     [SyncVar]
     public float timer = 30f;
+    private bool playerReady;
 
-   
+
     // Start is called before the first frame update
     void Start()
     {
@@ -173,27 +176,47 @@ public class JB_LocalPlayer : NetworkBehaviour
         CmdSpawnGameManager();
 
         namingPhase.SetActive(true);
-        
+
         // converts the network ID given to player prefabs that spawn when a client joins the server into an integer
         // used to identify player's connection object from each other
         CmdSetPlayerID(Convert.ToInt32(GetComponent<NetworkIdentity>().netId.Value));
 
         CmdSpawnZoom();
 
-        // checking to see if we are on the right side or left, to change the spawn location for our barrage missiles
-        if(transform.position.x < 0)
+        if (isServer)
         {
-            float x = barrageSpawnPoint.position.x - 250f;
+            RpcChangeBarrageSpawnPoint();
+        }
+        else
+        {
+            CmdChangeBarrageSpawnPoint();
+        }
+
+
+    }
+
+    [Command]
+    private void CmdChangeBarrageSpawnPoint()
+    {
+        RpcChangeBarrageSpawnPoint();
+    }
+
+    [ClientRpc]
+    private void RpcChangeBarrageSpawnPoint()
+    {
+        // checking to see if we are on the right side or left, to change the spawn location for our barrage missiles
+        if (transform.position.x < 0)
+        {
+            float x = barrageSpawnPoint.position.x - 100f;
             barrageSpawnPoint.position = new Vector2(x, barrageSpawnPoint.position.y);
             barrageSpawnPoint.up = Vector2.right;
         }
         else
         {
-            float x = 800f + barrageSpawnPoint.position.x;
+            float x = 100f + barrageSpawnPoint.position.x;
             barrageSpawnPoint.position = new Vector2(x, barrageSpawnPoint.position.y);
             barrageSpawnPoint.up = Vector2.left;
         }
-
     }
 
     [Command]
@@ -211,6 +234,7 @@ public class JB_LocalPlayer : NetworkBehaviour
         {
             return;
         }
+        
 
         StartCoroutine(PlacementAlertMsg());
 
@@ -305,11 +329,23 @@ public class JB_LocalPlayer : NetworkBehaviour
         
     }
 
-    
-    public void SpawnPlusParticle()
+    [Command]
+    public void CmdStartMyCoroutine()
     {
-        Vector3 pos = new Vector3((Screen.width * 0.75f), 100f, 0f);
-        GameObject go = Instantiate(plusParticlePrefab, pos, Quaternion.identity);
+        
+        if (this.isLocalPlayer && myTurn)
+        {
+            StartCoroutine(SpawnPlusParticle());
+        }
+        
+    }
+    
+    public IEnumerator SpawnPlusParticle()
+    {
+
+        plusParticleEffect.SetActive(true);
+        yield return new WaitForSeconds(2.5f);
+        plusParticleEffect.SetActive(false);
 
     }
 
@@ -345,13 +381,13 @@ public class JB_LocalPlayer : NetworkBehaviour
         if (!showRotateConfirmButtons)
         {
             // players touch Input.Touch(0) ---  Input.touchCount > 0 && Input.touchCount < 2 ---Input.GetMouseButtonDown(0)
-            if (Input.touchCount > 0 && Input.touchCount < 2)
+            if (Input.GetMouseButtonDown(0))
             {
                 // get information from player's touch on screen
-                Touch touch = Input.GetTouch(0);
+                //Touch touch = Input.GetTouch(0);
 
                 RaycastHit hit;                                // mouse is for testing -- touch.position -- Input.mousePosition
-                if (Physics.Raycast(Camera.main.ScreenPointToRay(touch.position), out hit)) // shooting ray to mouse position
+                if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit)) // shooting ray to mouse position
                 {
                     if (hit.collider.gameObject.tag == "Tile") // did player click on a tile
                     {
@@ -394,7 +430,8 @@ public class JB_LocalPlayer : NetworkBehaviour
                         }
                     }
                     
-                    // neeed an else if for detecting ship - TODO
+                    
+
                     //else if ()
 
 
@@ -537,7 +574,15 @@ public class JB_LocalPlayer : NetworkBehaviour
         gridManagerObj.GetComponent<JB_GridManager>().endX = endX;
         gridManagerObj.GetComponent<JB_GridManager>().endY = endY;
 
-        radarCount = gridManagerObj.GetComponent<JB_GridManager>().FindClosestShip();
+        if(startX == 0 && startY == 0 && endX == 0 && endY == 0)
+        {
+            radarCount = 0;
+        }
+        else
+        {
+            radarCount = gridManagerObj.GetComponent<JB_GridManager>().FindClosestShip();
+        }
+        
 
         GameObject radarNumber = Instantiate(radarDisplayPrefab, tempTargetPos, Quaternion.identity);
         radarNumber.GetComponentInChildren<TextMeshProUGUI>().text = radarCount.ToString();
@@ -767,6 +812,9 @@ public class JB_LocalPlayer : NetworkBehaviour
 
         // setting up error message for not enough resources to use ability
         //errorAlertTextObj.GetComponent<TextMeshProUGUI>().text = "Not enough dallions!";
+        
+        // find my error message game object
+        errorAlertTextObj = GameObject.FindGameObjectWithTag("ErrorMsg");
 
         if (runOnce)
         {
@@ -774,14 +822,17 @@ public class JB_LocalPlayer : NetworkBehaviour
             {
                 if (pair.Value.gameObject.tag == "GameManager")
                 {
-                    pair.Value.gameObject.GetComponent<JB_GameManager>().ReadyCheckNumber();
+                    readyNumber = pair.Value.gameObject.GetComponent<JB_GameManager>().ReadyCheckNumber();
                 }
 
             }
             runOnce = false;
         }
+
+        
         
     }
+    
 
     [Command]
     void CmdSetPlayerID(int netID)
@@ -834,9 +885,15 @@ public class JB_LocalPlayer : NetworkBehaviour
 
     }
 
+    [Command]
+    void CmdClearList()
+    {
+        myList.Clear();
+    }
+
     private void OnGUI()
     {
-        if (showRotateConfirmButtons && this.isLocalPlayer)
+        if (showRotateConfirmButtons && this.isLocalPlayer && !playerReady)
         {
             // ================= PLACEMENT STAGE ================
 
@@ -872,7 +929,7 @@ public class JB_LocalPlayer : NetworkBehaviour
                    
                     CmdIncrementReadyNumber();
 
-                    
+                    playerReady = true;
 
                     for (int i = 0; i < myList.Count; ++i)
                     {
@@ -884,9 +941,15 @@ public class JB_LocalPlayer : NetworkBehaviour
                 }
                 else
                 {
+                    CmdClearList();
                     myList.Clear();
                     StartCoroutine(SendErrorAlert());
                     Debug.Log("not in valid positions");
+                }
+
+                if (playerReady)
+                {
+                    waitingOnPlayerSign.SetActive(true);
                 }
             }
 
@@ -1046,6 +1109,14 @@ public class JB_LocalPlayer : NetworkBehaviour
         yield return new WaitForSeconds(3f);
         errorAlertTextObj.GetComponent<TextMeshProUGUI>().enabled = false;
     }
-    
 
+    private void OnDisconnectedFromServer(NetworkIdentity info)
+    {
+        foreach (KeyValuePair<NetworkInstanceId, NetworkIdentity> pair in NetworkServer.objects)
+        {
+            NetworkServer.Destroy(pair.Value.gameObject);
+        }
+    }
+
+    
 }

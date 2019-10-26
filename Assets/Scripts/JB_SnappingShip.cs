@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using System;
+using UnityEngine.Networking;
 
-public class JB_SnappingShip : MonoBehaviour
+public class JB_SnappingShip : NetworkBehaviour
 {
     // the squares that the ship are made of
     private JB_SquareSprites [] squares;
@@ -54,7 +55,7 @@ public class JB_SnappingShip : MonoBehaviour
         if (ValidPosition())
         {
             lastPosition = transform.position = new Vector3(snapPosition.x, snapPosition.y, staticZ);
-
+            UpdatePosition(transform.position);
             // to ensure player does not place a ship on top of another ship;
             FreeOrLockShipPosition(false);
             
@@ -68,6 +69,31 @@ public class JB_SnappingShip : MonoBehaviour
         }
 
     }
+
+    private void UpdatePosition(Vector3 targetPos)
+    {
+        if (isServer)
+        {
+            RpcUpdatePosition(targetPos);
+        }
+        else
+        {
+            CmdUpdatePosition(targetPos);
+        }
+    }
+
+    [Command]
+    void CmdUpdatePosition(Vector3 targetPos)
+    {
+        RpcUpdatePosition(targetPos);
+    }
+
+    [ClientRpc]
+    void RpcUpdatePosition(Vector3 targetPos)
+    {
+        transform.position = targetPos;
+    }
+
 
     public bool ValidPosition()
     {
@@ -87,7 +113,7 @@ public class JB_SnappingShip : MonoBehaviour
             {
                 // this snaps the position of the ship being dragged to a tile on the grid
                 snapPosition = hit.collider.gameObject.transform.position;
-
+                
             }
         }
     }

@@ -18,6 +18,7 @@ TagManager:
   - InputField
   - Enter
   - Gameover
+  - AudioManger
   layers:
   - Default
   - TransparentFX

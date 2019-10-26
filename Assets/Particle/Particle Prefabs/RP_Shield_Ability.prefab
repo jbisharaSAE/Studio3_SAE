@@ -4708,7 +4708,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8066c865d358a104f8eb6aa01d0378f9, type: 2}
+  - {fileID: 2100000, guid: 9f6044b8121639a4791dea171796554f, type: 2}
   - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -9493,7 +9493,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 255cf32d459df3b459ebdfd92b9dbbbf, type: 2}
+  - {fileID: 2100000, guid: e8a65d1b471bba1469a59ad68c151b17, type: 2}
   - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -9549,7 +9549,7 @@ GameObject:
   - component: {fileID: 5153138554752243841}
   - component: {fileID: 8245640668994246479}
   m_Layer: 0
-  m_Name: Shield Sprite
+  m_Name: RP_Shield_Ability
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9616,6 +9616,6 @@ SpriteRenderer:
   m_Size: {x: 5.12, y: 5.12}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0

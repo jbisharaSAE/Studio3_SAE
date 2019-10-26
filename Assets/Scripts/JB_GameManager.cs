@@ -226,14 +226,17 @@ public class JB_GameManager : NetworkBehaviour
         
     }
 
-    public void ReadyCheckNumber()
+    public int ReadyCheckNumber()
     {
         ++readyCheckNumber;
 
         if(readyCheckNumber == 2)
         {
             StartGame();
+         
         }
+
+        return readyCheckNumber;
     }
 
     public static void FindPlayerObjects()
@@ -263,7 +266,8 @@ public class JB_GameManager : NetworkBehaviour
         playerObj.GetComponent<JB_LocalPlayer>().timer = 30f;
         playerObj.GetComponent<JB_LocalPlayer>().startTimer = true;
 
-        
+        playerObj.GetComponent<JB_LocalPlayer>().waitingOnPlayerSign.SetActive(false);
+
 
         RpcBeginPlay(playerObj);
 
@@ -283,6 +287,7 @@ public class JB_GameManager : NetworkBehaviour
         playerObj.GetComponent<JB_LocalPlayer>().nameDisplay.text = playerObj.GetComponent<JB_LocalPlayer>().playerName;
         playerObj.GetComponent<JB_LocalPlayer>().timer = 30f;
         playerObj.GetComponent<JB_LocalPlayer>().startTimer = true;
+        playerObj.GetComponent<JB_LocalPlayer>().waitingOnPlayerSign.SetActive(false);
         playerObj.GetComponentInChildren<JB_GridManager>().ShowMiniShips();
         
     }
@@ -319,6 +324,7 @@ public class JB_GameManager : NetworkBehaviour
         playerPrefabs[0].GetComponent<JB_LocalPlayer>().myTurn = true;
         playerPrefabs[0].GetComponent<JB_LocalPlayer>().currentResources = 50f;
         playerPrefabs[1].GetComponent<JB_LocalPlayer>().myTurn = false;
+        playerPrefabs[1].GetComponent<JB_LocalPlayer>().currentResources = 0f;
 
     }
 
@@ -344,6 +350,7 @@ public class JB_GameManager : NetworkBehaviour
         {
             CmdAddResourcesToPlayer(playerPrefabs[1]);  // add dallions to this player
             
+
         }
 
         foreach(GameObject player in playerPrefabs)
@@ -374,7 +381,9 @@ public class JB_GameManager : NetworkBehaviour
 
         int rand = Random.Range(0, 3);
 
-        playerObj.GetComponent<JB_LocalPlayer>().SpawnPlusParticle();
+        //IEnumerator myCoroutine = playerObj.GetComponent<JB_LocalPlayer>().SpawnPlusParticle();
+        playerObj.GetComponent<JB_LocalPlayer>().CmdStartMyCoroutine();
+
 
         // randomisation of getting resources per turn 
         switch (rand)
@@ -409,6 +418,7 @@ public class JB_GameManager : NetworkBehaviour
     void RpcAddResourcesToPlayer(GameObject playerObj, float amount)
     {
         playerObj.GetComponent<JB_LocalPlayer>().currentResources = amount;
+        playerObj.GetComponent<JB_LocalPlayer>().CmdStartMyCoroutine();
     }
 
 

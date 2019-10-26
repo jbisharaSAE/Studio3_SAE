@@ -21,6 +21,9 @@ public class JB_RadarScript : NetworkBehaviour
     public AudioClip radarSound;
     private AudioSource myAudioSource;
 
+    public GameObject radarDetectPrefab;
+    private GameObject radarDetect;
+
     [SyncVar]
     private int x; // x position of tile
     [SyncVar]
@@ -80,22 +83,53 @@ public class JB_RadarScript : NetworkBehaviour
 
             expand = false;
 
+            GetComponent<SphereCollider>().enabled = false;
+
             CmdDestroyThisRadar(gameObject);
+
+            CmdSpawnRadarDetect(other.gameObject.transform.position);
 
         }
     }
+
+    void SpawnRadarDetect(Vector3 targetPos)
+    {
+        if (isServer)
+        {
+            RpcSpawnRadarDetect(targetPos);
+        }
+        else
+        {
+            CmdSpawnRadarDetect(targetPos);
+        }
+    }
+
+    [Command]
+    void CmdSpawnRadarDetect(Vector3 targetPos)
+    {
+        RpcSpawnRadarDetect(targetPos);
+
+    }
+
+    [ClientRpc]
+    void RpcSpawnRadarDetect(Vector3 targetPos)
+    {
+        radarDetect = Instantiate(radarDetectPrefab, targetPos, Quaternion.identity);
+        NetworkServer.Spawn(radarDetect);
+    }
+    
 
     [Command]
     void CmdDestroyThisRadar(GameObject obj)
     {
         expand = false;
-        Destroy(obj);
+        Destroy(obj, 3);
         RpcDestroyThisRadar(obj);
     }
     [ClientRpc]
     void RpcDestroyThisRadar(GameObject obj)
     {
         expand = false;
-        Destroy(obj);
+        Destroy(obj, 3);
     }
 }

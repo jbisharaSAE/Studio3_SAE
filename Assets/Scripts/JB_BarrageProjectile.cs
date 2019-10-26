@@ -7,7 +7,7 @@ public class JB_BarrageProjectile : NetworkBehaviour
 {
     public GameObject playerObj;
 
-    private bool velocity;
+    private bool velocity = true;
     private float step;
     public float speed;
     
@@ -51,6 +51,12 @@ public class JB_BarrageProjectile : NetworkBehaviour
     public float rotateSpeed = 200f;
     public float delayTime;
 
+    private bool hitShip = false;
+
+    private void Start()
+    {
+        Destroy(gameObject, 8f);
+    }
 
     [Command]
     void CmdLaunchProjectile()
@@ -114,12 +120,8 @@ public class JB_BarrageProjectile : NetworkBehaviour
         {
             time += Time.deltaTime;
         }
-        
 
-
-
-       
-        if(velocity)
+        if (velocity)
         {
             rb.velocity = transform.up * speed;
         }
@@ -137,7 +139,7 @@ public class JB_BarrageProjectile : NetworkBehaviour
         {
             return;
         }
-
+        
 
         // using distance to calculate proximity
         float distance = Vector2.Distance(transform.position, targetPos);
@@ -156,10 +158,11 @@ public class JB_BarrageProjectile : NetworkBehaviour
                 // do we hit the ship
                 if (hit.collider.gameObject.tag == "Square")
                 {
+                    hitShip = true;
                     Debug.Log("hit ship");
 
                     // take tile position from click and store in our variable
-                    tempTargetPos = hit.collider.gameObject.GetComponent<JB_SquareSprites>().tileRef.GetComponent<JB_Tile>().tilePosition;
+                    tempTargetPos = hit.collider.gameObject.transform.position;
 
                     Transform hitPos = hit.collider.gameObject.transform;
 
@@ -168,6 +171,8 @@ public class JB_BarrageProjectile : NetworkBehaviour
 
                     // disable collider to avoid hitpoints of ship getting incorrectly calculated
                     hit.collider.gameObject.GetComponent<BoxCollider>().enabled = false;
+
+                    hit.collider.gameObject.GetComponent<JB_SquareSprites>().tileRef.GetComponent<BoxCollider>().enabled = false;
 
                     // getting reference to the parent object (the ship)
                     GameObject shipObj = hit.collider.gameObject.transform.parent.gameObject;
@@ -186,9 +191,16 @@ public class JB_BarrageProjectile : NetworkBehaviour
                 else if (hit.collider.gameObject.tag == "Tile")
                 {
                     tempTargetPos = hit.collider.gameObject.transform.position;
+                    
+                    // so player does not aim at the same tile twice
+                    hit.collider.gameObject.GetComponent<BoxCollider>().enabled = false;
 
-                    // index 1 for missing ship
-                    CmdSpawnSprite(1, tempTargetPos);
+                    if (!hitShip)
+                    {
+                        // index 1 for missing ship
+                        CmdSpawnSprite(1, tempTargetPos);
+                    }
+                    
 
                     hit.collider.gameObject.GetComponent<BoxCollider>().enabled = false;
                     Debug.Log("hit Tile");
@@ -217,13 +229,7 @@ public class JB_BarrageProjectile : NetworkBehaviour
                 return;
             }
         }
-        else
-        {
-            velocity = true;
-        }
 
-        // move this projectile towards target location
-        //transform.position = Vector2.MoveTowards(transform.position, targetTilePos, step);
 
     }
 

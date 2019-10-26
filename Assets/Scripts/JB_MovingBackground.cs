@@ -5,13 +5,14 @@ using UnityEngine;
 public class JB_MovingBackground : MonoBehaviour
 {
     public float scrollSpeed = 0.5f;
-
+    
     private Renderer myRenderer;
 
     // Start is called before the first frame update
     void Start()
     {
         myRenderer = GetComponent<Renderer>();
+
     }
 
     // Update is called once per frame
