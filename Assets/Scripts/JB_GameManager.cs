@@ -197,22 +197,7 @@ public class JB_GameManager : NetworkBehaviour
         SceneManager.LoadScene("AM_GameOver");
     }
 
-    //[Command]
-    //void CmdGameOver()
-    //{
-    //    foreach(GameObject player in playerPrefabs)
-    //    {
-    //        player.GetComponent<JB_LocalPlayer>().GameOver();
-    //        RpcGameOver(player);
-    //    }
-    //}
-
-    //[ClientRpc]
-    //void RpcGameOver(GameObject playerObj)
-    //{
-    //    playerObj.GetComponent<JB_LocalPlayer>().GameOver();
-    //}
-
+  
    
     public override void OnStartAuthority()
     {
@@ -226,7 +211,7 @@ public class JB_GameManager : NetworkBehaviour
         
     }
 
-    public int ReadyCheckNumber()
+    public void ReadyCheckNumber()
     {
         ++readyCheckNumber;
 
@@ -236,7 +221,7 @@ public class JB_GameManager : NetworkBehaviour
          
         }
 
-        return readyCheckNumber;
+        
     }
 
     public static void FindPlayerObjects()
@@ -267,12 +252,10 @@ public class JB_GameManager : NetworkBehaviour
         playerObj.GetComponent<JB_LocalPlayer>().startTimer = true;
 
         playerObj.GetComponent<JB_LocalPlayer>().waitingOnPlayerSign.SetActive(false);
-
+        
 
         RpcBeginPlay(playerObj);
 
-        // start the method that find the ability buttons
-        //playerObj.GetComponent<JB_LocalPlayer>().RpcFindAbilityButtons();
 
         
 
@@ -290,6 +273,7 @@ public class JB_GameManager : NetworkBehaviour
         playerObj.GetComponent<JB_LocalPlayer>().waitingOnPlayerSign.SetActive(false);
         playerObj.GetComponentInChildren<JB_GridManager>().ShowMiniShips();
         
+
     }
 
     
@@ -306,7 +290,10 @@ public class JB_GameManager : NetworkBehaviour
 
         CmdSetPlayerTurn();
 
+
     }
+
+ 
 
 
 
@@ -323,9 +310,10 @@ public class JB_GameManager : NetworkBehaviour
         // begin player turns using booleans
         playerPrefabs[0].GetComponent<JB_LocalPlayer>().myTurn = true;
         playerPrefabs[0].GetComponent<JB_LocalPlayer>().currentResources = 50f;
+        
         playerPrefabs[1].GetComponent<JB_LocalPlayer>().myTurn = false;
         playerPrefabs[1].GetComponent<JB_LocalPlayer>().currentResources = 0f;
-
+        
     }
 
     public void ChangePlayerTurn()
@@ -377,12 +365,8 @@ public class JB_GameManager : NetworkBehaviour
     [Command]
     void CmdAddResourcesToPlayer(GameObject playerObj)
     {
-        //playerObj.GetComponent<JB_LocalPlayer>().currentResources += dallionsToAdd;
 
         int rand = Random.Range(0, 3);
-
-        //IEnumerator myCoroutine = playerObj.GetComponent<JB_LocalPlayer>().SpawnPlusParticle();
-        playerObj.GetComponent<JB_LocalPlayer>().CmdStartMyCoroutine();
 
 
         // randomisation of getting resources per turn 
@@ -418,7 +402,7 @@ public class JB_GameManager : NetworkBehaviour
     void RpcAddResourcesToPlayer(GameObject playerObj, float amount)
     {
         playerObj.GetComponent<JB_LocalPlayer>().currentResources = amount;
-        playerObj.GetComponent<JB_LocalPlayer>().CmdStartMyCoroutine();
+        
     }
 
 

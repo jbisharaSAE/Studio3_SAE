@@ -19,8 +19,7 @@ public class JB_LocalPlayer : NetworkBehaviour
     public TextMeshProUGUI playerTurnDisplay;
 
     private GameObject zoomControl;
-    private int readyNumber;
-
+    
     // number to display for radar
     public GameObject radarDisplayPrefab;
 
@@ -79,7 +78,7 @@ public class JB_LocalPlayer : NetworkBehaviour
     private GameObject gameManager;
 
     // a boolean for each ability button to determine if button is active or not
-    private bool[] isButtonHeld;
+    [SerializeField] private bool[] isButtonHeld;
 
     // used to find all ships in scene
     private GameObject[] shipsInGame;
@@ -117,16 +116,21 @@ public class JB_LocalPlayer : NetworkBehaviour
     private float maxResources;
 
     // resource cost for abilities
-    [SerializeField]
-    private float blastCost = 25f;
-    [SerializeField]
-    private float volleyCost = 70f;
-    [SerializeField]
-    private float radarCost = 50f;
-    [SerializeField]
-    private float shieldCost = 15f;
-    [SerializeField]
-    private float barrageCost = 100f;
+    [SerializeField] private float blastCost = 25f;
+    [SerializeField] private float volleyCost = 70f;
+    [SerializeField] private float radarCost = 50f;
+    [SerializeField] private float shieldCost = 15f;
+    [SerializeField] private float barrageCost = 100f;
+
+    // ability canvas ui buttons
+    [SerializeField] private Image[] abilityButtons;
+
+    // disabled button image
+    public Sprite offButton;
+    public Sprite onButton;
+
+    // ability buttons place holder
+    public GameObject abilityButtonsHolder;
 
     // target tile position
     private Vector3 tempTargetPos;
@@ -137,8 +141,6 @@ public class JB_LocalPlayer : NetworkBehaviour
     private Text displayCurrentDallions;
 
     private List<GameObject> myList = new List<GameObject>();
-
-    public TMP_InputField inputFieldObj;
 
     // used to calculate closest ship using grid
     public int startX;
@@ -159,6 +161,8 @@ public class JB_LocalPlayer : NetworkBehaviour
         // call method to find all player prefabs in scene
         JB_GameManager.FindPlayerObjects();
 
+        // initiliasing size of array
+        
         //if local player, enable ship, otherwise turn them off
         if (!this.isLocalPlayer)
         {
@@ -169,6 +173,9 @@ public class JB_LocalPlayer : NetworkBehaviour
         volleySpawnPoint = new Vector3[4];
 
         isButtonHeld = new bool[5];
+        //abilityButtons = new Image[5];
+
+        
 
         // find my error message game object
         errorAlertTextObj = GameObject.FindGameObjectWithTag("ErrorMsg");
@@ -195,6 +202,11 @@ public class JB_LocalPlayer : NetworkBehaviour
 
     }
 
+    public void TurnOnButtons()
+    {
+        abilityButtonsHolder.SetActive(true);
+    }
+
     [Command]
     private void CmdChangeBarrageSpawnPoint()
     {
@@ -213,7 +225,7 @@ public class JB_LocalPlayer : NetworkBehaviour
         }
         else
         {
-            float x = 100f + barrageSpawnPoint.position.x;
+            float x = 150f + barrageSpawnPoint.position.x;
             barrageSpawnPoint.position = new Vector2(x, barrageSpawnPoint.position.y);
             barrageSpawnPoint.up = Vector2.left;
         }
@@ -314,6 +326,7 @@ public class JB_LocalPlayer : NetworkBehaviour
         else
         {
             playerTurnDisplay.text = "your turn";
+            
         }
 
 
@@ -329,17 +342,6 @@ public class JB_LocalPlayer : NetworkBehaviour
         
     }
 
-    [Command]
-    public void CmdStartMyCoroutine()
-    {
-        
-        if (this.isLocalPlayer && myTurn)
-        {
-            StartCoroutine(SpawnPlusParticle());
-        }
-        
-    }
-    
     public IEnumerator SpawnPlusParticle()
     {
 
@@ -365,6 +367,7 @@ public class JB_LocalPlayer : NetworkBehaviour
                 if (myTurn)
                 {
                     gameManager.GetComponent<JB_GameManager>().ChangePlayerTurn();
+                    FindOtherPlayer();
                 }
 
             }
@@ -784,15 +787,26 @@ public class JB_LocalPlayer : NetworkBehaviour
 
 
     // method used to ensure only one ability is active any one time
-    private bool OnlyOneButton(int index, bool bToChange)
+    public bool OnlyOneButton(int index, bool bToChange)
     {
         bToChange = !bToChange;
+
         for(int i = 0; i < isButtonHeld.Length; ++i)
         {
             isButtonHeld[i] = false;
+            abilityButtons[i].sprite = offButton;
         }
-
+        
         isButtonHeld[index] = bToChange;
+
+        if (bToChange)
+        {
+            abilityButtons[index].sprite = onButton;
+        }
+        else
+        {
+            abilityButtons[index].sprite = offButton;
+        }
 
         return bToChange;
     }
@@ -822,7 +836,7 @@ public class JB_LocalPlayer : NetworkBehaviour
             {
                 if (pair.Value.gameObject.tag == "GameManager")
                 {
-                    readyNumber = pair.Value.gameObject.GetComponent<JB_GameManager>().ReadyCheckNumber();
+                    pair.Value.gameObject.GetComponent<JB_GameManager>().ReadyCheckNumber();
                 }
 
             }
@@ -950,6 +964,7 @@ public class JB_LocalPlayer : NetworkBehaviour
                 if (playerReady)
                 {
                     waitingOnPlayerSign.SetActive(true);
+                    abilityButtonsHolder.SetActive(true);
                 }
             }
 
@@ -965,91 +980,199 @@ public class JB_LocalPlayer : NetworkBehaviour
         }
 
         // ================== GAME ATTACK PHASE ========================
-        else if (this.isLocalPlayer && myTurn) // SHOW ABILITY BUTTONS
-        {
-            float screenY = Screen.height;
-            float screenX = Screen.width;
+        //else if (this.isLocalPlayer && myTurn) // SHOW ABILITY BUTTONS
+        //{
+        //    float screenY = Screen.height;
+        //    float screenX = Screen.width;
 
-            GUILayout.BeginArea(new Rect(screenY * 0.1f, screenY * 0.9f, screenX * 0.9f, screenY));
-            GUILayout.BeginHorizontal();
-            if (GUILayout.Button("End Turn", GUILayout.Height(50))) // end turn button - new Rect(330, myHeight, 70, 25),
-            {
-                gameManager.GetComponent<JB_GameManager>().ChangePlayerTurn();
-            }
-            GUILayout.Space(25f);
-            if (GUILayout.Button("Blast / 25", GUILayout.Height(50))) // blast ability - new Rect(430, myHeight, 70, 25), 
-            {
-                if(currentResources >= blastCost)
-                {
-                    isButtonHeld[0] = OnlyOneButton(0, isButtonHeld[0]);
-                }
-                else
-                {
-                    StartCoroutine(NotEnoughMoney());
-                }
+        //    GUILayout.BeginArea(new Rect(screenY * 0.1f, screenY * 0.9f, screenX * 0.9f, screenY));
+        //    GUILayout.BeginHorizontal();
+        //    if (GUILayout.Button("End Turn", GUILayout.Height(50))) // end turn button - new Rect(330, myHeight, 70, 25),
+        //    {
+        //        gameManager.GetComponent<JB_GameManager>().ChangePlayerTurn();
+        //    }
+        //    GUILayout.Space(25f);
+        //    if (GUILayout.Button("Blast / 25", GUILayout.Height(50))) // blast ability - new Rect(430, myHeight, 70, 25), 
+        //    {
+        //        if(currentResources >= blastCost)
+        //        {
+        //            isButtonHeld[0] = OnlyOneButton(0, isButtonHeld[0]);
+        //        }
+        //        else
+        //        {
+        //            StartCoroutine(NotEnoughMoney());
+        //        }
                 
-                Debug.Log("ability one clicked!!! ======= :)" + isButtonHeld[0]);
-            }
-            if (GUILayout.Button("Volley / 70", GUILayout.Height(50))) // volley ability - new Rect(450, myHeight, 70, 25), 
-            {
-                if (currentResources >= volleyCost)
-                {
-                    isButtonHeld[1] = OnlyOneButton(1, isButtonHeld[1]);
-                }
-                else
-                {
-                    StartCoroutine(NotEnoughMoney());
-                }
+        //        Debug.Log("ability one clicked!!! ======= :)" + isButtonHeld[0]);
+        //    }
+        //    if (GUILayout.Button("Volley / 70", GUILayout.Height(50))) // volley ability - new Rect(450, myHeight, 70, 25), 
+        //    {
+        //        if (currentResources >= volleyCost)
+        //        {
+        //            isButtonHeld[1] = OnlyOneButton(1, isButtonHeld[1]);
+        //        }
+        //        else
+        //        {
+        //            StartCoroutine(NotEnoughMoney());
+        //        }
 
-                Debug.Log("ability two clicked!!! ======= :)" + isButtonHeld[1]);
-            }
-            if (GUILayout.Button("Radar / 50", GUILayout.Height(50))) // radar ability - new Rect(470, myHeight, 70, 25), 
-            {
-                if (currentResources >= radarCost)
-                {
-                    isButtonHeld[2] = OnlyOneButton(2, isButtonHeld[2]);
-                }
-                else
-                {
-                    StartCoroutine(NotEnoughMoney());
-                }
+        //        Debug.Log("ability two clicked!!! ======= :)" + isButtonHeld[1]);
+        //    }
+        //    if (GUILayout.Button("Radar / 50", GUILayout.Height(50))) // radar ability - new Rect(470, myHeight, 70, 25), 
+        //    {
+        //        if (currentResources >= radarCost)
+        //        {
+        //            isButtonHeld[2] = OnlyOneButton(2, isButtonHeld[2]);
+        //        }
+        //        else
+        //        {
+        //            StartCoroutine(NotEnoughMoney());
+        //        }
 
-                Debug.Log("ability three clicked!!! ======= :)" + isButtonHeld[2]);
-            }
-            if (GUILayout.Button("Shield / 15", GUILayout.Height(50))) // shield ability - new Rect(490, myHeight, 70, 25), 
-            {
-                if (currentResources >= shieldCost)
-                {
-                    isButtonHeld[3] = OnlyOneButton(3, isButtonHeld[3]);
-                }
-                else
-                {
-                    StartCoroutine(NotEnoughMoney());
-                }
+        //        Debug.Log("ability three clicked!!! ======= :)" + isButtonHeld[2]);
+        //    }
+        //    if (GUILayout.Button("Shield / 15", GUILayout.Height(50))) // shield ability - new Rect(490, myHeight, 70, 25), 
+        //    {
+        //        if (currentResources >= shieldCost)
+        //        {
+        //            isButtonHeld[3] = OnlyOneButton(3, isButtonHeld[3]);
+        //        }
+        //        else
+        //        {
+        //            StartCoroutine(NotEnoughMoney());
+        //        }
 
-                SwapGridColliders(isButtonHeld[3]);
-                Debug.Log("ability four clicked!!! ======= :)" + isButtonHeld[3]);
-            }
-            if (GUILayout.Button("Barrage / 100", GUILayout.Height(50))) // barrage ability - new Rect(490, myHeight, 70, 25), 
-            {
-                if (currentResources >= barrageCost)
-                {
-                    isButtonHeld[4] = OnlyOneButton(4, isButtonHeld[4]);
-                }
-                else
-                {
-                    StartCoroutine(NotEnoughMoney());
-                }
+        //        SwapGridColliders(isButtonHeld[3]);
+        //        Debug.Log("ability four clicked!!! ======= :)" + isButtonHeld[3]);
+        //    }
+        //    if (GUILayout.Button("Barrage / 100", GUILayout.Height(50))) // barrage ability - new Rect(490, myHeight, 70, 25), 
+        //    {
+        //        if (currentResources >= barrageCost)
+        //        {
+        //            isButtonHeld[4] = OnlyOneButton(4, isButtonHeld[4]);
+        //        }
+        //        else
+        //        {
+        //            StartCoroutine(NotEnoughMoney());
+        //        }
 
-                Debug.Log("ability four clicked!!! ======= :)" + isButtonHeld[4]);
-            }
-            GUILayout.EndHorizontal();
-            GUILayout.EndArea();
+        //        Debug.Log("ability four clicked!!! ======= :)" + isButtonHeld[4]);
+        //    }
+        //    GUILayout.EndHorizontal();
+        //    GUILayout.EndArea();
 
-        }
+        //}
        
     }
 
+    // toggle ability on booleans
+    public void ToggleAbilityBool(int index)
+    {
+        if (!this.isLocalPlayer)
+        {
+            return;
+        }
+
+        if (myTurn)
+        {
+            switch (index)
+            {
+                // ability one
+                case 0:
+                    if (currentResources >= blastCost)
+                    {
+                        isButtonHeld[0] = OnlyOneButton(0, isButtonHeld[0]);
+                    }
+                    else
+                    {
+                        StartCoroutine(NotEnoughMoney());
+                    }
+
+                    Debug.Log("ability one clicked!!! ======= :)" + isButtonHeld[0]);
+
+                    break;
+                // ability two
+                case 1:
+                    if (currentResources >= volleyCost)
+                    {
+                        isButtonHeld[1] = OnlyOneButton(1, isButtonHeld[1]);
+                    }
+                    else
+                    {
+                        StartCoroutine(NotEnoughMoney());
+                    }
+
+                    Debug.Log("ability two clicked!!! ======= :)" + isButtonHeld[1]);
+
+                    break;
+                // ability three
+                case 2:
+                    if (currentResources >= radarCost)
+                    {
+                        isButtonHeld[2] = OnlyOneButton(2, isButtonHeld[2]);
+                    }
+                    else
+                    {
+                        StartCoroutine(NotEnoughMoney());
+                    }
+
+                    Debug.Log("ability three clicked!!! ======= :)" + isButtonHeld[2]);
+
+                    break;
+                // ability four
+                case 3:
+                    if (currentResources >= shieldCost)
+                    {
+                        isButtonHeld[3] = OnlyOneButton(3, isButtonHeld[3]);
+                    }
+                    else
+                    {
+                        StartCoroutine(NotEnoughMoney());
+                    }
+
+                    SwapGridColliders(isButtonHeld[3]);
+                    Debug.Log("ability four clicked!!! ======= :)" + isButtonHeld[3]);
+
+                    break;
+                // ability five
+                case 4:
+                    if (currentResources >= barrageCost)
+                    {
+                        isButtonHeld[4] = OnlyOneButton(4, isButtonHeld[4]);
+                    }
+                    else
+                    {
+                        StartCoroutine(NotEnoughMoney());
+                    }
+
+                    Debug.Log("ability four clicked!!! ======= :)" + isButtonHeld[4]);
+
+                    break;
+                // end turn
+                case 5:
+                    gameManager.GetComponent<JB_GameManager>().ChangePlayerTurn();
+                    FindOtherPlayer();
+                    break;
+                default:
+                    break;
+            }
+        }
+        
+    }
+
+    private void FindOtherPlayer()
+    {
+        GameObject[] players = GameObject.FindGameObjectsWithTag(this.tag);
+
+        foreach(GameObject player in players)
+        {
+            if (!player.GetComponent<NetworkIdentity>().isLocalPlayer)
+            {
+                StartCoroutine(SpawnPlusParticle());
+
+            }
+        }
+    }
     
     private void SwapGridColliders(bool onOff)
     {
