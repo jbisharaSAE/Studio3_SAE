@@ -1143,6 +1143,7 @@ public class JB_LocalPlayer : NetworkBehaviour
             waitingOnPlayerSign.SetActive(true);
             abilityButtonsHolder.SetActive(true);
             rotateConfirmButtons.SetActive(false);
+            zoomControl.GetComponent<JB_ZoomCamera>().shipsLocked = true;
         }
     }
 

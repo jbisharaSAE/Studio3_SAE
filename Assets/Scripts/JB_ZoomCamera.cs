@@ -10,6 +10,9 @@ public class JB_ZoomCamera : NetworkBehaviour
 
     Vector3 touchStart;
 
+    public bool shipsLocked = false;
+
+   
     // Update is called once per frame
     void Update()
     {
@@ -23,11 +26,21 @@ public class JB_ZoomCamera : NetworkBehaviour
             touchStart = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         }
 
-        if (Input.GetMouseButton(0))
+        if (shipsLocked)
         {
-            Vector3 direction = touchStart - Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            Camera.main.transform.position += direction;
+            if (Input.GetMouseButton(0))
+            {
+                Vector3 direction = touchStart - Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+                //direction = new Vector3(Mathf.Clamp(direction.x, -143, 143), Mathf.Clamp(direction.y, -86, 86), -10f);
+
+                Camera.main.transform.position += direction;
+
+                Camera.main.transform.position = new Vector3(Mathf.Clamp(Camera.main.transform.position.x, -100f, 100f),
+                                                             Mathf.Clamp(Camera.main.transform.position.y, -50f, 50f), -10f);
+            }
         }
+        
 
         if(Input.touchCount == 2)
         {
@@ -50,5 +63,6 @@ public class JB_ZoomCamera : NetworkBehaviour
     private void Zoom(float increment)
     {
         Camera.main.orthographicSize = Mathf.Clamp(Camera.main.orthographicSize - increment, zoomOutMin, zoomOutMax);
+        
     }
 }
