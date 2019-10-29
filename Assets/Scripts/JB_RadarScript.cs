@@ -92,30 +92,21 @@ public class JB_RadarScript : NetworkBehaviour
         }
     }
 
-    void SpawnRadarDetect(Vector3 targetPos)
-    {
-        if (isServer)
-        {
-            RpcSpawnRadarDetect(targetPos);
-        }
-        else
-        {
-            CmdSpawnRadarDetect(targetPos);
-        }
-    }
 
     [Command]
     void CmdSpawnRadarDetect(Vector3 targetPos)
     {
-        RpcSpawnRadarDetect(targetPos);
+        radarDetect = Instantiate(radarDetectPrefab, targetPos, Quaternion.identity);
+        NetworkServer.Spawn(radarDetect);
+
+        RpcSpawnRadarDetect(radarDetect);
 
     }
 
     [ClientRpc]
-    void RpcSpawnRadarDetect(Vector3 targetPos)
+    void RpcSpawnRadarDetect(GameObject radarObj)
     {
-        radarDetect = Instantiate(radarDetectPrefab, targetPos, Quaternion.identity);
-        NetworkServer.Spawn(radarDetect);
+        radarDetect = radarObj;
     }
     
 

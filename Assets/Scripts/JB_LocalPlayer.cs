@@ -9,9 +9,11 @@ using UnityEngine.UI;
 
 public class JB_LocalPlayer : NetworkBehaviour
 {
+    //public Texture2D rotateImg;
+    //public Texture2D confirmImg;
+    public GameObject rotateConfirmButtons;
     public GameObject waitingOnPlayerSign;
     public GameObject placementAlertDisplay;
-    public GameObject plusParticleEffect;
     public GameObject zoomControlPrefab;
     public GameObject namingPhase;
     public TextMeshProUGUI nameDisplay;
@@ -153,6 +155,7 @@ public class JB_LocalPlayer : NetworkBehaviour
     [SyncVar]
     public float timer = 30f;
     private bool playerReady;
+    private bool hitShip;
 
 
     // Start is called before the first frame update
@@ -246,13 +249,13 @@ public class JB_LocalPlayer : NetworkBehaviour
         {
             return;
         }
-        
 
-        StartCoroutine(PlacementAlertMsg());
-
+        rotateConfirmButtons.SetActive(true);
         dallionDisplay.SetActive(true);
-        displayCurrentDallions = dallionDisplay.transform.GetChild(0).gameObject.GetComponent<Text>();
         playerTurnDisplay.enabled = true;
+
+        displayCurrentDallions = dallionDisplay.transform.GetChild(0).gameObject.GetComponent<Text>();
+        
 
         namingPhase.SetActive(false);
 
@@ -342,14 +345,14 @@ public class JB_LocalPlayer : NetworkBehaviour
         
     }
 
-    public IEnumerator SpawnPlusParticle()
-    {
+    //public IEnumerator SpawnPlusParticle()
+    //{
 
-        plusParticleEffect.SetActive(true);
-        yield return new WaitForSeconds(2.5f);
-        plusParticleEffect.SetActive(false);
+    //    plusParticleSpawnPoint.SetActive(true);
+    //    yield return new WaitForSeconds(2.5f);
+    //    plusParticleSpawnPoint.SetActive(false);
 
-    }
+    //}
 
     private void DisplayTimer()
     {
@@ -367,7 +370,7 @@ public class JB_LocalPlayer : NetworkBehaviour
                 if (myTurn)
                 {
                     gameManager.GetComponent<JB_GameManager>().ChangePlayerTurn();
-                    FindOtherPlayer();
+                    //FindOtherPlayer();
                 }
 
             }
@@ -384,13 +387,13 @@ public class JB_LocalPlayer : NetworkBehaviour
         if (!showRotateConfirmButtons)
         {
             // players touch Input.Touch(0) ---  Input.touchCount > 0 && Input.touchCount < 2 ---Input.GetMouseButtonDown(0)
-            if (Input.GetMouseButtonDown(0))
+            if (Input.touchCount > 0 && Input.touchCount < 2)
             {
                 // get information from player's touch on screen
-                //Touch touch = Input.GetTouch(0);
+                Touch touch = Input.GetTouch(0);
 
                 RaycastHit hit;                                // mouse is for testing -- touch.position -- Input.mousePosition
-                if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit)) // shooting ray to mouse position
+                if (Physics.Raycast(Camera.main.ScreenPointToRay(touch.position), out hit)) // shooting ray to mouse position
                 {
                     if (hit.collider.gameObject.tag == "Tile") // did player click on a tile
                     {
@@ -411,7 +414,9 @@ public class JB_LocalPlayer : NetworkBehaviour
                     else if (hit.collider.gameObject.tag == "Square")
                     {
                         Debug.Log("square hit, we have clicked on a ship");
-                        tempTargetPos = hit.collider.gameObject.transform.position;        
+                        tempTargetPos = hit.collider.gameObject.transform.position;
+
+                        hitShip = true;
 
                         for (int i = 0; i < isButtonHeld.Length; ++i)
                         {
@@ -458,6 +463,7 @@ public class JB_LocalPlayer : NetworkBehaviour
 
                     // ability one - blast
                     CmdAbilityOneBlast(tempTargetPos, currentResources);
+                    TurnOffSprites();
                 }
                
                 
@@ -474,6 +480,7 @@ public class JB_LocalPlayer : NetworkBehaviour
 
                     // ability two - volley
                     CmdAbilityTwoVolley(tempTargetPos, currentResources);
+                    TurnOffSprites();
                 }
                 
 
@@ -489,8 +496,11 @@ public class JB_LocalPlayer : NetworkBehaviour
 
                     // ability three - radar
                     CmdAbilityThreeRadar(tempTargetPos, currentResources);
+                    
+                    TurnOffSprites();
+
                 }
-              
+
 
 
                 // ability is no longer active
@@ -505,6 +515,7 @@ public class JB_LocalPlayer : NetworkBehaviour
 
                     // ability four - shield
                     CmdAbilityFourShield(tempTargetPos, currentResources);
+                    TurnOffSprites();
                 }
                
 
@@ -522,6 +533,7 @@ public class JB_LocalPlayer : NetworkBehaviour
 
                     // ability five - barrage
                     CmdAbilityFiveBarrage(tempTargetPos, currentResources);
+                    TurnOffSprites();
                 }
                
 
@@ -533,6 +545,15 @@ public class JB_LocalPlayer : NetworkBehaviour
         }
     }
     #endregion
+
+    private void TurnOffSprites()
+    {
+        for(int i = 0; i < isButtonHeld.Length; ++i)
+        {
+            abilityButtons[i].sprite = offButton;
+            isButtonHeld[i] = false;
+        }
+    }
 
     // when the game starts, player still sees their grid, but colliders are disabled, to avoid aiming at own grid
     // colliders on own player also disabled, to avoid targeting own ships, by accident or w/e
@@ -577,14 +598,16 @@ public class JB_LocalPlayer : NetworkBehaviour
         gridManagerObj.GetComponent<JB_GridManager>().endX = endX;
         gridManagerObj.GetComponent<JB_GridManager>().endY = endY;
 
-        if(startX == 0 && startY == 0 && endX == 0 && endY == 0)
+        if (hitShip)
         {
             radarCount = 0;
+            hitShip = false;
         }
         else
         {
             radarCount = gridManagerObj.GetComponent<JB_GridManager>().FindClosestShip();
         }
+        
         
 
         GameObject radarNumber = Instantiate(radarDisplayPrefab, tempTargetPos, Quaternion.identity);
@@ -905,79 +928,79 @@ public class JB_LocalPlayer : NetworkBehaviour
         myList.Clear();
     }
 
-    private void OnGUI()
-    {
-        if (showRotateConfirmButtons && this.isLocalPlayer && !playerReady)
-        {
-            // ================= PLACEMENT STAGE ================
+    //private void OnGUI()
+    //{
+    //    if (showRotateConfirmButtons && this.isLocalPlayer && !playerReady)
+    //    {
+    //        // ================= PLACEMENT STAGE ================
 
-            // confirm ship positions checks all at once ======= button
-            if (GUI.Button(new Rect((Screen.width / 2) + 45, (Screen.height * 0.9f), 70, 50), "Confirm"))
-            {
-                // one for each ship
-                checkValidation = new bool[4];
+    //        // confirm ship positions checks all at once ======= button
+    //        if (GUI.Button(new Rect((Screen.width / 2) + 45, (Screen.height * 0.9f), 70, 50), confirmImg, "Confirm"))
+    //        {
+    //            // one for each ship
+    //            checkValidation = new bool[4];
 
 
-                GameObject[] allShips = GameObject.FindGameObjectsWithTag("Ship");
+    //            GameObject[] allShips = GameObject.FindGameObjectsWithTag("Ship");
                 
-                // making sure ships belong to me (local player)
-                foreach(GameObject ship in allShips)
-                {
-                    if(ship.GetComponent<DragObject>().playerID == playerID)
-                    {
-                        myList.Add(ship);
-                    }
-                }
+    //            // making sure ships belong to me (local player)
+    //            foreach(GameObject ship in allShips)
+    //            {
+    //                if(ship.GetComponent<DragObject>().playerID == playerID)
+    //                {
+    //                    myList.Add(ship);
+    //                }
+    //            }
 
-                //Debug.Log(checkValidation.Length);
+    //            //Debug.Log(checkValidation.Length);
 
-                for (int i = 0; i < myList.Count; ++i)
-                {
-                    checkValidation[i] = myList[i].GetComponent<JB_SnappingShip>().ValidPosition();
-                }
+    //            for (int i = 0; i < myList.Count; ++i)
+    //            {
+    //                checkValidation[i] = myList[i].GetComponent<JB_SnappingShip>().ValidPosition();
+    //            }
 
-                allTrue = checkValidation.All(x => x);
+    //            allTrue = checkValidation.All(x => x);
 
-                if (allTrue)
-                {
+    //            if (allTrue)
+    //            {
                    
-                    CmdIncrementReadyNumber();
+    //                CmdIncrementReadyNumber();
 
-                    playerReady = true;
+    //                playerReady = true;
 
-                    for (int i = 0; i < myList.Count; ++i)
-                    {
-                        myList[i].GetComponent<JB_SnappingShip>().FreeOrLockShipPosition(false);
-                        myList[i].GetComponent<DragObject>().canDrag = false;
-                    }
+    //                for (int i = 0; i < myList.Count; ++i)
+    //                {
+    //                    myList[i].GetComponent<JB_SnappingShip>().FreeOrLockShipPosition(false);
+    //                    myList[i].GetComponent<DragObject>().canDrag = false;
+    //                }
 
 
-                }
-                else
-                {
-                    CmdClearList();
-                    myList.Clear();
-                    StartCoroutine(SendErrorAlert());
-                    Debug.Log("not in valid positions");
-                }
+    //            }
+    //            else
+    //            {
+    //                CmdClearList();
+    //                myList.Clear();
+    //                StartCoroutine(SendErrorAlert());
+    //                Debug.Log("not in valid positions");
+    //            }
 
-                if (playerReady)
-                {
-                    waitingOnPlayerSign.SetActive(true);
-                    abilityButtonsHolder.SetActive(true);
-                }
-            }
+    //            if (playerReady)
+    //            {
+    //                waitingOnPlayerSign.SetActive(true);
+    //                abilityButtonsHolder.SetActive(true);
+    //            }
+    //        }
 
-            // rotate ship that is selected ====== button
-            if (GUI.Button(new Rect((Screen.width / 2) -45f, (Screen.height * 0.9f), 70, 50), "Rotate"))
-            {
-                // frees up tiles that were taken before rotating ship
-                shipObj.GetComponent<JB_SnappingShip>().FreeOrLockShipPosition(true);
+    //        // rotate ship that is selected ====== button
+    //        if (GUI.Button(new Rect((Screen.width / 2) -45f, (Screen.height * 0.9f), 70, 50), rotateImg, "Rotate"))
+    //        {
+    //            // frees up tiles that were taken before rotating ship
+    //            shipObj.GetComponent<JB_SnappingShip>().FreeOrLockShipPosition(true);
 
-                RotateShip();
+    //            RotateShip();
 
-            }
-        }
+    //        }
+    //    }
 
         // ================== GAME ATTACK PHASE ========================
         //else if (this.isLocalPlayer && myTurn) // SHOW ABILITY BUTTONS
@@ -1063,6 +1086,73 @@ public class JB_LocalPlayer : NetworkBehaviour
 
         //}
        
+    //}
+
+    // confrim button
+    public void ConfirmShipPositions()
+    {
+        // one for each ship
+        checkValidation = new bool[4];
+
+
+        GameObject[] allShips = GameObject.FindGameObjectsWithTag("Ship");
+
+        // making sure ships belong to me (local player)
+        foreach (GameObject ship in allShips)
+        {
+            if (ship.GetComponent<DragObject>().playerID == playerID)
+            {
+                myList.Add(ship);
+            }
+        }
+
+        //Debug.Log(checkValidation.Length);
+
+        for (int i = 0; i < myList.Count; ++i)
+        {
+            checkValidation[i] = myList[i].GetComponent<JB_SnappingShip>().ValidPosition();
+        }
+
+        allTrue = checkValidation.All(x => x);
+
+        if (allTrue)
+        {
+
+            CmdIncrementReadyNumber();
+
+            playerReady = true;
+
+            for (int i = 0; i < myList.Count; ++i)
+            {
+                myList[i].GetComponent<JB_SnappingShip>().FreeOrLockShipPosition(false);
+                myList[i].GetComponent<DragObject>().canDrag = false;
+            }
+
+
+        }
+        else
+        {
+            CmdClearList();
+            myList.Clear();
+            StartCoroutine(SendErrorAlert());
+            Debug.Log("not in valid positions");
+        }
+
+        if (playerReady)
+        {
+            waitingOnPlayerSign.SetActive(true);
+            abilityButtonsHolder.SetActive(true);
+            rotateConfirmButtons.SetActive(false);
+        }
+    }
+
+    // rotation button
+    public void CheckRotation()
+    {
+        // frees up tiles that were taken before rotating ship
+        shipObj.GetComponent<JB_SnappingShip>().FreeOrLockShipPosition(true);
+
+        RotateShip();
     }
 
     // toggle ability on booleans
@@ -1151,7 +1241,8 @@ public class JB_LocalPlayer : NetworkBehaviour
                 // end turn
                 case 5:
                     gameManager.GetComponent<JB_GameManager>().ChangePlayerTurn();
-                    FindOtherPlayer();
+                    
+                    TurnOffSprites();
                     break;
                 default:
                     break;
@@ -1160,19 +1251,6 @@ public class JB_LocalPlayer : NetworkBehaviour
         
     }
 
-    private void FindOtherPlayer()
-    {
-        GameObject[] players = GameObject.FindGameObjectsWithTag(this.tag);
-
-        foreach(GameObject player in players)
-        {
-            if (!player.GetComponent<NetworkIdentity>().isLocalPlayer)
-            {
-                StartCoroutine(SpawnPlusParticle());
-
-            }
-        }
-    }
     
     private void SwapGridColliders(bool onOff)
     {
@@ -1205,7 +1283,6 @@ public class JB_LocalPlayer : NetworkBehaviour
         }
      
     }
-
 
     public void RotateShip()
     {

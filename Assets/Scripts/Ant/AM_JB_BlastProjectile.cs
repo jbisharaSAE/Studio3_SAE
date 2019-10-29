@@ -163,8 +163,6 @@ public class AM_JB_BlastProjectile : NetworkBehaviour
                 {
                     Debug.Log("hit shield " + hit.collider.name);
                     CmdShieldOff();
-                    //hit.collider.gameObject.GetComponent<SpriteRenderer>().enabled = false;
-                    //hit.collider.gameObject.GetComponent<BoxCollider>().enabled = false;
                     //Destroy(hit.collider.gameObject);
                     DestroyGameObject(hit.collider.gameObject.transform.parent.gameObject);
                     DestroyGameObject(gameObject);

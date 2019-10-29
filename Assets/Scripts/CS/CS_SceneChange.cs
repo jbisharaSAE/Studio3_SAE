@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class CS_SceneChange : MonoBehaviour
+
+public class CS_SceneChange : MonoBehaviour 
 {
 
     public GameObject InfoGraphic;
@@ -18,6 +19,8 @@ public class CS_SceneChange : MonoBehaviour
     public void LoadAnyScene(int index)
     {
         SceneManager.LoadScene(index);
+
+        
     }
 
     public void ActiavateInfo()

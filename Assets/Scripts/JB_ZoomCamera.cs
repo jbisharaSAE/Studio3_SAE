@@ -8,6 +8,7 @@ public class JB_ZoomCamera : NetworkBehaviour
     public float zoomOutMin = 1f;
     public float zoomOutMax = 8f;
 
+    Vector3 touchStart;
 
     // Update is called once per frame
     void Update()
@@ -15,6 +16,17 @@ public class JB_ZoomCamera : NetworkBehaviour
         if (!hasAuthority)
         {
             return;
+        }
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            touchStart = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        }
+
+        if (Input.GetMouseButton(0))
+        {
+            Vector3 direction = touchStart - Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Camera.main.transform.position += direction;
         }
 
         if(Input.touchCount == 2)

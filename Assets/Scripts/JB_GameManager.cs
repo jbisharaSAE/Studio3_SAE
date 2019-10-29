@@ -333,6 +333,7 @@ public class JB_GameManager : NetworkBehaviour
         {
             CmdAddResourcesToPlayer(playerPrefabs[0]);  // add dallions to this player
             
+            
         }
         else
         {
@@ -368,6 +369,7 @@ public class JB_GameManager : NetworkBehaviour
 
         int rand = Random.Range(0, 3);
 
+        
 
         // randomisation of getting resources per turn 
         switch (rand)
