@@ -36,10 +36,12 @@ public class JB_ZoomCamera : NetworkBehaviour
 
                 Camera.main.transform.position += direction;
 
-                Camera.main.transform.position = new Vector3(Mathf.Clamp(Camera.main.transform.position.x, -100f, 100f),
-                                                             Mathf.Clamp(Camera.main.transform.position.y, -50f, 50f), -10f);
+                Camera.main.transform.position = new Vector3(Mathf.Clamp(Camera.main.transform.position.x, -75f, 75f),
+                                                             Mathf.Clamp(Camera.main.transform.position.y, -40f, 40f), -10f);
             }
         }
+            
+        
         
 
         if(Input.touchCount == 2)

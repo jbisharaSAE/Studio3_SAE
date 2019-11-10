@@ -252,6 +252,8 @@ public class JB_GameManager : NetworkBehaviour
         playerObj.GetComponent<JB_LocalPlayer>().startTimer = true;
 
         playerObj.GetComponent<JB_LocalPlayer>().waitingOnPlayerSign.SetActive(false);
+
+
         
 
         RpcBeginPlay(playerObj);
@@ -286,15 +288,29 @@ public class JB_GameManager : NetworkBehaviour
                 CmdBeginPlay(pair.Value.gameObject);
 
             }
+
+            else if (pair.Value.gameObject.tag == "Zoom")
+            {
+                CmdEnableZoom(pair.Value.gameObject);
+            }
         }
 
         CmdSetPlayerTurn();
 
-
     }
 
- 
+    [Command]
+    private void CmdEnableZoom(GameObject zoomObj)
+    {
+        zoomObj.GetComponent<JB_ZoomCamera>().shipsLocked = true;
+        RpcEnableZoom(zoomObj);
+    }
 
+    [ClientRpc]
+    private void RpcEnableZoom(GameObject zoomObj)
+    {
+        zoomObj.GetComponent<JB_ZoomCamera>().shipsLocked = true;
+    }
 
 
     [Command]

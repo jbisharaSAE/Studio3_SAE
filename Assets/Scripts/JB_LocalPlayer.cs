@@ -6,6 +6,7 @@ using System;
 using System.Linq;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 public class JB_LocalPlayer : NetworkBehaviour
 {
@@ -116,6 +117,7 @@ public class JB_LocalPlayer : NetworkBehaviour
     [SyncVar]
     public float currentResources;
     private float maxResources;
+    
 
     // resource cost for abilities
     [SerializeField] private float blastCost = 25f;
@@ -154,9 +156,35 @@ public class JB_LocalPlayer : NetworkBehaviour
     // timer for player's turn
     [SyncVar]
     public float timer = 30f;
-    private bool playerReady;
-    private bool hitShip;
 
+    private bool playerReady;
+
+    private bool hitShip;
+    private bool hitShield;
+    private int shipHitID;
+    private bool bToggle = true;
+
+    private void ToggleAbilityButtons()
+    {
+        if (!this.isLocalPlayer) { return; }
+        bToggle = !bToggle;
+
+        if (playerReady)
+        {
+            abilityButtonsHolder.SetActive(bToggle);
+        }
+        
+    }
+
+    private void OnEnable()
+    {
+        JB_ToggleButton.OnClicked += ToggleAbilityButtons;
+    }
+
+    private void OnDisable()
+    {
+        JB_ToggleButton.OnClicked -= ToggleAbilityButtons;
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -191,7 +219,7 @@ public class JB_LocalPlayer : NetworkBehaviour
         // used to identify player's connection object from each other
         CmdSetPlayerID(Convert.ToInt32(GetComponent<NetworkIdentity>().netId.Value));
 
-        CmdSpawnZoom();
+        
 
         if (isServer)
         {
@@ -249,6 +277,10 @@ public class JB_LocalPlayer : NetworkBehaviour
         {
             return;
         }
+
+        CmdSpawnZoom();
+
+        StartCoroutine(PlacementAlertMsg());
 
         rotateConfirmButtons.SetActive(true);
         dallionDisplay.SetActive(true);
@@ -345,15 +377,6 @@ public class JB_LocalPlayer : NetworkBehaviour
         
     }
 
-    //public IEnumerator SpawnPlusParticle()
-    //{
-
-    //    plusParticleSpawnPoint.SetActive(true);
-    //    yield return new WaitForSeconds(2.5f);
-    //    plusParticleSpawnPoint.SetActive(false);
-
-    //}
-
     private void DisplayTimer()
     {
 
@@ -387,18 +410,21 @@ public class JB_LocalPlayer : NetworkBehaviour
         if (!showRotateConfirmButtons)
         {
             // players touch Input.Touch(0) ---  Input.touchCount > 0 && Input.touchCount < 2 ---Input.GetMouseButtonDown(0)
-            if (Input.touchCount > 0 && Input.touchCount < 2)
+            if (Input.GetMouseButtonDown(0))
             {
                 // get information from player's touch on screen
-                Touch touch = Input.GetTouch(0);
+                //Touch touch = Input.GetTouch(0);
 
                 RaycastHit hit;                                // mouse is for testing -- touch.position -- Input.mousePosition
-                if (Physics.Raycast(Camera.main.ScreenPointToRay(touch.position), out hit)) // shooting ray to mouse position
+                if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit)) // shooting ray to mouse position
                 {
                     if (hit.collider.gameObject.tag == "Tile") // did player click on a tile
                     {
                         Debug.Log("tile hit, we clicked on a tile");
                         tempTargetPos = hit.collider.gameObject.GetComponent<JB_Tile>().tilePosition;
+
+                        hitShield = false;
+                        hitShip = false;
 
                         startX = hit.collider.gameObject.GetComponent<JB_Tile>().x;
                         startY = hit.collider.gameObject.GetComponent<JB_Tile>().y;
@@ -414,8 +440,14 @@ public class JB_LocalPlayer : NetworkBehaviour
                     else if (hit.collider.gameObject.tag == "Square")
                     {
                         Debug.Log("square hit, we have clicked on a ship");
+
                         tempTargetPos = hit.collider.gameObject.transform.position;
 
+                        shipHitID = hit.collider.gameObject.transform.parent.gameObject.GetComponent<DragObject>().playerID;
+
+                        Debug.Log("Ship hit ID = " + shipHitID);
+
+                        hitShield = false;
                         hitShip = true;
 
                         for (int i = 0; i < isButtonHeld.Length; ++i)
@@ -429,6 +461,10 @@ public class JB_LocalPlayer : NetworkBehaviour
                     else if (hit.collider.gameObject.tag == "Shield")
                     {
                         tempTargetPos = hit.collider.gameObject.transform.position;
+
+                        hitShield = true;
+                        hitShip = false;
+                        
                         for (int i = 0; i < isButtonHeld.Length; ++i)
                         {
                             if (isButtonHeld[i])
@@ -508,17 +544,20 @@ public class JB_LocalPlayer : NetworkBehaviour
 
                 break;
             case 3:
-                if(currentResources>= shieldCost)
+                if((currentResources >= shieldCost) && !hitShield && !hitShip)
                 {
+                    
                     // take away the resource cost of this ability
                     currentResources -= shieldCost;
 
                     // ability four - shield
                     CmdAbilityFourShield(tempTargetPos, currentResources);
                     TurnOffSprites();
+                    hitShield = false;
                 }
-               
 
+                hitShield = false;
+                hitShip = false;
 
                 // ability is no longer active
                 isButtonHeld[3] = false;
@@ -861,6 +900,7 @@ public class JB_LocalPlayer : NetworkBehaviour
                 {
                     pair.Value.gameObject.GetComponent<JB_GameManager>().ReadyCheckNumber();
                 }
+                
 
             }
             runOnce = false;
@@ -879,11 +919,13 @@ public class JB_LocalPlayer : NetworkBehaviour
         //grab the ship prefabs attached to game object, assign them to the array of ships
         ships = new GameObject[shipPrefabs.Length];
 
+
         // one for each ship
         checkValidation = new bool[4];
 
         for (int i = 0; i < shipPrefabs.Length; ++i)
         {
+            
             // instantiate ships and give them authority from this local player (client)
             ships[i] = Instantiate(shipPrefabs[i]);
             ships[i].GetComponent<DragObject>().enabled = true;
@@ -928,166 +970,7 @@ public class JB_LocalPlayer : NetworkBehaviour
         myList.Clear();
     }
 
-    //private void OnGUI()
-    //{
-    //    if (showRotateConfirmButtons && this.isLocalPlayer && !playerReady)
-    //    {
-    //        // ================= PLACEMENT STAGE ================
-
-    //        // confirm ship positions checks all at once ======= button
-    //        if (GUI.Button(new Rect((Screen.width / 2) + 45, (Screen.height * 0.9f), 70, 50), confirmImg, "Confirm"))
-    //        {
-    //            // one for each ship
-    //            checkValidation = new bool[4];
-
-
-    //            GameObject[] allShips = GameObject.FindGameObjectsWithTag("Ship");
-                
-    //            // making sure ships belong to me (local player)
-    //            foreach(GameObject ship in allShips)
-    //            {
-    //                if(ship.GetComponent<DragObject>().playerID == playerID)
-    //                {
-    //                    myList.Add(ship);
-    //                }
-    //            }
-
-    //            //Debug.Log(checkValidation.Length);
-
-    //            for (int i = 0; i < myList.Count; ++i)
-    //            {
-    //                checkValidation[i] = myList[i].GetComponent<JB_SnappingShip>().ValidPosition();
-    //            }
-
-    //            allTrue = checkValidation.All(x => x);
-
-    //            if (allTrue)
-    //            {
-                   
-    //                CmdIncrementReadyNumber();
-
-    //                playerReady = true;
-
-    //                for (int i = 0; i < myList.Count; ++i)
-    //                {
-    //                    myList[i].GetComponent<JB_SnappingShip>().FreeOrLockShipPosition(false);
-    //                    myList[i].GetComponent<DragObject>().canDrag = false;
-    //                }
-
-
-    //            }
-    //            else
-    //            {
-    //                CmdClearList();
-    //                myList.Clear();
-    //                StartCoroutine(SendErrorAlert());
-    //                Debug.Log("not in valid positions");
-    //            }
-
-    //            if (playerReady)
-    //            {
-    //                waitingOnPlayerSign.SetActive(true);
-    //                abilityButtonsHolder.SetActive(true);
-    //            }
-    //        }
-
-    //        // rotate ship that is selected ====== button
-    //        if (GUI.Button(new Rect((Screen.width / 2) -45f, (Screen.height * 0.9f), 70, 50), rotateImg, "Rotate"))
-    //        {
-    //            // frees up tiles that were taken before rotating ship
-    //            shipObj.GetComponent<JB_SnappingShip>().FreeOrLockShipPosition(true);
-
-    //            RotateShip();
-
-    //        }
-    //    }
-
-        // ================== GAME ATTACK PHASE ========================
-        //else if (this.isLocalPlayer && myTurn) // SHOW ABILITY BUTTONS
-        //{
-        //    float screenY = Screen.height;
-        //    float screenX = Screen.width;
-
-        //    GUILayout.BeginArea(new Rect(screenY * 0.1f, screenY * 0.9f, screenX * 0.9f, screenY));
-        //    GUILayout.BeginHorizontal();
-        //    if (GUILayout.Button("End Turn", GUILayout.Height(50))) // end turn button - new Rect(330, myHeight, 70, 25),
-        //    {
-        //        gameManager.GetComponent<JB_GameManager>().ChangePlayerTurn();
-        //    }
-        //    GUILayout.Space(25f);
-        //    if (GUILayout.Button("Blast / 25", GUILayout.Height(50))) // blast ability - new Rect(430, myHeight, 70, 25), 
-        //    {
-        //        if(currentResources >= blastCost)
-        //        {
-        //            isButtonHeld[0] = OnlyOneButton(0, isButtonHeld[0]);
-        //        }
-        //        else
-        //        {
-        //            StartCoroutine(NotEnoughMoney());
-        //        }
-                
-        //        Debug.Log("ability one clicked!!! ======= :)" + isButtonHeld[0]);
-        //    }
-        //    if (GUILayout.Button("Volley / 70", GUILayout.Height(50))) // volley ability - new Rect(450, myHeight, 70, 25), 
-        //    {
-        //        if (currentResources >= volleyCost)
-        //        {
-        //            isButtonHeld[1] = OnlyOneButton(1, isButtonHeld[1]);
-        //        }
-        //        else
-        //        {
-        //            StartCoroutine(NotEnoughMoney());
-        //        }
-
-        //        Debug.Log("ability two clicked!!! ======= :)" + isButtonHeld[1]);
-        //    }
-        //    if (GUILayout.Button("Radar / 50", GUILayout.Height(50))) // radar ability - new Rect(470, myHeight, 70, 25), 
-        //    {
-        //        if (currentResources >= radarCost)
-        //        {
-        //            isButtonHeld[2] = OnlyOneButton(2, isButtonHeld[2]);
-        //        }
-        //        else
-        //        {
-        //            StartCoroutine(NotEnoughMoney());
-        //        }
-
-        //        Debug.Log("ability three clicked!!! ======= :)" + isButtonHeld[2]);
-        //    }
-        //    if (GUILayout.Button("Shield / 15", GUILayout.Height(50))) // shield ability - new Rect(490, myHeight, 70, 25), 
-        //    {
-        //        if (currentResources >= shieldCost)
-        //        {
-        //            isButtonHeld[3] = OnlyOneButton(3, isButtonHeld[3]);
-        //        }
-        //        else
-        //        {
-        //            StartCoroutine(NotEnoughMoney());
-        //        }
-
-        //        SwapGridColliders(isButtonHeld[3]);
-        //        Debug.Log("ability four clicked!!! ======= :)" + isButtonHeld[3]);
-        //    }
-        //    if (GUILayout.Button("Barrage / 100", GUILayout.Height(50))) // barrage ability - new Rect(490, myHeight, 70, 25), 
-        //    {
-        //        if (currentResources >= barrageCost)
-        //        {
-        //            isButtonHeld[4] = OnlyOneButton(4, isButtonHeld[4]);
-        //        }
-        //        else
-        //        {
-        //            StartCoroutine(NotEnoughMoney());
-        //        }
-
-        //        Debug.Log("ability four clicked!!! ======= :)" + isButtonHeld[4]);
-        //    }
-        //    GUILayout.EndHorizontal();
-        //    GUILayout.EndArea();
-
-        //}
-       
-    //}
-
+   
     // confrim button
     public void ConfirmShipPositions()
     {
@@ -1143,15 +1026,16 @@ public class JB_LocalPlayer : NetworkBehaviour
             waitingOnPlayerSign.SetActive(true);
             abilityButtonsHolder.SetActive(true);
             rotateConfirmButtons.SetActive(false);
-            zoomControl.GetComponent<JB_ZoomCamera>().shipsLocked = true;
+            
         }
     }
 
+    
     // rotation button
     public void CheckRotation()
     {
         // frees up tiles that were taken before rotating ship
-        shipObj.GetComponent<JB_SnappingShip>().FreeOrLockShipPosition(true);
+        shipObj.GetComponent<JB_SnappingShip>().MovingShip();
 
         RotateShip();
     }
@@ -1291,8 +1175,17 @@ public class JB_LocalPlayer : NetworkBehaviour
         if (shipObj != null)
         {
             shipObj.transform.Rotate(0f, 0f, 90f);
-            shipObj.GetComponent<JB_SnappingShip>().ShipPlacement();
+            StartCoroutine(DelayShipPlacement());
+            
         }
+    }
+
+    IEnumerator DelayShipPlacement()
+    {
+        yield return new WaitForSeconds(1f);
+
+        shipObj.GetComponent<JB_SnappingShip>().ShipPlacement();
+        shipObj.GetComponent<JB_SnappingShip>().FreeOrLockShipPosition(false);
     }
 
     IEnumerator SendErrorAlert()

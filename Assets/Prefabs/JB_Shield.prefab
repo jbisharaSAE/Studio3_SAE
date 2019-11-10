@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4852294068683598208}
   - component: {fileID: 9119738046981763091}
   - component: {fileID: 1992949787744819545}
-  m_Layer: 0
+  m_Layer: 22
   m_Name: Sheild Sprite (1)
   m_TagString: Shield
   m_Icon: {fileID: 0}
@@ -92,8 +92,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.73, y: 0.73, z: 7}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.73, y: 0.73, z: 30}
+  m_Center: {x: 0, y: 0, z: -10}
 --- !u!1 &3701746820920872314
 GameObject:
   m_ObjectHideFlags: 0
@@ -105,7 +105,7 @@ GameObject:
   - component: {fileID: 1329645188133387547}
   - component: {fileID: 3571929229517607328}
   - component: {fileID: 1481158979627876881}
-  m_Layer: 0
+  m_Layer: 22
   m_Name: Sheild Sprite (4)
   m_TagString: Shield
   m_Icon: {fileID: 0}
@@ -186,8 +186,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.73, y: 0.73, z: 7}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.73, y: 0.73, z: 30}
+  m_Center: {x: 0, y: 0, z: -10}
 --- !u!1 &3840257844704355143
 GameObject:
   m_ObjectHideFlags: 0
@@ -199,7 +199,7 @@ GameObject:
   - component: {fileID: 1464774526392948801}
   - component: {fileID: 2748503368852746840}
   - component: {fileID: 9174745904201273905}
-  m_Layer: 0
+  m_Layer: 22
   m_Name: Sheild Sprite (6)
   m_TagString: Shield
   m_Icon: {fileID: 0}
@@ -280,8 +280,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.73, y: 0.73, z: 7}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.73, y: 0.73, z: 30}
+  m_Center: {x: 0, y: 0, z: -10}
 --- !u!1 &3891098625367545051
 GameObject:
   m_ObjectHideFlags: 0
@@ -293,7 +293,7 @@ GameObject:
   - component: {fileID: 1328939945085159043}
   - component: {fileID: 16274005547528207}
   - component: {fileID: 3993740460399317369}
-  m_Layer: 0
+  m_Layer: 22
   m_Name: Sheild Sprite (5)
   m_TagString: Shield
   m_Icon: {fileID: 0}
@@ -374,8 +374,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.73, y: 0.73, z: 7}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.73, y: 0.73, z: 30}
+  m_Center: {x: 0, y: 0, z: -10}
 --- !u!1 &4020257611690057809
 GameObject:
   m_ObjectHideFlags: 0
@@ -387,7 +387,7 @@ GameObject:
   - component: {fileID: 7617660212049222240}
   - component: {fileID: 3453808394426848235}
   - component: {fileID: 6601103868464252151}
-  m_Layer: 0
+  m_Layer: 22
   m_Name: Sheild Sprite (8)
   m_TagString: Shield
   m_Icon: {fileID: 0}
@@ -468,8 +468,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.73, y: 0.73, z: 7}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.73, y: 0.73, z: 30}
+  m_Center: {x: 0, y: 0, z: -10}
 --- !u!1 &4606828757201921935
 GameObject:
   m_ObjectHideFlags: 0
@@ -481,7 +481,7 @@ GameObject:
   - component: {fileID: 6363863253709658184}
   - component: {fileID: 3913898549893960676}
   - component: {fileID: 5622952582520776900}
-  m_Layer: 0
+  m_Layer: 22
   m_Name: Sheild Sprite (7)
   m_TagString: Shield
   m_Icon: {fileID: 0}
@@ -562,8 +562,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.73, y: 0.73, z: 7}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.73, y: 0.73, z: 30}
+  m_Center: {x: 0, y: 0, z: -10}
 --- !u!1 &5688939146266419238
 GameObject:
   m_ObjectHideFlags: 0
@@ -575,7 +575,7 @@ GameObject:
   - component: {fileID: 4758920306573116151}
   - component: {fileID: 4930218614386046990}
   - component: {fileID: 5568836504091582639}
-  m_Layer: 0
+  m_Layer: 22
   m_Name: Sheild Sprite (10)
   m_TagString: Shield
   m_Icon: {fileID: 0}
@@ -656,8 +656,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.73, y: 0.73, z: 7}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.73, y: 0.73, z: 30}
+  m_Center: {x: 0, y: 0, z: -10}
 --- !u!1 &5965123852605654677
 GameObject:
   m_ObjectHideFlags: 0
@@ -5422,7 +5422,7 @@ GameObject:
   - component: {fileID: 6696151064191986111}
   - component: {fileID: 8753607105967033929}
   - component: {fileID: 8525918424746910534}
-  m_Layer: 0
+  m_Layer: 22
   m_Name: Sheild Sprite (3)
   m_TagString: Shield
   m_Icon: {fileID: 0}
@@ -5503,8 +5503,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.73, y: 0.73, z: 7}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.73, y: 0.73, z: 30}
+  m_Center: {x: 0, y: 0, z: -10}
 --- !u!1 &6473085729328716214
 GameObject:
   m_ObjectHideFlags: 0
@@ -5516,7 +5516,7 @@ GameObject:
   - component: {fileID: 5544168936170376784}
   - component: {fileID: 2215009051245196535}
   - component: {fileID: 6000612702017118979}
-  m_Layer: 0
+  m_Layer: 22
   m_Name: Sheild Sprite (9)
   m_TagString: Shield
   m_Icon: {fileID: 0}
@@ -5597,8 +5597,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.73, y: 0.73, z: 7}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.73, y: 0.73, z: 30}
+  m_Center: {x: 0, y: 0, z: -10}
 --- !u!1 &7635250123383612036
 GameObject:
   m_ObjectHideFlags: 0
@@ -5707,7 +5707,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7635250123401073762}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -73.90941, y: 4.6695232, z: 86}
+  m_LocalPosition: {x: -73.90941, y: 4.6695232, z: 79}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7635250123383612037}

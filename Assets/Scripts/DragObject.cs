@@ -29,6 +29,8 @@ public class DragObject : NetworkBehaviour
         {
             return;
         }
+
+        
     }
 
     private void Start()

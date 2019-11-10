@@ -36,6 +36,8 @@ public class JB_SnappingShip : NetworkBehaviour
         // find all the scripts attached to each square
         squares = GetComponentsInChildren<JB_SquareSprites>();
 
+        Debug.Log("Ship Placement Method called");
+
         isTileOpen = new bool[squares.Length];
         
         for(int i = 0; i < squares.Length; ++i)

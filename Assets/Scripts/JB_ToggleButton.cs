@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class JB_ToggleButton : MonoBehaviour
 {
+    public delegate void OnClickAction();
+    public static event OnClickAction OnClicked;
+
     private bool toggle = false;
 
    public void ToggleInfo(GameObject infoboard)
@@ -12,5 +15,6 @@ public class JB_ToggleButton : MonoBehaviour
 
         infoboard.SetActive(toggle);
 
+        OnClicked();
     }
 }

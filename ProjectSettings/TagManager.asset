@@ -19,6 +19,7 @@ TagManager:
   - Enter
   - Gameover
   - AudioManger
+  - Zoom
   layers:
   - Default
   - TransparentFX
